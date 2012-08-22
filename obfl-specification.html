@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type"
+  content="application/xhtml+xml; charset=UTF-8" />
+  <title>OBFL - Open Braille Formatting Language</title>
+  <meta name="dc:identifier" content="" />
+  <meta name="dc:Title" content="PEF Specification" />
+  <meta name="dc:Language" content="SV" />
+  <meta name="dc:Date" content="2007-02-21" />
+  <meta name="dc:Publisher" content="TPB" />
+  <meta name="wml2dtbook:version" content="1.4.1.1" />
+  <meta name="wml2dtbook:date" content="17 January 2007" />
+  <link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+
+<body>
+<h1>OBFL - Open Braille Formatting Language</h1>
+
+<p>Working draft, revised 22 August 2012</p>
+<dl>
+  <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
+    <dd>N/A </dd>
+  <dt>Author:</dt>
+    <dd>Joel Håkansson</dd>
+  <dt>Contributors:</dt>
+    <dd></dd>
+</dl>
+
+<h2 id="Abstract"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
+
+<p>This document specifies the Open Braille Formatting Language (OBFL), a data
+format for representing text formatting layout. OBFL is an <a
+href="#ref-xml">XML</a> 1.0 application.</p>
+
+<h2 id="Status"><a class="mozTocH2" name="mozTocId427116"></a>Status of this
+Document</h2>
+
+<p>This document is a working draft.</p>
+
+<h2 id="Table"><a class="mozTocH2" name="mozTocId469583"></a>Table of
+Contents</h2>
+
+<div class="toc">
+<ul>
+  <li><a href="#Abstract">Abstract</a></li>
+  <li><a href="#Status">Status of this Document</a></li>
+  <li><a href="#Table">Table of Contents</a></li>
+  <li><a href="#Introducti">Introduction</a>
+    <ul>
+      <li><a href="#What">What is OBFL?</a></li>
+      <li><a href="#there">Why is OBFL Necessary?</a></li>
+      <li><a href="#Scope">Scope Limitations</a></li>
+    </ul>
+  </li>
+  <li><a href="#Definition">Definitions</a>
+    <ul>
+      <li><a href="#Terminolog">Terminology</a></li>
+      <li><a href="#General">General Terms</a></li>
+      <li><a href="#Relationsh">Axes and Node Types</a></li>
+      <li><a href="#Relationsh11">Relationship to Other Specifications</a></li>
+    </ul>
+  </li>
+  <li><a href="#Normative">Definition of OBFL</a>
+    <ul>
+      <li><a href="#Document">Document Conformance </a></li>
+      <li><a href="#Using">Using OBFL with Other Namespaces</a></li>
+      <li><a href="#Internet">Internet Media Type and File Extension</a></li>
+    </ul>
+  </li>
+  <li><a href="#Elements">Evaluation language</a>
+    <ul>
+      <li><a href="#L3497">Background</a></li>
+      <li><a href="#L3495">Specification</a>
+        <ul>
+          <li><a href="#L3791">Numerical and Logical Operators</a></li>
+          <li><a href="#L3682">Keyword Operators</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#Elements1">Elements</a>
+    <ul>
+      <li><a href="#pef">obfl</a></li>
+      <li><a href="#head">layout-master</a></li>
+      <li><a href="#meta">template, default-template</a></li>
+      <li><a href="#L13600">header</a></li>
+      <li><a href="#body">footer</a></li>
+      <li><a href="#volume">field</a></li>
+      <li><a href="#section">marker-reference</a></li>
+      <li><a href="#L3261">string</a></li>
+      <li><a href="#L3321">current-page</a></li>
+      <li><a href="#L3378">evaluate</a></li>
+      <li><a href="#row">table-of-contents</a></li>
+    </ul>
+  </li>
+  <li><a href="#Rule">Rule Sets</a>
+    <ul>
+      <li><a href="#Relax">DTD Rule Set</a></li>
+      <li><a href="#Schema1">XML Schema Rule Set</a></li>
+    </ul>
+  </li>
+  <li><a href="#References">References</a>
+    <ul>
+      <li><a href="#Normative1">Normative References</a></li>
+      <li><a href="#Informativ">Informative References</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<h2 id="Introducti">Introduction</h2>
+
+<p><strong>This section is informative.</strong> </p>
+
+<h3 id="What">What is OBFL?</h3>
+
+<p>The Open Braille Formatting Language (OBFL) is a document type that
+represents text formatting layout. It can be used for braille and other fixed
+character width contexts.</p>
+
+<h3 id="there">Why is OBFL Necessary?</h3>
+
+<p>OBFL brings a number of things to braille production:</p>
+<ul>
+  <li>A braille formatting standard.</li>
+  <li>Separation of authoring formats and braille formatting enables a more
+    efficient formatter design.</li>
+  <li>Economy. Work on input format interpretation can be migrated to a other
+    braille formatters supporting OBFL.</li>
+</ul>
+
+<h3 id="Scope">Scope Limitations</h3>
+
+<p>OBFL is a braille formatting language. This includes areas specific to
+braille formatting, such as volume splitting. However, there are many other
+issues in braille production that OBFL neither can nor should solve. For
+example, issues involving:</p>
+<ul>
+  <li>controlling text to braille translations (except by means of formatting
+    related abstractions)</li>
+</ul>
+
+<h2 id="Definition">Definitions</h2>
+
+<p><strong>This section is normative.</strong> </p>
+
+<p>The following terms and definitions are used within this document.</p>
+
+<h3 id="Terminolog">Terminology</h3>
+
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
+
+<h3 id="General">General Terms</h3>
+<dl>
+  <dt>Document</dt>
+    <dd>A document is a stream of data that, after being combined with any
+      other streams it references, is structured such that it holds information
+      contained within <span class="term">elements</span>, that are organized
+      as defined in an associated <span class="term">schema</span>. See <a
+      href="#docconf">Document Conformance</a> for more information.</dd>
+  <dt><a name="facilities" id="facilities">Facilities</a></dt>
+    <dd>Facilities are <span class="term">elements</span>, <span
+      class="term">attributes</span>, and the semantics associated with those
+      <span class="term">elements</span> and <span
+      class="term">attributes</span>.</dd>
+  <dt>Implementation</dt>
+    <dd>See User agent.</dd>
+  <dt>Parsing</dt>
+    <dd>Parsing is the act whereby a <span class="term">document</span> is
+      read, and the information contained within the <span
+      class="term">document</span> is filtered into the context of the <span
+      class="term">elements</span> in which the information is structured.</dd>
+  <dt>Rendering</dt>
+    <dd>See <a
+      href="http://www.w3.org/TR/di-gloss/#def-rendering">definition</a> in
+      Device Independence Glossary document [<a href="#ref-digloss">DI
+      Glossary</a>].</dd>
+  <dt>Schema</dt>
+    <dd>A schema is a collection of markup rules that, as a collection, define
+      the legal structure, <span class="term">elements</span>, and <span
+      class="term">attributes</span> available for use in an XML document that
+      complies to the defined schema.</dd>
+  <dt>User agent</dt>
+    <dd>See <a
+      href="http://www.w3.org/TR/di-gloss/#def-user-agent">definition</a> in
+      Device Independence Glossary document [<a href="#ref-digloss">DI
+      Glossary</a>].</dd>
+  <dt>Validation</dt>
+    <dd>Validation is a process whereby <span class="term">documents</span> are
+      verified against the associated <span class="term">schema</span>,
+      ensuring that the structure, use of <span class="term">elements</span>,
+      and use of <span class="term">attributes</span> are consistent with the
+      definitions in the <span class="term">schema</span>.</dd>
+  <dt><a name="wellformed" id="wellformed">Well-formed</a> </dt>
+    <dd>A <span class="term">document</span> is well-formed when it is
+      structured according to the rules defined in <a
+      href="http://www.w3.org/TR/REC-xml#sec-well-formed">Section 2.1</a> of
+      the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
+</dl>
+
+<h3 id="Relationsh">Axes and Node Types</h3>
+
+<p>The use of <dfn>axes</dfn> in this document (such as "child", "parent",
+"ancestor", "descendant") is consistent with <a
+href="http://www.w3.org/TR/xpath#axes">Section 2.2</a> of the XPath 1.0
+Recommendation [<a class="nref" href="#ref-xpath">XPath</a>].</p>
+
+<p>The use of <dfn>node types</dfn> in this document (such as "root",
+"element", "text", "attribute") is consistent with <a
+href="http://www.w3.org/TR/xpath#data-model">Section 5</a> of the XPath 1.0
+Recommendation [<a class="nref" href="#ref-xpath">XPath</a>].</p>
+
+<h3 id="Relationsh11">Relationship to Other Specifications</h3>
+
+<p>This specification is based on the specific versions of the standards and
+specifications referenced herein, which are used as defined except as noted in
+this document. Any refinement or replacement of a referenced specification by a
+newer or different version is not directly applicable to this standard.
+Conformance to this standard is based on the versions of the standards and
+specifications in effect at the time of writing.</p>
+
+<h2 id="Normative">Definition of OBFL</h2>
+
+<p><strong>This section is normative.</strong> </p>
+
+<h3 id="Document"><a name="docconf" id="docconf">Document Conformance</a> </h3>
+
+<p>A conforming OBFL document is an XML document that requires only the
+facilities described as mandatory in this specification. Such a document must
+meet all of the following criteria:</p>
+<ol class="plain">
+  <li>It must conform to the constraints associated with the namespaces used in
+    it.<br />
+  </li>
+  <li>The local part of the root element of the document must be
+    <dfn>obfl</dfn>.</li>
+  <li>The root element of the document must be in the OBFL namespace.</li>
+  <li>The start tag of the root element of the document must contain an xmlns
+    declaration for the OBFL namespace [<a href="#ref-xmlns">XMLNS</a>]. The
+    namespace URI for OBFL is defined to be <dfn><ins>!!!!!</ins></dfn>. An
+    example root element might look like: &lt;obfl version="2012-1"
+    xmlns="<ins>!!!!!</ins>"</li>
+</ol>
+
+<h3 id="Using"><a name="Using1" id="Using1">Using OBFL with Other
+Namespaces</a></h3>
+
+<p>The OBFL namespace may be used with other XML namespaces as per [<a
+href="#ref-xmlns">XMLNS</a>].</p>
+
+<h3 id="Internet">Internet Media Type and File Extension</h3>
+
+<p>The Internet media type for OBFL is "application/x-obfl+xml".</p>
+
+<p>It is recommended that OBFL files have the extension ".obfl" (all lowercase)
+on all platforms.</p>
+
+<h2 id="Elements">Evaluation language</h2>
+
+<h3 id="L3497">Background</h3>
+
+<p><strong>This section is informative.</strong></p>
+
+<p>Ideally, all logic should be handled in pre-processing, and the formatting
+document should be fixed. However, this was not possible in this case, as some
+descisions had to be made based on the result of the formatting, such as the
+volume or page of an element. Therefore, an evaluation language was needed for
+the formatting process.</p>
+
+<p>An attempt was made at finding a pre defined language. However, none seemed
+to suit the specific needs in this context. Either the proposed language
+contained a vast number of operations that would carry an unclear meaning (such
+as XPath) or it was too powerful for the situation (full-fledged scripting
+languages). Others were simply too obscure.</p>
+
+<p>What was needed was simple logical tests and a conditional construct. Hence,
+the OBFL evaluation language was created.</p>
+
+<h3 id="L3495">Specification</h3>
+
+<p><strong>This section is normative.</strong></p>
+
+<p>The OBFL evaluation language uses prefix notation, i.e. the operator comes
+first and the arguments follow. The arguments are separated by whitespace. Each
+operation and its arguments must be surrounded with parenthesis, including the
+outermost expression.</p>
+
+<p>An argument can contain whitespace if it is surrounded by quotes.</p>
+
+<h4 id="L3791">Numerical and Logical Operators</h4>
+
+<p>The following operators exist: +, -, *, /, %, =, &lt;, &lt;=, &gt;, &gt;=,
+&amp;, |</p>
+
+<p>All numerical and logical operators require at least two arguments, but
+accepts an unspecified number of arguments. The arguments of logical operators
+are processed one at a time evaluating each argument against the previous in
+the list. Numerical arguments are evaluated against the current result. For
+example (/ 20 5 4) evaluates to 1.</p>
+
+<h4 id="L3682">Keyword Operators</h4>
+<dl>
+  <dt>if</dt>
+    <dd>if takes three arguments: the expression to test (must evaluate to a
+      boolean), the value to use when true, the value to use when false</dd>
+  <dt>now</dt>
+    <dd>now takes one argument: the format of the date, as defined by
+      SimpleDateFormat</dd>
+  <dt>round</dt>
+    <dd>round takes one argument: the value to round (must be a number)</dd>
+  <dt>set</dt>
+    <dd>set a key to a value: where key is the key that will be replaced by
+      value in any subsequent expressions (within the same evaluation).</dd>
+</dl>
+
+<h2 id="Elements1">Elements</h2>
+
+<p><strong>This section is informative.</strong></p>
+
+<p>Elements are listed in document order. In this listing, unprefixed elements
+are in the OBFL namespace.</p>
+
+<h3 id="pef">obfl</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The obfl element is the root element of a OBFL document.</dd>
+  <dt>Child elements</dt>
+    <dd>layout-master (at least one)</dd>
+    <dd>table-of-contents (zero or more)</dd>
+    <dd>volume-template (zero or more)</dd>
+    <dd>sequence (at least one)</dd>
+</dl>
+
+<h3 id="head">layout-master</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The layout-master element contains template information, such as width
+      and height of pages.</dd>
+  <dt>Parent element</dt>
+    <dd>obfl</dd>
+  <dt>Child elements</dt>
+    <dd>template (zero or more)</dd>
+    <dd>default-template (mandatory)</dd>
+</dl>
+
+<h3 id="meta">template, default-template</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The template element contains template information that applies under
+      specific conditions. The template conditions are tested in document
+      order, and the first template whose condition returns true is applied.
+      The default-template element contains the same type of information as the
+      template element and acts as a fallback when no previous template element
+      applies.</dd>
+  <dt>Parent element</dt>
+    <dd>layout-master</dd>
+  <dt>Child elements</dt>
+    <dd>header (mandatory)</dd>
+    <dd>footer (mandatory)</dd>
+</dl>
+
+<h3 id="L13600">header</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The header element contains the page header information. The chunks of
+      text created when resolving each child elements contents are distributed
+      in an equal spaced cell grid over a single row.</dd>
+  <dt>Parent elements</dt>
+    <dd>template, default-template</dd>
+  <dt>Child elements</dt>
+    <dd>field (zero or more)</dd>
+</dl>
+
+<h3 id="body">footer</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The footer element contains the page footer information. The chunks of
+      text created when resolving each child elements contents are distributed
+      in an equal spaced cell grid over a single row.</dd>
+  <dt>Parent elements</dt>
+    <dd>template, default-template</dd>
+  <dt>Child elements</dt>
+    <dd>field (zero or more)</dd>
+</dl>
+
+<h3 id="volume">field</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The field element contains data.</dd>
+  <dt>Parent elements</dt>
+    <dd>header, footer</dd>
+  <dt>Child elements</dt>
+    <dd>marker-reference, string, current-page, evaluate (at least one)</dd>
+</dl>
+
+<h3 id="section">marker-reference</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The marker-reference element indicates that it should resolve to the
+      value of a marker of the same class in the direction and scope specified
+      by this element.</dd>
+  <dt>Parent element</dt>
+    <dd>field</dd>
+</dl>
+
+<h3 id="L3261">string</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The string element indicates that it should resolve to the contents of
+      its value attribute.</dd>
+  <dt>Parent element</dt>
+    <dd>field</dd>
+</dl>
+
+<h3 id="L3321">current-page</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The current-page element indicates that it should resolve to the value
+      of the current page, using the number format specified by this
+    element.</dd>
+  <dt>Parent element</dt>
+    <dd>field</dd>
+</dl>
+
+<h3 id="L3378">evaluate</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The evaluate element indicates that it should resolve to the value of
+      the expression attribute as evaluated by the OBFL evaluation
+    language.</dd>
+  <dt>Parent element</dt>
+    <dd>field</dd>
+</dl>
+
+<h3 id="row">table-of-contents</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The table-of-contents element defines the entries in a table of
+      contents. Note that this element only specifies formatting of data in a
+      table of contents, it does not by it self specify that a table of
+      contents should be inserted.</dd>
+  <dt>Parent element</dt>
+    <dd>obfl</dd>
+  <dt>Child elements</dt>
+    <dd>toc-entry (at least one)</dd>
+</dl>
+
+<p><ins>Add elements here...</ins></p>
+
+<h2 id="Rule">Rule Sets</h2>
+
+<p>The rule sets mentioned below are included in the <ins>zip file</ins> for
+this specification. Users looking for local copies of the rule sets to work
+with should download and use this archive rather than using the specific
+references below.</p>
+
+<h3 id="Relax"><a name="Relax1" id="Relax1">DTD Rule Set</a></h3>
+
+<p><strong>This section is normative.</strong></p>
+
+<p>The DTD rule set "<a href="validation/obfl.dtd">validation/obfl.dtd</a>"
+forms a normative part of this specification.</p>
+
+<h3 id="Schema1">XML Schema Rule Set</h3>
+
+<p><strong>This section is informative.</strong></p>
+
+<p>The XML schema rule set "<a
+href="validation/obfl.xsd">validation/obfl.xsd</a>" forms an informative part
+of this specification.</p>
+
+<h2 id="References">References</h2>
+
+<h3 id="Normative1">Normative References</h3>
+
+<p><strong>This section is normative.</strong> </p>
+<dl>
+  <dt><a name="ref-digloss" id="ref-digloss"><strong>[DI
+  Glossary]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/2005/WD-di-gloss-20050118/">Glossary of
+      Terms for Device Independence</a>", Rhys Lewis, 18 January 2005.<br />
+      <a href="http://www.w3.org/TR/di-gloss/">Latest version</a> available at:
+      http://www.w3.org/TR/di-gloss/</dd>
+  <dt><a name="ref-rfc21191"
+  id="ref-rfc21191"><strong>[RFC2119]</strong></a></dt>
+    <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
+      use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
+      1997.<br />
+      Available at: http://www.ietf.org/rfc/rfc2119.txt</dd>
+  <dt><a name="ref-unicode" id="ref-unicode"><strong>[Unicode]</strong></a></dt>
+    <dd>"<a href="http://www.unicode.org/versions/Unicode5.1.0/">Unicode
+      Standard, Version 5.1.0</a>", The Unicode Consortium. The Unicode
+      Standard, Version 5.1.0, defined by: The Unicode Standard, Version 5.0
+      (Boston, MA, Addison-Wesley, 2007. ISBN 0-321-48091-0), as amended by
+      Unicode 5.1.0.<br />
+      <a href="http://www.unicode.org/versions/latest/">Latest version</a>
+      available at: http://www.unicode.org/versions/latest/</dd>
+  <dt><a name="ref-xml" id="ref-xml"><strong>[XML]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/2006/REC-xml-20060816">Extensible Markup
+      Language (XML) 1.0 (Fourth Edition)</a>", T. Bray, J. Paoli, C. M.
+      Sperberg-McQueen, E. Maler, F. Yergeau, 29 September 2006.<br />
+      <a href="http://www.w3.org/TR/xml">Latest version</a> available at:
+      http://www.w3.org/TR/xml</dd>
+  <dt><a name="ref-xmlns" id="ref-xmlns"><strong>[XMLNS]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816">Namespaces
+      in XML 1.0 (Second Edition)</a>", T. Bray, D. Hollander, A. Layman, R.
+      Tobin, 16 August 2006.<br />
+      <a href="http://www.w3.org/TR/xml-names">Latest version</a> available at:
+      http://www.w3.org/TR/xml-names</dd>
+  <dt><a name="ref-xpath" id="ref-xpath"><strong>[XPath]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/1999/REC-xpath-19991116">XML Path
+      Language (XPath) Version (1.0)"</a>, J. Clark, S. DeRose, 16 November
+      1999.<br />
+      <a href="http://www.w3.org/TR/xpath">Latest version</a> available at:
+      http://www.w3.org/TR/xpath</dd>
+</dl>
+
+<h3 id="Informativ">Informative References</h3>
+
+<p><strong>This section is informative.</strong></p>
+<dl>
+  <dt>[Example OBFL document: Example 1]</dt>
+    <dd>"<a href="examples/example1.obfl">examples/example1.obfl</a>". A short
+      OBFL example containing useage examples of most of the elements.</dd>
+</dl>
+</body>
+</html>
