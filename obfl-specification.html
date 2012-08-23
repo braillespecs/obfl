@@ -19,7 +19,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised 22 August 2012</p>
+<p>Working draft, revised 23 August 2012</p>
 <dl>
   <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
     <dd>N/A </dd>
@@ -29,51 +29,51 @@
     <dd></dd>
 </dl>
 
-<h2 id="Abstract"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
+<h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
 
 <p>This document specifies the Open Braille Formatting Language (OBFL), a data
 format for representing text formatting layout. OBFL is an <a
 href="#ref-xml">XML</a> 1.0 application.</p>
 
-<h2 id="Status"><a class="mozTocH2" name="mozTocId427116"></a>Status of this
+<h2 id="L71"><a class="mozTocH2" name="mozTocId427116"></a>Status of this
 Document</h2>
 
 <p>This document is a working draft.</p>
 
-<h2 id="Table"><a class="mozTocH2" name="mozTocId469583"></a>Table of
+<h2 id="L77"><a class="mozTocH2" name="mozTocId469583"></a>Table of
 Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#Abstract">Abstract</a></li>
-  <li><a href="#Status">Status of this Document</a></li>
-  <li><a href="#Table">Table of Contents</a></li>
-  <li><a href="#Introducti">Introduction</a>
+  <li><a href="#L62">Abstract</a></li>
+  <li><a href="#L71">Status of this Document</a></li>
+  <li><a href="#L77">Table of Contents</a></li>
+  <li><a href="#L255">Introduction</a>
     <ul>
-      <li><a href="#What">What is OBFL?</a></li>
-      <li><a href="#there">Why is OBFL Necessary?</a></li>
-      <li><a href="#Scope">Scope Limitations</a></li>
+      <li><a href="#L261">What is OBFL?</a></li>
+      <li><a href="#L265">Why is OBFL Necessary?</a></li>
+      <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#Definition">Definitions</a>
+  <li><a href="#L287">Definitions</a>
     <ul>
-      <li><a href="#Terminolog">Terminology</a></li>
-      <li><a href="#General">General Terms</a></li>
-      <li><a href="#Relationsh">Axes and Node Types</a></li>
-      <li><a href="#Relationsh11">Relationship to Other Specifications</a></li>
+      <li><a href="#L295">Terminology</a></li>
+      <li><a href="#L302">General Terms</a></li>
+      <li><a href="#L425">Axes and Node Types</a></li>
+      <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#Normative">Definition of OBFL</a>
+  <li><a href="#L453">Definition of OBFL</a>
     <ul>
-      <li><a href="#Document">Document Conformance </a></li>
-      <li><a href="#Using">Using OBFL with Other Namespaces</a></li>
-      <li><a href="#Internet">Internet Media Type and File Extension</a></li>
+      <li><a href="#L459">Document Conformance </a></li>
+      <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
+      <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#Elements">Evaluation language</a>
+  <li><a href="#L507">Evaluation language</a>
     <ul>
-      <li><a href="#L3497">Background</a></li>
-      <li><a href="#L3495">Specification</a>
+      <li><a href="#L509">Background</a></li>
+      <li><a href="#L520">Specification</a>
         <ul>
           <li><a href="#L3791">Numerical and Logical Operators</a></li>
           <li><a href="#L3682">Keyword Operators</a></li>
@@ -81,47 +81,63 @@ Contents</h2>
       </li>
     </ul>
   </li>
-  <li><a href="#Elements1">Elements</a>
+  <li><a href="#L558">Elements</a>
     <ul>
-      <li><a href="#pef">obfl</a></li>
-      <li><a href="#head">layout-master</a></li>
-      <li><a href="#meta">template, default-template</a></li>
-      <li><a href="#L13600">header</a></li>
-      <li><a href="#body">footer</a></li>
-      <li><a href="#volume">field</a></li>
-      <li><a href="#section">marker-reference</a></li>
-      <li><a href="#L3261">string</a></li>
-      <li><a href="#L3321">current-page</a></li>
-      <li><a href="#L3378">evaluate</a></li>
-      <li><a href="#row">table-of-contents</a></li>
+      <li><a href="#L565">obfl</a></li>
+      <li><a href="#L587">layout-master</a></li>
+      <li><a href="#L608">template, default-template</a></li>
+      <li><a href="#L629">header</a></li>
+      <li><a href="#L647">footer</a></li>
+      <li><a href="#L665">field</a></li>
+      <li><a href="#L683">marker-reference</a></li>
+      <li><a href="#L696">string</a></li>
+      <li><a href="#L709">current-page</a></li>
+      <li><a href="#L722">evaluate</a></li>
+      <li><a href="#L735">table-of-contents</a></li>
+      <li><a href="#L1105">toc-entry</a></li>
+      <li><a href="#L1207">leader</a></li>
+      <li><a href="#L1353">marker</a></li>
+      <li><a href="#L1438">br</a></li>
+      <li><a href="#L1505">evaluate</a></li>
+      <li><a href="#L836">page-number</a></li>
+      <li><a href="#L849">volume-template</a></li>
+      <li><a href="#L870">pre-content</a></li>
+      <li><a href="#L888">post-content</a></li>
+      <li><a href="#L906">sequence</a></li>
+      <li><a href="#L924">toc-sequence</a></li>
+      <li><a href="#L951">on-toc-start</a></li>
+      <li><a href="#L969">on-volume-start</a></li>
+      <li><a href="#L987">on-volume-end</a></li>
+      <li><a href="#L1005">on-toc-end</a></li>
+      <li><a href="#L1023">block</a></li>
     </ul>
   </li>
-  <li><a href="#Rule">Rule Sets</a>
+  <li><a href="#L756">Rule Sets</a>
     <ul>
-      <li><a href="#Relax">DTD Rule Set</a></li>
-      <li><a href="#Schema1">XML Schema Rule Set</a></li>
+      <li><a href="#L763">DTD Rule Set</a></li>
+      <li><a href="#L774">XML Schema Rule Set</a></li>
     </ul>
   </li>
-  <li><a href="#References">References</a>
+  <li><a href="#L784">References</a>
     <ul>
-      <li><a href="#Normative1">Normative References</a></li>
-      <li><a href="#Informativ">Informative References</a></li>
+      <li><a href="#L786">Normative References</a></li>
+      <li><a href="#L881">Informative References</a></li>
     </ul>
   </li>
 </ul>
 </div>
 
-<h2 id="Introducti">Introduction</h2>
+<h2 id="L255">Introduction</h2>
 
 <p><strong>This section is informative.</strong> </p>
 
-<h3 id="What">What is OBFL?</h3>
+<h3 id="L261">What is OBFL?</h3>
 
 <p>The Open Braille Formatting Language (OBFL) is a document type that
 represents text formatting layout. It can be used for braille and other fixed
 character width contexts.</p>
 
-<h3 id="there">Why is OBFL Necessary?</h3>
+<h3 id="L265">Why is OBFL Necessary?</h3>
 
 <p>OBFL brings a number of things to braille production:</p>
 <ul>
@@ -132,7 +148,7 @@ character width contexts.</p>
     braille formatters supporting OBFL.</li>
 </ul>
 
-<h3 id="Scope">Scope Limitations</h3>
+<h3 id="L279">Scope Limitations</h3>
 
 <p>OBFL is a braille formatting language. This includes areas specific to
 braille formatting, such as volume splitting. However, there are many other
@@ -143,19 +159,19 @@ example, issues involving:</p>
     related abstractions)</li>
 </ul>
 
-<h2 id="Definition">Definitions</h2>
+<h2 id="L287">Definitions</h2>
 
 <p><strong>This section is normative.</strong> </p>
 
 <p>The following terms and definitions are used within this document.</p>
 
-<h3 id="Terminolog">Terminology</h3>
+<h3 id="L295">Terminology</h3>
 
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
 
-<h3 id="General">General Terms</h3>
+<h3 id="L302">General Terms</h3>
 <dl>
   <dt>Document</dt>
     <dd>A document is a stream of data that, after being combined with any
@@ -203,7 +219,7 @@ interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
       the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
 </dl>
 
-<h3 id="Relationsh">Axes and Node Types</h3>
+<h3 id="L425">Axes and Node Types</h3>
 
 <p>The use of <dfn>axes</dfn> in this document (such as "child", "parent",
 "ancestor", "descendant") is consistent with <a
@@ -215,7 +231,7 @@ Recommendation [<a class="nref" href="#ref-xpath">XPath</a>].</p>
 href="http://www.w3.org/TR/xpath#data-model">Section 5</a> of the XPath 1.0
 Recommendation [<a class="nref" href="#ref-xpath">XPath</a>].</p>
 
-<h3 id="Relationsh11">Relationship to Other Specifications</h3>
+<h3 id="L449">Relationship to Other Specifications</h3>
 
 <p>This specification is based on the specific versions of the standards and
 specifications referenced herein, which are used as defined except as noted in
@@ -224,11 +240,11 @@ newer or different version is not directly applicable to this standard.
 Conformance to this standard is based on the versions of the standards and
 specifications in effect at the time of writing.</p>
 
-<h2 id="Normative">Definition of OBFL</h2>
+<h2 id="L453">Definition of OBFL</h2>
 
 <p><strong>This section is normative.</strong> </p>
 
-<h3 id="Document"><a name="docconf" id="docconf">Document Conformance</a> </h3>
+<h3 id="L459"><a name="docconf" id="docconf">Document Conformance</a> </h3>
 
 <p>A conforming OBFL document is an XML document that requires only the
 facilities described as mandatory in this specification. Such a document must
@@ -247,22 +263,22 @@ meet all of the following criteria:</p>
     xmlns="<ins>!!!!!</ins>"</li>
 </ol>
 
-<h3 id="Using"><a name="Using1" id="Using1">Using OBFL with Other
+<h3 id="L493"><a name="Using1" id="Using1">Using OBFL with Other
 Namespaces</a></h3>
 
 <p>The OBFL namespace may be used with other XML namespaces as per [<a
 href="#ref-xmlns">XMLNS</a>].</p>
 
-<h3 id="Internet">Internet Media Type and File Extension</h3>
+<h3 id="L501">Internet Media Type and File Extension</h3>
 
 <p>The Internet media type for OBFL is "application/x-obfl+xml".</p>
 
 <p>It is recommended that OBFL files have the extension ".obfl" (all lowercase)
 on all platforms.</p>
 
-<h2 id="Elements">Evaluation language</h2>
+<h2 id="L507">Evaluation language</h2>
 
-<h3 id="L3497">Background</h3>
+<h3 id="L509">Background</h3>
 
 <p><strong>This section is informative.</strong></p>
 
@@ -272,16 +288,16 @@ descisions had to be made based on the result of the formatting, such as the
 volume or page of an element. Therefore, an evaluation language was needed for
 the formatting process.</p>
 
-<p>An attempt was made at finding a pre defined language. However, none seemed
-to suit the specific needs in this context. Either the proposed language
-contained a vast number of operations that would carry an unclear meaning (such
-as XPath) or it was too powerful for the situation (full-fledged scripting
-languages). Others were simply too obscure.</p>
+<p>An attempt was made at finding an existing language. However, none seemed to
+suit the specific needs in this context. Either the proposed language contained
+a vast number of operations that would carry an unclear meaning (such as XPath)
+or it was too powerful for the situation (full-fledged scripting languages).
+Others were simply too obscure.</p>
 
 <p>What was needed was simple logical tests and a conditional construct. Hence,
 the OBFL evaluation language was created.</p>
 
-<h3 id="L3495">Specification</h3>
+<h3 id="L520">Specification</h3>
 
 <p><strong>This section is normative.</strong></p>
 
@@ -307,25 +323,19 @@ example (/ 20 5 4) evaluates to 1.</p>
 <dl>
   <dt>if</dt>
     <dd>if takes three arguments: the expression to test (must evaluate to a
-      boolean), the value to use when true, the value to use when false</dd>
-  <dt>now</dt>
-    <dd>now takes one argument: the format of the date, as defined by
-      SimpleDateFormat</dd>
+      boolean), value when true, value when false</dd>
   <dt>round</dt>
     <dd>round takes one argument: the value to round (must be a number)</dd>
-  <dt>set</dt>
-    <dd>set a key to a value: where key is the key that will be replaced by
-      value in any subsequent expressions (within the same evaluation).</dd>
 </dl>
 
-<h2 id="Elements1">Elements</h2>
+<h2 id="L558">Elements</h2>
 
 <p><strong>This section is informative.</strong></p>
 
 <p>Elements are listed in document order. In this listing, unprefixed elements
 are in the OBFL namespace.</p>
 
-<h3 id="pef">obfl</h3>
+<h3 id="L565">obfl</h3>
 <dl>
   <dt>Description</dt>
     <dd>The obfl element is the root element of a OBFL document.</dd>
@@ -336,7 +346,7 @@ are in the OBFL namespace.</p>
     <dd>sequence (at least one)</dd>
 </dl>
 
-<h3 id="head">layout-master</h3>
+<h3 id="L587">layout-master</h3>
 <dl>
   <dt>Description</dt>
     <dd>The layout-master element contains template information, such as width
@@ -348,7 +358,7 @@ are in the OBFL namespace.</p>
     <dd>default-template (mandatory)</dd>
 </dl>
 
-<h3 id="meta">template, default-template</h3>
+<h3 id="L608">template, default-template</h3>
 <dl>
   <dt>Description</dt>
     <dd>The template element contains template information that applies under
@@ -364,7 +374,7 @@ are in the OBFL namespace.</p>
     <dd>footer (mandatory)</dd>
 </dl>
 
-<h3 id="L13600">header</h3>
+<h3 id="L629">header</h3>
 <dl>
   <dt>Description</dt>
     <dd>The header element contains the page header information. The chunks of
@@ -376,7 +386,7 @@ are in the OBFL namespace.</p>
     <dd>field (zero or more)</dd>
 </dl>
 
-<h3 id="body">footer</h3>
+<h3 id="L647">footer</h3>
 <dl>
   <dt>Description</dt>
     <dd>The footer element contains the page footer information. The chunks of
@@ -388,7 +398,7 @@ are in the OBFL namespace.</p>
     <dd>field (zero or more)</dd>
 </dl>
 
-<h3 id="volume">field</h3>
+<h3 id="L665">field</h3>
 <dl>
   <dt>Description</dt>
     <dd>The field element contains data.</dd>
@@ -398,7 +408,7 @@ are in the OBFL namespace.</p>
     <dd>marker-reference, string, current-page, evaluate (at least one)</dd>
 </dl>
 
-<h3 id="section">marker-reference</h3>
+<h3 id="L683">marker-reference</h3>
 <dl>
   <dt>Description</dt>
     <dd>The marker-reference element indicates that it should resolve to the
@@ -408,7 +418,7 @@ are in the OBFL namespace.</p>
     <dd>field</dd>
 </dl>
 
-<h3 id="L3261">string</h3>
+<h3 id="L696">string</h3>
 <dl>
   <dt>Description</dt>
     <dd>The string element indicates that it should resolve to the contents of
@@ -417,7 +427,7 @@ are in the OBFL namespace.</p>
     <dd>field</dd>
 </dl>
 
-<h3 id="L3321">current-page</h3>
+<h3 id="L709">current-page</h3>
 <dl>
   <dt>Description</dt>
     <dd>The current-page element indicates that it should resolve to the value
@@ -427,7 +437,7 @@ are in the OBFL namespace.</p>
     <dd>field</dd>
 </dl>
 
-<h3 id="L3378">evaluate</h3>
+<h3 id="L722">evaluate</h3>
 <dl>
   <dt>Description</dt>
     <dd>The evaluate element indicates that it should resolve to the value of
@@ -437,7 +447,7 @@ are in the OBFL namespace.</p>
     <dd>field</dd>
 </dl>
 
-<h3 id="row">table-of-contents</h3>
+<h3 id="L735">table-of-contents</h3>
 <dl>
   <dt>Description</dt>
     <dd>The table-of-contents element defines the entries in a table of
@@ -450,23 +460,208 @@ are in the OBFL namespace.</p>
     <dd>toc-entry (at least one)</dd>
 </dl>
 
-<p><ins>Add elements here...</ins></p>
+<h3 id="L1105">toc-entry</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The toc-entry element defines an entry in a table of contents.</dd>
+  <dt>Parent element</dt>
+    <dd>table-of-contents</dd>
+  <dt>Child nodes</dt>
+    <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
+      more)</dd>
+</dl>
 
-<h2 id="Rule">Rule Sets</h2>
+<h3 id="L1207">leader</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The leader element moves the location of the following piece of text
+      within the current row.</dd>
+  <dt>Parent elements</dt>
+    <dd>toc-entry, block</dd>
+</dl>
+
+<h3 id="L1353">marker</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The marker element provides locations for classes of values that may be
+      refered to in headers and footers.</dd>
+  <dt>Parent elements</dt>
+    <dd>toc-entry, block</dd>
+</dl>
+
+<h3 id="L1438">br</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The br element provides a line break within a block of text (i.e. a
+      paragraph)</dd>
+  <dt>Parent elements</dt>
+    <dd>toc-entry, block</dd>
+</dl>
+
+<h3 id="L1505">evaluate</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The evaluate element inserts the result of evaluating an expression,
+      see the <a href="#L507">OBFL evaluation language</a> for more
+    information.</dd>
+  <dt>Parent elements</dt>
+    <dd>toc-entry, block</dd>
+</dl>
+
+<h3 id="L836">page-number</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The page-number element inserts the current page number.</dd>
+  <dt>Parent elements</dt>
+    <dd>toc-entry, block</dd>
+</dl>
+
+<h3 id="L849">volume-template</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The volume-template element contains static contents that is to be
+      inserted before or after a braille volume's body of pages.</dd>
+  <dt>Parent element</dt>
+    <dd>obfl</dd>
+  <dt>Child elements</dt>
+    <dd>pre-content (mandatory)</dd>
+    <dd>post-content (mandatory)</dd>
+</dl>
+
+<h3 id="L870">pre-content</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The pre-content element defines contents that should preceed a braille
+      volume's body of pages.</dd>
+  <dt>Parent element</dt>
+    <dd>volume-template</dd>
+  <dt>Child elements</dt>
+    <dd>sequence, toc-sequence (zero or more)</dd>
+</dl>
+
+<h3 id="L888">post-content</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The post-content element defines contents that should follow a braille
+      volume's body of pages.</dd>
+  <dt>Parent element</dt>
+    <dd>volume-template</dd>
+  <dt>Child element</dt>
+    <dd>sequence</dd>
+</dl>
+
+<h3 id="L906">sequence</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The sequence element contains the text body.</dd>
+  <dt>Parent elements</dt>
+    <dd>volume-template, obfl</dd>
+  <dt>Child elements</dt>
+    <dd>block (at least one)</dd>
+</dl>
+
+<h3 id="L924">toc-sequence</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The toc-sequence element contains instructions needed to generate a
+    TOC.</dd>
+  <dt>Parent element</dt>
+    <dd>pre-content</dd>
+  <dt>Child elements</dt>
+    <dd>on-toc-start (zero or more)</dd>
+    <dd>on-volume-start (zero or more)</dd>
+    <dd>on-volume-end (zero or more)</dd>
+    <dd>on-toc-end (zero or more)</dd>
+</dl>
+
+<h3 id="L951">on-toc-start</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The on-toc-start element defines blocks of text to insert before the
+      TOC data.</dd>
+  <dt>Parent element</dt>
+    <dd>toc-sequence</dd>
+  <dt>Child elements</dt>
+    <dd>block (at least one)</dd>
+</dl>
+
+<h3 id="L969">on-volume-start</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The on-volume-start element defines blocks of text to insert before the
+      TOC data of a volume. Note that this element only applies to document
+      range TOC's.</dd>
+  <dt>Parent element</dt>
+    <dd>toc-sequence</dd>
+  <dt>Child elements</dt>
+    <dd>block (at least one)</dd>
+</dl>
+
+<h3 id="L987">on-volume-end</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The on-volume-end element defines blocks of text to insert after the
+      TOC data of a volume. Note that this element only applies to document
+      range TOC's.</dd>
+  <dt>Parent element</dt>
+    <dd>toc-sequence</dd>
+  <dt>Child elements</dt>
+    <dd>block (at least one)</dd>
+</dl>
+
+<h3 id="L1005">on-toc-end</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The on-toc-end element defines blocks of text to insert after the TOC
+      data.</dd>
+  <dt>Parent element</dt>
+    <dd>toc-sequence</dd>
+  <dt>Child elements</dt>
+    <dd>block (at least one)</dd>
+</dl>
+
+<h3 id="L1023">block</h3>
+<dl>
+  <dt>Description</dt>
+    <dd>The block element defines a block of text.</dd>
+  <dt>Attributes</dt>
+    <dd>break-before ('auto', 'page'): break before block begins</dd>
+    <dd>first-line-indent (number): indent of the first line of a block (in
+      characters)</dd>
+    <dd>text-indent (number): indent of every line in the block except the
+      first one (in characters)</dd>
+    <dd>block-indent (number): indent of this block's block children (in
+      characters)</dd>
+    <dd>keep ('auto', 'all'): keep rows in this block</dd>
+    <dd>keep-with-next (number&lt;10): keep the following block's first line(s)
+      together with this block</dd>
+    <dd>list-type ('none', 'ol', 'ul', 'pl'): the type of list for this
+    block</dd>
+    <dd>margin-bottom (number): bottom margin for this block (in rows)</dd>
+    <dd>margin-left (number): left margin for this block (in characters)</dd>
+    <dd>margin-top (number): top margin for this block (in rows)</dd>
+    <dd>margin-right (number): right margin for this block (in characters)</dd>
+  <dt>Parent elements</dt>
+    <dd>on-toc-start, on-volume-start, on-volume-end, on-toc-end, sequence</dd>
+  <dt>Child elements</dt>
+    <dd>text(), leader, marker, br, evaluate, page-number (zero or more)</dd>
+</dl>
+
+<h2 id="L756">Rule Sets</h2>
 
 <p>The rule sets mentioned below are included in the <ins>zip file</ins> for
 this specification. Users looking for local copies of the rule sets to work
 with should download and use this archive rather than using the specific
 references below.</p>
 
-<h3 id="Relax"><a name="Relax1" id="Relax1">DTD Rule Set</a></h3>
+<h3 id="L763"><a name="Relax1" id="Relax1">DTD Rule Set</a></h3>
 
 <p><strong>This section is normative.</strong></p>
 
 <p>The DTD rule set "<a href="validation/obfl.dtd">validation/obfl.dtd</a>"
 forms a normative part of this specification.</p>
 
-<h3 id="Schema1">XML Schema Rule Set</h3>
+<h3 id="L774">XML Schema Rule Set</h3>
 
 <p><strong>This section is informative.</strong></p>
 
@@ -474,9 +669,9 @@ forms a normative part of this specification.</p>
 href="validation/obfl.xsd">validation/obfl.xsd</a>" forms an informative part
 of this specification.</p>
 
-<h2 id="References">References</h2>
+<h2 id="L784">References</h2>
 
-<h3 id="Normative1">Normative References</h3>
+<h3 id="L786">Normative References</h3>
 
 <p><strong>This section is normative.</strong> </p>
 <dl>
@@ -520,7 +715,7 @@ of this specification.</p>
       http://www.w3.org/TR/xpath</dd>
 </dl>
 
-<h3 id="Informativ">Informative References</h3>
+<h3 id="L881">Informative References</h3>
 
 <p><strong>This section is informative.</strong></p>
 <dl>
