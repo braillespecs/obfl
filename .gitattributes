@@ -1,4 +1,5 @@
 * text=auto !eol
 /.project -text
+/build.xml -text
 /default.css -text
 /obfl-specification.html -text
