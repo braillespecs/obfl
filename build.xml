@@ -23,7 +23,7 @@
           target: emptyDistDir                      
          - - - - - - - - - - - - - - - - - -->
     <target name="createDistDir">
-    	<delete dir="$dist.dir"/>
+    	<delete dir="${dist.dir}"/>
 		<mkdir dir="${dist.dir}"/>
     </target>
 
