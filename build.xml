@@ -27,7 +27,7 @@
 		<mkdir dir="${dist.dir}"/>
     </target>
 
-	<target name="buildSite" description="Builds distribution">
+	<target name="buildSite" depends="createDistDir" description="Builds distribution">
     	<zip destfile="${dist.zip}">
     		<zipfileset dir="${basedir}" prefix="">
     			<patternset refid="dist.patternset"/>
