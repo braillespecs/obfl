@@ -2,4 +2,5 @@
 /.project -text
 /build.xml -text
 /default.css -text
+examples/example1.obfl -text
 /obfl-specification.html -text

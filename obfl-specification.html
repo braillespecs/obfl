@@ -19,7 +19,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised November 8, 2012</p>
+<p>Working draft, revised September 24, 2013</p>
 <dl>
   <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
     <dd>N/A </dd>
@@ -45,17 +45,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L62">Abstract</a></li>
-  <li><a href="#L71">Status of this Document</a></li>
-  <li><a href="#L77">Table of Contents</a></li>
-  <li><a href="#L255">Introduction</a> 
+  <li><a href="#L255">Introduction</a>
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a> 
+  <li><a href="#L287">Definitions</a>
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -63,28 +60,30 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a> 
+  <li><a href="#L453">Definition of OBFL</a>
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L507">Evaluation language</a> 
+  <li><a href="#L507">Evaluation language</a>
     <ul>
       <li><a href="#L509">Background</a></li>
-      <li><a href="#L520">Specification</a> 
+      <li><a href="#L520">Specification</a>
         <ul>
           <li><a href="#L3791">Numerical and Logical Operators</a></li>
           <li><a href="#L3682">Keyword Operators</a></li>
+          <li><a href="#L14889">Keywords</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a> 
+  <li><a href="#L558">Elements</a>
     <ul>
       <li><a href="#L565">obfl</a></li>
-      <li><a href="#L587">layout-master</a></li>
+      <li><a href="#L587">meta</a></li>
+      <li><a href="#L5871">layout-master</a></li>
       <li><a href="#L608">template, default-template</a></li>
       <li><a href="#L629">header</a></li>
       <li><a href="#L647">footer</a></li>
@@ -100,25 +99,37 @@ Contents</h2>
       <li><a href="#L1438">br</a></li>
       <li><a href="#L1505">evaluate</a></li>
       <li><a href="#L836">page-number</a></li>
-      <li><a href="#L849">volume-template</a></li>
+      <li><a href="#L849">volume-template</a>
+        <ul>
+          <li><a href="#L15164">Attributes</a></li>
+        </ul>
+      </li>
       <li><a href="#L870">pre-content</a></li>
       <li><a href="#L888">post-content</a></li>
       <li><a href="#L906">sequence</a></li>
-      <li><a href="#L924">toc-sequence</a></li>
+      <li><a href="#L924">toc-sequence</a>
+        <ul>
+          <li><a href="#L15262">Attributes</a></li>
+        </ul>
+      </li>
       <li><a href="#L951">on-toc-start</a></li>
       <li><a href="#L969">on-volume-start</a></li>
       <li><a href="#L987">on-volume-end</a></li>
       <li><a href="#L1005">on-toc-end</a></li>
-      <li><a href="#L1023">block</a></li>
+      <li><a href="#L1023">block</a>
+        <ul>
+          <li><a href="#L15385">Attributes</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a> 
+  <li><a href="#L756">Rule Sets</a>
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">XML Schema Rule Set</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a> 
+  <li><a href="#L784">References</a>
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -153,11 +164,8 @@ character width contexts.</p>
 <p>OBFL is a braille formatting language. This includes areas specific to
 braille formatting, such as volume splitting. However, there are many other
 issues in braille production that OBFL neither can nor should solve. For
-example, issues involving:</p>
-<ul>
-  <li>controlling text to braille translations (except by means of formatting
-    related abstractions)</li>
-</ul>
+example, issues involving controlling text to braille translations (except by
+means of formatting related abstractions).</p>
 
 <h2 id="L287">Definitions</h2>
 
@@ -328,7 +336,7 @@ example <code>(/ 20 5 4)</code> evaluates to 1.</p>
     <dd>round takes one argument: the value to round (must be a number)</dd>
 </dl>
 
-<h4>Keywords</h4>
+<h4 id="L14889">Keywords</h4>
 
 <p>Keywords supplied in a specific OBFL context are used by prefixing the name
 of the keyword with $. For example, the default keyword for
@@ -342,280 +350,346 @@ volume-number-variable is volume. This could be used in an expression such as
 <p>Elements are listed in document order. In this listing, unprefixed elements
 are in the OBFL namespace.</p>
 
+<p>The top level element structure of an OBFL document is as follows:</p>
+<pre>&lt;obfl&gt;
+  &lt;meta&gt;...&lt;/meta&gt;
+  &lt;layout-master&gt;...&lt;/layout-master&gt;
+  &lt;table-of-contents&gt;...&lt;/table-of-contents&gt;
+  &lt;volume-template&gt;...&lt;/volume-template&gt;
+  &lt;sequence&gt;...&lt;/sequence&gt;
+&lt;/obfl&gt;</pre>
+
 <h3 id="L565">obfl</h3>
+
+<p>The obfl element is the root element of a OBFL document.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The obfl element is the root element of a OBFL document.</dd>
   <dt>Child elements</dt>
     <dd>layout-master (at least one)</dd>
     <dd>table-of-contents (zero or more)</dd>
     <dd>volume-template (zero or more)</dd>
     <dd>sequence (at least one)</dd>
 </dl>
+</div>
 
-<h3 id="L587">layout-master</h3>
+<h3 id="L587">meta</h3>
+
+<p>The meta element contains meta data, e.g. Dublin Core. Currently, any
+element is allowed, however a stricter set of elements might be more useful.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The layout-master element contains template information, such as width
-      and height of pages.</dd>
+  <dt>Parent element</dt>
+    <dd>obfl</dd>
+  <dt>Child elements</dt>
+    <dd>(any)</dd>
+</dl>
+</div>
+
+<h3 id="L5871">layout-master</h3>
+
+<p>The layout-master element defines the appearence of pages in the sequences
+where the layout-master is applied. It contains page template information, such
+as the width and height of pages.</p>
+
+<div class="sidebar">
+<dl>
   <dt>Parent element</dt>
     <dd>obfl</dd>
   <dt>Child elements</dt>
     <dd>template (zero or more)</dd>
     <dd>default-template (mandatory)</dd>
 </dl>
+</div>
 
 <h3 id="L608">template, default-template</h3>
+
+<p>The template element contains template information that applies under
+specific conditions. The template conditions are tested in document order, and
+the first template whose condition returns true is applied. The
+default-template element contains the same type of information as the template
+element and acts as a fallback when no previous template element applies.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The template element contains template information that applies under
-      specific conditions. The template conditions are tested in document
-      order, and the first template whose condition returns true is applied.
-      The default-template element contains the same type of information as the
-      template element and acts as a fallback when no previous template element
-      applies.</dd>
   <dt>Parent element</dt>
     <dd>layout-master</dd>
   <dt>Child elements</dt>
     <dd>header (mandatory)</dd>
     <dd>footer (mandatory)</dd>
 </dl>
+</div>
 
 <h3 id="L629">header</h3>
+
+<p>The header element contains the page header information. The chunks of text
+created when resolving each child elements contents are distributed in an equal
+spaced cell grid over a single row.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The header element contains the page header information. The chunks of
-      text created when resolving each child elements contents are distributed
-      in an equal spaced cell grid over a single row.</dd>
   <dt>Parent elements</dt>
     <dd>template, default-template</dd>
   <dt>Child elements</dt>
     <dd>field (zero or more)</dd>
 </dl>
+</div>
 
 <h3 id="L647">footer</h3>
+
+<p>The footer element contains the page footer information. The chunks of text
+created when resolving each child elements contents are distributed in an equal
+spaced cell grid over a single row.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The footer element contains the page footer information. The chunks of
-      text created when resolving each child elements contents are distributed
-      in an equal spaced cell grid over a single row.</dd>
   <dt>Parent elements</dt>
     <dd>template, default-template</dd>
   <dt>Child elements</dt>
     <dd>field (zero or more)</dd>
 </dl>
+</div>
 
 <h3 id="L665">field</h3>
+
+<p>The field element contains data.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The field element contains data.</dd>
   <dt>Parent elements</dt>
     <dd>header, footer</dd>
   <dt>Child elements</dt>
     <dd>marker-reference, string, current-page, evaluate (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L683">marker-reference</h3>
+
+<p>The marker-reference element indicates that it should resolve to the value
+of a marker of the same class in the direction and scope specified by this
+element.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The marker-reference element indicates that it should resolve to the
-      value of a marker of the same class in the direction and scope specified
-      by this element.</dd>
   <dt>Parent element</dt>
     <dd>field</dd>
 </dl>
+</div>
 
 <h3 id="L696">string</h3>
+
+<p>The string element indicates that it should resolve to the contents of its
+value attribute.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The string element indicates that it should resolve to the contents of
-      its value attribute.</dd>
   <dt>Parent element</dt>
     <dd>field</dd>
 </dl>
+</div>
 
 <h3 id="L709">current-page</h3>
+
+<p>The current-page element indicates that it should resolve to the value of
+the current page, using the number format specified by this element.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The current-page element indicates that it should resolve to the value
-      of the current page, using the number format specified by this
-    element.</dd>
   <dt>Parent element</dt>
     <dd>field</dd>
 </dl>
+</div>
 
 <h3 id="L722">evaluate</h3>
+
+<p>The evaluate element indicates that it should resolve to the value of the
+expression attribute as evaluated by the OBFL evaluation language.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The evaluate element indicates that it should resolve to the value of
-      the expression attribute as evaluated by the OBFL evaluation
-    language.</dd>
   <dt>Parent element</dt>
     <dd>field</dd>
 </dl>
+</div>
 
 <h3 id="L735">table-of-contents</h3>
+
+<p>The table-of-contents element defines the entries in a table of contents.
+Note that this element only specifies formatting of data in a table of
+contents, it does not by it self specify that a table of contents should be
+inserted.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The table-of-contents element defines the entries in a table of
-      contents. Note that this element only specifies formatting of data in a
-      table of contents, it does not by it self specify that a table of
-      contents should be inserted.</dd>
   <dt>Parent element</dt>
     <dd>obfl</dd>
   <dt>Child elements</dt>
     <dd>toc-entry (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L1105">toc-entry</h3>
+
+<p>The toc-entry element defines an entry in a table of contents.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The toc-entry element defines an entry in a table of contents.</dd>
   <dt>Parent element</dt>
     <dd>table-of-contents</dd>
   <dt>Child nodes</dt>
     <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
       more)</dd>
 </dl>
+</div>
 
 <h3 id="L1207">leader</h3>
+
+<p>The leader element moves the location of the following piece of text within
+the current row.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The leader element moves the location of the following piece of text
-      within the current row.</dd>
   <dt>Parent elements</dt>
     <dd>toc-entry, block</dd>
 </dl>
+</div>
 
 <h3 id="L1353">marker</h3>
+
+<p>The marker element provides locations for classes of values that may be
+refered to in headers and footers.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The marker element provides locations for classes of values that may be
-      refered to in headers and footers.</dd>
   <dt>Parent elements</dt>
     <dd>toc-entry, block</dd>
 </dl>
+</div>
 
 <h3 id="L1438">br</h3>
+
+<p>The br element provides a line break within a block of text (i.e. a
+paragraph).</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The br element provides a line break within a block of text (i.e. a
-      paragraph)</dd>
   <dt>Parent elements</dt>
     <dd>toc-entry, block</dd>
 </dl>
+</div>
 
 <h3 id="L1505">evaluate</h3>
+
+<p>The evaluate element inserts the result of evaluating an expression, see the
+<a href="#L507">OBFL evaluation language</a> for more information.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The evaluate element inserts the result of evaluating an expression,
-      see the <a href="#L507">OBFL evaluation language</a> for more
-    information.</dd>
   <dt>Parent elements</dt>
     <dd>toc-entry, block</dd>
 </dl>
+</div>
 
 <h3 id="L836">page-number</h3>
+
+<p>The page-number element inserts the current page number.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The page-number element inserts the current page number.</dd>
   <dt>Parent elements</dt>
     <dd>toc-entry, block</dd>
 </dl>
+</div>
 
 <h3 id="L849">volume-template</h3>
+
+<p>The volume-template element contains static contents that is to be inserted
+before or after a braille volume's body of pages. In additional to the normal
+sequences that can be used to create static contents such as information about
+the author and title of the book, there is a special sequence called
+toc-sequence.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The volume-template element contains static contents that is to be
-      inserted before or after a braille volume's body of pages. In additional
-      to the normal sequences that can be used to create static contents such
-      as information about the author and title of the book, there is a special
-      sequence called toc-sequence.</dd>
-  <dt>Attributes</dt>
-    <dd><dl>
-        <dt>volume-count-variable</dt>
-          <dd>definition of the name of the variable holding the number of
-            volumes</dd>
-        <dt>volume-number-variable</dt>
-          <dd>definition of the name of the variable holding the current volume
-            number</dd>
-        <dt>use-when</dt>
-          <dd>a condition for applying the volume template, expressed using the
-            <a href="#L507">OBFL evaluation syntax</a></dd>
-        <dt>sheets-in-volume-max</dt>
-          <dd>defines the maximum number of sheets in a volume using this
-            template</dd>
-      </dl>
-    </dd>
   <dt>Parent element</dt>
     <dd>obfl</dd>
   <dt>Child elements</dt>
     <dd>pre-content (mandatory)</dd>
     <dd>post-content (mandatory)</dd>
 </dl>
+</div>
+
+<h4 id="L15164">Attributes</h4>
+<dl>
+  <dt>volume-count-variable</dt>
+    <dd>definition of the name of the variable holding the number of
+    volumes</dd>
+  <dt>volume-number-variable</dt>
+    <dd>definition of the name of the variable holding the current volume
+    number</dd>
+  <dt>use-when</dt>
+    <dd>a condition for applying the volume template, expressed using the <a
+      href="#L507">OBFL evaluation syntax</a></dd>
+  <dt>sheets-in-volume-max</dt>
+    <dd>defines the maximum number of sheets in a volume using this
+    template</dd>
+</dl>
 
 <h3 id="L870">pre-content</h3>
+
+<p>The pre-content element defines contents that should preceed a braille
+volume's body of pages.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The pre-content element defines contents that should preceed a braille
-      volume's body of pages.</dd>
   <dt>Parent element</dt>
     <dd>volume-template</dd>
   <dt>Child elements</dt>
     <dd>sequence, toc-sequence (zero or more)</dd>
 </dl>
+</div>
 
 <h3 id="L888">post-content</h3>
+
+<p>The post-content element defines contents that should follow a braille
+volume's body of pages.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The post-content element defines contents that should follow a braille
-      volume's body of pages.</dd>
   <dt>Parent element</dt>
     <dd>volume-template</dd>
   <dt>Child element</dt>
     <dd>sequence</dd>
 </dl>
+</div>
 
 <h3 id="L906">sequence</h3>
+
+<p>The sequence element contains the text body.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The sequence element contains the text body.</dd>
   <dt>Parent elements</dt>
     <dd>volume-template, obfl</dd>
   <dt>Child elements</dt>
     <dd>block (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L924">toc-sequence</h3>
+
+<p>The toc-sequence element contains instructions needed to generate a TOC's
+for braille books. Since the number of volumes and their contents is unknown
+prior to the layout process and since the TOC in braille books may be different
+for each volume, it is not sufficient to define the TOC before applying the
+layout as in XSL-FO. Note that a toc-sequence only contains static contents
+inserted while generating the toc (on-toc-start, on-volume-start, on-volume-end
+and on-toc-end). The actual TOC entries are collected from the referenced toc
+data.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd><p>The toc-sequence element contains instructions needed to generate a
-      TOC's for braille books. Since the number of volumes and their contents
-      is unknown prior to the layout process and since the TOC in braille books
-      may be different for each volume, it is not sufficient to define the TOC
-      before applying the layout as in XSL-FO. Note that a toc-sequence only
-      contains static contents inserted while generating the toc (on-toc-start,
-      on-volume-start, on-volume-end and on-toc-end). The actual TOC entries
-      are collected from the referenced toc data.</p>
-    </dd>
-  <dt>Attributes</dt>
-    <dd><dl>
-        <dt>master</dt>
-          <dd>a reference to a page template (“layout-master”)</dd>
-        <dt>toc</dt>
-          <dd>a reference to TOC data (“table-of-contents”)</dd>
-        <dt>range</dt>
-          <dd>a data selection property (document/volume)</dd>
-        <dt>use-when</dt>
-          <dd>a condition for applying the toc-sequence</dd>
-        <dt>initial-page-number</dt>
-          <dd>the inital page number for the sequence</dd>
-        <dt>xml:lang</dt>
-          <dd>the default language of text descendants</dd>
-        <dt>hyphenate</dt>
-          <dd>whether or not to hyphenate text descendants</dd>
-      </dl>
-    </dd>
   <dt>Parent element</dt>
     <dd>pre-content</dd>
   <dt>Child elements</dt>
@@ -624,89 +698,124 @@ are in the OBFL namespace.</p>
     <dd>on-volume-end (zero or more)</dd>
     <dd>on-toc-end (zero or more)</dd>
 </dl>
+</div>
+
+<h4 id="L15262">Attributes</h4>
+<dl>
+  <dt>master</dt>
+    <dd>a reference to a page template (“layout-master”)</dd>
+  <dt>toc</dt>
+    <dd>a reference to TOC data (“table-of-contents”)</dd>
+  <dt>range</dt>
+    <dd>a data selection property (document/volume)</dd>
+  <dt>use-when</dt>
+    <dd>a condition for applying the toc-sequence</dd>
+  <dt>initial-page-number</dt>
+    <dd>the inital page number for the sequence</dd>
+  <dt>xml:lang</dt>
+    <dd>the default language of text descendants</dd>
+  <dt>hyphenate</dt>
+    <dd>whether or not to hyphenate text descendants</dd>
+</dl>
 
 <h3 id="L951">on-toc-start</h3>
+
+<p>The on-toc-start element defines blocks of text to insert before the TOC
+data.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The on-toc-start element defines blocks of text to insert before the
-      TOC data.</dd>
   <dt>Parent element</dt>
     <dd>toc-sequence</dd>
   <dt>Child elements</dt>
     <dd>block (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L969">on-volume-start</h3>
+
+<p>The on-volume-start element defines blocks of text to insert before the TOC
+data of a volume. Note that this element only applies to document range
+TOC's.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The on-volume-start element defines blocks of text to insert before the
-      TOC data of a volume. Note that this element only applies to document
-      range TOC's.</dd>
   <dt>Parent element</dt>
     <dd>toc-sequence</dd>
   <dt>Child elements</dt>
     <dd>block (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L987">on-volume-end</h3>
+
+<p>The on-volume-end element defines blocks of text to insert after the TOC
+data of a volume. Note that this element only applies to document range
+TOC's.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The on-volume-end element defines blocks of text to insert after the
-      TOC data of a volume. Note that this element only applies to document
-      range TOC's.</dd>
   <dt>Parent element</dt>
     <dd>toc-sequence</dd>
   <dt>Child elements</dt>
     <dd>block (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L1005">on-toc-end</h3>
+
+<p>The on-toc-end element defines blocks of text to insert after the TOC
+data.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The on-toc-end element defines blocks of text to insert after the TOC
-      data.</dd>
   <dt>Parent element</dt>
     <dd>toc-sequence</dd>
   <dt>Child elements</dt>
     <dd>block (at least one)</dd>
 </dl>
+</div>
 
 <h3 id="L1023">block</h3>
+
+<p>The block element defines a block of text.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>Description</dt>
-    <dd>The block element defines a block of text.</dd>
   <dt>Attributes</dt>
-    <dd><dl>
-        <dt>break-before ('auto', 'page')</dt>
-          <dd>break before block begins</dd>
-        <dt>first-line-indent (number)</dt>
-          <dd>indent of the first line of a block (in characters)</dd>
-        <dt>text-indent (number)</dt>
-          <dd>indent of every line in the block except the first one (in
-            characters)</dd>
-        <dt>block-indent (number)</dt>
-          <dd>indent of this block's block children (in characters)</dd>
-        <dt>keep ('auto', 'all')</dt>
-          <dd>keep rows in this block</dd>
-        <dt>keep-with-next (number&lt;10)</dt>
-          <dd>keep the following block's first line(s) together with this
-          block</dd>
-        <dt>list-type ('none', 'ol', 'ul', 'pl')</dt>
-          <dd>the type of list for this block</dd>
-        <dt>margin-bottom (number)</dt>
-          <dd>bottom margin for this block (in rows)</dd>
-        <dt>margin-left (number)</dt>
-          <dd>left margin for this block (in characters)</dd>
-        <dt>margin-top (number)</dt>
-          <dd>top margin for this block (in rows)</dd>
-        <dt>margin-right (number)</dt>
-          <dd>right margin for this block (in characters)</dd>
-      </dl>
-    </dd>
+    <dd></dd>
   <dt>Parent elements</dt>
     <dd>on-toc-start, on-volume-start, on-volume-end, on-toc-end, sequence</dd>
   <dt>Child elements</dt>
     <dd>text(), leader, marker, br, evaluate, page-number (zero or more)</dd>
+</dl>
+</div>
+
+<h4 id="L15385">Attributes</h4>
+<dl>
+  <dt>break-before ('auto', 'page')</dt>
+    <dd>break before block begins</dd>
+  <dt>first-line-indent (number)</dt>
+    <dd>indent of the first line of a block (in characters)</dd>
+  <dt>text-indent (number)</dt>
+    <dd>indent of every line in the block except the first one (in
+    characters)</dd>
+  <dt>block-indent (number)</dt>
+    <dd>indent of this block's block children (in characters)</dd>
+  <dt>keep ('auto', 'all')</dt>
+    <dd>keep rows in this block</dd>
+  <dt>keep-with-next (number&lt;10)</dt>
+    <dd>keep the following block's first line(s) together with this block</dd>
+  <dt>list-type ('none', 'ol', 'ul', 'pl')</dt>
+    <dd>the type of list for this block</dd>
+  <dt>margin-bottom (number)</dt>
+    <dd>bottom margin for this block (in rows)</dd>
+  <dt>margin-left (number)</dt>
+    <dd>left margin for this block (in characters)</dd>
+  <dt>margin-top (number)</dt>
+    <dd>top margin for this block (in rows)</dd>
+  <dt>margin-right (number)</dt>
+    <dd>right margin for this block (in characters)</dd>
 </dl>
 
 <h2 id="L756">Rule Sets</h2>
