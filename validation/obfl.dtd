@@ -8,8 +8,54 @@
     hyphenate, true to hyphenate, false otherwise
 -->
 <!ENTITY % hyphenate "hyphenate (true|false)">
+<!ENTITY % textAtts
+"	%xml-lang; #IMPLIED
+	%hyphenate; #IMPLIED">
 <!ENTITY % name-id "name ID #REQUIRED">
 <!ENTITY % use-when "use-when CDATA"> 
+<!--
+	none, no border (default)
+	solid, a solid line
+	dashed, a dashed line
+-->
+<!ENTITY % border-style "(none|solid) #IMPLIED">
+<!-- 
+	thin, e.g. in braille, a single cell frame of 1 row/column of dots all round
+	wide, e.g. in braille, a single cell frame of 2 rows/columns of dots all round
+	full, e.g. in braille, a single cell frame of 3 (6-dot) or 4 (8-dot) rows and two columns of dots
+-->
+<!ENTITY % border-width "(thin|wide) #IMPLIED">
+<!--
+	inner, align border to the inner edge of the character cell
+	outer, align border to the outer edge of the character cell
+-->
+<!ENTITY % border-align "(inner|outer) #IMPLIED">
+<!--
+	border-style, border style
+	border-bottom-style, border bottom style
+	border-left-style, border left style
+	border-top-style, border top style
+	border-right-style, border right style
+	border-width, border width (thin or wide)
+-->
+<!ENTITY % border-atts
+"
+	border-style %border-style;
+	border-bottom-style %border-style;
+	border-left-style %border-style;
+	border-top-style %border-style;
+	border-right-style %border-style;
+	border-width %border-width;
+	border-bottom-width %border-width;
+	border-left-width %border-width;
+	border-top-width %border-width;
+	border-right-width %border-width;
+	border-align %border-align;
+	border-bottom-align %border-align;
+	border-left-align %border-align;
+	border-top-align %border-align;
+	border-right-align %border-align;
+">
 <!--
 	break-before, if present, break before block begins
 	first-line-indent, indent (in chars) of first line block
@@ -42,22 +88,24 @@
 	vertical-position CDATA #IMPLIED
 	id ID #IMPLIED
 	%row-spacing;
-	">
+	%border-atts;
+	%textAtts;
+">
 <!-- 
 	master, name of master to use for this sequence
 	initial-page-number, number of first page in the sequence
 -->
 <!ENTITY % sequenceAtts
 "	master IDREF #REQUIRED
-	initial-page-number CDATA #IMPLIED">
+	initial-page-number CDATA #IMPLIED
+	%textAtts;
+">
 
-<!ENTITY % textAtts
-"	%xml-lang; #IMPLIED
-	%hyphenate; #IMPLIED">
+
 <!--
 	Document root
 -->
-<!ELEMENT obfl (meta?, layout-master+, table-of-contents*, volume-template*, sequence+)>
+<!ELEMENT obfl (meta?, layout-master+, table-of-contents*, volume-template*, content-items*, sequence+)>
 <!ATTLIST obfl
 		%namespace;
 		version (2011-1) #REQUIRED
@@ -125,7 +173,6 @@
 <!ATTLIST toc-entry
 	ref-id IDREF #REQUIRED
 	%blockAtts;
-	%textAtts;
 >
 <!ELEMENT volume-template (pre-content, post-content)>
 <!ATTLIST volume-template
@@ -142,7 +189,6 @@
 	range (document|volume) #REQUIRED
 	%use-when; #REQUIRED
 	%sequenceAtts;
-	%textAtts;
 >
 <!ELEMENT on-toc-start (block+)>
 <!ATTLIST on-toc-start
@@ -167,13 +213,15 @@
 
 <!ATTLIST sequence
 	%sequenceAtts;
-	%textAtts;
 >
 
-<!ELEMENT float-item (block+)>
-<!ATTLIST float-item
+<!ELEMENT content-items (content-item+)>
+<!ATTLIST content-items
 	%name-id;
-	%xml-lang; #IMPLIED
+>
+<!ELEMENT content-item (%blockContents; | block)*>
+<!ATTLIST content-item
+	%blockAtts;
 >
 
 <!--
@@ -183,7 +231,6 @@
 
 <!ATTLIST block
 	%blockAtts;
-	%textAtts;
 >
 <!ELEMENT span (#PCDATA | style)*>
 <!ATTLIST span
@@ -228,7 +275,7 @@
 
 <!ELEMENT anchor EMPTY>
 <!ATTLIST anchor
-	float-item IDREF #REQUIRED
+	content-item IDREF #REQUIRED
 >
 <!--
 	Break line

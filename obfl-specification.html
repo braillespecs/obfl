@@ -7,26 +7,24 @@
   content="application/xhtml+xml; charset=UTF-8" />
   <title>OBFL - Open Braille Formatting Language</title>
   <meta name="dc:identifier" content="" />
-  <meta name="dc:Title" content="PEF Specification" />
-  <meta name="dc:Language" content="SV" />
-  <meta name="dc:Date" content="2007-02-21" />
-  <meta name="dc:Publisher" content="TPB" />
-  <meta name="wml2dtbook:version" content="1.4.1.1" />
-  <meta name="wml2dtbook:date" content="17 January 2007" />
+  <meta name="dc:Title" content="OBFL Specification" />
+  <meta name="dc:Language" content="en" />
+  <meta name="dc:Date" content="2013-12-18" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised November 27, 2013</p>
+<p>Working draft, revised December 18, 2013</p>
 <dl>
   <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
     <dd>N/A </dd>
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
-  <dt>Contributors:</dt>
-    <dd></dd>
+  <!--
+        <dt>Contributors:</dt>
+        <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -45,14 +43,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L255">Introduction</a>
+  <li><a href="#L255">Introduction</a> 
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a>
+  <li><a href="#L287">Definitions</a> 
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -60,17 +58,17 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a>
+  <li><a href="#L453">Definition of OBFL</a> 
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L507">Evaluation language</a>
+  <li><a href="#L507">Evaluation language</a> 
     <ul>
       <li><a href="#L509">Background</a></li>
-      <li><a href="#L520">Specification</a>
+      <li><a href="#L520">Specification</a> 
         <ul>
           <li><a href="#L3791">Numerical and Logical Operators</a></li>
           <li><a href="#L3682">Keyword Operators</a></li>
@@ -79,7 +77,7 @@ Contents</h2>
       </li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a>
+  <li><a href="#L558">Elements</a> 
     <ul>
       <li><a href="#L565">obfl</a></li>
       <li><a href="#L587">meta</a></li>
@@ -99,7 +97,7 @@ Contents</h2>
       <li><a href="#L1438">br</a></li>
       <li><a href="#L1505">evaluate</a></li>
       <li><a href="#L836">page-number</a></li>
-      <li><a href="#L849">volume-template</a>
+      <li><a href="#L849">volume-template</a> 
         <ul>
           <li><a href="#L15164">Attributes</a></li>
         </ul>
@@ -107,7 +105,7 @@ Contents</h2>
       <li><a href="#L870">pre-content</a></li>
       <li><a href="#L888">post-content</a></li>
       <li><a href="#L906">sequence</a></li>
-      <li><a href="#L924">toc-sequence</a>
+      <li><a href="#L924">toc-sequence</a> 
         <ul>
           <li><a href="#L15262">Attributes</a></li>
         </ul>
@@ -116,20 +114,22 @@ Contents</h2>
       <li><a href="#L969">on-volume-start</a></li>
       <li><a href="#L987">on-volume-end</a></li>
       <li><a href="#L1005">on-toc-end</a></li>
-      <li><a href="#L1023">block</a>
+      <li><a href="#L1023">block</a> 
         <ul>
           <li><a href="#L15385">Attributes</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a>
+  <li><a href="#L1194">content-items</a></li>
+  <li><a href="#L1210">content-item</a></li>
+  <li><a href="#L756">Rule Sets</a> 
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">XML Schema Rule Set</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a>
+  <li><a href="#L784">References</a> 
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -266,8 +266,9 @@ meet all of the following criteria:</p>
   <li>The root element of the document must be in the OBFL namespace.</li>
   <li>The start tag of the root element of the document must contain an xmlns
     declaration for the OBFL namespace [<a href="#ref-xmlns">XMLNS</a>]. The
-    namespace URI for OBFL is defined to be <dfn>http://www.daisy.org/ns/2011/obfl</dfn>. An
-    example root element might look like: &lt;obfl version="2011-1"
+    namespace URI for OBFL is defined to be
+    <dfn>http://www.daisy.org/ns/2011/obfl</dfn>. An example root element might
+    look like: &lt;obfl version="2011-1"
     xmlns="http://www.daisy.org/ns/2011/obfl"</li>
 </ol>
 
@@ -356,6 +357,7 @@ are in the OBFL namespace.</p>
   &lt;layout-master&gt;...&lt;/layout-master&gt;
   &lt;table-of-contents&gt;...&lt;/table-of-contents&gt;
   &lt;volume-template&gt;...&lt;/volume-template&gt;
+  &lt;content-items&gt;...&lt;/content-items&gt;
   &lt;sequence&gt;...&lt;/sequence&gt;
 &lt;/obfl&gt;</pre>
 
@@ -365,11 +367,15 @@ are in the OBFL namespace.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Child elements</dt>
-    <dd>layout-master (at least one)</dd>
+  <dt>Usage</dt>
+    <dd>The obfl element is the root element of an OBFL document.</dd>
+  <dt>Content Model</dt>
+    <dd>meta (optional)</dd>
+    <dd>layout-master (one or more)</dd>
     <dd>table-of-contents (zero or more)</dd>
     <dd>volume-template (zero or more)</dd>
-    <dd>sequence (at least one)</dd>
+    <dd>content-items (zero or more)</dd>
+    <dd>sequence (one or more)</dd>
 </dl>
 </div>
 
@@ -380,10 +386,10 @@ element is allowed, however a stricter set of elements might be more useful.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>obfl</dd>
-  <dt>Child elements</dt>
-    <dd>(any)</dd>
+  <dt>Content Model</dt>
+    <dd>Elements from any namespace. (zero or more)</dd>
 </dl>
 </div>
 
@@ -395,11 +401,11 @@ as the width and height of pages.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>obfl</dd>
-  <dt>Child elements</dt>
+  <dt>Content Model</dt>
     <dd>template (zero or more)</dd>
-    <dd>default-template (mandatory)</dd>
+    <dd>default-template (required)</dd>
 </dl>
 </div>
 
@@ -413,11 +419,11 @@ element and acts as a fallback when no previous template element applies.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>layout-master</dd>
-  <dt>Child elements</dt>
-    <dd>header (mandatory)</dd>
-    <dd>footer (mandatory)</dd>
+  <dt>Content Model</dt>
+    <dd>header (required)</dd>
+    <dd>footer (required)</dd>
 </dl>
 </div>
 
@@ -429,9 +435,9 @@ spaced cell grid over a single row.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>template, default-template</dd>
-  <dt>Child elements</dt>
+  <dt>Content Model</dt>
     <dd>field (zero or more)</dd>
 </dl>
 </div>
@@ -444,9 +450,9 @@ spaced cell grid over a single row.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>template, default-template</dd>
-  <dt>Child elements</dt>
+  <dt>Content Model</dt>
     <dd>field (zero or more)</dd>
 </dl>
 </div>
@@ -457,10 +463,10 @@ spaced cell grid over a single row.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>header, footer</dd>
-  <dt>Child elements</dt>
-    <dd>marker-reference, string, current-page, evaluate (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>marker-reference, string, current-page, evaluate (one or more)</dd>
 </dl>
 </div>
 
@@ -472,8 +478,10 @@ element.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
@@ -484,8 +492,10 @@ value attribute.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
@@ -496,8 +506,10 @@ the current page, using the number format specified by this element.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
@@ -508,8 +520,10 @@ expression attribute as evaluated by the OBFL evaluation language.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Content Model</dt>
+    <dd>Emtpy.</dd>
 </dl>
 </div>
 
@@ -522,10 +536,10 @@ inserted.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>obfl</dd>
-  <dt>Child elements</dt>
-    <dd>toc-entry (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>toc-entry (one or more)</dd>
 </dl>
 </div>
 
@@ -535,9 +549,9 @@ inserted.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>table-of-contents</dd>
-  <dt>Child nodes</dt>
+  <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
       more)</dd>
 </dl>
@@ -550,8 +564,10 @@ the current row.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>toc-entry, block</dd>
+  <dt>Content Model</dt>
+    <dd></dd>
 </dl>
 </div>
 
@@ -562,8 +578,10 @@ refered to in headers and footers.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>toc-entry, block</dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
@@ -574,8 +592,10 @@ paragraph).</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>toc-entry, block</dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
@@ -586,7 +606,7 @@ paragraph).</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>toc-entry, block</dd>
 </dl>
 </div>
@@ -597,7 +617,7 @@ paragraph).</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>toc-entry, block</dd>
 </dl>
 </div>
@@ -612,29 +632,29 @@ toc-sequence.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>obfl</dd>
-  <dt>Child elements</dt>
-    <dd>pre-content (mandatory)</dd>
-    <dd>post-content (mandatory)</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>volume-count-variable</dt>
+          <dd>definition of the name of the variable holding the number of
+            volumes</dd>
+        <dt>volume-number-variable</dt>
+          <dd>definition of the name of the variable holding the current volume
+            number</dd>
+        <dt>use-when</dt>
+          <dd>a condition for applying the volume template, expressed using the
+            <a href="#L507">OBFL evaluation syntax</a></dd>
+        <dt>sheets-in-volume-max</dt>
+          <dd>defines the maximum number of sheets in a volume using this
+            template</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>pre-content (required)</dd>
+    <dd>post-content (required)</dd>
 </dl>
 </div>
-
-<h4 id="L15164">Attributes</h4>
-<dl>
-  <dt>volume-count-variable</dt>
-    <dd>definition of the name of the variable holding the number of
-    volumes</dd>
-  <dt>volume-number-variable</dt>
-    <dd>definition of the name of the variable holding the current volume
-    number</dd>
-  <dt>use-when</dt>
-    <dd>a condition for applying the volume template, expressed using the <a
-      href="#L507">OBFL evaluation syntax</a></dd>
-  <dt>sheets-in-volume-max</dt>
-    <dd>defines the maximum number of sheets in a volume using this
-    template</dd>
-</dl>
 
 <h3 id="L870">pre-content</h3>
 
@@ -643,9 +663,9 @@ volume's body of pages.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>volume-template</dd>
-  <dt>Child elements</dt>
+  <dt>Content Model</dt>
     <dd>sequence, toc-sequence (zero or more)</dd>
 </dl>
 </div>
@@ -657,9 +677,9 @@ volume's body of pages.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>volume-template</dd>
-  <dt>Child element</dt>
+  <dt>Content Model</dt>
     <dd>sequence</dd>
 </dl>
 </div>
@@ -670,10 +690,10 @@ volume's body of pages.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>volume-template, obfl</dd>
-  <dt>Child elements</dt>
-    <dd>block (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>block (one or more)</dd>
 </dl>
 </div>
 
@@ -690,33 +710,33 @@ data.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>pre-content</dd>
-  <dt>Child elements</dt>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>master</dt>
+          <dd>a reference to a page template (“layout-master”)</dd>
+        <dt>toc</dt>
+          <dd>a reference to TOC data (“table-of-contents”)</dd>
+        <dt>range</dt>
+          <dd>a data selection property (document/volume)</dd>
+        <dt>use-when</dt>
+          <dd>a condition for applying the toc-sequence</dd>
+        <dt>initial-page-number</dt>
+          <dd>the inital page number for the sequence</dd>
+        <dt>xml:lang</dt>
+          <dd>the default language of text descendants</dd>
+        <dt>hyphenate</dt>
+          <dd>whether or not to hyphenate text descendants</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
     <dd>on-toc-start (zero or more)</dd>
     <dd>on-volume-start (zero or more)</dd>
     <dd>on-volume-end (zero or more)</dd>
     <dd>on-toc-end (zero or more)</dd>
 </dl>
 </div>
-
-<h4 id="L15262">Attributes</h4>
-<dl>
-  <dt>master</dt>
-    <dd>a reference to a page template (“layout-master”)</dd>
-  <dt>toc</dt>
-    <dd>a reference to TOC data (“table-of-contents”)</dd>
-  <dt>range</dt>
-    <dd>a data selection property (document/volume)</dd>
-  <dt>use-when</dt>
-    <dd>a condition for applying the toc-sequence</dd>
-  <dt>initial-page-number</dt>
-    <dd>the inital page number for the sequence</dd>
-  <dt>xml:lang</dt>
-    <dd>the default language of text descendants</dd>
-  <dt>hyphenate</dt>
-    <dd>whether or not to hyphenate text descendants</dd>
-</dl>
 
 <h3 id="L951">on-toc-start</h3>
 
@@ -725,10 +745,10 @@ data.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>toc-sequence</dd>
-  <dt>Child elements</dt>
-    <dd>block (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>block (one or more)</dd>
 </dl>
 </div>
 
@@ -740,10 +760,10 @@ TOC's.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>toc-sequence</dd>
-  <dt>Child elements</dt>
-    <dd>block (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>block (one or more)</dd>
 </dl>
 </div>
 
@@ -755,10 +775,10 @@ TOC's.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>toc-sequence</dd>
-  <dt>Child elements</dt>
-    <dd>block (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>block (one or more)</dd>
 </dl>
 </div>
 
@@ -769,10 +789,10 @@ data.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Parent element</dt>
+  <dt>Usage</dt>
     <dd>toc-sequence</dd>
-  <dt>Child elements</dt>
-    <dd>block (at least one)</dd>
+  <dt>Content Model</dt>
+    <dd>block (one or more)</dd>
 </dl>
 </div>
 
@@ -782,41 +802,102 @@ data.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>Attributes</dt>
-    <dd></dd>
-  <dt>Parent elements</dt>
+  <dt>Usage</dt>
     <dd>on-toc-start, on-volume-start, on-volume-end, on-toc-end, sequence</dd>
-  <dt>Child elements</dt>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>break-before ('auto', 'page')</dt>
+          <dd>break before block begins</dd>
+        <dt>first-line-indent (number)</dt>
+          <dd>indent of the first line of a block (in characters)</dd>
+        <dt>text-indent (number)</dt>
+          <dd>indent of every line in the block except the first one (in
+            characters)</dd>
+        <dt>block-indent (number)</dt>
+          <dd>indent of this block's block children (in characters)</dd>
+        <dt>keep ('auto', 'all')</dt>
+          <dd>keep rows in this block</dd>
+        <dt>keep-with-next (number&lt;10)</dt>
+          <dd>keep the following block's first line(s) together with this
+          block</dd>
+        <dt>list-type ('none', 'ol', 'ul', 'pl')</dt>
+          <dd>the type of list for this block</dd>
+        <dt>margin-bottom (number)</dt>
+          <dd>bottom margin for this block (in rows)</dd>
+        <dt>margin-left (number)</dt>
+          <dd>left margin for this block (in characters)</dd>
+        <dt>margin-top (number)</dt>
+          <dd>top margin for this block (in rows)</dd>
+        <dt>margin-right (number)</dt>
+          <dd>right margin for this block (in characters)</dd>
+        <dt>border-style ('none', 'solid')</dt>
+          <dd>border style, sets the default border style</dd>
+        <dt>border-bottom-style ('none', 'solid')</dt>
+          <dd>border bottom style, overrides the default border style</dd>
+        <dt>border-left-style ('none', 'solid')</dt>
+          <dd>border left style, overrides the default border style</dd>
+        <dt>border-top-style ('none', 'solid')</dt>
+          <dd>border top style, overrides the default border style</dd>
+        <dt>border-right-style ('none', 'solid')</dt>
+          <dd>border right style, overrides the default border style</dd>
+        <dt>border-width ('thin', 'wide')</dt>
+          <dd>border width, sets the default border width</dd>
+        <dt>border-bottom-width ('thin', 'wide')</dt>
+          <dd>border bottom width, overrides the default border width</dd>
+        <dt>border-left-width ('thin', 'wide')</dt>
+          <dd>border left width, overrides the default border width</dd>
+        <dt>border-top-width ('thin', 'wide')</dt>
+          <dd>border top width, overrides the default border width</dd>
+        <dt>border-right-width ('thin', 'wide')</dt>
+          <dd>border right width, overrides the default border width</dd>
+        <dt>border-align ('inner', 'outer')</dt>
+          <dd>border align, sets the default border align</dd>
+        <dt>border-bottom-align ('inner', 'outer')</dt>
+          <dd>border bottom align, overrides the default border align</dd>
+        <dt>border-left-align ('inner', 'outer')</dt>
+          <dd>border left align, overrides the default border align</dd>
+        <dt>border-top-align ('inner', 'outer')</dt>
+          <dd>border top align, overrides the default border align</dd>
+        <dt>border-right-align ('inner', 'outer')</dt>
+          <dd>border right align, overrides the default border align</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, page-number (zero or more)</dd>
 </dl>
 </div>
 
-<h4 id="L15385">Attributes</h4>
+<h3 id="L1194">content-items</h3>
+
+<p>Defines items to be placed somewhere within the flow, typically as page
+positioned elements, such as footnotes.</p>
+
+<div class="sidebar">
 <dl>
-  <dt>break-before ('auto', 'page')</dt>
-    <dd>break before block begins</dd>
-  <dt>first-line-indent (number)</dt>
-    <dd>indent of the first line of a block (in characters)</dd>
-  <dt>text-indent (number)</dt>
-    <dd>indent of every line in the block except the first one (in
-    characters)</dd>
-  <dt>block-indent (number)</dt>
-    <dd>indent of this block's block children (in characters)</dd>
-  <dt>keep ('auto', 'all')</dt>
-    <dd>keep rows in this block</dd>
-  <dt>keep-with-next (number&lt;10)</dt>
-    <dd>keep the following block's first line(s) together with this block</dd>
-  <dt>list-type ('none', 'ol', 'ul', 'pl')</dt>
-    <dd>the type of list for this block</dd>
-  <dt>margin-bottom (number)</dt>
-    <dd>bottom margin for this block (in rows)</dd>
-  <dt>margin-left (number)</dt>
-    <dd>left margin for this block (in characters)</dd>
-  <dt>margin-top (number)</dt>
-    <dd>top margin for this block (in rows)</dd>
-  <dt>margin-right (number)</dt>
-    <dd>right margin for this block (in characters)</dd>
+  <dt>Usage</dt>
+    <dd>obfl</dd>
+  <dt>Content Model</dt>
+    <dd>content-item (zero or more)</dd>
 </dl>
+</div>
+
+<h3 id="L1210">content-item</h3>
+
+<p>Defines the formatting of an item that should be inserted somewhere in the
+flow. The behavior of this element is similar to the toc-entry element, except
+that nesting of items is not allowed.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>content-items</dd>
+  <dt>Content Model</dt>
+    <dd>block, text(), leader, marker, br, evaluate, page-number (zero or
+    more)</dd>
+</dl>
+</div>
+
+<p></p>
 
 <h2 id="L756">Rule Sets</h2>
 
