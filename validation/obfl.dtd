@@ -19,12 +19,14 @@
 	dashed, a dashed line
 -->
 <!ENTITY % border-style "(none|solid) #IMPLIED">
-<!-- 
-	thin, e.g. in braille, a single cell frame of 1 row/column of dots all round
-	wide, e.g. in braille, a single cell frame of 2 rows/columns of dots all round
-	full, e.g. in braille, a single cell frame of 3 (6-dot) or 4 (8-dot) rows and two columns of dots
+<!--
+	Due to the limitations in expressiveness of text-only media, the meaning of the numbers are
+	open to interpretation. 1 should be the thinnest possible value, 2 should be the double width 
+	of 1, and so on. However, if it better matches the capabilities of the border characters, 2 
+	could also mean the second thinnest possible border, and 3 the third thinnest border, and so on. 
+	The default value is 1.
 -->
-<!ENTITY % border-width "(thin|wide) #IMPLIED">
+<!ENTITY % border-width "(1|2|3|4|5|6|7|8|9) #IMPLIED">
 <!--
 	inner, align border to the inner edge of the character cell
 	outer, align border to the outer edge of the character cell

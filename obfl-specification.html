@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2013-12-18" />
+  <meta name="dc:Date" content="2014-01-07" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised December 18, 2013</p>
+<p>Working draft, revised January 7, 2014</p>
 <dl>
   <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
     <dd>N/A </dd>
@@ -840,15 +840,18 @@ data.</p>
           <dd>border top style, overrides the default border style</dd>
         <dt>border-right-style ('none', 'solid')</dt>
           <dd>border right style, overrides the default border style</dd>
-        <dt>border-width ('thin', 'wide')</dt>
-          <dd>border width, sets the default border width</dd>
-        <dt>border-bottom-width ('thin', 'wide')</dt>
+        <dt>border-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
+          <dd>border width, sets the default border width. The default value is 1. Due to the limitations in expressiveness of text-only media, the meaning of the numbers are
+	open to interpretation. 1 should be the thinnest possible value, 2 should be the double width 
+	of 1, and so on. However, if it better matches the capabilities of the border characters, 2 
+	could also mean the second thinnest possible border, and 3 the third thinnest border, and so on.</dd>
+        <dt>border-bottom-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
           <dd>border bottom width, overrides the default border width</dd>
-        <dt>border-left-width ('thin', 'wide')</dt>
+        <dt>border-left-width ('1', '2', '3', '4', '5', '6', '7', '8', '9'))</dt>
           <dd>border left width, overrides the default border width</dd>
-        <dt>border-top-width ('thin', 'wide')</dt>
+        <dt>border-top-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
           <dd>border top width, overrides the default border width</dd>
-        <dt>border-right-width ('thin', 'wide')</dt>
+        <dt>border-right-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
           <dd>border right width, overrides the default border width</dd>
         <dt>border-align ('inner', 'outer')</dt>
           <dd>border align, sets the default border align</dd>
