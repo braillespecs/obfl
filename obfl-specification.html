@@ -403,6 +403,19 @@ as the width and height of pages.</p>
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
+   <dt>Attributes</dt>
+   <dd>
+	   <dl>
+			   <dt>duplex</dt>
+				<dt>inner-margin</dt>
+				<dt>outer-margin</dt>
+				<dt>page-height</dt>
+				<dt>page-number-variable</dt>
+				<dt>page-width</dt>
+				<dt>row-spacing</dt>
+		</dl>
+		<p>This element supports the <a href="#borders">Borders</a> attribute group.</p>
+   </dd>
   <dt>Content Model</dt>
     <dd>template (zero or more)</dd>
     <dd>default-template (required)</dd>
@@ -551,6 +564,13 @@ inserted.</p>
 <dl>
   <dt>Usage</dt>
     <dd>table-of-contents</dd>
+   <dt>Attributes</dt>
+   <dd>
+	   <dl>
+					<dt>ref-id</dt>
+					<dd>A reference id.</dd>
+	</dl>
+   <p>This element supports the <a href="#borders">Borders</a> attribute group.</p></dd>
   <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
       more)</dd>
@@ -830,40 +850,8 @@ data.</p>
           <dd>top margin for this block (in rows)</dd>
         <dt>margin-right (number)</dt>
           <dd>right margin for this block (in characters)</dd>
-        <dt>border-style ('none', 'solid')</dt>
-          <dd>border style, sets the default border style</dd>
-        <dt>border-bottom-style ('none', 'solid')</dt>
-          <dd>border bottom style, overrides the default border style</dd>
-        <dt>border-left-style ('none', 'solid')</dt>
-          <dd>border left style, overrides the default border style</dd>
-        <dt>border-top-style ('none', 'solid')</dt>
-          <dd>border top style, overrides the default border style</dd>
-        <dt>border-right-style ('none', 'solid')</dt>
-          <dd>border right style, overrides the default border style</dd>
-        <dt>border-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
-          <dd>border width, sets the default border width. The default value is 1. Due to the limitations in expressiveness of text-only media, the meaning of the numbers are
-	open to interpretation. 1 should be the thinnest possible value, 2 should be the double width 
-	of 1, and so on. However, if it better matches the capabilities of the border characters, 2 
-	could also mean the second thinnest possible border, and 3 the third thinnest border, and so on.</dd>
-        <dt>border-bottom-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
-          <dd>border bottom width, overrides the default border width</dd>
-        <dt>border-left-width ('1', '2', '3', '4', '5', '6', '7', '8', '9'))</dt>
-          <dd>border left width, overrides the default border width</dd>
-        <dt>border-top-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
-          <dd>border top width, overrides the default border width</dd>
-        <dt>border-right-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
-          <dd>border right width, overrides the default border width</dd>
-        <dt>border-align ('inner', 'outer')</dt>
-          <dd>border align, sets the default border align</dd>
-        <dt>border-bottom-align ('inner', 'outer')</dt>
-          <dd>border bottom align, overrides the default border align</dd>
-        <dt>border-left-align ('inner', 'outer')</dt>
-          <dd>border left align, overrides the default border align</dd>
-        <dt>border-top-align ('inner', 'outer')</dt>
-          <dd>border top align, overrides the default border align</dd>
-        <dt>border-right-align ('inner', 'outer')</dt>
-          <dd>border right align, overrides the default border align</dd>
       </dl>
+      <p>This element supports the <a href="#borders">Borders</a> attribute group.</p>
     </dd>
   <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, page-number (zero or more)</dd>
@@ -902,6 +890,45 @@ that nesting of items is not allowed.</p>
 
 <p></p>
 
+<h2>Attribute Groups</h2>
+<h3 id="borders">Borders</h3>
+<div class="sidebar">
+<dl>
+	 <dt>border-style ('none', 'solid')</dt>
+          <dd>border style, sets the default border style</dd>
+        <dt>border-bottom-style ('none', 'solid')</dt>
+          <dd>border bottom style, overrides the default border style</dd>
+        <dt>border-left-style ('none', 'solid')</dt>
+          <dd>border left style, overrides the default border style</dd>
+        <dt>border-top-style ('none', 'solid')</dt>
+          <dd>border top style, overrides the default border style</dd>
+        <dt>border-right-style ('none', 'solid')</dt>
+          <dd>border right style, overrides the default border style</dd>
+        <dt>border-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
+          <dd>border width, sets the default border width. The default value is 1. Due to the limitations in expressiveness of text-only media, the meaning of the numbers are
+	open to interpretation. 1 should be the thinnest possible value, 2 should be the double width 
+	of 1, and so on. However, if it better matches the capabilities of the border characters, 2 
+	could also mean the second thinnest possible border, and 3 the third thinnest border, and so on.</dd>
+        <dt>border-bottom-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
+          <dd>border bottom width, overrides the default border width</dd>
+        <dt>border-left-width ('1', '2', '3', '4', '5', '6', '7', '8', '9'))</dt>
+          <dd>border left width, overrides the default border width</dd>
+        <dt>border-top-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
+          <dd>border top width, overrides the default border width</dd>
+        <dt>border-right-width ('1', '2', '3', '4', '5', '6', '7', '8', '9')</dt>
+          <dd>border right width, overrides the default border width</dd>
+        <dt>border-align ('inner', 'outer')</dt>
+          <dd>border align, sets the default border align</dd>
+        <dt>border-bottom-align ('inner', 'outer')</dt>
+          <dd>border bottom align, overrides the default border align</dd>
+        <dt>border-left-align ('inner', 'outer')</dt>
+          <dd>border left align, overrides the default border align</dd>
+        <dt>border-top-align ('inner', 'outer')</dt>
+          <dd>border top align, overrides the default border align</dd>
+        <dt>border-right-align ('inner', 'outer')</dt>
+          <dd>border right align, overrides the default border align</dd>
+</dl>
+</div>
 <h2 id="L756">Rule Sets</h2>
 
 <p>The rule sets mentioned below are included in the <a href="obfl.zip">zip

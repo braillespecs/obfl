@@ -121,8 +121,6 @@
 	Layout master
 -->
 <!ELEMENT layout-master (template*, default-template)>
-<!-- the frame attribute should contain solid and thin or wide and inner or outer. For example:
-     'solid thin outer' -->
 <!ATTLIST layout-master
 	%name-id;
 	page-width CDATA #REQUIRED
@@ -132,7 +130,7 @@
 	%row-spacing;
 	duplex (true|false) #IMPLIED
 	page-number-variable CDATA #IMPLIED
-	frame NMTOKENS #IMPLIED
+	%border-atts;
 >
 <!ELEMENT template (header, footer)>
 <!ATTLIST template
