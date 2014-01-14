@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-01-07" />
+  <meta name="dc:Date" content="2014-01-14" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 7, 2014</p>
+<p>Working draft, revised January 14, 2014</p>
 <dl>
   <dt><a id="thisVersion" name="thisVersion">This version</a>:</dt>
     <dd>N/A </dd>
@@ -320,7 +320,7 @@ outermost expression.</p>
 <h4 id="L3791">Numerical and Logical Operators</h4>
 
 <p>The following operators exist: +, -, *, /, %, =, &lt;, &lt;=, &gt;, &gt;=,
-&amp;, |</p>
+&amp;, |, !</p>
 
 <p>All numerical and logical operators require at least two arguments, but
 accepts an unspecified number of arguments. The arguments of logical operators
@@ -493,6 +493,16 @@ element.</p>
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>marker (required)</dt>
+          <dd>The name of the marker to find.</dd>
+        <dt>direction (required)</dt>
+          <dd>One of 'forward', 'backward'</dd>
+        <dt>scope (required)</dt>
+          <dd>One of 'page_content', 'page', 'sequence'</dd>
+      </dl>
+    </dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -507,6 +517,12 @@ value attribute.</p>
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>value (required)</dt>
+          <dd>The string to output</dd>
+      </dl>
+    </dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -521,6 +537,12 @@ the current page, using the number format specified by this element.</p>
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>style (required)</dt>
+          <dd>'default', 'roman'</dd>
+      </dl>
+    </dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -528,17 +550,27 @@ the current page, using the number format specified by this element.</p>
 
 <h3 id="L722">evaluate</h3>
 
-<p>The evaluate element indicates that it should resolve to the value of the
-expression attribute as evaluated by the OBFL evaluation language.</p>
+<p>The evaluate element inserts the result of evaluating an expression, see the
+<a href="#L507">OBFL evaluation language</a> for more information.</p>
 
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>field</dd>
+    <dd>toc-entry, block, field</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>expression (required)</dt>
+          <dd>A valid OBFL eveluation language expression.</dd>
+      </dl>
+    </dd>
   <dt>Content Model</dt>
     <dd>Emtpy.</dd>
 </dl>
 </div>
+
+<h4>Example</h4>
+
+<p><code>&lt;evaluate expression="(= 0 1)"/&gt;</code></p>
 
 <h3 id="L735">table-of-contents</h3>
 
@@ -567,9 +599,9 @@ inserted.</p>
    <dt>Attributes</dt>
    <dd>
 	   <dl>
-					<dt>ref-id</dt>
-					<dd>A reference id.</dd>
-	</dl>
+			<dt>ref-id</dt>
+			<dd>The id of the block this entry is connected with.</dd>
+		</dl>
    <p>This element supports the <a href="#borders">Borders</a> attribute group.</p></dd>
   <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
@@ -616,18 +648,6 @@ paragraph).</p>
     <dd>toc-entry, block</dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
-</dl>
-</div>
-
-<h3 id="L1505">evaluate</h3>
-
-<p>The evaluate element inserts the result of evaluating an expression, see the
-<a href="#L507">OBFL evaluation language</a> for more information.</p>
-
-<div class="sidebar">
-<dl>
-  <dt>Usage</dt>
-    <dd>toc-entry, block</dd>
 </dl>
 </div>
 
