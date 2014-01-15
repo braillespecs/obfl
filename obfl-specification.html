@@ -372,23 +372,25 @@ are in the OBFL namespace.</p>
    <dt>Attributes</dt>
    <dd>
    <dl>
-   	<dt>version (required)</dt>
+   	<dt>version [required]</dt>
    	<dd>The string '2011-1'</dd>
-   	<dt>xml:lang (required)</dt>
+   	<dt>xml:lang [required]</dt>
    	<dd>The document's primary language as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of
       the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
-   	<dt>hyphenate (optional)</dt>
-   	<dd>One of 'true' or 'false'.</dd>
+   	<dt>hyphenate [optional]</dt>
+   	<dd>One of 'true' (default???) or 'false'.</dd>
    </dl>
    </dd>
   <dt>Content Model</dt>
-    <dd>meta (optional)</dd>
-    <dd>layout-master (one or more)</dd>
-    <dd>table-of-contents (zero or more)</dd>
-    <dd>volume-template (zero or more)</dd>
-    <dd>content-items (zero or more)</dd>
-    <dd>sequence (one or more)</dd>
+    <dd>In this order:<ul>
+    	<li>meta [optional]</li>
+    <li>layout-master [1 or more]</li>
+    <li>table-of-contents [0 or more]</li>
+    <li>volume-template [0 or more]</li>
+    <li>content-items [0 or more]</li>
+    <li>sequence [1 or more]</li>
+    </ul></dd>
 </dl>
 </div>
 
@@ -402,7 +404,7 @@ element is allowed, however a stricter set of elements might be more useful.</p>
   <dt>Usage</dt>
     <dd>obfl</dd>
   <dt>Content Model</dt>
-    <dd>Elements from any namespace. (zero or more)</dd>
+    <dd>Elements from any namespace. [0 or more]</dd>
 </dl>
 </div>
 
@@ -419,36 +421,40 @@ as the width and height of pages.</p>
    <dt>Attributes</dt>
    <dd>
 	   <dl>
-		   <dt>duplex (optional, default is ???)</dt>
-		   <dd>'true' or 'false'</dd>
-			<dt>inner-margin (optional, default is 0)</dt>
+		   <dt>duplex [optional]</dt>
+		   <dd>'true' (default???) or 'false'</dd>
+			<dt>inner-margin [optional]</dt>
 			<dd>The inner margin, in characters.</dd>
-			<dt>outer-margin (optional, default is 0)</dt>
+			<dd>Default is 0.</dd>
+			<dt>outer-margin [optional]</dt>
 			<dd>The outer margin, in characters.</dd>
-			<dt>page-height (required)</dt>
+			<dd>Default is 0.</dd>
+			<dt>page-height [required]</dt>
 			<dd>The page height, in characters.</dd>
-			<dt>page-number-variable (optional, default is ???)</dt>
+			<dt>page-number-variable [optional]</dt>
 			<dd>A name for the variable to be used in expression evaluation.</dd>
-			<dt>page-width (required)</dt>
+			<dd>Default is ???.</dd>
+			<dt>page-width [required]</dt>
 			<dd>The page width, in characters.</dd>
-			<dt>row-spacing (optional, default is 1.0)</dt>
+			<dt>row-spacing [optional]</dt>
 			<dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</dd>
+			<dd>1.0 is default.</dd>
 		</dl>
 		<p>This element supports the <a href="#borders">Borders</a> attribute group.</p>
    </dd>
   <dt>Content Model</dt>
-    <dd>template (zero or more)</dd>
-    <dd>default-template (required)</dd>
+  <dd>In this order:<ul>
+    <li>template [0 or more]</li>
+    <li>default-template [required]</li>
+    </ul></dd>
 </dl>
 </div>
 
-<h3 id="L608">template, default-template</h3>
+<h3 id="L608">template</h3>
 
 <p>The template element contains template information that applies under
 specific conditions. The template conditions are tested in document order, and
-the first template whose condition returns true is applied. The
-default-template element contains the same type of information as the template
-element and acts as a fallback when no previous template element applies.</p>
+the first template whose condition returns true is applied.</p>
 
 <div class="sidebar">
 <dl>
@@ -456,12 +462,31 @@ element and acts as a fallback when no previous template element applies.</p>
     <dd>layout-master</dd>
   <dt>Attributes</dt>
   <dd><dl>
-  <dt>use-when (required on template elements)</dt>
+  <dt>use-when [required]</dt>
   <dd>An expression.</dd>
   </dl></dd>
   <dt>Content Model</dt>
-    <dd>header (required)</dd>
-    <dd>footer (required)</dd>
+  	<dd>In this order:<ul>
+    <li>header [required]</li>
+    <li>footer [required]</li>
+   </ul></dd>
+</dl>
+</div>
+
+<h3 id="L608-2">default-template</h3>
+
+<p>The default-template element contains the same type of information as the template
+element and acts as a fallback when no previous template element applies.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>layout-master</dd>
+  <dt>Content Model</dt>
+  	<dd>In this order:<ul>
+    <li>header [required]</li>
+    <li>footer [required]</li>
+   </ul></dd>
 </dl>
 </div>
 
@@ -478,12 +503,12 @@ spaced cell grid over a single row.</p>
   <dt>Attributes</dt>
   <dd>
   <dl>
-  <dt>row-spacing (optional)</dt>
+  <dt>row-spacing [optional]</dt>
   <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</dd>
   </dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>field (zero or more)</dd>
+    <dd>field [0 or more]</dd>
 </dl>
 </div>
 
@@ -500,12 +525,12 @@ spaced cell grid over a single row.</p>
   <dt>Attributes</dt>
   <dd>
   <dl>
-  <dt>row-spacing (optional)</dt>
+  <dt>row-spacing [optional]</dt>
   <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</dd>
   </dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>field (zero or more)</dd>
+    <dd>field [0 or more]</dd>
 </dl>
 </div>
 
@@ -518,7 +543,7 @@ spaced cell grid over a single row.</p>
   <dt>Usage</dt>
     <dd>header, footer</dd>
   <dt>Content Model</dt>
-    <dd>marker-reference, string, current-page, evaluate (one or more)</dd>
+    <dd>marker-reference, string, current-page, evaluate [1 or more]</dd>
 </dl>
 </div>
 
@@ -534,11 +559,11 @@ element.</p>
     <dd>field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>marker (required)</dt>
+        <dt>marker [required]</dt>
           <dd>The name of the marker to find.</dd>
-        <dt>direction (required)</dt>
+        <dt>direction [required]</dt>
           <dd>One of 'forward', 'backward'</dd>
-        <dt>scope (required)</dt>
+        <dt>scope [required]</dt>
           <dd>One of 'page_content', 'page', 'sequence'</dd>
       </dl>
     </dd>
@@ -558,7 +583,7 @@ value attribute.</p>
     <dd>field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>value (required)</dt>
+        <dt>value [required]</dt>
           <dd>The string to output</dd>
       </dl>
     </dd>
@@ -578,7 +603,7 @@ the current page, using the number format specified by this element.</p>
     <dd>field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>style (required)</dt>
+        <dt>style [required]</dt>
           <dd>'default', 'roman'</dd>
       </dl>
     </dd>
@@ -598,7 +623,7 @@ the current page, using the number format specified by this element.</p>
     <dd>toc-entry, block, field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>expression (required)</dt>
+        <dt>expression [required]</dt>
           <dd>A valid OBFL eveluation language expression.</dd>
       </dl>
     </dd>
@@ -624,11 +649,11 @@ inserted.</p>
     <dd>obfl</dd>
   <dt>Attributes</dt>
   <dd><dl>
-  <dt>name (required)</dt>
+  <dt>name [required]</dt>
   <dd>An id.</dd>
   </dl></dd>
   <dt>Content Model</dt>
-    <dd>toc-entry (one or more)</dd>
+    <dd>toc-entry [1 or more]</dd>
 </dl>
 </div>
 
@@ -649,8 +674,7 @@ inserted.</p>
 	<p>This element supports the <a href="#block-atts">Block</a> attribute group.</p>	
    <p>This element supports the <a href="#borders">Borders</a> attribute group.</p></dd>
   <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, toc-entry, page-number (zero or
-      more)</dd>
+    <dd>text(), leader, marker, br, evaluate, toc-entry, page-number [0 or more]</dd>
 </dl>
 </div>
 
@@ -666,13 +690,14 @@ the current row.</p>
   <dt>Attributes</dt>
   <dd>
   <dl>
-  <dt>align (optional, default is 'left')</dt>
+  <dt>align [optional]</dt>
   <dd>Alignment of the text following the leader.</dd>
   <dd>The leader can be aligned to the left, center or right of the following text segment.</dd>
-  <dd>One of 'left', 'center' or 'right'.</dd>
-  <dt>pattern (optional, default is ' ')</dt>
+  <dd>One of 'left' (default), 'center' or 'right'.</dd>
+  <dt>pattern [optional]</dt>
   <dd>Fill pattern to use up to the leader position.</dd>
-  <dt>position (required)</dt>
+  <dd>Default is ' '.</dd>
+  <dt>position [required]</dt>
   <dd>Position of the leader within the row. Can be relative (percent) or absolute (column).
   For example: 50% or 12.</dd>
   </dl>
@@ -694,9 +719,9 @@ refered to in headers and footers.</p>
   <dt>Attributes</dt>
   <dd>
   <dl>
-  <dt>class (required)</dt>
+  <dt>class [required]</dt>
   <dd>A class name for this marker, to be used when searching for markers.</dd>
-  <dt>value (required)</dt>
+  <dt>value [required]</dt>
   <dd>value for this marker</dd>
   </dl>
   </dd>
@@ -730,9 +755,9 @@ paragraph).</p>
   <dt>Attributes</dt>
   <dd>
   	<dl>
-  		<dt>ref-id (required)</dt>
+  		<dt>ref-id [required]</dt>
   		  <dd></dd>
-  		<dt>style (optional)</dt>
+  		<dt>style [optional]</dt>
   		 <dd>'default', 'roman'</dd>
   	</dl>
   </dd>
@@ -755,23 +780,25 @@ toc-sequence.</p>
     <dd>obfl</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>volume-count-variable</dt>
+        <dt>volume-count-variable [optional]</dt>
           <dd>definition of the name of the variable holding the number of
             volumes</dd>
-        <dt>volume-number-variable</dt>
+        <dt>volume-number-variable [optional]</dt>
           <dd>definition of the name of the variable holding the current volume
             number</dd>
-        <dt>use-when</dt>
+        <dt>use-when [optional]</dt>
           <dd>a condition for applying the volume template, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
-        <dt>sheets-in-volume-max</dt>
+        <dt>sheets-in-volume-max [required]</dt>
           <dd>defines the maximum number of sheets in a volume using this
             template</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>pre-content (required)</dd>
-    <dd>post-content (required)</dd>
+  <dd>In this order:<ul>
+    <li>pre-content [required]</li>
+    <li>post-content [required]</li>
+    </ul></dd>
 </dl>
 </div>
 
@@ -785,7 +812,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence, toc-sequence (zero or more)</dd>
+    <dd>sequence, toc-sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -799,7 +826,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence</dd>
+    <dd>sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -814,21 +841,21 @@ volume's body of pages.</p>
   <dt>Attributes</dt>
   	<dd>
   		<dl>
-  			<dt>initial-page-number</dt>
+  			<dt>initial-page-number [optional]</dt>
   			  <dd>the inital page number for the sequence</dd>
-  			<dt>master (required)</dt>
+  			<dt>master [required]</dt>
   			  <dd>Name of master to use for this sequence.</dd>
-  			<dt>xml:lang (optional)</dt>
+  			<dt>xml:lang [optional]</dt>
   			<dd>the sequence's primary language as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of
       the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
-  			<dt>hyphenate (optional)</dt>
+  			<dt>hyphenate [optional]</dt>
   			<dd>whether or not to hyphenate text descendants</dd>
   			<dd>One of 'true' or 'false'.</dd>
   		</dl>
   	</dd>
   <dt>Content Model</dt>
-    <dd>block (one or more)</dd>
+    <dd>block [1 or more]</dd>
 </dl>
 </div>
 
@@ -849,30 +876,32 @@ data.</p>
     <dd>pre-content</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>master</dt>
-          <dd>a reference to a page template (“layout-master”)</dd>
-        <dt>toc</dt>
-          <dd>a reference to TOC data (“table-of-contents”)</dd>
-        <dt>range</dt>
-          <dd>a data selection property (document/volume)</dd>
-        <dt>use-when</dt>
-          <dd>a condition for applying the toc-sequence, expressed using the
+        <dt>master [required]</dt>
+          <dd>A reference to a page template (“layout-master”)</dd>
+        <dt>toc [required]</dt>
+          <dd>A reference to TOC data (“table-of-contents”)</dd>
+        <dt>range [required]</dt>
+          <dd>A data selection property (document/volume)</dd>
+        <dt>use-when [required]</dt>
+          <dd>A condition for applying the toc-sequence, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
-        <dt>initial-page-number</dt>
-          <dd>the inital page number for the sequence</dd>
-        <dt>xml:lang</dt>
-         <dd>the sequence's primary language as defined in <a
+        <dt>initial-page-number [optional]</dt>
+          <dd>The inital page number for the sequence</dd>
+        <dt>xml:lang [optional]</dt>
+         <dd>The sequence's primary language as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of
       the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
-        <dt>hyphenate</dt>
-          <dd>whether or not to hyphenate text descendants</dd>
+        <dt>hyphenate [optional]</dt>
+          <dd>Whether or not to hyphenate text descendants</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>on-toc-start (zero or more)</dd>
-    <dd>on-volume-start (zero or more)</dd>
-    <dd>on-volume-end (zero or more)</dd>
-    <dd>on-toc-end (zero or more)</dd>
+  <dd>In this order:<ul>
+    <li>on-toc-start [0 or more]</li>
+    <li>on-volume-start [0 or more]</li>
+    <li>on-volume-end [0 or more]</li>
+    <li>on-toc-end [0 or more]</li>
+    </ul></dd>
 </dl>
 </div>
 
@@ -888,13 +917,13 @@ data.</p>
   <dt>Attributes</dt>
   <dd>
   	<dl>
-  	<dt>use-when (optional)</dt>
+  	<dt>use-when [optional]</dt>
   	<dd>a condition for inserting the contents, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
   	</dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>block (one or more)</dd>
+    <dd>block [1 or more]</dd>
 </dl>
 </div>
 
@@ -911,13 +940,13 @@ TOC's.</p>
   <dt>Attributes</dt>
   <dd>
   	<dl>
-  	<dt>use-when (optional)</dt>
+  	<dt>use-when [optional]</dt>
   	<dd>a condition for inserting the contents, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
   	</dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>block (one or more)</dd>
+    <dd>block [1 or more]</dd>
 </dl>
 </div>
 
@@ -934,13 +963,13 @@ TOC's.</p>
   <dt>Attributes</dt>
   <dd>
   	<dl>
-  	<dt>use-when (optional)</dt>
+  	<dt>use-when [optional]</dt>
   	<dd>a condition for inserting the contents, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
   	</dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>block (one or more)</dd>
+    <dd>block [1 or more]</dd>
 </dl>
 </div>
 
@@ -956,13 +985,13 @@ data.</p>
   <dt>Attributes</dt>
   <dd>
   	<dl>
-  	<dt>use-when (optional)</dt>
+  	<dt>use-when [optional]</dt>
   	<dd>a condition for inserting the contents, expressed using the
             <a href="#L507">OBFL evaluation syntax</a></dd>
   	</dl>
   </dd>
   <dt>Content Model</dt>
-    <dd>block (one or more)</dd>
+    <dd>block [1 or more]</dd>
 </dl>
 </div>
 
@@ -980,7 +1009,7 @@ data.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute group.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, page-number (zero or more)</dd>
+    <dd>text(), leader, marker, br, evaluate, page-number [0 or more]</dd>
 </dl>
 </div>
 
@@ -994,7 +1023,7 @@ positioned elements, such as footnotes.</p>
   <dt>Usage</dt>
     <dd>obfl</dd>
   <dt>Content Model</dt>
-    <dd>content-item (zero or more)</dd>
+    <dd>content-item [0 or more]</dd>
 </dl>
 </div>
 
@@ -1014,8 +1043,7 @@ that nesting of items is not allowed.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute group.</p>
   	</dd>
   <dt>Content Model</dt>
-    <dd>block, text(), leader, marker, br, evaluate, page-number (zero or
-    more)</dd>
+    <dd>block, text(), leader, marker, br, evaluate, page-number [0 or more]</dd>
 </dl>
 </div>
 
@@ -1025,64 +1053,65 @@ that nesting of items is not allowed.</p>
 <h3 id="block-atts">Block</h3>
 <div class="sidebar">
 <dl>
-        <dt>break-before (optional)</dt>
+        <dt>break-before [optional]</dt>
           <dd>Break before block begins.</dd>
           <dd>One of 'auto', 'page'.</dd>
-        <dt>first-line-indent (optional)</dt>
+        <dt>first-line-indent [optional]</dt>
           <dd>Indent of the first line of a block (in characters)</dd>
           <dd>A number.</dd>
-        <dt>text-indent (optional)</dt>
+        <dt>text-indent [optional]</dt>
           <dd>Indent of every line in the block except the first one (in
             characters)</dd>
           <dd>A number.</dd>
-        <dt>block-indent (optional)</dt>
+        <dt>block-indent [optional]</dt>
           <dd>Indent of this block's block children (in characters)</dd>
           <dd>A number.</dd>
-        <dt>keep (optional)</dt>
+        <dt>keep [optional]</dt>
           <dd>Keep rows in this block.</dd>
           <dd>One of 'auto', 'all'.</dd>
-        <dt>keep-with-next (optional)</dt>
+        <dt>keep-with-next [optional]</dt>
           <dd>Keep the following block's first line(s) on the same page as this block.</dd>
           <dd>An integer in the range [0, 9].</dd>
-        <dt>keep-with-previous-sheets (optional)</dt>
+        <dt>keep-with-previous-sheets [optional]</dt>
         <dd>Indicates that this block should be kept in the same volume as the speficied number of preceeding sheets.</dd>
         <dd>An integer in the range [0, 9]</dd>
-        <dt>keep-with-next-sheets (optional)</dt>
+        <dt>keep-with-next-sheets [optional]</dt>
         <dd>Indicates that this block should be kept in the same volume as the speficied number of following sheets.</dd>
         <dd>An integer in the range [0, 9]</dd>
-        <dt>list-type (optional, default is 'none')</dt>
+        <dt>list-type [optional]</dt>
           <dd>The type of list for this block.</dd>
-          <dd>One of 'none', 'ol', 'ul', 'pl'.</dd>
-        <dt>margin-bottom (optional)</dt>
+          <dd>One of 'none' (default), 'ol', 'ul', 'pl'.</dd>
+        <dt>margin-bottom [optional]</dt>
           <dd>Bottom margin for this block (in rows).</dd>
           <dd>A number.</dd>
-        <dt>margin-left (optional)</dt>
+        <dt>margin-left [optional]</dt>
           <dd>Left margin for this block (in characters).</dd>
           <dd>A number.</dd>
-        <dt>margin-top (optional)</dt>
+        <dt>margin-top [optional]</dt>
           <dd>Top margin for this block (in rows).</dd>
           <dd>A number.</dd>
-        <dt>margin-right (optional)</dt>
+        <dt>margin-right [optional]</dt>
           <dd>Right margin for this block (in characters).</dd>
           <dd>A number.</dd>
-        <dt>align (optional, default is 'left')</dt>
+        <dt>align [optional]</dt>
         <dd>Specifies the text alignment.</dd>
-        <dd>One of 'left', 'center' or 'right'.</dd>
-        <dt>vertical-align (optional)</dt>
+        <dd>One of 'left' (default), 'center' or 'right'.</dd>
+        <dt>vertical-align [optional]</dt>
         <dd>One of 'before', 'center', 'after'</dd>
-        <dt>vertical-position (optional)</dt>
+        <dt>vertical-position [optional]</dt>
         <dd>Specifies a vertical position for the block, in rows.</dd>
         <dd>A positive integer.</dd>
         <dd></dd>
-        <dt>id (optional)</dt>
+        <dt>id [optional]</dt>
         <dd>An identifier.</dd>
-		<dt>row-spacing (optional, default is 1.0)</dt>
+		<dt>row-spacing [optional]</dt>
 		  <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</dd>
-        <dt>xml:lang (optional)</dt>
+		  <dd>Default is 1.0.</dd>
+        <dt>xml:lang [optional]</dt>
         <dd>the language of text descendants as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of
       the XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
-  			<dt>hyphenate (optional)</dt>
+  			<dt>hyphenate [optional]</dt>
   			<dd>Whether or not to hyphenate text descendants.</dd>
   			<dd>One of 'true' or 'false'.</dd>
       </dl>
@@ -1090,52 +1119,52 @@ that nesting of items is not allowed.</p>
 <h3 id="borders">Borders</h3>
 <div class="sidebar">
 <dl>
-	 <dt>border-style (optional)</dt>
+	 <dt>border-style [optional]</dt>
           <dd>Border style, sets the default border style.</dd>
           <dd>One of 'none', 'solid'.</dd>
-        <dt>border-bottom-style (optional)</dt>
+        <dt>border-bottom-style [optional]</dt>
           <dd>Border bottom style, overrides the default border style</dd>
           <dd>One of 'none', 'solid'.</dd>
-        <dt>border-left-style (optional)</dt>
+        <dt>border-left-style [optional]</dt>
           <dd>Border left style, overrides the default border style</dd>
           <dd>One of 'none', 'solid'.</dd>
-        <dt>border-top-style (optional)</dt>
+        <dt>border-top-style [optional]</dt>
           <dd>Border top style, overrides the default border style</dd>
           <dd>One of 'none', 'solid'.</dd>
-        <dt>border-right-style (optional)</dt>
+        <dt>border-right-style [optional]</dt>
           <dd>Border right style, overrides the default border style</dd>
           <dd>One of 'none', 'solid'.</dd>
-        <dt>border-width (optional)</dt>
+        <dt>border-width [optional]</dt>
           <dd>Border width, sets the default border width. The default value is 1. Due to the limitations in expressiveness of text-only media, the meaning of the numbers are
 	open to interpretation. 1 should be the thinnest possible value, 2 should be the double width 
 	of 1, and so on. However, if it better matches the capabilities of the border characters, 2 
 	could also mean the second thinnest possible border, and 3 the third thinnest border, and so on.</dd>
 		  <dd>One of '1', '2', '3', '4', '5', '6', '7', '8', '9'.</dd>
-        <dt>border-bottom-width (optional)</dt>
+        <dt>border-bottom-width [optional]</dt>
           <dd>Border bottom width, overrides the default border width</dd>
           <dd>One of '1', '2', '3', '4', '5', '6', '7', '8', '9'.</dd>
-        <dt>border-left-width (optional)</dt>
+        <dt>border-left-width [optional]</dt>
           <dd>Border left width, overrides the default border width</dd>
           <dd>One of '1', '2', '3', '4', '5', '6', '7', '8', '9'.</dd>
-        <dt>border-top-width (optional)</dt>
+        <dt>border-top-width [optional]</dt>
           <dd>Border top width, overrides the default border width</dd>
           <dd>One of '1', '2', '3', '4', '5', '6', '7', '8', '9'.</dd>
-        <dt>border-right-width (optional)</dt>
+        <dt>border-right-width [optional]</dt>
           <dd>Border right width, overrides the default border width</dd>
           <dd>One of '1', '2', '3', '4', '5', '6', '7', '8', '9'.</dd>
-        <dt>border-align (optional)</dt>
+        <dt>border-align [optional]</dt>
           <dd>Border align, sets the default border align</dd>
           <dd>One of 'inner', 'outer'.</dd>
-        <dt>border-bottom-align (optional)</dt>
+        <dt>border-bottom-align [optional]</dt>
           <dd>Border bottom align, overrides the default border align</dd>
           <dd>One of 'inner', 'outer'.</dd>
-        <dt>border-left-align (optional)</dt>
+        <dt>border-left-align [optional]</dt>
           <dd>Border left align, overrides the default border align</dd>
           <dd>One of 'inner', 'outer'.</dd>
-        <dt>border-top-align (optional)</dt>
+        <dt>border-top-align [optional]</dt>
           <dd>Border top align, overrides the default border align</dd>
           <dd>One of 'inner', 'outer'.</dd>
-        <dt>border-right-align (optional)</dt>
+        <dt>border-right-align [optional]</dt>
           <dd>Border right align, overrides the default border align</dd>
           <dd>One of 'inner', 'outer'.</dd>
 </dl>
