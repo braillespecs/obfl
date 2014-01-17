@@ -2,7 +2,7 @@
 <!ENTITY % blockContents "#PCDATA | leader | marker | anchor | br | evaluate | page-number | span | style">
 <!ENTITY % namespace "xmlns CDATA #FIXED 'http://www.daisy.org/ns/2011/obfl'">
 <!ENTITY % row-spacing "row-spacing CDATA #IMPLIED">
-<!ENTITY % style "style (default|roman)">
+<!ENTITY % style "style (default|roman|upper-roman|lower-roman|upper-alpha|lower-alpha)">
 <!ENTITY % xml-lang "xml:lang NMTOKEN">
 <!--
     hyphenate, true to hyphenate, false otherwise

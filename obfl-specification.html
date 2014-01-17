@@ -614,7 +614,7 @@ the current page, using the number format specified by this element.</p>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>style [required]</dt>
-          <dd>'default', 'roman'</dd>
+          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman', 'upper-alpha', 'lower-alpha'.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -630,7 +630,7 @@ the current page, using the number format specified by this element.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, field</dd>
+    <dd>toc-entry, block, content-item, field</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
@@ -678,7 +678,7 @@ inserted.</p>
     <dd>table-of-contents</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>ref-id</dt>
+        <dt>ref-id [required]</dt>
           <dd>The id of the block this entry is connected with.</dd>
       </dl>
       <p>This element supports the <a href="#block-atts">Block</a> attribute
@@ -700,7 +700,7 @@ the current row.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block</dd>
+    <dd>toc-entry, block, content-item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>align [optional]</dt>
@@ -729,7 +729,7 @@ refered to in headers and footers.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block</dd>
+    <dd>toc-entry, block, content-item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>class [required]</dt>
@@ -752,7 +752,7 @@ paragraph).</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block</dd>
+    <dd>toc-entry, block, content-item</dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -760,18 +760,18 @@ paragraph).</p>
 
 <h3 id="L836">page-number</h3>
 
-<p>The page-number element inserts the current page number.</p>
+<p>The page-number element inserts the page number of the referenced element.</p>
 
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block</dd>
+    <dd>toc-entry, block, content-item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>ref-id [required]</dt>
           <dd></dd>
         <dt>style [optional]</dt>
-          <dd>'default', 'roman'</dd>
+          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman', 'upper-alpha', 'lower-alpha'.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
