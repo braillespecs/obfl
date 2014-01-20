@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-01-15" />
+  <meta name="dc:Date" content="2014-01-20" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 17, 2014</p>
+<p>Working draft, revised January 20, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -316,18 +316,62 @@ outermost expression.</p>
 
 <p>An argument can contain whitespace if it is surrounded by quotes.</p>
 
-<h4 id="L3791">Numerical and Logical Operators</h4>
+<h4 id="L3791">Arithmetic Operators</h4>
 
-<p>The following operators exist: +, -, *, /, %, =, &lt;, &lt;=, &gt;, &gt;=,
-&amp;, |, !</p>
-
-<p>All numerical and logical operators require at least two arguments, but
+<div class="sidebar">
+<dl>
+ <dt>+</dt>
+ <dd>Addition</dd>
+ <dt>-</dt>
+ <dd>Subtraction</dd>
+ <dt>*</dt>
+ <dd>Multiplication</dd>
+ <dt>/</dt>
+ <dd>Division</dd>
+ <dt>%</dt>
+ <dd>Modulus</dd>
+</dl>
+</div>
+<p>All arithmetic operators require at least two arguments, but
+accepts an unspecified number of arguments. Each argument is 
+evaluated against the current result. For example <code>(/ 20 5 4)</code> evaluates to 1.</p>
+<h4 id="L3791">Comparison Operators</h4>
+<div class="sidebar">
+<dl>
+<dt>=</dt>
+<dd>Equals</dd>
+<dt>&lt;</dt>
+<dd>Less than</dd>
+<dt>&lt;=</dt>
+<dd>Less than or equal to</dd>
+<dt>&gt;</dt>
+<dd>Greater than</dd>
+<dt>&gt;=</dt>
+<dd>Greater than or equal to</dd>
+</dl>
+</div>
+<p>All comparison operators require at least two arguments, but
+accepts an unspecified number of arguments. The arguments of comparision operators
+are processed one at a time evaluating each argument against the previous argument 
+in the list. For example <code>(&gt; 20 5 4)</code> evaluates to true.</p>
+<h4 id="L3791">Logical Operators</h4>
+<div class="sidebar"> 
+ <dl>
+ <dt>&amp;</dt>
+<dd>AND</dd>
+<dt>|</dt>
+<dd>OR</dd>
+<dt>!</dt>
+<dd>NOT</dd>
+</dl>
+</div>
+<p>All logical operators require at least two arguments, but
 accepts an unspecified number of arguments. The arguments of logical operators
-are processed one at a time evaluating each argument against the previous in
-the list. Numerical arguments are evaluated against the current result. For
-example <code>(/ 20 5 4)</code> evaluates to 1.</p>
+are processed one at a time evaluating each argument against the previous argument 
+in the list.</p>
 
 <h4 id="L3682">Keyword Operators</h4>
+<div class="sidebar">
 <dl>
   <dt>if</dt>
     <dd>if takes three arguments: the expression to test (must evaluate to a
@@ -335,6 +379,7 @@ example <code>(/ 20 5 4)</code> evaluates to 1.</p>
   <dt>round</dt>
     <dd>round takes one argument: the value to round (must be a number)</dd>
 </dl>
+</div>
 
 <h4 id="L14889">Keywords</h4>
 
