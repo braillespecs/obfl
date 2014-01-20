@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-          <dt>Contributors:</dt>
-          <dd></dd>-->
+            <dt>Contributors:</dt>
+            <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -71,8 +71,10 @@ Contents</h2>
       <li><a href="#L509">Background</a></li>
       <li><a href="#L520">Specification</a>
         <ul>
-          <li><a href="#L3791">Numerical and Logical Operators</a></li>
-          <li><a href="#L3682">Keyword Operators</a></li>
+          <li><a href="#L3791">Arithmetic Operators</a></li>
+          <li><a href="#L3791">Comparison Operators</a></li>
+          <li><a href="#L3791">Logical Operators</a></li>
+          <li><a href="#L3682">Functions</a></li>
           <li><a href="#L14889">Keywords</a></li>
         </ul>
       </li>
@@ -318,59 +320,74 @@ outermost expression.</p>
 
 <h4 id="L3791">Arithmetic Operators</h4>
 
+<p>All arithmetic operators require at least two arguments, but accepts an
+unspecified number of arguments. Each argument is evaluated against the current
+result.</p>
+
 <div class="sidebar">
 <dl>
- <dt>+</dt>
- <dd>Addition</dd>
- <dt>-</dt>
- <dd>Subtraction</dd>
- <dt>*</dt>
- <dd>Multiplication</dd>
- <dt>/</dt>
- <dd>Division</dd>
- <dt>%</dt>
- <dd>Modulus</dd>
+  <dt>+</dt>
+    <dd>Addition</dd>
+  <dt>-</dt>
+    <dd>Subtraction</dd>
+  <dt>*</dt>
+    <dd>Multiplication</dd>
+  <dt>/</dt>
+    <dd>Division</dd>
+    <dd>For example <code>(/ 20 5 4)</code> evaluates to 1.</dd>
+  <dt>%</dt>
+    <dd>Modulus</dd>
 </dl>
 </div>
-<p>All arithmetic operators require at least two arguments, but
-accepts an unspecified number of arguments. Each argument is 
-evaluated against the current result. For example <code>(/ 20 5 4)</code> evaluates to 1.</p>
+
 <h4 id="L3791">Comparison Operators</h4>
-<div class="sidebar">
-<dl>
-<dt>=</dt>
-<dd>Equals</dd>
-<dt>&lt;</dt>
-<dd>Less than</dd>
-<dt>&lt;=</dt>
-<dd>Less than or equal to</dd>
-<dt>&gt;</dt>
-<dd>Greater than</dd>
-<dt>&gt;=</dt>
-<dd>Greater than or equal to</dd>
-</dl>
-</div>
-<p>All comparison operators require at least two arguments, but
-accepts an unspecified number of arguments. The arguments of comparision operators
-are processed one at a time evaluating each argument against the previous argument 
-in the list. For example <code>(&gt; 20 5 4)</code> evaluates to true.</p>
-<h4 id="L3791">Logical Operators</h4>
-<div class="sidebar"> 
- <dl>
- <dt>&amp;</dt>
-<dd>AND</dd>
-<dt>|</dt>
-<dd>OR</dd>
-<dt>!</dt>
-<dd>NOT</dd>
-</dl>
-</div>
-<p>All logical operators require at least two arguments, but
-accepts an unspecified number of arguments. The arguments of logical operators
-are processed one at a time evaluating each argument against the previous argument 
+
+<p>All comparison operators require at least two arguments, but accepts an
+unspecified number of arguments. The arguments of comparision operators are
+processed one at a time evaluating each argument against the previous argument
 in the list.</p>
 
-<h4 id="L3682">Keyword Operators</h4>
+<div class="sidebar">
+<dl>
+  <dt>=</dt>
+    <dd>Equals</dd>
+  <dt>&lt;</dt>
+    <dd>Less than</dd>
+  <dt>&lt;=</dt>
+    <dd>Less than or equal to</dd>
+  <dt>&gt;</dt>
+    <dd>Greater than</dd>
+    <dd>For example, <code>(&gt; 20 5 4)</code> evaluates to true.</dd>
+  <dt>&gt;=</dt>
+    <dd>Greater than or equal to</dd>
+</dl>
+</div>
+
+<h4 id="L3791">Logical Operators</h4>
+
+<div class="sidebar">
+<dl>
+  <dt>&amp;</dt>
+    <dd>AND</dd>
+    <dd>Accepts two or more arguments. The arguments are processed one at a
+      time, evaluating each argument against the previous argument in the list.
+      Returns a boolean result.</dd>
+  <dt>|</dt>
+    <dd>OR</dd>
+    <dd>Accepts two or more arguments. The arguments are processed one at a
+      time, evaluating each argument against the previous argument in the list.
+      Returns a boolean result.</dd>
+  <dt>!</dt>
+    <dd>NOT</dd>
+    <dd>Accepts one or more arguments. Returns the input arguments negated.</dd>
+</dl>
+</div>
+
+<p>All logical operators require at least two arguments, but accepts an
+unspecified number of arguments.</p>
+
+<h4 id="L3682">Functions</h4>
+
 <div class="sidebar">
 <dl>
   <dt>if</dt>
@@ -427,7 +444,7 @@ are in the OBFL namespace.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>meta [optional]</li>
         <li>layout-master [1 or more]</li>
@@ -490,7 +507,7 @@ as the width and height of pages.</p>
       group.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>template [0 or more]</li>
         <li>default-template [required]</li>
@@ -516,7 +533,7 @@ the first template whose condition returns true is applied.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>header [required]</li>
         <li>footer [required]</li>
@@ -536,7 +553,7 @@ applies.</p>
   <dt>Usage</dt>
     <dd>layout-master</dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>header [required]</li>
         <li>footer [required]</li>
@@ -659,7 +676,8 @@ the current page, using the number format specified by this element.</p>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>style [required]</dt>
-          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman', 'upper-alpha', 'lower-alpha'.</dd>
+          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
+            'upper-alpha', 'lower-alpha'.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -805,7 +823,8 @@ paragraph).</p>
 
 <h3 id="L836">page-number</h3>
 
-<p>The page-number element inserts the page number of the referenced element.</p>
+<p>The page-number element inserts the page number of the referenced
+element.</p>
 
 <div class="sidebar">
 <dl>
@@ -816,7 +835,8 @@ paragraph).</p>
         <dt>ref-id [required]</dt>
           <dd></dd>
         <dt>style [optional]</dt>
-          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman', 'upper-alpha', 'lower-alpha'.</dd>
+          <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
+            'upper-alpha', 'lower-alpha'.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -853,7 +873,7 @@ toc-sequence.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>pre-content [required]</li>
         <li>post-content [required]</li>
@@ -957,7 +977,7 @@ data.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>In this order:
+    <dd>In this order: 
       <ul>
         <li>on-toc-start [0 or more]</li>
         <li>on-volume-start [0 or more]</li>
