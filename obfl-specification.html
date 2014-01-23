@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-01-20" />
+  <meta name="dc:Date" content="2014-01-23" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 20, 2014</p>
+<p>Working draft, revised January 23, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-            <dt>Contributors:</dt>
-            <dd></dd>-->
+              <dt>Contributors:</dt>
+              <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -64,20 +64,6 @@ Contents</h2>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
-    </ul>
-  </li>
-  <li><a href="#L507">Evaluation language</a>
-    <ul>
-      <li><a href="#L509">Background</a></li>
-      <li><a href="#L520">Specification</a>
-        <ul>
-          <li><a href="#L3791">Arithmetic Operators</a></li>
-          <li><a href="#L3791">Comparison Operators</a></li>
-          <li><a href="#L3791">Logical Operators</a></li>
-          <li><a href="#L3682">Functions</a></li>
-          <li><a href="#L14889">Keywords</a></li>
-        </ul>
-      </li>
     </ul>
   </li>
   <li><a href="#L558">Elements</a>
@@ -285,125 +271,6 @@ href="#ref-xmlns">XMLNS</a>].</p>
 
 <p>It is recommended that OBFL files have the extension ".obfl" (all lowercase)
 on all platforms.</p>
-
-<h2 id="L507">Evaluation language</h2>
-
-<h3 id="L509">Background</h3>
-
-<p><strong>This section is informative.</strong></p>
-
-<p>Ideally, all logic should be handled in pre-processing, and the formatting
-document should be fixed. However, this was not possible in this case, as some
-descisions had to be made based on the result of the formatting, such as the
-volume or page of an element. Therefore, an evaluation language was needed for
-the formatting process.</p>
-
-<p>An attempt was made at finding an existing language. However, none seemed to
-suit the specific needs in this context. Either the proposed language contained
-a vast number of operations that would carry an unclear meaning (such as XPath)
-or it was too powerful for the situation (full-fledged scripting languages).
-Others were simply too obscure.</p>
-
-<p>What was needed was simple logical tests and a conditional construct. Hence,
-the OBFL evaluation language was created.</p>
-
-<h3 id="L520">Specification</h3>
-
-<p><strong>This section is normative.</strong></p>
-
-<p>The OBFL evaluation language uses prefix notation, i.e. the operator comes
-first and the arguments follow. The arguments are separated by whitespace. Each
-operation and its arguments must be surrounded with parenthesis, including the
-outermost expression.</p>
-
-<p>An argument can contain whitespace if it is surrounded by quotes.</p>
-
-<h4 id="L3791">Arithmetic Operators</h4>
-
-<p>All arithmetic operators require at least two arguments, but accepts an
-unspecified number of arguments. Each argument is evaluated against the current
-result.</p>
-
-<div class="sidebar">
-<dl>
-  <dt>+</dt>
-    <dd>Addition</dd>
-  <dt>-</dt>
-    <dd>Subtraction</dd>
-  <dt>*</dt>
-    <dd>Multiplication</dd>
-  <dt>/</dt>
-    <dd>Division</dd>
-    <dd>For example <code>(/ 20 5 4)</code> evaluates to 1.</dd>
-  <dt>%</dt>
-    <dd>Modulus</dd>
-</dl>
-</div>
-
-<h4 id="L3791">Comparison Operators</h4>
-
-<p>All comparison operators require at least two arguments, but accepts an
-unspecified number of arguments. The arguments of comparision operators are
-processed one at a time evaluating each argument against the previous argument
-in the list.</p>
-
-<div class="sidebar">
-<dl>
-  <dt>=</dt>
-    <dd>Equals</dd>
-  <dt>&lt;</dt>
-    <dd>Less than</dd>
-  <dt>&lt;=</dt>
-    <dd>Less than or equal to</dd>
-  <dt>&gt;</dt>
-    <dd>Greater than</dd>
-    <dd>For example, <code>(&gt; 20 5 4)</code> evaluates to true.</dd>
-  <dt>&gt;=</dt>
-    <dd>Greater than or equal to</dd>
-</dl>
-</div>
-
-<h4 id="L3791">Logical Operators</h4>
-
-<div class="sidebar">
-<dl>
-  <dt>&amp;</dt>
-    <dd>AND</dd>
-    <dd>Accepts two or more arguments. The arguments are processed one at a
-      time, evaluating each argument against the previous argument in the list.
-      Returns a boolean result.</dd>
-  <dt>|</dt>
-    <dd>OR</dd>
-    <dd>Accepts two or more arguments. The arguments are processed one at a
-      time, evaluating each argument against the previous argument in the list.
-      Returns a boolean result.</dd>
-  <dt>!</dt>
-    <dd>NOT</dd>
-    <dd>Accepts one or more arguments. Returns the input arguments negated.</dd>
-</dl>
-</div>
-
-<p>All logical operators require at least two arguments, but accepts an
-unspecified number of arguments.</p>
-
-<h4 id="L3682">Functions</h4>
-
-<div class="sidebar">
-<dl>
-  <dt>if</dt>
-    <dd>if takes three arguments: the expression to test (must evaluate to a
-      boolean), value when true, value when false</dd>
-  <dt>round</dt>
-    <dd>round takes one argument: the value to round (must be a number)</dd>
-</dl>
-</div>
-
-<h4 id="L14889">Keywords</h4>
-
-<p>Keywords supplied in a specific OBFL context are used by prefixing the name
-of the keyword with $. For example, the default keyword for
-volume-number-variable is volume. This could be used in an expression such as
-<code>(= $volume 1)</code>. <code></code></p>
 
 <h2 id="L558">Elements</h2>
 
@@ -688,7 +555,8 @@ the current page, using the number format specified by this element.</p>
 <h3 id="L722">evaluate</h3>
 
 <p>The evaluate element inserts the result of evaluating an expression, see the
-<a href="#L507">OBFL evaluation language</a> for more information.</p>
+<a href="obfl-evaluation-language.html">OBFL evaluation language</a> for more
+information.</p>
 
 <div class="sidebar">
 <dl>
@@ -697,7 +565,8 @@ the current page, using the number format specified by this element.</p>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
-          <dd>A valid OBFL eveluation language expression.</dd>
+          <dd>A valid <a href="obfl-evaluation-language.html">OBFL Evaluation
+            Language</a> expression.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -860,15 +729,16 @@ toc-sequence.</p>
     <dd><dl>
         <dt>volume-count-variable [optional]</dt>
           <dd>Definition of the name of the variable holding the number of
-            volumes.</dd>
+            volumes. It can be used in an expression, e.g. <code>(= $volumes 1)</code>.</dd>
           <dd>Default is 'volumes'.</dd>
         <dt>volume-number-variable [optional]</dt>
           <dd>Definition of the name of the variable holding the current volume
-            number.</dd>
+            number. It can be used in an expression, e.g. <code>(= $volume 1)</code>.</dd>
           <dd>Default is 'volume'.</dd>
         <dt>use-when [optional]</dt>
           <dd>A condition for applying the volume template, expressed using the
-            <a href="#L507">OBFL evaluation syntax</a>.</dd>
+            <a href="obfl-evaluation-language.html">OBFL Evaluation
+            Language</a>.</dd>
         <dt>sheets-in-volume-max [required]</dt>
           <dd>Defines the maximum number of sheets in a volume using this
             template.</dd>
@@ -966,7 +836,8 @@ data.</p>
           <dd>A data selection property (document/volume)</dd>
         <dt>use-when [required]</dt>
           <dd>A condition for applying the toc-sequence, expressed using the <a
-            href="#L507">OBFL evaluation syntax</a></dd>
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
         <dt>initial-page-number [optional]</dt>
           <dd>The inital page number for the sequence</dd>
         <dt>xml:lang [optional]</dt>
@@ -1003,7 +874,8 @@ data.</p>
     <dd><dl>
         <dt>use-when [optional]</dt>
           <dd>a condition for inserting the contents, expressed using the <a
-            href="#L507">OBFL evaluation syntax</a></dd>
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1025,7 +897,8 @@ TOC's.</p>
     <dd><dl>
         <dt>use-when [optional]</dt>
           <dd>a condition for inserting the contents, expressed using the <a
-            href="#L507">OBFL evaluation syntax</a></dd>
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1047,7 +920,8 @@ TOC's.</p>
     <dd><dl>
         <dt>use-when [optional]</dt>
           <dd>a condition for inserting the contents, expressed using the <a
-            href="#L507">OBFL evaluation syntax</a></dd>
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1068,7 +942,8 @@ data.</p>
     <dd><dl>
         <dt>use-when [optional]</dt>
           <dd>a condition for inserting the contents, expressed using the <a
-            href="#L507">OBFL evaluation syntax</a></dd>
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
       </dl>
     </dd>
   <dt>Content Model</dt>

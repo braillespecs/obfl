@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type"
+  content="application/xhtml+xml; charset=UTF-8" />
+  <title>OBFL Evaluation Language</title>
+  <meta name="dc:identifier" content="" />
+  <meta name="dc:Title" content="OBFL Evaluation Language" />
+  <meta name="dc:Language" content="en" />
+  <meta name="dc:Date" content="2014-01-23" />
+  <link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+
+<body>
+<h1>OBFL Evaluation Language</h1>
+
+<p>Working draft, revised January 23, 2014</p>
+<dl>
+  <dt>This version:</dt>
+    <dd><a
+      href="http://files.pef-format.org/drafts/obfl/obfl-specification.html">http://files.pef-format.org/drafts/obfl/obfl-evaluation-language.html</a></dd>
+  <dt>Author:</dt>
+    <dd>Joel Håkansson</dd>
+  <!--
+              <dt>Contributors:</dt>
+              <dd></dd>-->
+</dl>
+
+<h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
+
+<p>This document specifies the OBFL Evaluation Language, a interpreted
+evaluation language.</p>
+
+<h2 id="L71"><a class="mozTocH2" name="mozTocId427116"></a>Status of this
+Document</h2>
+
+<p>This document is a working draft.</p>
+
+<h2 id="L77"><a class="mozTocH2" name="mozTocId469583"></a>Table of
+Contents</h2>
+
+<div class="toc">
+<ul>
+  <li><a href="#L255">Introduction</a>
+    <ul>
+      <li><a href="#L261">What is OBFL Evaluation Language?</a></li>
+    </ul>
+  </li>
+  <li><a href="#L287">Definitions</a>
+    <ul>
+      <li><a href="#L295">Terminology</a></li>
+      <li><a href="#L449">Relationship to Other Specifications</a></li>
+    </ul>
+  </li>
+  <li><a href="#L520">Definition of OBFL Evaluation Language</a>
+    <ul>
+      <li><a href="#L195">Syntax</a>
+        <ul>
+          <li><a href="#L199">Parenthesis</a></li>
+          <li><a href="#L203">Whitespace</a></li>
+          <li><a href="#L14889">Variables</a></li>
+        </ul>
+      </li>
+      <li><a href="#L216">Operators</a>
+        <ul>
+          <li><a href="#L3791">Arithmetic Operators</a></li>
+          <li><a href="#L3791">Comparison Operators</a></li>
+          <li><a href="#L3791">Logical Operators</a></li>
+        </ul>
+      </li>
+      <li><a href="#L3682">Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#L784">References</a>
+    <ul>
+      <li><a href="#L786">Normative References</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<h2 id="L255">Introduction</h2>
+
+<p><strong>This section is informative.</strong> </p>
+
+<p>An evaluation language was needed for the formatting process defined by <a
+href="obfl-specification.html">OBFL</a>. The reason being that some decisions
+have to be made based on the result of the formatting, such as the volume or
+page number of an element.</p>
+
+<p>An attempt was made at finding an existing language. However, none seemed to
+suit the specific needs in this context. Either the proposed language contained
+a vast number of operations that would carry an unclear meaning (such as XPath)
+or it was too powerful for the situation (full-fledged scripting languages).
+Others were simply too obscure to be tied to an open standard.</p>
+
+<p>What was needed was simple logical tests and a conditional construct. Hence,
+the OBFL Evaluation Language was created.</p>
+
+<h3 id="L261">What is OBFL Evaluation Language?</h3>
+
+<p>The OBFL Evaluation Language is a simple evaluation language for OBFL.</p>
+
+<h2 id="L287">Definitions</h2>
+
+<p><strong>This section is normative.</strong> </p>
+
+<p>The following terms and definitions are used within this document.</p>
+
+<h3 id="L295">Terminology</h3>
+
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
+
+<h3 id="L449">Relationship to Other Specifications</h3>
+
+<p>This specification is based on the specific versions of the standards and
+specifications referenced herein, which are used as defined except as noted in
+this document. Any refinement or replacement of a referenced specification by a
+newer or different version is not directly applicable to this standard.
+Conformance to this standard is based on the versions of the standards and
+specifications in effect at the time of writing.</p>
+
+<h2 id="L520">Definition of OBFL Evaluation Language</h2>
+
+<p><strong>This section is normative.</strong></p>
+
+<h3 id="L195">Syntax</h3>
+
+<p>The OBFL Evaluation Language uses prefix notation, i.e. the operator comes
+first and the arguments follow.</p>
+
+<h4 id="L199">Parenthesis</h4>
+
+<p>Each operation and its arguments must be surrounded with parenthesis,
+including the outermost expression.</p>
+
+<h4 id="L203">Whitespace</h4>
+
+<p>Arguments are separated by whitespace. An argument can contain whitespace if
+it is surrounded by quotes.</p>
+
+<h4 id="L14889">Variables</h4>
+
+<p>Variables can be available in a specific evaluation context. Typically,
+these variables and their values are supplied to the evaluation engine at the
+time of the evaluation of the expression that uses them. A variable be accessed
+by its name prefixed by a $. For example, given that a variable with the name
+'volume' exists in the evaluation context, it can be used in an expression such
+as <code>(= $volume 1)</code>. <code></code></p>
+
+<h3 id="L216">Operators</h3>
+
+<h4 id="L3791">Arithmetic Operators</h4>
+
+<p>All arithmetic operators require at least two arguments, but accepts an
+unspecified number of arguments. Each argument is evaluated against the current
+result.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>+</dt>
+    <dd>Addition</dd>
+  <dt>-</dt>
+    <dd>Subtraction</dd>
+  <dt>*</dt>
+    <dd>Multiplication</dd>
+  <dt>/</dt>
+    <dd>Division</dd>
+    <dd>For example <code>(/ 20 5 4)</code> evaluates to 1.</dd>
+  <dt>%</dt>
+    <dd>Modulus</dd>
+</dl>
+</div>
+
+<h4 id="L3791">Comparison Operators</h4>
+
+<p>All comparison operators require at least two arguments, but accepts an
+unspecified number of arguments. The arguments of comparision operators are
+processed one at a time evaluating each argument against the previous argument
+in the list.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>=</dt>
+    <dd>Equals</dd>
+  <dt>&lt;</dt>
+    <dd>Less than</dd>
+  <dt>&lt;=</dt>
+    <dd>Less than or equal to</dd>
+  <dt>&gt;</dt>
+    <dd>Greater than</dd>
+    <dd>For example, <code>(&gt; 20 5 4)</code> evaluates to true.</dd>
+  <dt>&gt;=</dt>
+    <dd>Greater than or equal to</dd>
+</dl>
+</div>
+
+<h4 id="L3791">Logical Operators</h4>
+
+<div class="sidebar">
+<dl>
+  <dt>&amp;</dt>
+    <dd>AND</dd>
+    <dd>Accepts two or more arguments. The arguments are processed one at a
+      time, evaluating each argument against the previous argument in the list.
+      Returns a boolean result.</dd>
+  <dt>|</dt>
+    <dd>OR</dd>
+    <dd>Accepts two or more arguments. The arguments are processed one at a
+      time, evaluating each argument against the previous argument in the list.
+      Returns a boolean result.</dd>
+  <dt>!</dt>
+    <dd>NOT</dd>
+    <dd>Accepts one or more arguments. Returns the input arguments negated.</dd>
+</dl>
+</div>
+
+<p>All logical operators require at least two arguments, but accepts an
+unspecified number of arguments.</p>
+
+<h3 id="L3682">Functions</h3>
+
+<div class="sidebar">
+<dl>
+  <dt>if</dt>
+    <dd>if takes three arguments: the expression to test (must evaluate to a
+      boolean), value when true, value when false</dd>
+  <dt>round</dt>
+    <dd>round takes one argument: the value to round (must be a number)</dd>
+</dl>
+</div>
+
+<h2 id="L784">References</h2>
+
+<h3 id="L786">Normative References</h3>
+
+<p><strong>This section is normative.</strong> </p>
+<dl>
+  <dt><a name="ref-digloss" id="ref-digloss"><strong>[DI
+  Glossary]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/2005/WD-di-gloss-20050118/">Glossary of
+      Terms for Device Independence</a>", Rhys Lewis, 18 January 2005.<br />
+      <a href="http://www.w3.org/TR/di-gloss/">Latest version</a> available at:
+      http://www.w3.org/TR/di-gloss/</dd>
+  <dt><a name="ref-rfc21191"
+  id="ref-rfc21191"><strong>[RFC2119]</strong></a></dt>
+    <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
+      use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
+      1997.<br />
+      Available at: http://www.ietf.org/rfc/rfc2119.txt</dd>
+</dl>
+</body>
+</html>
