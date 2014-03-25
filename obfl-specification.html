@@ -16,7 +16,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 23, 2014</p>
+<p>Working draft, revised March 25, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-              <dt>Contributors:</dt>
-              <dd></dd>-->
+                    <dt>Contributors:</dt>
+                    <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -90,7 +90,9 @@ Contents</h2>
       <li><a href="#L1353">marker</a></li>
       <li><a href="#L1438">br</a></li>
       <li><a href="#L836">page-number</a></li>
-      <li><a href="#L849">volume-template</a></li>
+      <li><a href="#L849">span</a></li>
+      <li><a href="#L8491">style</a></li>
+      <li><a href="#L84911">volume-template</a></li>
       <li><a href="#L870">pre-content</a></li>
       <li><a href="#L888">post-content</a></li>
       <li><a href="#L906">sequence</a></li>
@@ -619,8 +621,8 @@ inserted.</p>
       group.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, toc-entry, page-number [0 or
-    more]</dd>
+    <dd>text(), leader, marker, br, evaluate, toc-entry, page-number, span,
+      style [0 or more]</dd>
 </dl>
 </div>
 
@@ -713,7 +715,54 @@ element.</p>
 </dl>
 </div>
 
-<h3 id="L849">volume-template</h3>
+<h3 id="L849">span</h3>
+
+<p>The span element represents a segment of text whose hyphenation policy or
+language is different from the surrounding text.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>toc-entry, block, content-item</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>xml:lang [optional]</dt>
+          <dd>A language as defined in <a
+            href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
+            of the XML 1.0 Recommendation [<a class="nref"
+            href="#ref-xml">XML</a>].</dd>
+        <dt>hyphenate [optional]</dt>
+          <dd>One of 'true' (default???) or 'false'.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>text(), style [0 or more]</dd>
+</dl>
+</div>
+
+<h3 id="L8491">style</h3>
+
+<p>The style element represents a segment of text with a specific style, e.g.
+emphasis or strong.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>toc-entry, block, content-item</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>name [required]</dt>
+          <dd>The name of the style.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>text(), style, marker, br [0 or more]</dd>
+</dl>
+</div>
+
+<p></p>
+
+<h3 id="L84911">volume-template</h3>
 
 <p>The volume-template element contains static contents that is to be inserted
 before or after a braille volume's body of pages. In additional to the normal
@@ -729,11 +778,13 @@ toc-sequence.</p>
     <dd><dl>
         <dt>volume-count-variable [optional]</dt>
           <dd>Definition of the name of the variable holding the number of
-            volumes. It can be used in an expression, e.g. <code>(= $volumes 1)</code>.</dd>
+            volumes. It can be used in an expression, e.g. <code>(= $volumes
+            1)</code>.</dd>
           <dd>Default is 'volumes'.</dd>
         <dt>volume-number-variable [optional]</dt>
           <dd>Definition of the name of the variable holding the current volume
-            number. It can be used in an expression, e.g. <code>(= $volume 1)</code>.</dd>
+            number. It can be used in an expression, e.g. <code>(= $volume
+            1)</code>.</dd>
           <dd>Default is 'volume'.</dd>
         <dt>use-when [optional]</dt>
           <dd>A condition for applying the volume template, expressed using the
@@ -966,7 +1017,8 @@ data.</p>
       group.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, page-number [0 or more]</dd>
+    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or
+      more]</dd>
 </dl>
 </div>
 
@@ -1001,8 +1053,8 @@ that nesting of items is not allowed.</p>
       group.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>block, text(), leader, marker, br, evaluate, page-number [0 or
-    more]</dd>
+    <dd>block, text(), leader, marker, br, evaluate, page-number, span, style
+      [0 or more]</dd>
 </dl>
 </div>
 
