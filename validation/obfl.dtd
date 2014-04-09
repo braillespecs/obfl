@@ -107,7 +107,7 @@
 <!--
 	Document root
 -->
-<!ELEMENT obfl (meta?, layout-master+, table-of-contents*, volume-template*, content-items*, sequence+)>
+<!ELEMENT obfl (meta?, layout-master+, table-of-contents*, volume-template*, collection*, sequence+)>
 <!ATTLIST obfl
 		%namespace;
 		version (2011-1) #REQUIRED
@@ -181,8 +181,8 @@
 	volume-count-variable CDATA #IMPLIED
 	sheets-in-volume-max CDATA #REQUIRED
 >
-<!ELEMENT pre-content (sequence | toc-sequence)*>
-<!ELEMENT post-content (sequence)*>
+<!ELEMENT pre-content (sequence | item-sequence | toc-sequence)*>
+<!ELEMENT post-content (sequence | item-sequence)*>
 <!ELEMENT toc-sequence (on-toc-start*, on-volume-start*, on-volume-end*, on-toc-end*)>
 <!ATTLIST toc-sequence
 	toc IDREF #REQUIRED
@@ -206,21 +206,40 @@
 <!ATTLIST on-toc-end
 	%use-when; #IMPLIED
 >
+<!ELEMENT item-sequence (on-collection-start?, on-page-start?, on-page-end?, on-collection-end?)>
+<!ATTLIST item-sequence
+	collection IDREF #REQUIRED
+	%sequenceAtts;
+>
+<!ELEMENT on-collection-start (block+)>
+<!ELEMENT on-collection-end (block+)>
+<!ELEMENT on-page-start (block+)>
+<!ELEMENT on-page-end (block+)>
+
 <!-- 
 	A sequence of blocks
 -->
-<!ELEMENT sequence (block+, float-item*)>
+<!ELEMENT sequence (page-area?, block+)>
 
 <!ATTLIST sequence
 	%sequenceAtts;
 >
 
-<!ELEMENT content-items (content-item+)>
-<!ATTLIST content-items
+<!ELEMENT page-area EMPTY>
+<!ATTLIST page-area
+    align (bottom|top) #REQUIRED
+    collection IDREF #REQUIRED
+    fallback ID #IMPLIED
+    fallback-scope (all|page) #IMPLIED
+    max-height CDATA #REQUIRED
+>
+
+<!ELEMENT collection (item+)>
+<!ATTLIST collection
 	%name-id;
 >
-<!ELEMENT content-item (%blockContents; | block)*>
-<!ATTLIST content-item
+<!ELEMENT item (%blockContents; | block)*>
+<!ATTLIST item
 	%blockAtts;
 >
 
@@ -274,8 +293,11 @@
 >
 
 <!ELEMENT anchor EMPTY>
+<!--
+	item, the achored collection item 
+-->
 <!ATTLIST anchor
-	content-item IDREF #REQUIRED
+	item IDREF #REQUIRED
 >
 <!--
 	Break line

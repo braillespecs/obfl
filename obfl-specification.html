@@ -16,7 +16,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised March 25, 2014</p>
+<p>Working draft, revised April 9, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                      <dt>Contributors:</dt>
-                      <dd></dd>-->
+                                                              <dt>Contributors:</dt>
+                                                              <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -44,14 +44,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L255">Introduction</a> 
+  <li><a href="#L255">Introduction</a>
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a> 
+  <li><a href="#L287">Definitions</a>
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -59,14 +59,14 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a> 
+  <li><a href="#L453">Definition of OBFL</a>
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a> 
+  <li><a href="#L558">Elements</a>
     <ul>
       <li><a href="#L565">obfl</a></li>
       <li><a href="#L587">meta</a></li>
@@ -74,12 +74,12 @@ Contents</h2>
       <li><a href="#L608">template</a></li>
       <li><a href="#L608-2">default-template</a></li>
       <li><a href="#L629">header</a></li>
-      <li><a href="#L647">footer</a></li>
+      <li><a href="#L6471">footer</a></li>
       <li><a href="#L665">field</a></li>
       <li><a href="#L683">marker-reference</a></li>
       <li><a href="#L696">string</a></li>
       <li><a href="#L709">current-page</a></li>
-      <li><a href="#L722">evaluate</a> 
+      <li><a href="#L722">evaluate</a>
         <ul>
           <li><a href="#L1033">Example</a></li>
         </ul>
@@ -96,29 +96,35 @@ Contents</h2>
       <li><a href="#L870">pre-content</a></li>
       <li><a href="#L888">post-content</a></li>
       <li><a href="#L906">sequence</a></li>
-      <li><a href="#L924">toc-sequence</a></li>
-      <li><a href="#L951">on-toc-start</a></li>
+      <li><a href="#L647">page-area</a></li>
+      <li><a href="#L1023">block</a></li>
+      <li><a href="#L924">item-sequence</a></li>
+      <li><a href="#L951">on-collection-start</a></li>
+      <li><a href="#L9511">on-page-start</a></li>
+      <li><a href="#L9512">on-page-end</a></li>
+      <li><a href="#L9513">on-collection-end</a></li>
+      <li><a href="#L9241">toc-sequence</a></li>
+      <li><a href="#L9514">on-toc-start</a></li>
       <li><a href="#L969">on-volume-start</a></li>
       <li><a href="#L987">on-volume-end</a></li>
       <li><a href="#L1005">on-toc-end</a></li>
-      <li><a href="#L1023">block</a></li>
-      <li><a href="#L1194">content-items</a></li>
-      <li><a href="#L1210">content-item</a></li>
+      <li><a href="#L1194">collection</a></li>
+      <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Attribute Groups</a> 
+  <li><a href="#L1608">Attribute Groups</a>
     <ul>
       <li><a href="#block-atts">Block</a></li>
       <li><a href="#borders">Borders</a></li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a> 
+  <li><a href="#L756">Rule Sets</a>
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">XML Schema Rule Set</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a> 
+  <li><a href="#L784">References</a>
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -134,17 +140,18 @@ Contents</h2>
 <h3 id="L261">What is OBFL?</h3>
 
 <p>The Open Braille Formatting Language (OBFL) is a document type that
-represents text formatting layout. It can be used for braille and other fixed
-character width contexts.</p>
+represents text formatting layout. It is designed for paged media, with the
+additional capability of media divided in physical volumes. Specifically, it is
+designed for braille, but can also be used in other fixed character width
+contexts.</p>
 
 <h3 id="L265">Why is OBFL Necessary?</h3>
 
 <p>OBFL brings a number of things to braille production:</p>
 <ul>
   <li>A braille formatting standard.</li>
-  <li>Separation of authoring formats and braille formatting enables a more
-    efficient formatter design.</li>
-  <li>Economy. Work on input format interpretation can be migrated to a other
+  <li>Separation of authoring formats and braille formatting.</li>
+  <li>Economy. Work on input format interpretation can be migrated to other
     braille formatters supporting OBFL.</li>
 </ul>
 
@@ -258,7 +265,7 @@ meet all of the following criteria:</p>
     namespace URI for OBFL is defined to be
     <dfn>http://www.daisy.org/ns/2011/obfl</dfn>. An example root element might
     look like: &lt;obfl version="2011-1"
-    xmlns="http://www.daisy.org/ns/2011/obfl"</li>
+    xmlns="http://www.daisy.org/ns/2011/obfl"&gt;</li>
 </ol>
 
 <h3 id="L493"><a name="Using1" id="Using1">Using OBFL with Other
@@ -287,7 +294,7 @@ are in the OBFL namespace.</p>
   &lt;layout-master&gt;...&lt;/layout-master&gt;
   &lt;table-of-contents&gt;...&lt;/table-of-contents&gt;
   &lt;volume-template&gt;...&lt;/volume-template&gt;
-  &lt;content-items&gt;...&lt;/content-items&gt;
+  &lt;collection&gt;...&lt;/collection&gt;
   &lt;sequence&gt;...&lt;/sequence&gt;
 &lt;/obfl&gt;</pre>
 
@@ -319,7 +326,7 @@ are in the OBFL namespace.</p>
         <li>layout-master [1 or more]</li>
         <li>table-of-contents [0 or more]</li>
         <li>volume-template [0 or more]</li>
-        <li>content-items [0 or more]</li>
+        <li>collection [0 or more]</li>
         <li>sequence [1 or more]</li>
       </ul>
     </dd>
@@ -453,7 +460,7 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 id="L647">footer</h3>
+<h3 id="L6471">footer</h3>
 
 <p>The footer element contains the page footer information. The chunks of text
 created when resolving each child elements contents are distributed in an equal
@@ -563,7 +570,7 @@ information.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item, field</dd>
+    <dd>toc-entry, block, item, field</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
@@ -634,7 +641,7 @@ the current row.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item</dd>
+    <dd>toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>align [optional]</dt>
@@ -663,7 +670,7 @@ refered to in headers and footers.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item</dd>
+    <dd>toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>class [required]</dt>
@@ -686,7 +693,7 @@ paragraph).</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item</dd>
+    <dd>toc-entry, block, item</dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -700,7 +707,7 @@ element.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item</dd>
+    <dd>toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>ref-id [required]</dt>
@@ -723,7 +730,7 @@ language is different from the surrounding text.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item</dd>
+    <dd>toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>xml:lang [optional]</dt>
@@ -748,7 +755,7 @@ emphasis or strong.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, content-item, span, style</dd>
+    <dd>toc-entry, block, item, span, style</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>name [required]</dt>
@@ -815,7 +822,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence, toc-sequence [0 or more]</dd>
+    <dd>sequence, item-sequence, toc-sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -829,7 +836,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence [0 or more]</dd>
+    <dd>sequence, item-sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -858,11 +865,202 @@ volume's body of pages.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
+    <dd>page-area [optional]</dd>
     <dd>block [1 or more]</dd>
 </dl>
 </div>
 
-<h3 id="L924">toc-sequence</h3>
+<h3 id="L647">page-area</h3>
+
+<p>The page-area element is a page anchored place-holder for items in a
+collection.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>sequence</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>align [required]</dt>
+          <dd>The alignment of the page-area on the page.</dd>
+          <dd>One of 'bottom' or 'top'.</dd>
+        <dt>collection [required]</dt>
+          <dd>The name of a collection to find items in.</dd>
+        <dt>fallback [optional]</dt>
+          <dd>An optional group id for items that does not fit within the
+            boundaries of the page-area.</dd>
+        <dt>fallback-scope [optional]</dt>
+          <dd>The scope of the reassignment option.</dd>
+          <dd>One of 'all' or 'page' (default).</dd>
+        <dt>max-height [required]</dt>
+          <dd>The maximum number of lines to use for collection items.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
+</dl>
+</div>
+
+<h3 id="L1023">block</h3>
+
+<p>The block element defines a block of text.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>on-collection-start, on-page-start, on-page-end, on-collection-end,
+      on-toc-start, on-volume-start, on-volume-end, on-toc-end, sequence</dd>
+  <dt>General Attributes</dt>
+    <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
+      group.</p>
+      <p>This element supports the <a href="#borders">Borders</a> attribute
+      group.</p>
+    </dd>
+  <dt>Special Attributes</dt>
+    <dd>The following attributes only apply to block elements in the context of
+      the text body. 
+      <dl>
+        <dt>keep-with-previous-sheets [optional]</dt>
+          <dd>Indicates that this block should be kept in the same volume as
+            the speficied number of preceeding sheets.</dd>
+          <dd>An integer in the range [0, 9]</dd>
+        <dt>keep-with-next-sheets [optional]</dt>
+          <dd>Indicates that this block should be kept in the same volume as
+            the speficied number of following sheets.</dd>
+          <dd>An integer in the range [0, 9]</dd>
+      </dl>
+    </dd>
+    <dd><dl>
+        <dt>break-before [optional]</dt>
+          <dd>Break before block begins.</dd>
+          <dd>One of 'auto', 'page'.</dd>
+        <dt>keep [optional]</dt>
+          <dd>Keep rows in this block.</dd>
+          <dd>One of 'auto', 'all'.</dd>
+        <dt>keep-with-next [optional]</dt>
+          <dd>Keep the following block's first line(s) on the same page as this
+            block.</dd>
+          <dd>An integer in the range [0, 9].</dd>
+        <dt>vertical-align [optional]</dt>
+          <dd>One of 'before', 'center', 'after'</dd>
+        <dt>vertical-position [optional]</dt>
+          <dd>Specifies a vertical position for the block, in rows.</dd>
+          <dd>A positive integer.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or
+      more]</dd>
+</dl>
+</div>
+
+<h3 id="L924">item-sequence</h3>
+
+<p>The item-sequence element contains instructions needed to render a
+collection of items before or after the body of a volume. Note that an
+item-sequence only contains static contents inserted while generating the
+sequence (on-collection-start, on-page-start, on-page-end, on-collection-end).
+The actual items are collected from the referenced collection.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>pre-content, post-content</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>master [required]</dt>
+          <dd>A reference to a page template (“layout-master”)</dd>
+        <dt>collection [required]</dt>
+          <dd>A reference to a collection, either an explicitly defined
+            collection or one defined as a fallback for another group.</dd>
+        <dt>initial-page-number [optional]</dt>
+          <dd>The inital page number for the sequence</dd>
+        <dt>xml:lang [optional]</dt>
+          <dd>The sequence's primary language as defined in <a
+            href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
+            of the XML 1.0 Recommendation [<a class="nref"
+            href="#ref-xml">XML</a>].</dd>
+        <dt>hyphenate [optional]</dt>
+          <dd>Whether or not to hyphenate text descendants</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>In this order: 
+      <ul>
+        <li>on-collection-start [optional]</li>
+        <li>on-page-start [optional]</li>
+        <li>on-page-end [optional]</li>
+        <li>on-collection-end [optional]</li>
+      </ul>
+    </dd>
+</dl>
+</div>
+
+<h3 id="L951">on-collection-start</h3>
+
+<p>The on-collection-start element defines blocks of text to insert before the
+collection items.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>item-sequence</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>block [1 or more]</dd>
+</dl>
+</div>
+
+<h3 id="L9511">on-page-start</h3>
+
+<p>The on-page-start element defines blocks of text to insert before the
+collection items on a page.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>item-sequence</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>block [1 or more]</dd>
+</dl>
+</div>
+
+<h3 id="L9512">on-page-end</h3>
+
+<p>The on-page-end element defines blocks of text to insert after the
+collection items on a page.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>item-sequence</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>block [1 or more]</dd>
+</dl>
+</div>
+
+<h3 id="L9513">on-collection-end</h3>
+
+<p>The on-collection-end element defines blocks of text to insert after the
+collection items.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>item-sequence</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>block [1 or more]</dd>
+</dl>
+</div>
+
+<h3 id="L9241">toc-sequence</h3>
 
 <p>The toc-sequence element contains instructions needed to generate a TOC's
 for braille books. Since the number of volumes and their contents is unknown
@@ -912,7 +1110,7 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L951">on-toc-start</h3>
+<h3 id="L9514">on-toc-start</h3>
 
 <p>The on-toc-start element defines blocks of text to insert before the TOC
 data.</p>
@@ -1002,27 +1200,7 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L1023">block</h3>
-
-<p>The block element defines a block of text.</p>
-
-<div class="sidebar">
-<dl>
-  <dt>Usage</dt>
-    <dd>on-toc-start, on-volume-start, on-volume-end, on-toc-end, sequence</dd>
-  <dt>Attributes</dt>
-    <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
-      group.</p>
-      <p>This element supports the <a href="#borders">Borders</a> attribute
-      group.</p>
-    </dd>
-  <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or
-      more]</dd>
-</dl>
-</div>
-
-<h3 id="L1194">content-items</h3>
+<h3 id="L1194">collection</h3>
 
 <p>Defines items to be placed somewhere within the flow, typically as page
 positioned elements, such as footnotes.</p>
@@ -1032,11 +1210,11 @@ positioned elements, such as footnotes.</p>
   <dt>Usage</dt>
     <dd>obfl</dd>
   <dt>Content Model</dt>
-    <dd>content-item [0 or more]</dd>
+    <dd>item [0 or more]</dd>
 </dl>
 </div>
 
-<h3 id="L1210">content-item</h3>
+<h3 id="L1210">item</h3>
 
 <p>Defines the formatting of an item that should be inserted somewhere in the
 flow. The behavior of this element is similar to the toc-entry element, except
@@ -1045,7 +1223,7 @@ that nesting of items is not allowed.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>content-items</dd>
+    <dd>collection</dd>
   <dt>Attributes</dt>
     <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
       group.</p>
@@ -1066,9 +1244,6 @@ that nesting of items is not allowed.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>break-before [optional]</dt>
-    <dd>Break before block begins.</dd>
-    <dd>One of 'auto', 'page'.</dd>
   <dt>first-line-indent [optional]</dt>
     <dd>Indent of the first line of a block (in characters)</dd>
     <dd>A number.</dd>
@@ -1079,21 +1254,6 @@ that nesting of items is not allowed.</p>
   <dt>block-indent [optional]</dt>
     <dd>Indent of this block's block children (in characters)</dd>
     <dd>A number.</dd>
-  <dt>keep [optional]</dt>
-    <dd>Keep rows in this block.</dd>
-    <dd>One of 'auto', 'all'.</dd>
-  <dt>keep-with-next [optional]</dt>
-    <dd>Keep the following block's first line(s) on the same page as this
-    block.</dd>
-    <dd>An integer in the range [0, 9].</dd>
-  <dt>keep-with-previous-sheets [optional]</dt>
-    <dd>Indicates that this block should be kept in the same volume as the
-      speficied number of preceeding sheets.</dd>
-    <dd>An integer in the range [0, 9]</dd>
-  <dt>keep-with-next-sheets [optional]</dt>
-    <dd>Indicates that this block should be kept in the same volume as the
-      speficied number of following sheets.</dd>
-    <dd>An integer in the range [0, 9]</dd>
   <dt>list-type [optional]</dt>
     <dd>The type of list for this block.</dd>
     <dd>One of 'none' (default), 'ol', 'ul', 'pl'.</dd>
@@ -1112,12 +1272,6 @@ that nesting of items is not allowed.</p>
   <dt>align [optional]</dt>
     <dd>Specifies the text alignment.</dd>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>
-  <dt>vertical-align [optional]</dt>
-    <dd>One of 'before', 'center', 'after'</dd>
-  <dt>vertical-position [optional]</dt>
-    <dd>Specifies a vertical position for the block, in rows.</dd>
-    <dd>A positive integer.</dd>
-    <dd></dd>
   <dt>id [optional]</dt>
     <dd>An identifier.</dd>
   <dt>row-spacing [optional]</dt>
