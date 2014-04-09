@@ -238,10 +238,6 @@
 <!ATTLIST collection
 	%name-id;
 >
-<!ELEMENT item (%blockContents; | block)*>
-<!ATTLIST item
-	%blockAtts;
->
 
 <!--
 	A block of text
@@ -251,6 +247,12 @@
 <!ATTLIST block
 	%blockAtts;
 >
+
+<!ELEMENT item (%blockContents; | block)*>
+<!ATTLIST item
+	%blockAtts;
+>
+
 <!ELEMENT span (#PCDATA | style)*>
 <!ATTLIST span
 	%textAtts;
