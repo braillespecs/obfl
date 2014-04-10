@@ -16,7 +16,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised April 9, 2014</p>
+<p>Working draft, revised April 10, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                              <dt>Contributors:</dt>
-                                                              <dd></dd>-->
+                                                                  <dt>Contributors:</dt>
+                                                                  <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -98,7 +98,8 @@ Contents</h2>
       <li><a href="#L906">sequence</a></li>
       <li><a href="#L647">page-area</a></li>
       <li><a href="#L1023">block</a></li>
-      <li><a href="#L924">item-sequence</a></li>
+      <li><a href="#L924">anchor</a></li>
+      <li><a href="#L9242">item-sequence</a></li>
       <li><a href="#L951">on-collection-start</a></li>
       <li><a href="#L9511">on-page-start</a></li>
       <li><a href="#L9512">on-page-end</a></li>
@@ -949,12 +950,32 @@ collection.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or
-      more]</dd>
+    <dd>text(), leader, marker, br, evaluate, page-number, span, style, anchor,
+      block [0 or more]</dd>
 </dl>
 </div>
 
-<h3 id="L924">item-sequence</h3>
+<h3 id="L924">anchor</h3>
+
+<p>The anchor element references an item in a collection, suggesting that the
+item has a connection to the text near the location of the anchor.</p>
+
+<div class="sidebar">
+<dl>
+  <dt>Usage</dt>
+    <dd>block</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>item [required]</dt>
+          <dd>A reference to an item id.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
+</dl>
+</div>
+
+<h3 id="L9242">item-sequence</h3>
 
 <p>The item-sequence element contains instructions needed to render a
 collection of items before or after the body of a volume. Note that an

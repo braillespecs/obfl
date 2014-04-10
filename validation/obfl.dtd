@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ENTITY % blockContents "#PCDATA | leader | marker | anchor | br | evaluate | page-number | span | style">
+<!ENTITY % blockContents "#PCDATA | leader | marker | br | evaluate | page-number | span | style">
 <!ENTITY % namespace "xmlns CDATA #FIXED 'http://www.daisy.org/ns/2011/obfl'">
 <!ENTITY % row-spacing "row-spacing CDATA #IMPLIED">
 <!ENTITY % style "style (default|roman|upper-roman|lower-roman|upper-alpha|lower-alpha)">
@@ -242,7 +242,7 @@
 <!--
 	A block of text
 -->
-<!ELEMENT block (%blockContents; | block)*>
+<!ELEMENT block (%blockContents; | anchor | block)*>
 
 <!ATTLIST block
 	%blockAtts;
@@ -250,6 +250,7 @@
 
 <!ELEMENT item (%blockContents; | block)*>
 <!ATTLIST item
+	id ID #REQUIRED
 	%blockAtts;
 >
 
