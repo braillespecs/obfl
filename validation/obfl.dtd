@@ -120,7 +120,7 @@
 <!--
 	Layout master
 -->
-<!ELEMENT layout-master (template*, default-template)>
+<!ELEMENT layout-master (template*, default-template, page-area?)>
 <!ATTLIST layout-master
 	%name-id;
 	page-width CDATA #REQUIRED
@@ -219,7 +219,7 @@
 <!-- 
 	A sequence of blocks
 -->
-<!ELEMENT sequence (page-area?, block+)>
+<!ELEMENT sequence (block+)>
 
 <!ATTLIST sequence
 	%sequenceAtts;
@@ -227,7 +227,7 @@
 
 <!ELEMENT page-area EMPTY>
 <!ATTLIST page-area
-    align (bottom|top) #REQUIRED
+    align (bottom|top) #IMPLIED
     collection IDREF #REQUIRED
     fallback ID #IMPLIED
     fallback-scope (all|page) #IMPLIED
