@@ -225,13 +225,23 @@
 	%sequenceAtts;
 >
 
-<!ELEMENT page-area EMPTY>
+<!ELEMENT page-area (before?, after?)>
 <!ATTLIST page-area
     align (bottom|top) #IMPLIED
     collection IDREF #REQUIRED
     fallback ID #IMPLIED
     fallback-scope (all|page) #IMPLIED
     max-height CDATA #REQUIRED
+>
+
+<!ELEMENT before (%blockContents; | block)*>
+<!ATTLIST before
+	%blockAtts;
+>
+
+<!ELEMENT after (%blockContents; | block)*>
+<!ATTLIST after
+	%blockAtts;
 >
 
 <!ELEMENT collection (item+)>
