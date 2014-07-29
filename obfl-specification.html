@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                      <dt>Contributors:</dt>
-                                                                                      <dd></dd>-->
+                                                                                                  <dt>Contributors:</dt>
+                                                                                                  <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -44,9 +44,6 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L62">Abstract</a></li>
-  <li><a href="#L71">Status of this Document</a></li>
-  <li><a href="#L77">Table of Contents</a></li>
   <li><a href="#L255">Introduction</a>
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
@@ -118,7 +115,16 @@ Contents</h2>
       <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Attribute Groups</a>
+  <li><a href="#L1608">Special Attributes</a>
+    <ul>
+      <li><a href="#L21839">hyphenate</a>
+        <ul>
+          <li><a href="#L21851">Example</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#L16081">Attribute Groups</a>
     <ul>
       <li><a href="#block-atts">Block</a></li>
       <li><a href="#borders">Borders</a></li>
@@ -322,7 +328,10 @@ are in the OBFL namespace.</p>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
         <dt>hyphenate [optional]</dt>
-          <dd>One of 'true' (default???) or 'false'.</dd>
+          <dd>Whether or not to hyphenate text descendants. </dd>
+          <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -492,7 +501,7 @@ area.</p>
     <dd>page-area</dd>
   <dt>Attributes</dt>
     <dd>This element supports the <a href="#block-atts">Block</a> attribute
-      group.
+      group. 
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -513,7 +522,7 @@ area.</p>
     <dd>page-area</dd>
   <dt>Attributes</dt>
     <dd>This element supports the <a href="#block-atts">Block</a> attribute
-      group.
+      group. 
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -824,7 +833,10 @@ language is different from the surrounding text.</p>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
         <dt>hyphenate [optional]</dt>
+          <dd>Whether or not to hyphenate text descendants. </dd>
           <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -945,8 +957,10 @@ volume's body of pages.</p>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
         <dt>hyphenate [optional]</dt>
-          <dd>whether or not to hyphenate text descendants</dd>
+          <dd>Whether or not to hyphenate text descendants. </dd>
           <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1055,7 +1069,10 @@ The actual items are collected from the referenced collection.</p>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
         <dt>hyphenate [optional]</dt>
-          <dd>Whether or not to hyphenate text descendants</dd>
+          <dd>Whether or not to hyphenate text descendants. </dd>
+          <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1169,7 +1186,10 @@ data.</p>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
         <dt>hyphenate [optional]</dt>
-          <dd>Whether or not to hyphenate text descendants</dd>
+          <dd>Whether or not to hyphenate text descendants. </dd>
+          <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1318,7 +1338,76 @@ that nesting of items is not allowed.</p>
 
 <p></p>
 
-<h2 id="L1608">Attribute Groups</h2>
+<h2 id="L1608">Special Attributes</h2>
+
+<h3 id="L21839">hyphenate</h3>
+
+<p>The overall hyphenation policy should be determined by the implementing
+application, for example per job or in a system setting. A user's preference
+should be respected, unless doing so would render the text difficult to read or
+interpret for some reason. The hyphenate attribute can be used when detailed
+control over hyphenation is required, e.g. to ensure proper rendering of
+content that may be difficult to interpret if hyphenated, such as
+hyperlinks.</p>
+
+<p>The value of the hyphenate attribute can either be 'true' or 'false'. The
+value 'true' indicates that a hyphenation algorithm should be applied to the
+text contents, i.e. add hyphenation information to the text. The value 'false'
+indicates that a hyphenation algorithm should <strong>NOT</strong> be applied
+to the text contents. However, obvious hyphention points that were already in
+the text to begin with <em>may</em> be used to hyphenate. Examples of
+hyphenation points that may be used to hyphenate even when the value of the
+hyphenate attribute is 'false' include (but are not limited to): SOFT HYPHEN
+(00ad) and ZERO WIDTH SPACE (200b).</p>
+
+<h4 id="L21851">Example</h4>
+
+<p>The following table illustrates the output for different combinations of
+input text and hyphenate attribute value (the first row has room for three more
+characters):</p>
+
+<table border="1" width="300px">
+  <thead>
+    <tr>
+      <th>input</th>
+      <th>hyphenate</th>
+      <th>output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">ex-ample</td>
+      <td>true</td>
+      <td>ex- 
+
+        <p>ample</p>
+      </td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>ex- 
+
+        <p>ample</p>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="2">example</td>
+      <td>true</td>
+      <td>ex- 
+
+        <p>ample</p>
+      </td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td><p><br />
+        example</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="L16081">Attribute Groups</h2>
 
 <h3 id="block-atts">Block</h3>
 
@@ -1363,8 +1452,10 @@ that nesting of items is not allowed.</p>
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of the
       XML 1.0 Recommendation [<a class="nref" href="#ref-xml">XML</a>].</dd>
   <dt>hyphenate [optional]</dt>
-    <dd>Whether or not to hyphenate text descendants.</dd>
+    <dd>Whether or not to hyphenate text descendants. </dd>
     <dd>One of 'true' or 'false'.</dd>
+    <dd>See the <a href="#L21839">attribute description</a> for more
+      information.</dd>
 </dl>
 </div>
 
