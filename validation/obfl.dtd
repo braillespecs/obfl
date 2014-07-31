@@ -225,12 +225,12 @@
 	%sequenceAtts;
 >
 
+<!--fallback-scope (all|page) #IMPLIED -->
 <!ELEMENT page-area (before?, after?)>
 <!ATTLIST page-area
     align (bottom|top) #IMPLIED
     collection IDREF #REQUIRED
     fallback ID #IMPLIED
-    fallback-scope (all|page) #IMPLIED
     max-height CDATA #REQUIRED
 >
 

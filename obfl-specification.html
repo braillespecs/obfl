@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-07-29" />
+  <meta name="dc:Date" content="2014-07-31" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised July 29, 2014</p>
+<p>Working draft, revised July 31, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                                  <dt>Contributors:</dt>
-                                                                                                  <dd></dd>-->
+                                                                                                    <dt>Contributors:</dt>
+                                                                                                    <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -44,14 +44,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L255">Introduction</a>
+  <li><a href="#L255">Introduction</a> 
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a>
+  <li><a href="#L287">Definitions</a> 
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -59,14 +59,14 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a>
+  <li><a href="#L453">Definition of OBFL</a> 
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a>
+  <li><a href="#L558">Elements</a> 
     <ul>
       <li><a href="#L565">obfl</a></li>
       <li><a href="#L587">meta</a></li>
@@ -82,7 +82,7 @@ Contents</h2>
       <li><a href="#L683">marker-reference</a></li>
       <li><a href="#L696">string</a></li>
       <li><a href="#L709">current-page</a></li>
-      <li><a href="#L722">evaluate</a>
+      <li><a href="#L722">evaluate</a> 
         <ul>
           <li><a href="#L1033">Example</a></li>
         </ul>
@@ -115,28 +115,28 @@ Contents</h2>
       <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Special Attributes</a>
+  <li><a href="#L1608">Special Attributes</a> 
     <ul>
-      <li><a href="#L21839">hyphenate</a>
+      <li><a href="#L21839">hyphenate</a> 
         <ul>
           <li><a href="#L21851">Example</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#L16081">Attribute Groups</a>
+  <li><a href="#L16081">Attribute Groups</a> 
     <ul>
       <li><a href="#block-atts">Block</a></li>
       <li><a href="#borders">Borders</a></li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a>
+  <li><a href="#L756">Rule Sets</a> 
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">XML Schema Rule Set</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a>
+  <li><a href="#L784">References</a> 
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -471,11 +471,10 @@ collection.</p>
         <dt>collection [required]</dt>
           <dd>The name of a collection to find items in.</dd>
         <dt>fallback [optional]</dt>
-          <dd>An optional group id for items that does not fit within the
+          <dd>An optional group id to move items to if they not fit within the
             boundaries of the page-area.</dd>
-        <dt>fallback-scope [optional]</dt>
-          <dd>The scope of the reassignment option.</dd>
-          <dd>One of 'all' or 'page' (default).</dd>
+          <dd>All items in the collection should be reassigned if the fallback
+            condition is triggered.</dd>
         <dt>max-height [required]</dt>
           <dd>The maximum number of lines to use for collection items.</dd>
       </dl>
@@ -664,7 +663,7 @@ information.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item, field</dd>
+    <dd>before, after, field, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
@@ -735,7 +734,7 @@ the current row.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>align [optional]</dt>
@@ -764,7 +763,7 @@ refered to in headers and footers.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>class [required]</dt>
@@ -787,7 +786,7 @@ paragraph).</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item</dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
@@ -801,7 +800,7 @@ element.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>ref-id [required]</dt>
@@ -824,7 +823,7 @@ language is different from the surrounding text.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>xml:lang [optional]</dt>
@@ -852,7 +851,7 @@ emphasis or strong.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-entry, block, item, span, style</dd>
+    <dd>before, after, toc-entry, block, item, span, style</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>name [required]</dt>
