@@ -155,7 +155,7 @@
 <!ATTLIST marker-reference
 	marker NMTOKEN #REQUIRED
 	direction (forward|backward) #REQUIRED
-	scope (page_content|page|sequence) #REQUIRED
+	scope (page-content|page|sequence) #REQUIRED
 >
 <!ELEMENT string EMPTY>
 <!ATTLIST string
