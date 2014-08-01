@@ -208,6 +208,7 @@
 <!ELEMENT item-sequence (on-collection-start?, on-page-start?, on-page-end?, on-collection-end?)>
 <!ATTLIST item-sequence
 	collection IDREF #REQUIRED
+	range (document|volume) #REQUIRED
 	%sequenceAtts;
 >
 <!ELEMENT on-collection-start (block+)>
