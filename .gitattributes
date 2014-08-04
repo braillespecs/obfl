@@ -3,6 +3,7 @@
 /build.xml -text
 /default.css -text
 examples/example1.obfl -text
+/markup.js -text
 /obfl-evaluation-language.html -text svneol=unset#text/plain
 /obfl-specification.html -text
 validation/obfl.dtd -text

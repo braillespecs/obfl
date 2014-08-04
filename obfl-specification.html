@@ -310,18 +310,18 @@ are in the OBFL namespace.</p>
   &lt;sequence&gt;...&lt;/sequence&gt;
 &lt;/obfl&gt;</pre>
 
-<h3 id="L565">obfl</h3>
+<h3 id="L565" class="include">obfl</h3>
 
 <p>The obfl element is the root element of a OBFL document.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>The obfl element is the root element of an OBFL document.</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>version [required]</dt>
-          <dd>The string '2011-1'</dd>
+          <dd class="no-markup">The string '2011-1'</dd>
         <dt>xml:lang [required]</dt>
           <dd>The document's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -348,12 +348,12 @@ are in the OBFL namespace.</p>
 </dl>
 </div>
 
-<h3 id="L587">meta</h3>
+<h3 id="L587" class="include">meta</h3>
 
 <p>The meta element contains meta data, e.g. Dublin Core. Currently, any
 element is allowed, however a stricter set of elements might be more useful.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
@@ -362,13 +362,13 @@ element is allowed, however a stricter set of elements might be more useful.</p>
 </dl>
 </div>
 
-<h3 id="L5871">layout-master</h3>
+<h3 id="L5871" class="include">layout-master</h3>
 
 <p>The layout-master element defines the appearence of pages in the sequences
 where the layout-master is applied. It contains page template information, such
 as the width and height of pages.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
@@ -408,13 +408,13 @@ as the width and height of pages.</p>
 </dl>
 </div>
 
-<h3 id="L608">template</h3>
+<h3 id="L608" class="include">template</h3>
 
 <p>The template element contains template information that applies under
 specific conditions. The template conditions are tested in document order, and
 the first template whose condition returns true is applied.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>layout-master</dd>
@@ -434,13 +434,13 @@ the first template whose condition returns true is applied.</p>
 </dl>
 </div>
 
-<h3 id="L608-2">default-template</h3>
+<h3 id="L608-2" class="include">default-template</h3>
 
 <p>The default-template element contains the same type of information as the
 template element and acts as a fallback when no previous template element
 applies.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>layout-master</dd>
@@ -454,12 +454,12 @@ applies.</p>
 </dl>
 </div>
 
-<h3 id="L647">page-area</h3>
+<h3 id="L647" class="include">page-area</h3>
 
 <p>The page-area element is a page anchored place-holder for items in a
 collection.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>layout-master</dd>
@@ -489,12 +489,12 @@ collection.</p>
 </dl>
 </div>
 
-<h3 id="L629">before</h3>
+<h3 id="L629" class="include">before</h3>
 
 <p>The before element contains blocks to insert before the contents of the page
 area.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>page-area</dd>
@@ -510,12 +510,12 @@ area.</p>
 </dl>
 </div>
 
-<h3 id="L6291">after</h3>
+<h3 id="L6291" class="include">after</h3>
 
 <p>The after element contains blocks to insert after the contents of the page
 area.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>page-area</dd>
@@ -531,13 +531,13 @@ area.</p>
 </dl>
 </div>
 
-<h3 id="L62911">header</h3>
+<h3 id="L62911" class="include">header</h3>
 
 <p>The header element contains the page header information. The chunks of text
 created when resolving each child elements contents are distributed in an equal
 spaced cell grid over a single row.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>template, default-template</dd>
@@ -553,13 +553,13 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 id="L6471">footer</h3>
+<h3 id="L6471" class="include">footer</h3>
 
 <p>The footer element contains the page footer information. The chunks of text
 created when resolving each child elements contents are distributed in an equal
 spaced cell grid over a single row.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>template, default-template</dd>
@@ -575,11 +575,11 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 id="L665">field</h3>
+<h3 id="L665" class="include">field</h3>
 
 <p>The field element contains data.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>header, footer</dd>
@@ -588,13 +588,13 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 id="L683">marker-reference</h3>
+<h3 id="L683" class="include">marker-reference</h3>
 
 <p>The marker-reference element indicates that it should resolve to the value
 of a marker of the same class in the direction and scope specified by this
 element.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
@@ -613,19 +613,19 @@ element.</p>
 </dl>
 </div>
 
-<h3 id="L696">string</h3>
+<h3 id="L696" class="include">string</h3>
 
 <p>The string element indicates that it should resolve to the contents of its
 value attribute.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>value [required]</dt>
-          <dd>The string to output</dd>
+          <dd class="no-markup">The string to output</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -633,12 +633,12 @@ value attribute.</p>
 </dl>
 </div>
 
-<h3 id="L709">current-page</h3>
+<h3 id="L709" class="include">current-page</h3>
 
 <p>The current-page element indicates that it should resolve to the value of
 the current page, using the number format specified by this element.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>field</dd>
@@ -654,13 +654,13 @@ the current page, using the number format specified by this element.</p>
 </dl>
 </div>
 
-<h3 id="L722">evaluate</h3>
+<h3 id="L722" class="include">evaluate</h3>
 
 <p>The evaluate element inserts the result of evaluating an expression, see the
 <a href="obfl-evaluation-language.html">OBFL evaluation language</a> for more
 information.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, field, toc-entry, block, item</dd>
@@ -680,14 +680,14 @@ information.</p>
 
 <p><code>&lt;evaluate expression="(= 0 1)"/&gt;</code></p>
 
-<h3 id="L735">table-of-contents</h3>
+<h3 id="L735" class="include">table-of-contents</h3>
 
 <p>The table-of-contents element defines the entries in a table of contents.
 Note that this element only specifies formatting of data in a table of
 contents, it does not by it self specify that a table of contents should be
 inserted.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
@@ -702,11 +702,11 @@ inserted.</p>
 </dl>
 </div>
 
-<h3 id="L1105">toc-entry</h3>
+<h3 id="L1105" class="include">toc-entry</h3>
 
 <p>The toc-entry element defines an entry in a table of contents.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>table-of-contents</dd>
@@ -726,12 +726,12 @@ inserted.</p>
 </dl>
 </div>
 
-<h3 id="L1207">leader</h3>
+<h3 id="L1207" class="include">leader</h3>
 
 <p>The leader element moves the location of the following piece of text within
 the current row.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item</dd>
@@ -755,12 +755,12 @@ the current row.</p>
 </dl>
 </div>
 
-<h3 id="L1353">marker</h3>
+<h3 id="L1353" class="include">marker</h3>
 
 <p>The marker element provides locations for classes of values that may be
 refered to in headers and footers.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item</dd>
@@ -778,12 +778,12 @@ refered to in headers and footers.</p>
 </dl>
 </div>
 
-<h3 id="L1438">br</h3>
+<h3 id="L1438" class="include">br</h3>
 
 <p>The br element provides a line break within a block of text (i.e. a
 paragraph).</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item</dd>
@@ -792,12 +792,12 @@ paragraph).</p>
 </dl>
 </div>
 
-<h3 id="L836">page-number</h3>
+<h3 id="L836" class="include">page-number</h3>
 
 <p>The page-number element inserts the page number of the referenced
 element.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item</dd>
@@ -815,12 +815,12 @@ element.</p>
 </dl>
 </div>
 
-<h3 id="L849">span</h3>
+<h3 id="L849" class="include">span</h3>
 
 <p>The span element represents a segment of text whose hyphenation policy or
 language is different from the surrounding text.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item</dd>
@@ -843,12 +843,12 @@ language is different from the surrounding text.</p>
 </dl>
 </div>
 
-<h3 id="L8491">style</h3>
+<h3 id="L8491" class="include">style</h3>
 
 <p>The style element represents a segment of text with a specific style, e.g.
 emphasis or strong.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, toc-entry, block, item, span, style</dd>
@@ -865,7 +865,7 @@ emphasis or strong.</p>
 
 <p></p>
 
-<h3 id="L84911">volume-template</h3>
+<h3 id="L84911" class="include">volume-template</h3>
 
 <p>The volume-template element contains static contents that is to be inserted
 before or after a braille volume's body of pages. In additional to the normal
@@ -873,7 +873,7 @@ sequences that can be used to create static contents such as information about
 the author and title of the book, there is a special sequence called
 toc-sequence.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
@@ -890,12 +890,12 @@ toc-sequence.</p>
             1)</code>.</dd>
           <dd>Default is 'volume'.</dd>
         <dt>use-when [optional]</dt>
-          <dd>A condition for applying the volume template, expressed using the
+          <dd>A condition for applying the volume-template, expressed using the
             <a href="obfl-evaluation-language.html">OBFL Evaluation
             Language</a>.</dd>
         <dt>sheets-in-volume-max [required]</dt>
           <dd>Defines the maximum number of sheets in a volume using this
-            template.</dd>
+            volume-template.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -908,12 +908,12 @@ toc-sequence.</p>
 </dl>
 </div>
 
-<h3 id="L870">pre-content</h3>
+<h3 id="L870" class="include">pre-content</h3>
 
 <p>The pre-content element defines contents that should preceed a braille
 volume's body of pages.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>volume-template</dd>
@@ -922,12 +922,12 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L888">post-content</h3>
+<h3 id="L888" class="include">post-content</h3>
 
 <p>The post-content element defines contents that should follow a braille
 volume's body of pages.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>volume-template</dd>
@@ -936,11 +936,11 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L906">sequence</h3>
+<h3 id="L906" class="include">sequence</h3>
 
 <p>The sequence element contains the text body.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>volume-template, obfl</dd>
@@ -967,11 +967,11 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L1023">block</h3>
+<h3 id="L1023" class="include">block</h3>
 
 <p>The block element defines a block of text.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>before, after, on-collection-start, on-page-start, on-page-end,
@@ -1021,12 +1021,12 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L924">anchor</h3>
+<h3 id="L924" class="include">anchor</h3>
 
 <p>The anchor element references an item in a collection, suggesting that the
 item has a connection to the text near the location of the anchor.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>block</dd>
@@ -1041,7 +1041,7 @@ item has a connection to the text near the location of the anchor.</p>
 </dl>
 </div>
 
-<h3 id="L9242">item-sequence</h3>
+<h3 id="L9242" class="include">item-sequence</h3>
 
 <p>The item-sequence element contains instructions needed to render a
 collection of items before or after the body of a volume. Note that an
@@ -1049,19 +1049,17 @@ item-sequence only contains static contents inserted while generating the
 sequence (on-collection-start, on-page-start, on-page-end, on-collection-end).
 The actual items are collected from the referenced collection.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>pre-content, post-content</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>master [required]</dt>
-          <dd>A reference to a page template (“layout-master”)</dd>
+          <dd>A reference to a layout-master</dd>
         <dt>collection [required]</dt>
           <dd>A reference to a collection, either an explicitly defined
             collection or one defined as a fallback for another group.</dd>
-		<dt>range [required]</dt>
-          <dd>A data selection property (document/volume)</dd>
         <dt>initial-page-number [optional]</dt>
           <dd>The inital page number for the sequence</dd>
         <dt>xml:lang [optional]</dt>
@@ -1088,12 +1086,12 @@ The actual items are collected from the referenced collection.</p>
 </dl>
 </div>
 
-<h3 id="L951">on-collection-start</h3>
+<h3 id="L951" class="include">on-collection-start</h3>
 
 <p>The on-collection-start element defines blocks of text to insert before the
 collection items.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>item-sequence</dd>
@@ -1104,12 +1102,12 @@ collection items.</p>
 </dl>
 </div>
 
-<h3 id="L9511">on-page-start</h3>
+<h3 id="L9511" class="include">on-page-start</h3>
 
 <p>The on-page-start element defines blocks of text to insert before the
 collection items on a page.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>item-sequence</dd>
@@ -1120,12 +1118,12 @@ collection items on a page.</p>
 </dl>
 </div>
 
-<h3 id="L9512">on-page-end</h3>
+<h3 id="L9512" class="include">on-page-end</h3>
 
 <p>The on-page-end element defines blocks of text to insert after the
 collection items on a page.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>item-sequence</dd>
@@ -1136,12 +1134,12 @@ collection items on a page.</p>
 </dl>
 </div>
 
-<h3 id="L9513">on-collection-end</h3>
+<h3 id="L9513" class="include">on-collection-end</h3>
 
 <p>The on-collection-end element defines blocks of text to insert after the
 collection items.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>item-sequence</dd>
@@ -1152,7 +1150,7 @@ collection items.</p>
 </dl>
 </div>
 
-<h3 id="L9241">toc-sequence</h3>
+<h3 id="L9241" class="include">toc-sequence</h3>
 
 <p>The toc-sequence element contains instructions needed to generate a TOC's
 for braille books. Since the number of volumes and their contents is unknown
@@ -1163,22 +1161,26 @@ inserted while generating the toc (on-toc-start, on-volume-start, on-volume-end
 and on-toc-end). The actual TOC entries are collected from the referenced toc
 data.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>pre-content</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>master [required]</dt>
-          <dd>A reference to a page template (“layout-master”)</dd>
+          <dd>A reference to a layout-master</dd>
         <dt>toc [required]</dt>
-          <dd>A reference to TOC data (“table-of-contents”)</dd>
+          <dd>A reference to a table-of-contents</dd>
         <dt>range [required]</dt>
           <dd>A data selection property (document/volume)</dd>
+        <dt>use-when [required]</dt>
+          <dd>A condition for applying the toc-sequence, expressed using the <a
+            href="obfl-evaluation-language.html">OBFL Evaluation
+          Language</a></dd>
         <dt>initial-page-number [optional]</dt>
-          <dd>The inital page number for the sequence</dd>
+          <dd>The inital page number for the toc-sequence</dd>
         <dt>xml:lang [optional]</dt>
-          <dd>The sequence's primary language as defined in <a
+          <dd>The toc-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
@@ -1201,12 +1203,12 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L9514">on-toc-start</h3>
+<h3 id="L9514" class="include">on-toc-start</h3>
 
 <p>The on-toc-start element defines blocks of text to insert before the TOC
 data.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>toc-sequence</dd>
@@ -1223,13 +1225,13 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L969">on-volume-start</h3>
+<h3 id="L969" class="include">on-volume-start</h3>
 
 <p>The on-volume-start element defines blocks of text to insert before the TOC
 data of a volume. Note that this element only applies to document range
 TOC's.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>toc-sequence</dd>
@@ -1246,13 +1248,13 @@ TOC's.</p>
 </dl>
 </div>
 
-<h3 id="L987">on-volume-end</h3>
+<h3 id="L987" class="include">on-volume-end</h3>
 
 <p>The on-volume-end element defines blocks of text to insert after the TOC
 data of a volume. Note that this element only applies to document range
 TOC's.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>toc-sequence</dd>
@@ -1269,12 +1271,12 @@ TOC's.</p>
 </dl>
 </div>
 
-<h3 id="L1005">on-toc-end</h3>
+<h3 id="L1005" class="include">on-toc-end</h3>
 
 <p>The on-toc-end element defines blocks of text to insert after the TOC
 data.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>toc-sequence</dd>
@@ -1291,12 +1293,12 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L1194">collection</h3>
+<h3 id="L1194" class="include">collection</h3>
 
 <p>Defines items to be placed somewhere within the flow, typically as page
 positioned elements, such as footnotes.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>obfl</dd>
@@ -1311,13 +1313,13 @@ positioned elements, such as footnotes.</p>
 </dl>
 </div>
 
-<h3 id="L1210">item</h3>
+<h3 id="L1210" class="include">item</h3>
 
 <p>Defines the formatting of an item that should be inserted somewhere in the
 flow. The behavior of this element is similar to the toc-entry element, except
 that nesting of items is not allowed.</p>
 
-<div class="sidebar">
+<div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
     <dd>collection</dd>
@@ -1590,5 +1592,6 @@ of this specification.</p>
     <dd>"<a href="examples/example1.obfl">examples/example1.obfl</a>". A short
       OBFL example containing useage examples of most of the elements.</dd>
 </dl>
+  <script type="text/javascript" src="markup.js"></script>
 </body>
 </html>
