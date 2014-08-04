@@ -312,7 +312,7 @@ are in the OBFL namespace.</p>
 
 <h3 id="L565" class="include">obfl</h3>
 
-<p>The obfl element is the root element of a OBFL document.</p>
+<p>The obfl element is the root element of an OBFL document.</p>
 
 <div class="sidebar markup">
 <dl>
@@ -943,13 +943,13 @@ volume's body of pages.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>volume-template, obfl</dd>
+    <dd>obfl, pre-content, post-content</dd>
   <dt>Attributes</dt>
     <dd><dl>
+        <dt>master [required]</dt>
+          <dd>Name of layout-master to use for this sequence.</dd>
         <dt>initial-page-number [optional]</dt>
           <dd>the inital page number for the sequence</dd>
-        <dt>master [required]</dt>
-          <dd>Name of master to use for this sequence.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>the sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
