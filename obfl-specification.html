@@ -999,7 +999,7 @@ volume's body of pages.</p>
     </dd>
     <dd><dl>
         <dt>break-before [optional]</dt>
-          <dd>Break before block begins.</dd>
+          <dd class="no-markup">Break before block begins.</dd>
           <dd>One of 'auto', 'page'.</dd>
         <dt>keep [optional]</dt>
           <dd>Keep rows in this block.</dd>
@@ -1060,10 +1060,13 @@ The actual items are collected from the referenced collection.</p>
         <dt>collection [required]</dt>
           <dd>A reference to a collection, either an explicitly defined
             collection or one defined as a fallback for another group.</dd>
+        <dt>range [required]</dt>
+          <dd>A data selection property.</dd>
+          <dd>One of 'document' or 'volume'.</dd>
         <dt>initial-page-number [optional]</dt>
-          <dd>The inital page number for the sequence</dd>
+          <dd>The inital page number for the item-sequence</dd>
         <dt>xml:lang [optional]</dt>
-          <dd>The sequence's primary language as defined in <a
+          <dd>The item-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
             of the XML 1.0 Recommendation [<a class="nref"
             href="#ref-xml">XML</a>].</dd>
