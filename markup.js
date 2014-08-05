@@ -39,7 +39,7 @@ function searchAndReplaceElement(elem, strSearch, link) {
     }
 }
 
-function addMarkupToClass(className, strSearch, link)
+function addCrossReferencesToClass(className, strSearch, link)
 {
 	var nodeList = document.getElementsByClassName(className);
 	var nodeArray = [];
@@ -48,13 +48,21 @@ function addMarkupToClass(className, strSearch, link)
 	}
 }
 
-function addMarkup()
+/**
+ * Adds links to other elements in texts within elements with of the specified class.
+ * @param linkToClass the elements to link to (must have id's)
+ * @param linkFromClass the elements to find occurrences in
+ */
+function addCrossReferences(linkToClass, linkFromClass)
 {
-	var nodeList = document.getElementsByClassName("include");
+	var nodeList = document.getElementsByClassName(linkToClass);
 	for (var i = 0; i < nodeList.length; ++i) {
-		var name = nodeList[i].textContent;
-		addMarkupToClass("markup", name, "#"+nodeList[i].attributes.id.value);
+		var id = nodeList[i].attributes.id;
+		if (id!=null) {
+			var name = nodeList[i].textContent;
+			addCrossReferencesToClass(linkFromClass, name, "#"+id.value);
+		}
 	}
 }
 
-addMarkup();
+addCrossReferences("include", "markup");
