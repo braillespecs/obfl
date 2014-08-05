@@ -264,11 +264,11 @@
 	%blockAtts;
 >
 
-<!ELEMENT span (#PCDATA | style)*>
+<!ELEMENT span (#PCDATA | style | anchor)*>
 <!ATTLIST span
 	%textAtts;
 >
-<!ELEMENT style (#PCDATA | style | marker | br)*>
+<!ELEMENT style (#PCDATA | style | marker | br | anchor)*>
 <!ATTLIST style
 	name NMTOKEN #REQUIRED
 >
