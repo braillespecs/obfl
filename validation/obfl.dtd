@@ -181,8 +181,8 @@
 	volume-count-variable CDATA #IMPLIED
 	sheets-in-volume-max CDATA #REQUIRED
 >
-<!ELEMENT pre-content (sequence | item-sequence | toc-sequence)*>
-<!ELEMENT post-content (sequence | item-sequence)*>
+<!ELEMENT pre-content (sequence | dynamic-sequence | toc-sequence)*>
+<!ELEMENT post-content (sequence | dynamic-sequence)*>
 <!ELEMENT toc-sequence (on-toc-start*, on-volume-start*, on-volume-end*, on-toc-end*)>
 <!ATTLIST toc-sequence
 	toc IDREF #REQUIRED
@@ -205,8 +205,9 @@
 <!ATTLIST on-toc-end
 	%use-when; #IMPLIED
 >
-<!ELEMENT item-sequence (on-collection-start?, on-page-start?, on-page-end?, on-collection-end?)>
-<!ATTLIST item-sequence
+
+<!ELEMENT list-of-references (on-collection-start?, on-page-start?, on-page-end?, on-collection-end?)>
+<!ATTLIST list-of-references
 	collection IDREF #REQUIRED
 	range (document|volume) #REQUIRED
 	%sequenceAtts;
@@ -216,6 +217,10 @@
 <!ELEMENT on-page-start (block+)>
 <!ELEMENT on-page-end (block+)>
 
+<!ELEMENT dynamic-sequence (block | list-of-references)+>
+<!ATTLIST dynamic-sequence
+	%sequenceAtts;
+>
 <!-- 
 	A sequence of blocks
 -->

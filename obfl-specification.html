@@ -16,7 +16,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised August 4, 2014</p>
+<p>Working draft, revised August 7, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                                    <dt>Contributors:</dt>
-                                                                                                    <dd></dd>-->
+                                                                                                            <dt>Contributors:</dt>
+                                                                                                            <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -99,9 +99,10 @@ Contents</h2>
       <li><a href="#L870">pre-content</a></li>
       <li><a href="#L888">post-content</a></li>
       <li><a href="#L906">sequence</a></li>
+      <li><a href="#L11470">dynamic-sequence</a></li>
       <li><a href="#L1023">block</a></li>
       <li><a href="#L924">anchor</a></li>
-      <li><a href="#L9242">item-sequence</a></li>
+      <li><a href="#L9242">list-of-references</a></li>
       <li><a href="#L951">on-collection-start</a></li>
       <li><a href="#L9511">on-page-start</a></li>
       <li><a href="#L9512">on-page-end</a></li>
@@ -918,7 +919,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence, item-sequence, toc-sequence [0 or more]</dd>
+    <dd>sequence, dynamic-sequence, toc-sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -932,7 +933,7 @@ volume's body of pages.</p>
   <dt>Usage</dt>
     <dd>volume-template</dd>
   <dt>Content Model</dt>
-    <dd>sequence, item-sequence [0 or more]</dd>
+    <dd>sequence, dynamic-sequence [0 or more]</dd>
 </dl>
 </div>
 
@@ -967,6 +968,41 @@ volume's body of pages.</p>
 </dl>
 </div>
 
+<h3 class="include" id="L11470">dynamic-sequence</h3>
+
+<p>The dynamic-sequence is similar to a regular sequence. The main difference
+is that it can contain elements that are generated based on the placement of
+the body of text. Another difference is that its existence depends on the
+existence of generated content. Without any generated content, the sequence
+should be excluded entierly.</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd>pre-content, post-content</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>master [required]</dt>
+          <dd>A reference to a layout-master</dd>
+        <dt>initial-page-number [optional]</dt>
+          <dd>The inital page number for the dynamic-sequence</dd>
+        <dt>xml:lang [optional]</dt>
+          <dd>The dynamic-sequence's primary language as defined in <a
+            href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
+            of the XML 1.0 Recommendation [<a class="nref"
+            href="#ref-xml">XML</a>].</dd>
+        <dt>hyphenate [optional]</dt>
+          <dd>Whether or not to hyphenate text descendants. </dd>
+          <dd>One of 'true' or 'false'.</dd>
+          <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>block, list-of-references [1 or more]</dd>
+</dl>
+</div>
+
 <h3 id="L1023" class="include">block</h3>
 
 <p>The block element defines a block of text.</p>
@@ -974,9 +1010,9 @@ volume's body of pages.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>before, after, sequence, on-collection-start, on-page-start, on-page-end,
-      on-collection-end, on-toc-start, on-volume-start, on-volume-end,
-      on-toc-end, item</dd>
+    <dd>before, after, sequence, dynamic-sequence, on-collection-start, on-page-start,
+      on-page-end, on-collection-end, on-toc-start, on-volume-start,
+      on-volume-end, on-toc-end, item</dd>
   <dt>General Attributes</dt>
     <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
       group.</p>
@@ -1041,40 +1077,26 @@ item has a connection to the text near the location of the anchor.</p>
 </dl>
 </div>
 
-<h3 id="L9242" class="include">item-sequence</h3>
+<h3 id="L9242" class="include">list-of-references</h3>
 
-<p>The item-sequence element contains instructions needed to render a
-collection of items before or after the body of a volume. Note that an
-item-sequence only contains static contents inserted while generating the
+<p>The list-of-references element contains instructions needed to render a
+collection of items ordered by page of reference. Note that a
+list-of-references only contains static contents inserted while generating the
 sequence (on-collection-start, on-page-start, on-page-end, on-collection-end).
 The actual items are collected from the referenced collection.</p>
 
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>pre-content, post-content</dd>
+    <dd>dynamic-sequence</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>master [required]</dt>
-          <dd>A reference to a layout-master</dd>
         <dt>collection [required]</dt>
           <dd>A reference to a collection, either an explicitly defined
             collection or one defined as a fallback for another group.</dd>
         <dt>range [required]</dt>
           <dd>A data selection property.</dd>
           <dd>One of 'document' or 'volume'.</dd>
-        <dt>initial-page-number [optional]</dt>
-          <dd>The inital page number for the item-sequence</dd>
-        <dt>xml:lang [optional]</dt>
-          <dd>The item-sequence's primary language as defined in <a
-            href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
-            of the XML 1.0 Recommendation [<a class="nref"
-            href="#ref-xml">XML</a>].</dd>
-        <dt>hyphenate [optional]</dt>
-          <dd>Whether or not to hyphenate text descendants. </dd>
-          <dd>One of 'true' or 'false'.</dd>
-          <dd>See the <a href="#L21839">attribute description</a> for more
-            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1097,7 +1119,7 @@ collection items.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>item-sequence</dd>
+    <dd>list-of-references</dd>
   <dt>Attributes</dt>
     <dd>None</dd>
   <dt>Content Model</dt>
@@ -1113,7 +1135,7 @@ collection items on a page.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>item-sequence</dd>
+    <dd>list-of-references</dd>
   <dt>Attributes</dt>
     <dd>None</dd>
   <dt>Content Model</dt>
@@ -1129,7 +1151,7 @@ collection items on a page.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>item-sequence</dd>
+    <dd>list-of-references</dd>
   <dt>Attributes</dt>
     <dd>None</dd>
   <dt>Content Model</dt>
@@ -1145,7 +1167,7 @@ collection items.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>item-sequence</dd>
+    <dd>list-of-references</dd>
   <dt>Attributes</dt>
     <dd>None</dd>
   <dt>Content Model</dt>
@@ -1595,6 +1617,7 @@ of this specification.</p>
     <dd>"<a href="examples/example1.obfl">examples/example1.obfl</a>". A short
       OBFL example containing useage examples of most of the elements.</dd>
 </dl>
-  <script type="text/javascript" src="markup.js"></script>
+<script type="text/javascript" src="markup.js">
+</script>
 </body>
 </html>
