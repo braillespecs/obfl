@@ -210,7 +210,6 @@
 <!ATTLIST list-of-references
 	collection IDREF #REQUIRED
 	range (document|volume) #REQUIRED
-	%sequenceAtts;
 >
 <!ELEMENT on-collection-start (block+)>
 <!ELEMENT on-collection-end (block+)>
