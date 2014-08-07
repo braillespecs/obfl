@@ -28,16 +28,29 @@
     </target>
 
 	<target name="buildSite" depends="createDistDir" description="Builds distribution">
-    	<zip destfile="${dist.zip}">
-    		<zipfileset dir="${basedir}" prefix="">
-    			<patternset refid="dist.patternset"/>
-    		</zipfileset>
-    	</zip>
 		<copy todir="${dist.dir}">
 			<fileset dir="${basedir}">
 				<patternset refid="dist.patternset"/>
 			</fileset>
 		</copy>
+	    <java jar="${ant-build.dir}/resources/trang.jar" fork="true">
+	        <arg value="validation/obfl.dtd" />
+	        <arg value="${dist.dir}/validation/obfl.xsd" />
+	    </java>
+	    <java jar="${ant-build.dir}/resources/trang.jar" fork="true">
+	        <arg value="validation/obfl.dtd" />
+	        <arg value="${dist.dir}/validation/obfl.rng" />
+	    </java>
+	    <java jar="${ant-build.dir}/resources/trang.jar" fork="true">
+	        <arg value="validation/obfl.dtd" />
+	        <arg value="${dist.dir}/validation/obfl.rnc" />
+	    </java>
+    	<zip destfile="${ant-output.dir}/temp.zip">
+    		<zipfileset dir="${dist.dir}" prefix="">
+    			<patternset refid="dist.patternset"/>
+    		</zipfileset>
+    	</zip>
+		<move file="${ant-output.dir}/temp.zip" tofile="${dist.zip}"/>
 	</target>
 
 </project>

@@ -1,5 +1,6 @@
 * text=auto !eol
 /.project -text
+ant-build/resources/trang.jar -text
 /build.xml -text
 /default.css -text
 examples/example1.obfl -text
