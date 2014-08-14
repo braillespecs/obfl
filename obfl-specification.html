@@ -16,7 +16,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised August 7, 2014</p>
+<p>Working draft, revised August 14, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                                              <dt>Contributors:</dt>
-                                                                                                              <dd></dd>-->
+                                                                                                                            <dt>Contributors:</dt>
+                                                                                                                            <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -44,14 +44,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L255">Introduction</a>
+  <li><a href="#L255">Introduction</a> 
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a>
+  <li><a href="#L287">Definitions</a> 
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -59,14 +59,14 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a>
+  <li><a href="#L453">Definition of OBFL</a> 
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a>
+  <li><a href="#L558">Elements</a> 
     <ul>
       <li><a href="#L565">obfl</a></li>
       <li><a href="#L587">meta</a></li>
@@ -74,6 +74,8 @@ Contents</h2>
       <li><a href="#L608">template</a></li>
       <li><a href="#L608-2">default-template</a></li>
       <li><a href="#L647">page-area</a></li>
+      <li><a href="#L20904">fallback</a></li>
+      <li><a href="#L20925">rename</a></li>
       <li><a href="#L629">before</a></li>
       <li><a href="#L6291">after</a></li>
       <li><a href="#L62911">header</a></li>
@@ -82,7 +84,7 @@ Contents</h2>
       <li><a href="#L683">marker-reference</a></li>
       <li><a href="#L696">string</a></li>
       <li><a href="#L709">current-page</a></li>
-      <li><a href="#L722">evaluate</a>
+      <li><a href="#L722">evaluate</a> 
         <ul>
           <li><a href="#L1033">Example</a></li>
         </ul>
@@ -116,28 +118,28 @@ Contents</h2>
       <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Special Attributes</a>
+  <li><a href="#L1608">Special Attributes</a> 
     <ul>
-      <li><a href="#L21839">hyphenate</a>
+      <li><a href="#L21839">hyphenate</a> 
         <ul>
           <li><a href="#L21851">Example</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#L16081">Attribute Groups</a>
+  <li><a href="#L16081">Attribute Groups</a> 
     <ul>
       <li><a href="#block-atts">Block</a></li>
       <li><a href="#borders">Borders</a></li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a>
+  <li><a href="#L756">Rule Sets</a> 
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">Other Rule Sets</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a>
+  <li><a href="#L784">References</a> 
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -471,11 +473,6 @@ collection.</p>
           <dd>One of 'bottom' (default) or 'top'.</dd>
         <dt>collection [required]</dt>
           <dd>The name of a collection to find items in.</dd>
-        <dt>fallback [optional]</dt>
-          <dd>An optional group id to move items to if they not fit within the
-            boundaries of the page-area.</dd>
-          <dd>All items in the collection should be reassigned if the fallback
-            condition is triggered.</dd>
         <dt>max-height [required]</dt>
           <dd>The maximum number of lines to use for collection items.</dd>
       </dl>
@@ -483,12 +480,56 @@ collection.</p>
   <dt>Content Model</dt>
     <dd>In this order: 
       <ul>
+        <li>fallback [optional]</li>
         <li>before [optional]</li>
         <li>after [optional]</li>
       </ul>
     </dd>
 </dl>
 </div>
+
+<h3 class="include" id="L20904">fallback</h3>
+
+<p>The fallback element is used to determine what should happen if rendering of
+the collection fails. The fallback element must include an instruction for the
+collection that triggered it, but it may also include additional instructions
+for other collections.</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd>page-area</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>rename [1 or more]</dd>
+</dl>
+</div>
+
+<h3 class="include" id="L20925">rename</h3>
+
+<p>The rename element is used within the fallback element to specify a
+collection that should be renamed. The new name must not be in use as an
+identifier elsewhere (but it should be referenced).</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd>fallback</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>collection [required]</dt>
+          <dd>The id of the collection that should be renamed.</dd>
+        <dt>to [required]</dt>
+          <dd>An id to move items to if the fallback is triggered.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Emtpy.</dd>
+</dl>
+</div>
+
+<p></p>
 
 <h3 id="L629" class="include">before</h3>
 
@@ -684,9 +725,10 @@ information.</p>
 <h3 id="L735" class="include">table-of-contents</h3>
 
 <p>The table-of-contents element defines the entries in a table of contents.
-Note that this element only specifies formatting of data in a table of
-contents, it does not by it self specify that a table of contents should be
-inserted.</p>
+Note that this element specifies formatting of data in a table of contents, it
+does not by it self specify that a table of contents should be inserted. It is
+required that the order of the toc-entries is consistent with the blocks it
+references.</p>
 
 <div class="sidebar markup">
 <dl>
