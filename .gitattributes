@@ -6,5 +6,5 @@ ant-build/resources/trang.jar -text
 examples/example1.obfl -text
 /markup.js -text
 /obfl-evaluation-language.html -text svneol=unset#text/plain
-/obfl-specification.html -text
+/obfl-specification.html -text svneol=unset#text/plain
 validation/obfl.dtd -text

@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-08-04" />
+  <meta name="dc:Date" content="2014-10-13" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised August 14, 2014</p>
+<p>Working draft, revised October 14, 2014</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                                                            <dt>Contributors:</dt>
-                                                                                                                            <dd></dd>-->
+                                                                                                                              <dt>Contributors:</dt>
+                                                                                                                              <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -44,14 +44,14 @@ Contents</h2>
 
 <div class="toc">
 <ul>
-  <li><a href="#L255">Introduction</a> 
+  <li><a href="#L255">Introduction</a>
     <ul>
       <li><a href="#L261">What is OBFL?</a></li>
       <li><a href="#L265">Why is OBFL Necessary?</a></li>
       <li><a href="#L279">Scope Limitations</a></li>
     </ul>
   </li>
-  <li><a href="#L287">Definitions</a> 
+  <li><a href="#L287">Definitions</a>
     <ul>
       <li><a href="#L295">Terminology</a></li>
       <li><a href="#L302">General Terms</a></li>
@@ -59,14 +59,21 @@ Contents</h2>
       <li><a href="#L449">Relationship to Other Specifications</a></li>
     </ul>
   </li>
-  <li><a href="#L453">Definition of OBFL</a> 
+  <li><a href="#L453">Definition of OBFL</a>
     <ul>
       <li><a href="#L459">Document Conformance </a></li>
       <li><a href="#L493">Using OBFL with Other Namespaces</a></li>
       <li><a href="#L501">Internet Media Type and File Extension</a></li>
     </ul>
   </li>
-  <li><a href="#L558">Elements</a> 
+  <li><a href="#L502">White Space Processing</a>
+    <ul>
+      <li><a href="#L632">Problems with White Space</a></li>
+      <li><a href="#L657">Implications of Incorrect White Space</a></li>
+      <li><a href="#L671">Default White Space Processing</a></li>
+    </ul>
+  </li>
+  <li><a href="#L558">Elements</a>
     <ul>
       <li><a href="#L565">obfl</a></li>
       <li><a href="#L587">meta</a></li>
@@ -84,7 +91,7 @@ Contents</h2>
       <li><a href="#L683">marker-reference</a></li>
       <li><a href="#L696">string</a></li>
       <li><a href="#L709">current-page</a></li>
-      <li><a href="#L722">evaluate</a> 
+      <li><a href="#L722">evaluate</a>
         <ul>
           <li><a href="#L1033">Example</a></li>
         </ul>
@@ -118,28 +125,28 @@ Contents</h2>
       <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Special Attributes</a> 
+  <li><a href="#L1608">Special Attributes</a>
     <ul>
-      <li><a href="#L21839">hyphenate</a> 
+      <li><a href="#L21839">hyphenate</a>
         <ul>
           <li><a href="#L21851">Example</a></li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><a href="#L16081">Attribute Groups</a> 
+  <li><a href="#L16081">Attribute Groups</a>
     <ul>
       <li><a href="#block-atts">Block</a></li>
       <li><a href="#borders">Borders</a></li>
     </ul>
   </li>
-  <li><a href="#L756">Rule Sets</a> 
+  <li><a href="#L756">Rule Sets</a>
     <ul>
       <li><a href="#L763">DTD Rule Set</a></li>
       <li><a href="#L774">Other Rule Sets</a></li>
     </ul>
   </li>
-  <li><a href="#L784">References</a> 
+  <li><a href="#L784">References</a>
     <ul>
       <li><a href="#L786">Normative References</a></li>
       <li><a href="#L881">Informative References</a></li>
@@ -295,6 +302,119 @@ href="#ref-xmlns">XMLNS</a>].</p>
 
 <p>It is recommended that OBFL files have the extension ".obfl" (all lowercase)
 on all platforms.</p>
+
+<h2 id="L502">White Space Processing</h2>
+
+<p><strong>This section is normative.</strong> </p>
+
+<h3 id="L632">Problems with White Space</h3>
+
+<p>While processing XML-documents white space is often introduced
+unintentionally, i.e. without the intent to carry meaning.</p>
+
+<p>White space can be introduced by a graphical editor. Incorrect style
+boundaries - i.e. including surrounding white space - is visually undetectable
+and usually not corrected by VYSIWYG editors.</p>
+
+<p>White space can be introduced as a result of pretty printing. Pretty
+printing is often employed by users of XML-editors as it improves readability
+and navigability. However, it is an inexact process which makes certain
+assumtions about the XML-document. Most algorithms do not change elements that
+evidently contain both non white space text nodes and elements. However, pretty
+printing algorithms often assume that an element that only has non-text
+children can be reformatted, even if:</p>
+<ul>
+  <li>other elements with the same name has mixed contents in them elsewhere in
+    the document</li>
+  <li>the associated DTD or XML-schema clearly states that the element can
+    contain both text nodes and elements</li>
+</ul>
+
+<p>White space can be introduced manually. For example, by adding an XML
+comment:</p>
+<pre>	&lt;block&gt;
+	&lt;!-- Just an innocent comment at the start of a new block --&gt; 
+	We offer free &lt;style name="em"&gt;technical support&lt;/style&gt; for subscribers.&lt;/block&gt;</pre>
+
+<p>or when nesting block elements:</p>
+<pre>	&lt;block&gt;
+		&lt;block&gt;We offer free &lt;style name="em"&gt;technical support&lt;/style&gt; for subscribers.&lt;/block&gt;
+	&lt;block&gt;</pre>
+
+<p>These effects are often unknown to users working with XML-files.</p>
+
+<h3 id="L657">Implications of Incorrect White Space</h3>
+
+<p>The implications of incorrect white space is more severe in braille than in
+visual media. This is true in particular for inline elements such as style
+markers due to the fact that they are added as separate characters in
+braille.</p>
+
+<p>In a word processor this:</p>
+<pre>  &lt;p&gt;We offer free&lt;em&gt; technical support &lt;/em&gt;for subscribers.&lt;/p&gt;</pre>
+
+<p>is visually equvialent to:</p>
+<pre>  &lt;p&gt;We offer free &lt;em&gt;technical support&lt;/em&gt; for subscribers.&lt;/p&gt;</pre>
+
+<p>In braille however, the former will be percieved as an error as the braille
+markers will be disjoint from the text.</p>
+
+<h3 id="L671">Default White Space Processing</h3>
+
+<p>The following applies to all characters defined as white space by <a
+href="#ref-unicode">[Unicode]</a> with the exception of 'NO-BREAK SPACE'
+(U+00A0). To affect rendering, &amp;#x00A0 must be surrounded by non white
+space characters on both sides.</p>
+
+<p>Note that, line breaks are also white space characters. These do not
+constitute line breaks in OBFL. Authors should use appropriate elements and
+attributes to achieve formatting effects that involve white space, rather than
+space characters.</p>
+
+<p>Also note that, Unicode characters 'ZERO WIDTH SPACE' (U+200B) and 'BRAILLE
+PATTERN BLANK' (U+2800) are not regarded as white space by the Unicode
+specification and should be preserved.</p>
+
+<p>Sequences of white space separate "words" (we use the term "word" here to
+mean "sequences of non-white space characters"). When formatting text, user
+agents should identify these words and lay them out according to the
+conventions of the particular written language (script). This typically involve
+putting space between words.</p>
+
+<p>Note that a sequence of white spaces between words in the source document
+may result in a different rendered inter-word spacing. In particular, user
+agents should collapse input white space sequences when producing output
+inter-word space.</p>
+
+<p>A user agent should by default process white space according to the
+following:</p>
+<ul>
+  <li>there should never be more than one white space in sequence</li>
+  <li>white space at the start or end of block elements should be ignored</li>
+  <li>white space at the start or end of inline elements should be rendered
+    outside of the element</li>
+</ul>
+<!-- 
+<pre>
+  &lt;block>We offer free &lt;style name="em">technical support&lt;/style> for subscribers.&lt;/block>
+and not:
+  &lt;block>We offer free&lt;style name="em"> technical support &lt;/style>for subscribers.&lt;/block>
+</pre>
+ -->
+<!--
+
+<p>Any text, including white space, in OBFL elements that are not allowed to contain text should be disregarded 
+in the rendering process.</p>
+
+<p>Therefore, the following OBFL fragment:</p>
+<pre>
+  &lt;block>We offer free&lt;style name="em"> technical support &lt;/style>for subscribers.&lt;/block>
+</pre>
+<p>should be interpreted by default as:</p>
+<pre>
+  &lt;block>We offer free &lt;style name="em">technical support&lt;/style> for subscribers.&lt;/block>
+</pre> 
+ -->
 
 <h2 id="L558">Elements</h2>
 
