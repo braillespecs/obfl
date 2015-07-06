@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2014-10-13" />
+  <meta name="dc:Date" content="2015-07-06" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised October 14, 2014</p>
+<p>Working draft, revised July 6, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -1624,6 +1624,18 @@ characters):</p>
   <dt>margin-right [optional]</dt>
     <dd>Right margin for this block (in characters).</dd>
     <dd>A number.</dd>
+  <dt>padding-bottom [optional]</dt>
+    <dd>Bottom padding for this block (in rows).</dd>
+    <dd>A number.</dd>
+  <dt>padding-left [optional]</dt>
+    <dd>Left padding for this block (in characters).</dd>
+    <dd>A number.</dd>
+  <dt>padding-top [optional]</dt>
+    <dd>Top padding for this block (in rows).</dd>
+    <dd>A number.</dd>
+  <dt>padding-right [optional]</dt>
+    <dd>Right padding for this block (in characters).</dd>
+    <dd>A number.</dd>
   <dt>align [optional]</dt>
     <dd>Specifies the text alignment.</dd>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>
@@ -1643,6 +1655,67 @@ characters):</p>
     <dd>See the <a href="#L21839">attribute description</a> for more
       information.</dd>
 </dl>
+</div>
+<h4>Example</h4>
+
+<p>The following figure illustrates some of the available block properties.</p>
+
+<div class="dashed-box" style="display: table">
+<table class="box-model">
+	<tr><td colspan="3">margin-top</td></tr>
+	<tr><td>margin-left</td>
+	<td>
+	<div class="solid-box">
+		<table class="box-model">
+			<tr><td colspan="3">border-top</td></tr>
+			<tr><td>border-left</td><td>
+			<div class="dashed-box">
+				<table class="box-model">
+					<tr><td colspan="3">padding-top</td></tr>
+					<tr><td>padding-left</td><td>
+						<div class="dashed-box" style="padding: 1em; text-align: left;">
+<pre>
+  first-line-indent="2" ... ...
+text-indent="0" ... ... ... ...
+... ... ... ... ... ... ... ...
+</pre>
+
+<pre>
+first-line-indent="0" ... ... .
+  text-indent="2" ... ... ... .
+  . ... ... ... ... ... ... ...
+</pre>
+<pre>
+align="left"
+         align="center"
+                  align="right"</pre>
+<div class="dashed-box" style="margin-left: 1em"><pre>A child block with 
+block-indent="2"</pre>
+</div>
+<pre>
+row-spacing="1.0" ... ... ... .
+... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... ...
+</pre>
+<pre>
+row-spacing="2.0" ... ... ... .
+
+... ... ... ... ... ... ... ...
+
+... ... ... ... ... ... ... ...
+</pre>
+						</div>
+					</td><td>padding-right</td></tr>
+					<tr><td colspan="3">padding-bottom</td></tr>
+				</table>
+			</div>
+			</td><td>border-right</td></tr>
+			<tr><td colspan="3">border-bottom</td></tr>
+		</table>
+	</div></td>
+	<td>margin-right</td></tr>
+	<tr><td colspan="3">margin-bottom</td></tr>
+</table>
 </div>
 
 <h3 id="borders">Borders</h3>

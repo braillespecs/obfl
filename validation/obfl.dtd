@@ -68,6 +68,10 @@
 	margin-left, left margin for this block (in chars)
 	margin-top, top margin for this block (in rows)
 	margin-right, right margin for this block (in chars)
+	padding-bottom, bottom padding for this block (in rows)
+	padding-left, left padding for this block (in chars)
+	padding-top, top padding for this block (in rows)
+	padding-right, right padding for this block (in chars)
 	text-indent, indent (in chars) of every line in the block except the first one
 	block-indent, indent (in chars) of this block's block children
 -->
@@ -83,6 +87,10 @@
 	margin-left CDATA #IMPLIED
 	margin-top CDATA #IMPLIED
 	margin-right CDATA #IMPLIED
+	padding-bottom CDATA #IMPLIED
+	padding-left CDATA #IMPLIED
+	padding-top CDATA #IMPLIED
+	padding-right CDATA #IMPLIED
 	text-indent CDATA #IMPLIED
 	block-indent CDATA #IMPLIED
 	align (left|center|right) #IMPLIED
