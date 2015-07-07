@@ -24,8 +24,8 @@
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
   <!--
-                                                                                                                              <dt>Contributors:</dt>
-                                                                                                                              <dd></dd>-->
+                                                                                                                                <dt>Contributors:</dt>
+                                                                                                                                <dd></dd>-->
 </dl>
 
 <h2 id="L62"><a class="mozTocH2" name="mozTocId823610"></a>Abstract</h2>
@@ -136,7 +136,12 @@ Contents</h2>
   </li>
   <li><a href="#L16081">Attribute Groups</a>
     <ul>
-      <li><a href="#block-atts">Block</a></li>
+      <li><a href="#block-atts">Block</a>
+        <ul>
+          <li><a href="#L2519">Collapsing Margins</a></li>
+          <li><a href="#L2536">Example</a></li>
+        </ul>
+      </li>
       <li><a href="#borders">Borders</a></li>
     </ul>
   </li>
@@ -341,7 +346,8 @@ comment:</p>
 		&lt;block&gt;We offer free &lt;style name="em"&gt;technical support&lt;/style&gt; for subscribers.&lt;/block&gt;
 	&lt;block&gt;</pre>
 
-<p>That the above could have rendering implications are often unknown to users working with XML-files.</p>
+<p>That the above could have rendering implications are often unknown to users
+working with XML-files.</p>
 
 <h3 id="L657">Implications of Incorrect White Space</h3>
 
@@ -1656,79 +1662,110 @@ characters):</p>
       information.</dd>
 </dl>
 </div>
-<h4>Collapsing Margins</h4>
-<p>Adjoining margins of two or more blocks (which might or might not be siblings) can combine to form a single margin. 
-Margins that combine this way are said to collapse, and the resulting combined margin is called a collapsed margin.</p> 
+
+<h4 id="L2519">Collapsing Margins</h4>
+
+<p>Adjoining margins of two or more blocks (which might or might not be
+siblings) can combine to form a single margin. Margins that combine this way
+are said to collapse, and the resulting combined margin is called a collapsed
+margin.</p>
 
 <p>Horizontal margins never collapse.</p>
+
 <p>Vertical margins collapse when:</p>
 <ul>
-	<li>no padding or border separate them</li>
-	<li>they are on the same page</li>
+  <li>no padding or border separate them</li>
+  <li>they are on the same page</li>
 </ul>
 
-<p>When two or more margins collapse, the resulting margin width is the maximum of the collapsing margins' widths.
-If the top and bottom margins of a block are adjoining, then it is possible for margins to collapse through it.</p>
+<p>When two or more margins collapse, the resulting margin width is the maximum
+of the collapsing margins' widths. If the top and bottom margins of a block are
+adjoining, then it is possible for margins to collapse through it.</p>
 
-<h4>Example</h4>
+<h4 id="L2536">Example</h4>
 
 <p>The following figure illustrates some of the available block properties.</p>
 
 <div class="dashed-box" style="display: table">
-<table class="box-model">
-	<tr><td colspan="3">margin-top</td></tr>
-	<tr><td>margin-left</td>
-	<td>
-	<div class="solid-box">
-		<table class="box-model">
-			<tr><td colspan="3">border-top</td></tr>
-			<tr><td>border-left</td><td>
-			<div class="dashed-box">
-				<table class="box-model">
-					<tr><td colspan="3">padding-top</td></tr>
-					<tr><td>padding-left</td><td>
-						<div class="dashed-box" style="padding: 1em; text-align: left;">
-<pre>
-  first-line-indent="2" ... ...
-text-indent="0" ... ... ... ...
-... ... ... ... ... ... ... ...
-</pre>
 
-<pre>
-first-line-indent="0" ... ... .
+<table class="box-model">
+  <tbody>
+    <tr>
+      <td colspan="3">margin-top</td>
+    </tr>
+    <tr>
+      <td>margin-left</td>
+      <td>
+        <div class="solid-box">
+
+        <table class="box-model">
+          <tbody>
+            <tr>
+              <td colspan="3">border-top</td>
+            </tr>
+            <tr>
+              <td>border-left</td>
+              <td>
+                <div class="dashed-box">
+
+                <table class="box-model">
+                  <tbody>
+                    <tr>
+                      <td colspan="3">padding-top</td>
+                    </tr>
+                    <tr>
+                      <td>padding-left</td>
+                      <td>
+                        <div class="dashed-box"
+                        style="padding: 1em; text-align: left;">
+                        <pre>  first-line-indent="2" ... ...
+text-indent="0" ... ... ... ...
+... ... ... ... ... ... ... ...</pre>
+                        <pre>first-line-indent="0" ... ... .
   text-indent="2" ... ... ... .
-  . ... ... ... ... ... ... ...
-</pre>
-<pre>
-align="left"
+  . ... ... ... ... ... ... ...</pre>
+                        <pre>align="left"
          align="center"
                   align="right"</pre>
-<div class="dashed-box" style="margin-left: 1em"><pre>A child block with 
+
+                        <div class="dashed-box" style="margin-left: 1em">
+                        <pre>A child block with 
 block-indent="2"</pre>
-</div>
-<pre>
-row-spacing="1.0" ... ... ... .
+                        </div>
+                        <pre>row-spacing="1.0" ... ... ... .
 ... ... ... ... ... ... ... ...
-... ... ... ... ... ... ... ...
-</pre>
-<pre>
-row-spacing="2.0" ... ... ... .
+... ... ... ... ... ... ... ...</pre>
+                        <pre>row-spacing="2.0" ... ... ... .
 
 ... ... ... ... ... ... ... ...
 
-... ... ... ... ... ... ... ...
-</pre>
-						</div>
-					</td><td>padding-right</td></tr>
-					<tr><td colspan="3">padding-bottom</td></tr>
-				</table>
-			</div>
-			</td><td>border-right</td></tr>
-			<tr><td colspan="3">border-bottom</td></tr>
-		</table>
-	</div></td>
-	<td>margin-right</td></tr>
-	<tr><td colspan="3">margin-bottom</td></tr>
+... ... ... ... ... ... ... ...</pre>
+                        </div>
+                      </td>
+                      <td>padding-right</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">padding-bottom</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+              </td>
+              <td>border-right</td>
+            </tr>
+            <tr>
+              <td colspan="3">border-bottom</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </td>
+      <td>margin-right</td>
+    </tr>
+    <tr>
+      <td colspan="3">margin-bottom</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 
