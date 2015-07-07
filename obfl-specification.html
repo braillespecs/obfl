@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-07-06" />
+  <meta name="dc:Date" content="2015-07-07" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised July 6, 2015</p>
+<p>Working draft, revised July 7, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -1656,6 +1656,20 @@ characters):</p>
       information.</dd>
 </dl>
 </div>
+<h4>Collapsing Margins</h4>
+<p>Adjoining margins of two or more blocks (which might or might not be siblings) can combine to form a single margin. 
+Margins that combine this way are said to collapse, and the resulting combined margin is called a collapsed margin.</p> 
+
+<p>Horizontal margins never collapse.</p>
+<p>Vertical margins collapse when:</p>
+<ul>
+	<li>no padding or border separate them</li>
+	<li>they are on the same page</li>
+</ul>
+
+<p>When two or more margins collapse, the resulting margin width is the maximum of the collapsing margins' widths.
+If the top and bottom margins of a block are adjoining, then it is possible for margins to collapse through it.</p>
+
 <h4>Example</h4>
 
 <p>The following figure illustrates some of the available block properties.</p>
