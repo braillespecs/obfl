@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-07-07" />
+  <meta name="dc:Date" content="2015-08-24" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised July 7, 2015</p>
+<p>Working draft, revised August 24, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -125,13 +125,14 @@ Contents</h2>
       <li><a href="#L1210">item</a></li>
     </ul>
   </li>
-  <li><a href="#L1608">Special Attributes</a>
+  <li><a href="#L1608">Attribute Definitions</a>
     <ul>
       <li><a href="#L21839">hyphenate</a>
         <ul>
           <li><a href="#L21851">Example</a></li>
         </ul>
       </li>
+      <li><a href="#rowspacing">row-spacing</a></li>
     </ul>
   </li>
   <li><a href="#L16081">Attribute Groups</a>
@@ -227,6 +228,8 @@ interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
       href="http://www.w3.org/TR/di-gloss/#def-rendering">definition</a> in
       Device Independence Glossary document [<a href="#ref-digloss">DI
       Glossary</a>].</dd>
+  <dt>Row height</dt>
+    <dd>Row height is the height of a row excluding row spacing.</dd>
   <dt>Schema</dt>
     <dd>A schema is a collection of markup rules that, as a collection, define
       the legal structure, <span class="term">elements</span>, and <span
@@ -512,7 +515,7 @@ as the width and height of pages.</p>
           <dd>The outer margin, in characters.</dd>
           <dd>Default is 0.</dd>
         <dt>page-height [required]</dt>
-          <dd>The page height, in characters.</dd>
+          <dd>The page height, in row heights.</dd>
         <dt>page-number-variable [optional]</dt>
           <dd>A name for the variable to be used in expression evaluation.</dd>
           <dd>Default is ???.</dd>
@@ -522,6 +525,8 @@ as the width and height of pages.</p>
           <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing,
             2.0 is double.</dd>
           <dd>1.0 is default.</dd>
+          <dd>See the <a href="#rowspacing">attribute description</a> for more
+            information.</dd>
       </dl>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
@@ -714,6 +719,8 @@ spaced cell grid over a single row.</p>
         <dt>row-spacing [optional]</dt>
           <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing,
             2.0 is double.</dd>
+          <dd>See the <a href="#rowspacing">attribute description</a> for more
+          information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -736,6 +743,8 @@ spaced cell grid over a single row.</p>
         <dt>row-spacing [optional]</dt>
           <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing,
             2.0 is double.</dd>
+		<dd>See the <a href="#rowspacing">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1215,8 +1224,9 @@ should be excluded entierly.</p>
         <dt>vertical-align [optional]</dt>
           <dd>One of 'before', 'center', 'after'</dd>
         <dt>vertical-position [optional]</dt>
-          <dd>Specifies a vertical position for the block, in rows.</dd>
-          <dd>A positive integer.</dd>
+          <dd>Specifies a vertical position for the block in row heights from the top of the page body area.</dd>
+          <dd>Can be relative (percent) or absolute (a positive integer).</dd>
+          <dd>For example: 50% or 12</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1530,7 +1540,7 @@ that nesting of items is not allowed.</p>
 
 <p></p>
 
-<h2 id="L1608">Special Attributes</h2>
+<h2 id="L1608">Attribute Definitions</h2>
 
 <h3 id="L21839">hyphenate</h3>
 
@@ -1599,6 +1609,16 @@ characters):</p>
   </tbody>
 </table>
 
+<h3 id="rowspacing">row-spacing</h3>
+<p>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</p>
+<p>Row spacing effects the appearance of the following vertical measurements that are expressed in rows:</p>
+<ul>
+<li>margin-bottom</li>
+<li>margin-top</li>
+<li>padding-bottom</li>
+<li>padding-top</li>
+</ul>
+<p>For example, if row-spacing is 2.0, a vertical margin or padding of 2 will render a spacing equal to four row heights.</p>
 <h2 id="L16081">Attribute Groups</h2>
 
 <h3 id="block-atts">Block</h3>
@@ -1651,6 +1671,8 @@ characters):</p>
     <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is
       double.</dd>
     <dd>Default is 1.0.</dd>
+    <dd>See the <a href="#rowspacing">attribute description</a> for more
+            information.</dd>
   <dt>xml:lang [optional]</dt>
     <dd>the language of text descendants as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of the
