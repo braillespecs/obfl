@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-08-24" />
+  <meta name="dc:Date" content="2015-09-09" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised August 24, 2015</p>
+<p>Working draft, revised September 9, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -148,7 +148,7 @@ Contents</h2>
   </li>
   <li><a href="#L756">Rule Sets</a>
     <ul>
-      <li><a href="#L763">DTD Rule Set</a></li>
+      <li><a href="#L763">Relax NG Rule Set</a></li>
       <li><a href="#L774">Other Rule Sets</a></li>
     </ul>
   </li>
@@ -1223,10 +1223,17 @@ should be excluded entierly.</p>
           <dd>An integer in the range [0, 9].</dd>
         <dt>vertical-align [optional]</dt>
           <dd>One of 'before', 'center', 'after'</dd>
+          <dd>Note that all block properties that effect the height of the block are taken into account when aligning,
+           both visible (i.e. borders) and invisible (i.e. paddings and margins).</dd>
         <dt>vertical-position [optional]</dt>
           <dd>Specifies a vertical position for the block in row heights from the top of the page body area.</dd>
           <dd>Can be relative (percent) or absolute (a positive integer).</dd>
           <dd>For example: 50% or 12</dd>
+          <dd>Note that vertical-positioning behave like leaders. In other words, the vertical-position attribute can 
+          only increase the amount of space preceding a block. It does not rearrange blocks. If a second block has 
+          a vertical position lower than the block preceding it, the second blocks vertical-position will either be
+          ignored or rendered on the following page, depending on the specific situation. 
+          </dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1856,11 +1863,11 @@ file</a> for this specification. Users looking for local copies of the rule
 sets to work with should download and use this archive rather than using the
 specific references below.</p>
 
-<h3 id="L763"><a name="Relax1" id="Relax1">DTD Rule Set</a></h3>
+<h3 id="L763"><a name="Relax1" id="Relax1">Relax NG Rule Set</a></h3>
 
 <p><strong>This section is normative.</strong></p>
 
-<p>The DTD rule set "<a href="validation/obfl.dtd">validation/obfl.dtd</a>"
+<p>The Relax NG rule set (XML syntax) "<a href="validation/obfl.rng">validation/obfl.rng</a>"
 forms a normative part of this specification.</p>
 
 <h3 id="L774">Other Rule Sets</h3>
@@ -1871,9 +1878,11 @@ forms a normative part of this specification.</p>
 href="validation/obfl.xsd">validation/obfl.xsd</a>" forms an informative part
 of this specification.</p>
 
-<p>The Relax NG (XML syntax) rule set "<a
-href="validation/obfl.rng">validation/obfl.rng</a>" forms an informative part
+<!-- 
+<p>The DTD rule set "<a
+href="validation/obfl.rng">validation/obfl.dtd</a>" forms an informative part
 of this specification.</p>
+ -->
 
 <p>The Relax NG (Compact syntax) rule set "<a
 href="validation/obfl.rnc">validation/obfl.rnc</a>" forms an informative part
