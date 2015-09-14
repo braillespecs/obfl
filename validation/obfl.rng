@@ -32,7 +32,19 @@
         <choice>
           <value>true</value>
           <value>false</value>
+          <value></value>
         </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="translate">
+		<choice>
+	        <value></value>
+	        <value>pre-translated</value>
+	        <value>grade1</value>
+	        <value>grade2</value>
+	        <value>grade3</value>
+	    </choice>
       </attribute>
     </optional>
   </define>
@@ -422,7 +434,19 @@
         <choice>
           <value>true</value>
           <value>false</value>
+          <value></value>
         </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="translate">
+      	<choice>
+	        <value></value>
+	        <value>pre-translated</value>
+	        <value>grade1</value>
+	        <value>grade2</value>
+	        <value>grade3</value>
+	    </choice>
       </attribute>
     </optional>
   </define>

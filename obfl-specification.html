@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-09-09" />
+  <meta name="dc:Date" content="2015-09-14" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised September 9, 2015</p>
+<p>Working draft, revised September 14, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -133,6 +133,11 @@ Contents</h2>
         </ul>
       </li>
       <li><a href="#rowspacing">row-spacing</a></li>
+      <li><a href="#L2462">translate</a>
+        <ul>
+          <li><a href="#L2475">pre-translated</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#L16081">Attribute Groups</a>
@@ -464,6 +469,10 @@ are in the OBFL namespace.</p>
           <dd>One of 'true' or 'false'.</dd>
           <dd>See the <a href="#L21839">attribute description</a> for more
             information.</dd>
+        <dt>translate [optional]</dt>
+          <dd>Specifies a translation policy.</dd>
+          <dd>See the <a href="#L2462">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -720,7 +729,7 @@ spaced cell grid over a single row.</p>
           <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing,
             2.0 is double.</dd>
           <dd>See the <a href="#rowspacing">attribute description</a> for more
-          information.</dd>
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -743,7 +752,7 @@ spaced cell grid over a single row.</p>
         <dt>row-spacing [optional]</dt>
           <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing,
             2.0 is double.</dd>
-		<dd>See the <a href="#rowspacing">attribute description</a> for more
+          <dd>See the <a href="#rowspacing">attribute description</a> for more
             information.</dd>
       </dl>
     </dd>
@@ -1014,6 +1023,10 @@ language is different from the surrounding text.</p>
           <dd>One of 'true' or 'false'.</dd>
           <dd>See the <a href="#L21839">attribute description</a> for more
             information.</dd>
+        <dt>translate [optional]</dt>
+          <dd>Specifies a translation policy.</dd>
+          <dd>See the <a href="#L2462">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1138,6 +1151,10 @@ volume's body of pages.</p>
           <dd>One of 'true' or 'false'.</dd>
           <dd>See the <a href="#L21839">attribute description</a> for more
             information.</dd>
+        <dt>translate [optional]</dt>
+          <dd>Specifies a translation policy.</dd>
+          <dd>See the <a href="#L2462">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1172,6 +1189,10 @@ should be excluded entierly.</p>
           <dd>Whether or not to hyphenate text descendants. </dd>
           <dd>One of 'true' or 'false'.</dd>
           <dd>See the <a href="#L21839">attribute description</a> for more
+            information.</dd>
+        <dt>translate [optional]</dt>
+          <dd>Specifies a translation policy.</dd>
+          <dd>See the <a href="#L2462">attribute description</a> for more
             information.</dd>
       </dl>
     </dd>
@@ -1223,17 +1244,21 @@ should be excluded entierly.</p>
           <dd>An integer in the range [0, 9].</dd>
         <dt>vertical-align [optional]</dt>
           <dd>One of 'before', 'center', 'after'</dd>
-          <dd>Note that all block properties that effect the height of the block are taken into account when aligning,
-           both visible (i.e. borders) and invisible (i.e. paddings and margins).</dd>
+          <dd>Note that all block properties that effect the height of the
+            block are taken into account when aligning, both visible (i.e.
+            borders) and invisible (i.e. paddings and margins).</dd>
         <dt>vertical-position [optional]</dt>
-          <dd>Specifies a vertical position for the block in row heights from the top of the page body area.</dd>
+          <dd>Specifies a vertical position for the block in row heights from
+            the top of the page body area.</dd>
           <dd>Can be relative (percent) or absolute (a positive integer).</dd>
           <dd>For example: 50% or 12</dd>
-          <dd>Note that vertical-positioning behave like leaders. In other words, the vertical-position attribute can 
-          only increase the amount of space preceding a block. It does not rearrange blocks. If a second block has 
-          a vertical position lower than the block preceding it, the second blocks vertical-position will either be
-          ignored or rendered on the following page, depending on the specific situation. 
-          </dd>
+          <dd>Note that vertical-positioning behave like leaders. In other
+            words, the vertical-position attribute can only increase the amount
+            of space preceding a block. It does not rearrange blocks. If a
+            second block has a vertical position lower than the block preceding
+            it, the second blocks vertical-position will either be ignored or
+            rendered on the following page, depending on the specific
+            situation. </dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1399,6 +1424,10 @@ data.</p>
           <dd>One of 'true' or 'false'.</dd>
           <dd>See the <a href="#L21839">attribute description</a> for more
             information.</dd>
+        <dt>translate [optional]</dt>
+          <dd>Specifies a translation policy.</dd>
+          <dd>See the <a href="#L2462">attribute description</a> for more
+            information.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1559,6 +1588,13 @@ control over hyphenation is required, e.g. to ensure proper rendering of
 content that may be difficult to interpret if hyphenated, such as
 hyperlinks.</p>
 
+<p>The hyphenation specified by <tt>hyphenate</tt> applies to all elements in
+its content unless overridden with another instance of <tt>hyphenate</tt>. In
+particular, the empty value of <tt>hyphenate</tt> is used on an element B to
+override a specification of <tt>hyphenate</tt> on an enclosing element A,
+without specififying another hyphenation policy. Within B, the user's
+preference for hyphenation should be applied.</p>
+
 <p>The value of the hyphenate attribute can either be 'true' or 'false'. The
 value 'true' indicates that a hyphenation algorithm should be applied to the
 text contents, i.e. add hyphenation information to the text. The value 'false'
@@ -1567,7 +1603,7 @@ to the text contents. However, obvious hyphention points that were already in
 the text to begin with <em>may</em> be used to hyphenate. Examples of
 hyphenation points that may be used to hyphenate even when the value of the
 hyphenate attribute is 'false' include (but are not limited to): SOFT HYPHEN
-(00ad) and ZERO WIDTH SPACE (200b).</p>
+(U+00AD) and ZERO WIDTH SPACE (U+200B).</p>
 
 <h4 id="L21851">Example</h4>
 
@@ -1617,15 +1653,65 @@ characters):</p>
 </table>
 
 <h3 id="rowspacing">row-spacing</h3>
-<p>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is double.</p>
-<p>Row spacing effects the appearance of the following vertical measurements that are expressed in rows:</p>
+
+<p>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is
+double.</p>
+
+<p>Row spacing effects the appearance of the following vertical measurements
+that are expressed in rows:</p>
 <ul>
-<li>margin-bottom</li>
-<li>margin-top</li>
-<li>padding-bottom</li>
-<li>padding-top</li>
+  <li>margin-bottom</li>
+  <li>margin-top</li>
+  <li>padding-bottom</li>
+  <li>padding-top</li>
 </ul>
-<p>For example, if row-spacing is 2.0, a vertical margin or padding of 2 will render a spacing equal to four row heights.</p>
+
+<p>For example, if row-spacing is 2.0, a vertical margin or padding of 2 will
+render a spacing equal to four row heights.</p>
+
+<h3 id="L2462">translate</h3>
+
+<p>The overall translation policy should be determined by the user of the
+application, for example as a job parameter or a system setting. A user's
+preference should be respected whenever possible. Setting the translate
+attribute on the obfl-element is generally not recommended. The translate
+attribute should be used when detailed control over translation is
+<b>required</b>, e.g. when combining different languages or in books about
+braille code.</p>
+
+<p>The value of the translate attribute can be 'pre-translated', 'grade1',
+'grade2' or 'grade3'.</p>
+
+<p>The translation specified by <tt>translate</tt> applies to all elements in
+its content unless overridden with another instance of <tt>translate</tt>. In
+particular, the empty value of <tt>translate</tt> is used on an element B to
+override a specification of <tt>translate</tt> on an enclosing element A,
+without specififying another translation. Within B, the user's preference for
+translation should be applied.</p>
+
+<h4 id="L2475">pre-translated</h4>
+
+<p>The value 'pre-translated' indicates that <i>the contents is already
+braille</i> and hence does not need processing by a complete braille translator
+to produce braille output. When using this value, text nodes MUST contain a
+combination of braille characters [U+2800-U+28FF] and the following:</p>
+<dl>
+  <dt>SPACE (U+0020)</dt>
+    <dd>Regular space MUST be used at word boundaries for the purpose of line
+      breaking.</dd>
+  <dt>SOFT HYPHEN (U+00AD)</dt>
+    <dd>Soft hyphen is used for dynamically inserting a hyphen at the end of a
+      line. Regular hyphens can be represented by a braille pattern followed by
+      U+200B.</dd>
+  <dt>ZERO WIDTH SPACE (U+200B)</dt>
+    <dd>Zero width space is used together with any braille pattern to allow
+      line breaks within a sequence of braille patterns.</dd>
+</dl>
+
+<p>Note that, BRAILLE PATTERN BLANK (U+2800) is not whitespace nor line
+breaking. It can be used in place of NO-BREAK SPACE (U+00A0). For other
+purposes, use U+0020.</p>
+
 <h2 id="L16081">Attribute Groups</h2>
 
 <h3 id="block-atts">Block</h3>
@@ -1679,7 +1765,7 @@ characters):</p>
       double.</dd>
     <dd>Default is 1.0.</dd>
     <dd>See the <a href="#rowspacing">attribute description</a> for more
-            information.</dd>
+      information.</dd>
   <dt>xml:lang [optional]</dt>
     <dd>the language of text descendants as defined in <a
       href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a> of the
@@ -1688,6 +1774,10 @@ characters):</p>
     <dd>Whether or not to hyphenate text descendants. </dd>
     <dd>One of 'true' or 'false'.</dd>
     <dd>See the <a href="#L21839">attribute description</a> for more
+      information.</dd>
+  <dt>translate [optional]</dt>
+    <dd>Specifies a translation policy.</dd>
+    <dd>See the <a href="#L2462">attribute description</a> for more
       information.</dd>
 </dl>
 </div>
@@ -1867,8 +1957,9 @@ specific references below.</p>
 
 <p><strong>This section is normative.</strong></p>
 
-<p>The Relax NG rule set (XML syntax) "<a href="validation/obfl.rng">validation/obfl.rng</a>"
-forms a normative part of this specification.</p>
+<p>The Relax NG rule set (XML syntax) "<a
+href="validation/obfl.rng">validation/obfl.rng</a>" forms a normative part of
+this specification.</p>
 
 <h3 id="L774">Other Rule Sets</h3>
 
@@ -1877,7 +1968,6 @@ forms a normative part of this specification.</p>
 <p>The XML schema rule set "<a
 href="validation/obfl.xsd">validation/obfl.xsd</a>" forms an informative part
 of this specification.</p>
-
 <!-- 
 <p>The DTD rule set "<a
 href="validation/obfl.rng">validation/obfl.dtd</a>" forms an informative part
@@ -1900,8 +1990,7 @@ of this specification.</p>
       Terms for Device Independence</a>", Rhys Lewis, 18 January 2005.<br />
       <a href="http://www.w3.org/TR/di-gloss/">Latest version</a> available at:
       http://www.w3.org/TR/di-gloss/</dd>
-  <dt><a name="ref-rfc21191"
-  id="ref-rfc21191"><strong>[RFC2119]</strong></a></dt>
+  <dt><a name="ref-rfc2119" id="ref-rfc2119"><strong>[RFC2119]</strong></a></dt>
     <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
       use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
       1997.<br />
