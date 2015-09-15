@@ -1708,9 +1708,17 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
       line breaks within a sequence of braille patterns.</dd>
 </dl>
 
-<p>Note that, BRAILLE PATTERN BLANK (U+2800) is not whitespace nor line
+<p>Note that:</p>
+<ul>
+
+<li>BRAILLE PATTERN BLANK (U+2800) is not whitespace nor line
 breaking. It can be used in place of NO-BREAK SPACE (U+00A0). For other
-purposes, use U+0020.</p>
+purposes, use U+0020</li>
+
+<li>pre-translated text nodes are not influenced by the hyphenate attribute nor the global hyphenation policy</li>
+
+<li class="markup">style elements MUST NOT occur in pre-translated context</li>
+</ul>
 
 <h2 id="L16081">Attribute Groups</h2>
 
