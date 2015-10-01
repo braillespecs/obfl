@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-09-14" />
+  <meta name="dc:Date" content="2015-10-01" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised September 14, 2015</p>
+<p>Working draft, revised October 1, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -570,8 +570,8 @@ the first template whose condition returns true is applied.</p>
   <dt>Content Model</dt>
     <dd>In this order: 
       <ul>
-        <li>header [required]</li>
-        <li>footer [required]</li>
+        <li>header [1 or more]</li>
+        <li>footer [1 or more]</li>
       </ul>
     </dd>
 </dl>
@@ -590,8 +590,8 @@ applies.</p>
   <dt>Content Model</dt>
     <dd>In this order: 
       <ul>
-        <li>header [required]</li>
-        <li>footer [required]</li>
+        <li>header [1 or more]</li>
+        <li>footer [1 or more]</li>
       </ul>
     </dd>
 </dl>
@@ -1679,7 +1679,7 @@ attribute should be used when detailed control over translation is
 <b>required</b>, e.g. when combining different languages or in books about
 braille code.</p>
 
-<p>The value of the translate attribute can be 'pre-translated', 'grade1',
+<p>The value of the translate attribute can be 'pre-translated', 'grade0', 'grade1',
 'grade2' or 'grade3'.</p>
 
 <p>The translation specified by <tt>translate</tt> applies to all elements in

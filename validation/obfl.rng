@@ -41,6 +41,7 @@
 		<choice>
 	        <value></value>
 	        <value>pre-translated</value>
+          <value>grade0</value>
 	        <value>grade1</value>
 	        <value>grade2</value>
 	        <value>grade3</value>
@@ -443,6 +444,7 @@
       	<choice>
 	        <value></value>
 	        <value>pre-translated</value>
+      	  <value>grade0</value>
 	        <value>grade1</value>
 	        <value>grade2</value>
 	        <value>grade3</value>
@@ -500,8 +502,12 @@
   <define name="template">
     <element name="template">
       <ref name="attlist-template"/>
-      <ref name="header"/>
-      <ref name="footer"/>
+      <oneOrMore>
+        <ref name="header"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="footer"/>
+      </oneOrMore>
     </element>
   </define>
   <define name="attlist-template" combine="interleave">
@@ -510,8 +516,12 @@
   <define name="default-template">
     <element name="default-template">
       <ref name="attlist-default-template"/>
-      <ref name="header"/>
-      <ref name="footer"/>
+      <oneOrMore>
+        <ref name="header"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="footer"/>
+      </oneOrMore>
     </element>
   </define>
   <define name="attlist-default-template" combine="interleave">
