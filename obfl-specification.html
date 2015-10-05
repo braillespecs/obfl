@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-10-01" />
+  <meta name="dc:Date" content="2015-10-05" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised October 1, 2015</p>
+<p>Working draft, revised October 5, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -1236,12 +1236,16 @@ should be excluded entierly.</p>
           <dd class="no-markup">Break before block begins.</dd>
           <dd>One of 'auto', 'page'.</dd>
         <dt>keep [optional]</dt>
-          <dd>Keep rows in this block.</dd>
+          <dd>Keep rows in this block together.</dd>
           <dd>One of 'auto', 'all'.</dd>
         <dt>keep-with-next [optional]</dt>
           <dd>Keep the following block's first line(s) on the same page as this
             block.</dd>
           <dd>An integer in the range [0, 9].</dd>
+        <dt>orphans [optional]</dt>
+          <dd>Specifies the minimum number of lines of a paragraph that must be left at the bottom of a page.</dd>
+          <dd>An integer in the range [1, 9].</dd>
+          <dd>Default is 2.</dd>
         <dt>vertical-align [optional]</dt>
           <dd>One of 'before', 'center', 'after'</dd>
           <dd>Note that all block properties that effect the height of the
@@ -1259,6 +1263,10 @@ should be excluded entierly.</p>
             it, the second blocks vertical-position will either be ignored or
             rendered on the following page, depending on the specific
             situation. </dd>
+        <dt>widows [optional]</dt>
+          <dd>Specifies the minimum number of lines of a paragraph that must be left at the top of a page.</dd>
+          <dd>An integer in the range [1, 9].</dd>
+          <dd>Default is 2.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>

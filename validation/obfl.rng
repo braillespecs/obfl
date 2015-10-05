@@ -282,6 +282,28 @@
       </attribute>
     </optional>
     <optional>
+      <attribute name="orphans">
+        <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+          The "orphans" property specifies the minimum number of lines of a paragraph that must be left at the bottom of a page.
+        </documentation>
+        <data type="integer">
+          <param name="minInclusive">1</param>
+          <param name="maxInclusive">9</param>
+        </data>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="widows">
+        <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+          The "widows" property specifies the minimum number of lines of a paragraph that must be left at the top of a page.
+        </documentation>
+        <data type="integer">
+          <param name="minInclusive">1</param>
+          <param name="maxInclusive">9</param>
+        </data>
+      </attribute>
+    </optional>
+    <optional>
       <attribute name="keep-with-previous-sheets">
         <choice>
           <value>0</value>
