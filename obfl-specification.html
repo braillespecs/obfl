@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-10-05" />
+  <meta name="dc:Date" content="2015-10-13" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised October 5, 2015</p>
+<p>Working draft, revised October 13, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -765,12 +765,19 @@ spaced cell grid over a single row.</p>
 
 <p>The field element contains data.</p>
 
-<div class="sidebar markup">
+<div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>header, footer</dd>
+    <dd class="markup">header, footer</dd>
+  <dt>Attributes</dt>
+  	<dd>
+  		<dl>
+  			<dt>text-style [optional]</dt>
+  			<dd class="">A text style, e.g. emphasis or strong</dd>
+  		</dl>
+  	</dd>
   <dt>Content Model</dt>
-    <dd>marker-reference, string, current-page, evaluate [1 or more]</dd>
+    <dd class="markup">marker-reference, string, current-page, evaluate [1 or more]</dd>
 </dl>
 </div>
 
@@ -780,18 +787,20 @@ spaced cell grid over a single row.</p>
 of a marker of the same class in the direction and scope specified by this
 element.</p>
 
-<div class="sidebar markup">
+<div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>field</dd>
+    <dd class="markup">field</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>marker [required]</dt>
-          <dd>The name of the marker to find.</dd>
+          <dd class="markup">The name of the marker to find.</dd>
         <dt>direction [required]</dt>
           <dd>One of 'forward', 'backward'</dd>
         <dt>scope [required]</dt>
           <dd>One of 'page-content', 'page', 'sequence'</dd>
+  		<dt>text-style [optional]</dt>
+  			<dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -804,14 +813,16 @@ element.</p>
 <p>The string element indicates that it should resolve to the contents of its
 value attribute.</p>
 
-<div class="sidebar markup">
+<div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>field</dd>
+    <dd class="markup">field</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>value [required]</dt>
           <dd class="no-markup">The string to output</dd>
+        <dt>text-style [optional]</dt>
+  		<dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -824,15 +835,17 @@ value attribute.</p>
 <p>The current-page element indicates that it should resolve to the value of
 the current page, using the number format specified by this element.</p>
 
-<div class="sidebar markup">
+<div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>field</dd>
+    <dd class="markup">field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>style [required]</dt>
+        <dt><del class="2015-10-13">style [required]</del></dt><dt>number-format [optional]</dt>
           <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
             'upper-alpha', 'lower-alpha'.</dd>
+         <dt>text-style [optional]</dt>
+  			<dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -846,15 +859,17 @@ the current page, using the number format specified by this element.</p>
 <a href="obfl-evaluation-language.html">OBFL evaluation language</a> for more
 information.</p>
 
-<div class="sidebar markup">
+<div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd>before, after, field, toc-entry, block, item</dd>
+    <dd class="markup">before, after, field, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
           <dd>A valid <a href="obfl-evaluation-language.html">OBFL Evaluation
             Language</a> expression.</dd>
+  		<dt>text-style [optional]</dt>
+  		<dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -992,7 +1007,8 @@ element.</p>
     <dd><dl>
         <dt>ref-id [required]</dt>
           <dd></dd>
-        <dt>style [optional]</dt>
+        <dt><del class="2015-10-13">style [optional]</del></dt>
+        <dt>number-format [optional]</dt>
           <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
             'upper-alpha', 'lower-alpha'.</dd>
       </dl>

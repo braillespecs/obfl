@@ -585,7 +585,11 @@
     </element>
   </define>
   <define name="attlist-field" combine="interleave">
-    <empty/>
+    <optional>
+      <attribute name="text-style">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
   </define>
   <define name="current-page">
     <element name="current-page">
@@ -594,16 +598,23 @@
     </element>
   </define>
   <define name="attlist-current-page" combine="interleave">
-    <attribute name="style">
-      <choice>
-        <value>default</value>
-        <value>roman</value>
-        <value>upper-roman</value>
-        <value>lower-roman</value>
-        <value>upper-alpha</value>
-        <value>lower-alpha</value>
-      </choice>
-    </attribute>
+     <optional>
+      <attribute name="number-format">
+        <choice>
+          <value>default</value>
+          <value>roman</value>
+          <value>upper-roman</value>
+          <value>lower-roman</value>
+          <value>upper-alpha</value>
+          <value>lower-alpha</value>
+        </choice>
+      </attribute>
+     </optional>
+    <optional>
+      <attribute name="text-style">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
   </define>
   <define name="marker-reference">
     <element name="marker-reference">
@@ -628,6 +639,11 @@
         <value>sequence</value>
       </choice>
     </attribute>
+    <optional>
+      <attribute name="text-style">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
   </define>
   <define name="string">
     <element name="string">
@@ -637,6 +653,11 @@
   </define>
   <define name="attlist-string" combine="interleave">
     <attribute name="value"/>
+    <optional>
+      <attribute name="text-style">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
   </define>
   <define name="evaluate">
     <element name="evaluate">
@@ -646,6 +667,11 @@
   </define>
   <define name="attlist-evaluate" combine="interleave">
     <attribute name="expression"/>
+    <optional>
+      <attribute name="text-style">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
   </define>
   <define name="table-of-contents">
     <element name="table-of-contents">
@@ -1272,7 +1298,7 @@
       <data type="IDREF"/>
     </attribute>
     <optional>
-      <attribute name="style">
+      <attribute name="number-format">
         <choice>
           <value>default</value>
           <value>roman</value>
