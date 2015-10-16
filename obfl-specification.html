@@ -9,14 +9,14 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-10-13" />
+  <meta name="dc:Date" content="2015-10-16" />
   <link rel="stylesheet" href="default.css" type="text/css" />
 </head>
 
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised October 13, 2015</p>
+<p>Working draft, revised October 16, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -88,7 +88,11 @@ Contents</h2>
       <li><a href="#L62911">header</a></li>
       <li><a href="#L6471">footer</a></li>
       <li><a href="#L665">field</a></li>
-      <li><a href="#L683">marker-reference</a></li>
+      <li><a href="#L683">marker-reference</a>
+        <ul>
+          <li><a href="#L1333">start-offset</a></li>
+        </ul>
+      </li>
       <li><a href="#L696">string</a></li>
       <li><a href="#L709">current-page</a></li>
       <li><a href="#L722">evaluate</a>
@@ -785,7 +789,7 @@ spaced cell grid over a single row.</p>
 
 <p>The marker-reference element indicates that it should resolve to the value
 of a marker of the same class in the direction and scope specified by this
-element.</p>
+element. If no reference is found, the empty string is returned.</p>
 
 <div class="sidebar">
 <dl>
@@ -798,15 +802,52 @@ element.</p>
         <dt>direction [required]</dt>
           <dd>One of 'forward', 'backward'</dd>
         <dt>scope [required]</dt>
-          <dd>One of 'page-content', 'page', 'sequence'</dd>
-  		<dt>text-style [optional]</dt>
-  			<dd class="">A text style, e.g. emphasis or strong</dd>
+          <dd>One of 'page-content', 'page', 'spread', 'sheet', 'sequence',
+            'volume', 'document'</dd>
+        <dt>start-offset [optional]</dt>
+          <dd>Offset the search by the specified number of pages.</dd>
+          <dd>Default is 0</dd>
+        <dt>text-style [optional]</dt>
+          <dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
     <dd>Empty.</dd>
 </dl>
 </div>
+
+<h4 id="L1333">start-offset</h4>
+
+<p>The start-offset attribute offsets the start of the search by the specified
+number of pages. This applies irrespectively of the scope of the search.</p>
+
+<p>By default, the search begins on the page where the marker-reference element
+is placed. The search, once combined with a non-zero start-offset, could start
+on a non-existing page. If the search direction is the same as the offset
+direction, the search would never hit an existing page and the empty string is
+returned. However, if the search direction is opposite to the offset direction,
+the search could eventually hit an existing page. Depending on the scope,
+<b>the following applies in this particular situation</b>:</p>
+<dl>
+  <dt>page-content</dt>
+    <dd>return the empty string</dd>
+  <dt>page</dt>
+    <dd>return the empty string</dd>
+  <dt>spread</dt>
+    <dd>if the current page belongs to the same spread as the page with the
+      specified offset (had it existed), start the search on the first existing
+      page in the search direction, otherwise return the emtpy string</dd>
+  <dt>sheet</dt>
+    <dd>if the current page belongs to the same sheet as the page with the
+      specified offset (had it existed), start the search on the first existing
+      page in the search direction, otherwise return the emtpy string</dd>
+  <dt>sequence</dt>
+    <dd>start the search on the first existing page in the search direction</dd>
+  <dt>volume</dt>
+    <dd>start the search on the first existing page in the search direction</dd>
+  <dt>document</dt>
+    <dd>start the search on the first existing page in the search direction</dd>
+</dl>
 
 <h3 id="L696" class="include">string</h3>
 

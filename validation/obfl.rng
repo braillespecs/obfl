@@ -628,17 +628,29 @@
     </attribute>
     <attribute name="direction">
       <choice>
+        <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">Defines the direction of the search</documentation>
         <value>forward</value>
         <value>backward</value>
       </choice>
     </attribute>
     <attribute name="scope">
+      <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">Defines the boundaries of the search</documentation>
       <choice>
         <value>page-content</value>
         <value>page</value>
+        <value>spread</value>
+        <value>sheet</value>
         <value>sequence</value>
+        <value>volume</value>
+        <value>document</value>
       </choice>
     </attribute>
+    <optional>
+      <attribute name="start-offset">
+        <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">Offsets the start of the search by the specified number of pages</documentation>
+         <data type="short"/>
+      </attribute>
+    </optional>
     <optional>
       <attribute name="text-style">
         <data type="NMTOKEN"/>
