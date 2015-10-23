@@ -1,0 +1,54 @@
+apply plugin: 'base'
+
+task copyTask(type: Copy) {
+	dependsOn(clean)
+	from 'src'
+	into 'build/tmp'
+	include '*.html'
+	include 'default.css'
+	include 'markup.js'
+	include 'validation/**/*.*'
+	include 'examples/**/*.*'
+}
+
+task makeRNC() {
+	dependsOn(copyTask)
+	doLast() {
+		ant.java(jar: trang_path, fork: true, outputproperty: 'op1') {
+			arg(value:'src/validation/obfl.rng')
+			arg(value:'build/tmp/validation/obfl.rnc')
+		}
+		if (ant.properties.op1) {
+			println ant.properties.op1
+		}
+	}
+}
+
+task makeXSD() {
+	dependsOn(copyTask)
+	doLast() {
+		ant.java(jar: trang_path, fork: true, outputproperty: 'op2') {
+			arg(value:'src/validation/obfl.rng')
+			arg(value:'build/tmp/validation/obfl.xsd')
+		}
+		if (ant.properties.op2) {
+			println ant.properties.op2
+		}
+	}
+}
+
+task zip(type: Zip) {
+	dependsOn(makeXSD, makeRNC)
+    from 'build/tmp'
+}
+
+task buildSite(type: Copy) {
+	dependsOn(zip)
+	from 'build/distributions'
+	from 'build/tmp'
+	into 'build/site'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.8'
+}
