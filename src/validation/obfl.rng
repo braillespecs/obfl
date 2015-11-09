@@ -524,12 +524,7 @@
   <define name="template">
     <element name="template">
       <ref name="attlist-template"/>
-      <oneOrMore>
-        <ref name="header"/>
-      </oneOrMore>
-      <oneOrMore>
-        <ref name="footer"/>
-      </oneOrMore>
+      <ref name="template-children"/>
     </element>
   </define>
   <define name="attlist-template" combine="interleave">
@@ -538,16 +533,22 @@
   <define name="default-template">
     <element name="default-template">
       <ref name="attlist-default-template"/>
-      <oneOrMore>
-        <ref name="header"/>
-      </oneOrMore>
-      <oneOrMore>
-        <ref name="footer"/>
-      </oneOrMore>
+      <ref name="template-children"/>
     </element>
   </define>
   <define name="attlist-default-template" combine="interleave">
     <empty/>
+  </define>
+  <define name="template-children">
+    <oneOrMore>
+      <ref name="header"/>
+    </oneOrMore>
+    <oneOrMore>
+      <ref name="footer"/>
+    </oneOrMore>
+    <zeroOrMore>
+      <ref name="margin-region"/>
+    </zeroOrMore>
   </define>
   <define name="header">
     <element name="header">
@@ -570,6 +571,41 @@
   </define>
   <define name="attlist-footer" combine="interleave">
     <ref name="row-spacing"/>
+  </define>
+  <define name="margin-region">
+    <element name="margin-region">
+      <ref name="attlist-margin-region"/>
+      <optional>
+        <ref name="marker-indicator"/>
+      </optional>
+    </element>
+  </define>
+  <define name="attlist-margin-region" combine="interleave">
+    <attribute name="align">
+      <choice>
+        <value>left</value>
+        <value>right</value>
+      </choice>
+    </attribute>
+    <optional>
+      <attribute name="width">
+        <data type="positiveInteger"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="marker-indicator">
+    <element name="marker-indicator">
+      <empty/>
+      <ref name="attlist-marker-indicator"></ref>
+    </element>
+  </define>
+  <define name="attlist-marker-indicator">
+    <attribute name="markers">
+      <data type="NMTOKENS"/>
+    </attribute>
+    <attribute name="indicator">
+      <data type="normalizedString"/>
+    </attribute>
   </define>
   <define name="field">
     <element name="field">

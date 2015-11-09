@@ -9,7 +9,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-11-30" />
+  <meta name="dc:Date" content="2015-12-07" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -17,7 +17,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised November 30, 2015</p>
+<p>Working draft, revised December 7, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -88,6 +88,12 @@ Contents</h2>
       <li><a href="#L6291">after</a></li>
       <li><a href="#L62911">header</a></li>
       <li><a href="#L6471">footer</a></li>
+      <li><a href="#L1296">margin-region</a></li>
+      <li><a href="#L1329">marker-indicator</a>
+        <ul>
+          <li><a href="#L1365">Example</a></li>
+        </ul>
+      </li>
       <li><a href="#L665">field</a></li>
       <li><a href="#L683">marker-reference</a>
         <ul>
@@ -520,6 +526,8 @@ as the width and height of pages.</p>
     <dd>obfl</dd>
   <dt>Attributes</dt>
     <dd><dl>
+    	<dt>name [required]</dt>
+    		<dd>The name of the layout-master</dd>
         <dt>duplex [optional]</dt>
           <dd>'true' (default???) or 'false'</dd>
         <dt>inner-margin [optional]</dt>
@@ -561,6 +569,8 @@ as the width and height of pages.</p>
 <p>The template element contains template information that applies under
 specific conditions. The template conditions are tested in document order, and
 the first template whose condition returns true is applied.</p>
+<p>Headers, footers and page-areas span the full width of the page, whereas the
+ text flow area is reduced by the combined width of the margin-regions.</p>
 
 <div class="sidebar markup">
 <dl>
@@ -577,6 +587,7 @@ the first template whose condition returns true is applied.</p>
       <ul>
         <li>header [1 or more]</li>
         <li>footer [1 or more]</li>
+        <li>margin-region [0 or more]</li>
       </ul>
     </dd>
 </dl>
@@ -597,6 +608,7 @@ applies.</p>
       <ul>
         <li>header [1 or more]</li>
         <li>footer [1 or more]</li>
+        <li>margin-region [0 or more]</li>
       </ul>
     </dd>
 </dl>
@@ -765,6 +777,72 @@ spaced cell grid over a single row.</p>
     <dd>field [0 or more]</dd>
 </dl>
 </div>
+
+<h3 class="include" id="L1296">margin-region</h3>
+
+<p>Adds a margin region.</p>
+
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+	<dd>template, default-template</dd>
+	<dt>Attributes</dt>
+	<dd><dl>
+		<dt>align [required]</dt>
+		<dd>One of 'left', 'right'</dd>
+		<dt>width [optional]</dt>
+		<dd>The width in characters.</dd>
+		<dd>Default is 1.</dd>
+	</dl></dd>
+	<dt>Content Model</dt>
+		<dd>marker-indicator [optional]</dd>
+</dl>
+</div>
+
+<h3 class="include" id="L1329">marker-indicator</h3>
+
+<p>The marker-indicator element indicates that one or more of the specified markers are on the indicated row.</p>
+
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+	<dd>margin-region</dd>
+	<dt>Attributes</dt>
+	<dd><dl>
+		<dt>markers [required]</dt>
+			<dd>A whitespace separated list of names of the markers to find.</dd>
+		<dt>indicator [required]</dt>
+			<dd>A <span class="no-markup">string</span> to place on the row where a marker is found. The length of
+			the translated <span class="no-markup">string</span> must not exceed the width of the margin-region.</dd>
+	</dl></dd>
+	<dt>Content Model</dt>
+	<dd>Empty</dd>
+</dl>
+</div>
+
+<h4 id="L1365">Example</h4>
+<p>Given the following input:</p>
+<pre>
+	&lt;layout-master name="default" ...>
+	&lt;default-template>
+		&lt;header/>
+		&lt;footer/>
+		&lt;margin-region align="left">
+			&lt;marker-indicator markers="pages sections" character="!"/>
+		&lt;/margin-region>
+	&lt;/default-template>
+	&lt;/layout-master>
+	...
+	&lt;sequence master="default">
+		&lt;block margin-left="1">&lt;marker class="sections" value="1"/>Page 1&lt;/block>
+		&lt;block margin-left="1">Page 2&lt;marker class="pages" value="2"/>&lt;/block>
+	&lt;/sequence>
+</pre>
+<p>The output would be:</p>
+<pre>
+! Page 1
+! Page 2
+</pre>
 
 <h3 id="L665" class="include">field</h3>
 
