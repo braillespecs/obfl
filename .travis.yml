@@ -1,0 +1,7 @@
+script: ./gradlew buildSite
+after_success: ./build-resources/publish.sh
+
+env:
+  global:
+   - secure: "lPWBHFcWxhkoJM8wJCt8ek/OvDA32YynopglTSSjk23TeAhb5ei+If3z6Qc8QO7bY7Y6WSx/t6HlM2e1MBDQMe9BkACpcSL/fQ2AYHoClC6Vd4YxRLIQVgN8N26amhSe9cVMrFtjRRbcbbgEXUKh1Ur3Z/589L4xXzswTRi/nMw="
+
