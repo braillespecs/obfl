@@ -5,11 +5,7 @@ task copyTask(type: Copy) {
 	dependsOn(clean)
 	from 'src'
 	into 'build/tmp'
-	include '*.html'
-	include 'default.css'
-	include 'markup.js'
-	include 'validation/**/*.*'
-	include 'examples/**/*.*'
+	include '**/*.*'
 }
 
 task makeRNC() {
