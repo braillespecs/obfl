@@ -1,4 +1,14 @@
-div.sidebar {border: 1px solid gray; background-color: #E8FBFF; margin-top: 1em; margin-bottom: 1.5em; padding-left: 1em; padding-right: 1em; padding-top: 0.5em; padding-bottom: 0.5em;}
+div.sidebar {
+	/*border: 1px solid gray;*/
+	border-left: 0.5em solid #8ccbf2; 
+	background-color: #def; 
+	margin-top: 1em;
+	margin-bottom: 1.5em; 
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
 .automated {
 	color: green;
 	text-decoration: none;
