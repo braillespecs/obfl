@@ -1,0 +1,29 @@
+div.sidebar {border: 1px solid gray; background-color: #E8FBFF; margin-top: 1em; margin-bottom: 1.5em; padding-left: 1em; padding-right: 1em; padding-top: 0.5em; padding-bottom: 0.5em;}
+.automated {
+	color: green;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+.dashed-box {
+	border-style: dashed;
+	border-width: 1px;
+	border-color: #aaa;
+	padding: 0.25em;
+}
+.solid-box {
+	border-style: solid;
+	border-width: 6px;
+}
+table.box-model {
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border-style: none;
+	border-width: 0px;
+	text-align: center;
+}
+.box-model tr td {
+	border-style: none;
+	padding: 0.5em;
+}
