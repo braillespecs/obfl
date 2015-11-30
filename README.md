@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joeha480/obfl.svg)](https://travis-ci.org/joeha480/obfl)
+
 Provides a complete layout specification for braille books
 
 # Open Braille Formatting Language #
