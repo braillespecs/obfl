@@ -576,7 +576,7 @@
     <element name="margin-region">
       <ref name="attlist-margin-region"/>
       <optional>
-        <ref name="marker-indicator"/>
+        <ref name="indicators"/>
       </optional>
     </element>
   </define>
@@ -592,6 +592,13 @@
         <data type="positiveInteger"/>
       </attribute>
     </optional>
+  </define>
+  <define name="indicators">
+    <element name="indicators">
+      <zeroOrMore>
+        <ref name="marker-indicator"/>
+      </zeroOrMore>
+    </element>
   </define>
   <define name="marker-indicator">
     <element name="marker-indicator">

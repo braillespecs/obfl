@@ -9,7 +9,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-12-07" />
+  <meta name="dc:Date" content="2015-12-10" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -17,7 +17,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised December 7, 2015</p>
+<p>Working draft, revised December 10, 2015</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -89,6 +89,7 @@ Contents</h2>
       <li><a href="#L62911">header</a></li>
       <li><a href="#L6471">footer</a></li>
       <li><a href="#L1296">margin-region</a></li>
+      <li><a href="#L1328">indicators</a></li>
       <li><a href="#L1329">marker-indicator</a>
         <ul>
           <li><a href="#L1365">Example</a></li>
@@ -795,24 +796,44 @@ spaced cell grid over a single row.</p>
 		<dd>Default is 1.</dd>
 	</dl></dd>
 	<dt>Content Model</dt>
-		<dd>marker-indicator [optional]</dd>
+		<dd>indicators [optional]</dd>
 </dl>
 </div>
 
-<h3 class="include" id="L1329">marker-indicator</h3>
+<h3 class="include" id="L1328">indicators</h3>
 
-<p>The marker-indicator element indicates that one or more of the specified markers are on the indicated row.</p>
+<p>The indicators element uses the full height of the margin-region to indicate
+rows where one of the specified conditions are met.</p>
+
+<p>The conditions should be evaluated in the order they occur in this element.
+In other words, only the first match is rendered when more than one condition
+applies to a given row.</p>
 
 <div class="sidebar markup">
 <dl>
 	<dt>Usage</dt>
 	<dd>margin-region</dd>
 	<dt>Attributes</dt>
+	<dd>None</dd>
+	<dt>Content Model</dt>
+	<dd>marker-indicator [0 or more]</dd>
+</dl>
+</div>
+
+<h3 class="include" id="L1329">marker-indicator</h3>
+
+<p>The marker-indicator element indicates that one or more of the specified markers are present on the indicated row.</p>
+
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+	<dd>indicators</dd>
+	<dt>Attributes</dt>
 	<dd><dl>
 		<dt>markers [required]</dt>
 			<dd>A whitespace separated list of names of the markers to find.</dd>
 		<dt>indicator [required]</dt>
-			<dd>A <span class="no-markup">string</span> to place on the row where a marker is found. The length of
+			<dd>A <span class="no-markup">string</span> to place in the margin-region level with the row where a marker is found. The length of
 			the translated <span class="no-markup">string</span> must not exceed the width of the margin-region.</dd>
 	</dl></dd>
 	<dt>Content Model</dt>
@@ -828,7 +849,10 @@ spaced cell grid over a single row.</p>
 		&lt;header/>
 		&lt;footer/>
 		&lt;margin-region align="left">
-			&lt;marker-indicator markers="pages sections" indicator="!"/>
+			&lt;indicators>
+				&lt;marker-indicator markers="pages sections" indicator="!"/>
+				&lt;marker-indicator markers="images" indicator="?"/>
+			&lt;/indicators>
 		&lt;/margin-region>
 	&lt;/default-template>
 	&lt;/layout-master>
