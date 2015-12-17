@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joeha480/obfl.svg)](https://travis-ci.org/joeha480/obfl)
+[![Build Status](https://travis-ci.org/braillespecs/obfl.svg)](https://travis-ci.org/braillespecs/obfl)
 
 Provides a complete layout specification for braille books
 
