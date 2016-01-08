@@ -9,7 +9,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-12-10" />
+  <meta name="dc:Date" content="2016-01-08" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -17,7 +17,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised December 10, 2015</p>
+<p>Working draft, revised January 8, 2016</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -456,6 +456,8 @@ are in the OBFL namespace.</p>
   &lt;table-of-contents&gt;...&lt;/table-of-contents&gt;
   &lt;volume-template&gt;...&lt;/volume-template&gt;
   &lt;collection&gt;...&lt;/collection&gt;
+  &lt;xml-processor&gt;...&lt;/xml-processor&gt;
+  &lt;renderer&gt;...&lt;/renderer&gt;
   &lt;sequence&gt;...&lt;/sequence&gt;
 &lt;/obfl&gt;</pre>
 
@@ -495,6 +497,8 @@ are in the OBFL namespace.</p>
         <li>table-of-contents [0 or more]</li>
         <li>volume-template [0 or more]</li>
         <li>collection [0 or more]</li>
+        <li>xml-processor [0 or more]</li>
+        <li>renderer [0 or more]</li>
         <li>sequence [1 or more]</li>
       </ul>
     </dd>
@@ -1318,7 +1322,7 @@ volume's body of pages.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>block [1 or more] </dd>
+    <dd>block, xml-data [1 or more] </dd>
 </dl>
 </div>
 
@@ -1431,9 +1435,37 @@ should be excluded entierly.</p>
     </dd>
   <dt>Content Model</dt>
     <dd>text(), leader, marker, br, evaluate, page-number, span, style, anchor,
-      block [0 or more]</dd>
+      block, xml-data [0 or more]</dd>
 </dl>
 </div>
+
+<h3 class="include">xml-data</h3>
+<p>xml-data is unprocessed xml in any namespace that may be represented in more than one way,
+depending on some aspect of the rendered result.</p>
+<div class="sidebar markup">
+<dl>
+<dt>Usage</dt>
+	<dd>sequence, block</dd>
+<dt>Attributes</dt>
+	<dd><dl>
+		<dt>xml-processor [required]</dt>
+			<dd>Name of the processor to use.</dd>
+		</dl>
+	</dd>
+<dt>Content Model</dt>
+	<dd>Any element [required]</dd>
+</dl>
+</div>
+<h4>Example</h4>
+<pre>
+&lt;xml-data xmlns:html="http://www.w3.org/1999/xhtml">
+	&lt;html:table>
+		&lt;html:tr>
+			&lt;html:td>table cell&lt;/html:td>
+		&lt;/html:tr>
+	&lt;/html:table>
+&lt;/xml-data>
+</pre>
 
 <h3 id="L924" class="include">anchor</h3>
 
@@ -1742,7 +1774,92 @@ that nesting of items is not allowed.</p>
 </dl>
 </div>
 
-<p></p>
+<h3 class="include">xml-processor</h3>
+<p>Defines a pre-processor for xml-data. The output of the processor must be elements in the obfl namespace.</p>
+<p>Currently, the only defined processor is xsl:stylesheet, i.e. an XSLT document as specified in the XSL 
+Transformations Recommendation [<a class="nref" href="#ref-xslt">XSLT</a>]. However
+additional elements might be supported in future versions.</p>
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+		<dd>obfl</dd>
+	<dt>Attributes</dt>
+		<dd><dl>
+			<dt>name [required]</dt>
+				<dd>An identifier for the processor.</dd>
+		</dl></dd>
+	<dt>Content model</dt>
+		<dd class="no-markup">xsl:stylesheet [required]</dd>
+</dl>
+</div>
+
+<h4>Example</h4>
+<pre>
+&lt;xml-processor name="simple-table-processor">
+	&lt;xsl:stylesheet version="2.0"
+			xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:fn="http://www.w3.org/2005/xpath-functions">
+		&lt;xsl:output method="xml" version="1.0" encoding="UTF-8" indent="no"/>
+		&lt;!-- Makes a verbatim copy of the input, which is assumed to be in obfl namespace -->
+		&lt;xsl:template match="/">
+			&lt;xsl:copy-of select="*"/>
+		&lt;/xsl:template>
+	&lt;/xsl:stylesheet>
+&lt;/xml-processor>
+</pre>
+
+<h3 class="include">renderer</h3>
+<p>Defines rendering options for unprocessed xml-data.</p>
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+		<dd>obfl</dd>
+	<dt>Attributes</dt>
+		<dd><dl>
+			<dt>name [required]</dt>
+				<dd>An identifier for the renderer.</dd>
+		</dl></dd>
+	<dt>Content model</dt>
+		<dd>rendering-scenario [1 or more]</dd>
+</dl>
+</div>
+
+<h3 class="include">rendering-scenario</h3>
+<p>Defines a rendering scenario. All scenarios will be rendered, and the scenario with the lowest cost will be selected. If a scenario cannot be 
+rendered for some reason, it is assumed to have an infinite cost. It is an error if no scenario can be applied to a given xml-data.</p>
+
+<div class="sidebar markup">
+<dl>
+	<dt>Usage</dt>
+		<dd>renderer</dd>
+	<dt>Attributes</dt>
+		<dd><dl>
+			<dt>processor [required]</dt>
+				<dd>The identifier of a pre-processor to use.</dd>
+			<dt>cost [required]</dt>
+				<dd>Specifies the cost of the rendered result.</dd>
+				<dd class="no-markup">An <a href="obfl-evaluation-language.html">OBFL Evaluation Language</a> expression that evaluates to a number.</dd>
+			<dt>qualifier [optional]</dt>
+				<dd>Specifies an XPath expression to be used to qualify a scenario for rendering. If a scenario doesn't qualify to a given xml-data, it is excluded 
+				from cost evaluation.</dd>
+				<dd class="no-markup">The XPath expression must evaluate to a boolean.</dd>
+		</dl></dd>
+	<dt>Content Model</dt>
+		<dd>Empty.</dd>
+</dl>
+</div>
+
+<h4>Example</h4>
+<pre>
+&lt;renderer name="table-renderer">
+	&lt;rendering-scenario
+			qualifier="/table/max(tr/sum(td/(if (@colspan) then @colspan else 1)))&lt;=2"
+			processor="simple-table-processor" 
+			cost="(+ (- 30 $min-block-width) $total-height)"/>
+	&lt;/rendering-scenario>
+&lt;/renderer>
+</pre>
 
 <h2 id="L1608">Attribute Definitions</h2>
 
@@ -2169,8 +2286,7 @@ of this specification.</p>
   <dt><a name="ref-rfc2119" id="ref-rfc2119"><strong>[RFC2119]</strong></a></dt>
     <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
       use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
-      1997.<br />
-      Available at: http://www.ietf.org/rfc/rfc2119.txt</dd>
+      1997.</dd>
   <dt><a name="ref-unicode" id="ref-unicode"><strong>[Unicode]</strong></a></dt>
     <dd>"<a href="http://www.unicode.org/versions/Unicode5.1.0/">Unicode
       Standard, Version 5.1.0</a>", The Unicode Consortium. The Unicode
@@ -2193,10 +2309,15 @@ of this specification.</p>
       http://www.w3.org/TR/xml-names</dd>
   <dt><a name="ref-xpath" id="ref-xpath"><strong>[XPath]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/1999/REC-xpath-19991116">XML Path
-      Language (XPath) Version (1.0)"</a>, J. Clark, S. DeRose, 16 November
+      Language (XPath) Version 1.0"</a>, J. Clark, S. DeRose, 16 November
       1999.<br />
       <a href="http://www.w3.org/TR/xpath">Latest version</a> available at:
       http://www.w3.org/TR/xpath</dd>
+   <dt><a name="ref-xslt" id="ref-xslt"><strong>[XSLT]</strong></a></dt>
+   		<dd>"<a href="http://www.w3.org/TR/2007/REC-xslt20-20070123/">XSL Transformations (XSLT) Version 2.0</a>",
+   		M. Kay, 23 January 2007.<br/>
+   		<a href="http://www.w3.org/TR/xslt20">Latest version</a> available at: 
+   		http://www.w3.org/TR/xslt20</dd>
 </dl>
 
 <h3 id="L881">Informative References</h3>
