@@ -122,6 +122,11 @@ Contents</h2>
       <li><a href="#L906">sequence</a></li>
       <li><a href="#L11470">dynamic-sequence</a></li>
       <li><a href="#L1023">block</a></li>
+      <li><a href="#L2248">xml-data</a>
+        <ul>
+          <li><a href="#L2273">Example</a></li>
+        </ul>
+      </li>
       <li><a href="#L924">anchor</a></li>
       <li><a href="#L9242">list-of-references</a></li>
       <li><a href="#L951">on-collection-start</a></li>
@@ -135,6 +140,17 @@ Contents</h2>
       <li><a href="#L1005">on-toc-end</a></li>
       <li><a href="#L1194">collection</a></li>
       <li><a href="#L1210">item</a></li>
+      <li><a href="#L2690">xml-processor</a>
+        <ul>
+          <li><a href="#L2720">Example</a></li>
+        </ul>
+      </li>
+      <li><a href="#L2724">renderer</a></li>
+      <li><a href="#L2749">rendering-scenario</a>
+        <ul>
+          <li><a href="#L2793">Example</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#L1608">Attribute Definitions</a>
@@ -531,8 +547,8 @@ as the width and height of pages.</p>
     <dd>obfl</dd>
   <dt>Attributes</dt>
     <dd><dl>
-    	<dt>name [required]</dt>
-    		<dd>The name of the layout-master</dd>
+        <dt>name [required]</dt>
+          <dd>The name of the layout-master</dd>
         <dt>duplex [optional]</dt>
           <dd>'true' (default???) or 'false'</dd>
         <dt>inner-margin [optional]</dt>
@@ -574,8 +590,9 @@ as the width and height of pages.</p>
 <p>The template element contains template information that applies under
 specific conditions. The template conditions are tested in document order, and
 the first template whose condition returns true is applied.</p>
+
 <p>Headers, footers and page-areas span the full width of the page, whereas the
- text flow area is reduced by the combined width of the margin-regions.</p>
+text flow area is reduced by the combined width of the margin-regions.</p>
 
 <div class="sidebar markup">
 <dl>
@@ -789,18 +806,19 @@ spaced cell grid over a single row.</p>
 
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-	<dd>template, default-template</dd>
-	<dt>Attributes</dt>
-	<dd><dl>
-		<dt>align [required]</dt>
-		<dd>One of 'left', 'right'</dd>
-		<dt>width [optional]</dt>
-		<dd>The width in characters.</dd>
-		<dd>Default is 1.</dd>
-	</dl></dd>
-	<dt>Content Model</dt>
-		<dd>indicators [optional]</dd>
+  <dt>Usage</dt>
+    <dd>template, default-template</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>align [required]</dt>
+          <dd>One of 'left', 'right'</dd>
+        <dt>width [optional]</dt>
+          <dd>The width in characters.</dd>
+          <dd>Default is 1.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>indicators [optional]</dd>
 </dl>
 </div>
 
@@ -815,37 +833,42 @@ applies to a given row.</p>
 
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-	<dd>margin-region</dd>
-	<dt>Attributes</dt>
-	<dd>None</dd>
-	<dt>Content Model</dt>
-	<dd>marker-indicator [0 or more]</dd>
+  <dt>Usage</dt>
+    <dd>margin-region</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content Model</dt>
+    <dd>marker-indicator [0 or more]</dd>
 </dl>
 </div>
 
 <h3 class="include" id="L1329">marker-indicator</h3>
 
-<p>The marker-indicator element indicates that one or more of the specified markers are present on the indicated row.</p>
+<p>The marker-indicator element indicates that one or more of the specified
+markers are present on the indicated row.</p>
 
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-	<dd>indicators</dd>
-	<dt>Attributes</dt>
-	<dd><dl>
-		<dt>markers [required]</dt>
-			<dd>A whitespace separated list of names of the markers to find.</dd>
-		<dt>indicator [required]</dt>
-			<dd>A <span class="no-markup">string</span> to place in the margin-region level with the row where a marker is found. The length of
-			the translated <span class="no-markup">string</span> must not exceed the width of the margin-region.</dd>
-	</dl></dd>
-	<dt>Content Model</dt>
-	<dd>Empty</dd>
+  <dt>Usage</dt>
+    <dd>indicators</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>markers [required]</dt>
+          <dd>A whitespace separated list of names of the markers to find.</dd>
+        <dt>indicator [required]</dt>
+          <dd>A <span class="no-markup">string</span> to place in the
+            margin-region level with the row where a marker is found. The
+            length of the translated <span class="no-markup">string</span> must
+            not exceed the width of the margin-region.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
 <h4 id="L1365">Example</h4>
+
 <p>Given the following input:</p>
 <pre>
 	&lt;layout-master name="default" ...>
@@ -881,14 +904,14 @@ applies to a given row.</p>
   <dt>Usage</dt>
     <dd class="markup">header, footer</dd>
   <dt>Attributes</dt>
-  	<dd>
-  		<dl>
-  			<dt>text-style [optional]</dt>
-  			<dd class="">A text style, e.g. emphasis or strong</dd>
-  		</dl>
-  	</dd>
+    <dd><dl>
+        <dt>text-style [optional]</dt>
+          <dd class="">A text style, e.g. emphasis or strong</dd>
+      </dl>
+    </dd>
   <dt>Content Model</dt>
-    <dd class="markup">marker-reference, string, current-page, evaluate [1 or more]</dd>
+    <dd class="markup">marker-reference, string, current-page, evaluate [1 or
+      more]</dd>
 </dl>
 </div>
 
@@ -970,7 +993,7 @@ value attribute.</p>
         <dt>value [required]</dt>
           <dd class="no-markup">The string to output</dd>
         <dt>text-style [optional]</dt>
-  		<dd class="">A text style, e.g. emphasis or strong</dd>
+          <dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -989,11 +1012,12 @@ the current page, using the number format specified by this element.</p>
     <dd class="markup">field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt><del class="2015-10-13">style [required]</del></dt><dt>number-format [optional]</dt>
+        <dt><del class="2015-10-13">style [required]</del></dt>
+        <dt>number-format [optional]</dt>
           <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
             'upper-alpha', 'lower-alpha'.</dd>
-         <dt>text-style [optional]</dt>
-  			<dd class="">A text style, e.g. emphasis or strong</dd>
+        <dt>text-style [optional]</dt>
+          <dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1016,8 +1040,8 @@ information.</p>
         <dt>expression [required]</dt>
           <dd>A valid <a href="obfl-evaluation-language.html">OBFL Evaluation
             Language</a> expression.</dd>
-  		<dt>text-style [optional]</dt>
-  		<dd class="">A text style, e.g. emphasis or strong</dd>
+        <dt>text-style [optional]</dt>
+          <dd class="">A text style, e.g. emphasis or strong</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1386,12 +1410,13 @@ should be excluded entierly.</p>
       the text body. 
       <dl>
         <dt>keep-with-previous-sheets [optional]</dt>
-          <dd>Indicates that <em>the end of</em> this block should be kept in the same volume as
-            the specified number of preceding sheets.</dd>
+          <dd>Indicates that <em>the end of</em> this block should be kept in
+            the same volume as the specified number of preceding sheets.</dd>
           <dd>An integer in the range [0, 9]</dd>
         <dt>keep-with-next-sheets [optional]</dt>
-          <dd>Indicates that <em>the beginning of</em> this block should be kept in the same volume as
-            the specified number of following sheets.</dd>
+          <dd>Indicates that <em>the beginning of</em> this block should be
+            kept in the same volume as the specified number of following
+          sheets.</dd>
           <dd>An integer in the range [0, 9]</dd>
       </dl>
     </dd>
@@ -1407,7 +1432,8 @@ should be excluded entierly.</p>
             block.</dd>
           <dd>An integer in the range [0, 9].</dd>
         <dt>orphans [optional]</dt>
-          <dd>Specifies the minimum number of lines of a paragraph that must be left at the bottom of a page.</dd>
+          <dd>Specifies the minimum number of lines of a paragraph that must be
+            left at the bottom of a page.</dd>
           <dd>An integer in the range [1, 9].</dd>
           <dd>Default is 1.</dd>
         <dt>vertical-align [optional]</dt>
@@ -1428,7 +1454,8 @@ should be excluded entierly.</p>
             rendered on the following page, depending on the specific
             situation. </dd>
         <dt>widows [optional]</dt>
-          <dd>Specifies the minimum number of lines of a paragraph that must be left at the top of a page.</dd>
+          <dd>Specifies the minimum number of lines of a paragraph that must be
+            left at the top of a page.</dd>
           <dd>An integer in the range [1, 9].</dd>
           <dd>Default is 1.</dd>
       </dl>
@@ -1439,24 +1466,27 @@ should be excluded entierly.</p>
 </dl>
 </div>
 
-<h3 class="include">xml-data</h3>
-<p>xml-data is unprocessed xml in any namespace that may be represented in more than one way,
-depending on some aspect of the rendered result.</p>
+<h3 class="include" id="L2248">xml-data</h3>
+
+<p>xml-data is unprocessed xml in any namespace that may be represented in more
+than one way, depending on some aspect of the rendered result.</p>
+
 <div class="sidebar markup">
 <dl>
-<dt>Usage</dt>
-	<dd>sequence, block</dd>
-<dt>Attributes</dt>
-	<dd><dl>
-		<dt>xml-processor [required]</dt>
-			<dd>Name of the processor to use.</dd>
-		</dl>
-	</dd>
-<dt>Content Model</dt>
-	<dd>Any element [required]</dd>
+  <dt>Usage</dt>
+    <dd>sequence, block</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>renderer [required]</dt>
+          <dd>Name of the renderer to use.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Any element [required]</dd>
 </dl>
 </div>
-<h4>Example</h4>
+
+<h4 id="L2273">Example</h4>
 <pre>
 &lt;xml-data xmlns:html="http://www.w3.org/1999/xhtml">
 	&lt;html:table>
@@ -1774,26 +1804,33 @@ that nesting of items is not allowed.</p>
 </dl>
 </div>
 
-<h3 class="include">xml-processor</h3>
-<p>Defines a pre-processor for xml-data. The output of the processor must be elements in the obfl namespace.</p>
-<p>Currently, the only defined processor is xsl:stylesheet, i.e. an XSLT document as specified in the XSL 
-Transformations Recommendation [<a class="nref" href="#ref-xslt">XSLT</a>]. However
-additional elements might be supported in future versions.</p>
+<h3 class="include" id="L2690">xml-processor</h3>
+
+<p>Defines a pre-processor for xml-data. The output of the processor must be
+elements in the obfl namespace and the elements must be valid in
+the context where they are inserted.</p>
+
+<p>Currently, the only defined processor is xsl:stylesheet, i.e. an XSLT
+document as specified in the XSL Transformations Recommendation [<a
+class="nref" href="#ref-xslt">XSLT</a>]. However additional elements might be
+supported in future versions.</p>
+
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-		<dd>obfl</dd>
-	<dt>Attributes</dt>
-		<dd><dl>
-			<dt>name [required]</dt>
-				<dd>An identifier for the processor.</dd>
-		</dl></dd>
-	<dt>Content model</dt>
-		<dd class="no-markup">xsl:stylesheet [required]</dd>
+  <dt>Usage</dt>
+    <dd>obfl</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>name [required]</dt>
+          <dd>An identifier for the processor.</dd>
+      </dl>
+    </dd>
+  <dt>Content model</dt>
+    <dd class="no-markup">xsl:stylesheet [required]</dd>
 </dl>
 </div>
 
-<h4>Example</h4>
+<h4 id="L2720">Example</h4>
 <pre>
 &lt;xml-processor name="simple-table-processor">
 	&lt;xsl:stylesheet version="2.0"
@@ -1809,48 +1846,58 @@ additional elements might be supported in future versions.</p>
 &lt;/xml-processor>
 </pre>
 
-<h3 class="include">renderer</h3>
+<h3 class="include" id="L2724">renderer</h3>
+
 <p>Defines rendering options for unprocessed xml-data.</p>
+<p>All scenarios that qualify will be rendered, and the
+scenario with the lowest cost will be selected. If a scenario cannot be
+rendered for some reason, it is assumed to have an infinite cost. It is an
+error if no scenario can be applied to a given xml-data.</p>
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-		<dd>obfl</dd>
-	<dt>Attributes</dt>
-		<dd><dl>
-			<dt>name [required]</dt>
-				<dd>An identifier for the renderer.</dd>
-		</dl></dd>
-	<dt>Content model</dt>
-		<dd>rendering-scenario [1 or more]</dd>
+  <dt>Usage</dt>
+    <dd>obfl</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>name [required]</dt>
+          <dd>An identifier for the renderer.</dd>
+      </dl>
+    </dd>
+  <dt>Content model</dt>
+    <dd>rendering-scenario [1 or more]</dd>
 </dl>
 </div>
 
-<h3 class="include">rendering-scenario</h3>
-<p>Defines a rendering scenario. All scenarios will be rendered, and the scenario with the lowest cost will be selected. If a scenario cannot be 
-rendered for some reason, it is assumed to have an infinite cost. It is an error if no scenario can be applied to a given xml-data.</p>
+<h3 class="include" id="L2749">rendering-scenario</h3>
+
+<p>Defines a rendering scenario.</p>
 
 <div class="sidebar markup">
 <dl>
-	<dt>Usage</dt>
-		<dd>renderer</dd>
-	<dt>Attributes</dt>
-		<dd><dl>
-			<dt>processor [required]</dt>
-				<dd>The identifier of a pre-processor to use.</dd>
-			<dt>cost [required]</dt>
-				<dd>Specifies the cost of the rendered result.</dd>
-				<dd class="no-markup">An <a href="obfl-evaluation-language.html">OBFL Evaluation Language</a> expression that evaluates to a number.</dd>
-			<dt>qualifier [optional]</dt>
-				<dd>Specifies an XPath expression to be used to qualify a scenario for rendering. If a scenario doesn't qualify to a given xml-data, it is excluded 
-				from cost evaluation.</dd>
-				<dd class="no-markup">The XPath expression must evaluate to a boolean.</dd>
-		</dl></dd>
-	<dt>Content Model</dt>
-		<dd>Empty.</dd>
+  <dt>Usage</dt>
+    <dd>renderer</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>processor [required]</dt>
+          <dd>The identifier of the xml-processor to use in this scenario.</dd>
+        <dt>cost [required]</dt>
+          <dd>Specifies the cost of using the rendered result.</dd>
+          <dd class="no-markup">An <a href="obfl-evaluation-language.html">OBFL
+            Evaluation Language</a> expression that evaluates to a number.</dd>
+        <dt>qualifier [optional]</dt>
+          <dd>Specifies an XPath expression to be used to qualify a scenario
+            for rendering. If a scenario doesn't qualify on a given xml-data,
+            it is excluded from rendering and subsequent cost evaluation.</dd>
+          <dd class="no-markup">The XPath expression must evaluate to a
+          boolean.</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
 </dl>
 </div>
 
-<h4>Example</h4>
+<h4 id="L2793">Example</h4>
 <pre>
 &lt;renderer name="table-renderer">
 	&lt;rendering-scenario
@@ -1964,8 +2011,8 @@ attribute should be used when detailed control over translation is
 <b>required</b>, e.g. when combining different languages or in books about
 braille code.</p>
 
-<p>The value of the translate attribute can be 'pre-translated', 'grade0', 'grade1',
-'grade2' or 'grade3'.</p>
+<p>The value of the translate attribute can be 'pre-translated', 'grade0',
+'grade1', 'grade2' or 'grade3'.</p>
 
 <p>The translation specified by <tt>translate</tt> applies to all elements in
 its content unless overridden with another instance of <tt>translate</tt>. In
@@ -1995,14 +2042,13 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
 
 <p>Note that:</p>
 <ul>
-
-<li>BRAILLE PATTERN BLANK (U+2800) is not whitespace nor line
-breaking. It can be used in place of NO-BREAK SPACE (U+00A0). For other
-purposes, use U+0020</li>
-
-<li>pre-translated text nodes are not influenced by the hyphenate attribute nor the global hyphenation policy</li>
-
-<li class="markup">style elements MUST NOT occur in pre-translated context</li>
+  <li>BRAILLE PATTERN BLANK (U+2800) is not whitespace nor line breaking. It
+    can be used in place of NO-BREAK SPACE (U+00A0). For other purposes, use
+    U+0020</li>
+  <li>pre-translated text nodes are not influenced by the hyphenate attribute
+    nor the global hyphenation policy</li>
+  <li class="markup">style elements MUST NOT occur in pre-translated
+  context</li>
 </ul>
 
 <h2 id="L16081">Attribute Groups</h2>
@@ -2071,7 +2117,7 @@ purposes, use U+0020</li>
   <dt>translate [optional]</dt>
     <dd>Specifies a translation policy.</dd>
     <dd>See the <a href="#L2462">attribute description</a> for more
-      information.</dd>
+    information.</dd>
 </dl>
 </div>
 
@@ -2286,7 +2332,7 @@ of this specification.</p>
   <dt><a name="ref-rfc2119" id="ref-rfc2119"><strong>[RFC2119]</strong></a></dt>
     <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
       use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
-      1997.</dd>
+    1997.</dd>
   <dt><a name="ref-unicode" id="ref-unicode"><strong>[Unicode]</strong></a></dt>
     <dd>"<a href="http://www.unicode.org/versions/Unicode5.1.0/">Unicode
       Standard, Version 5.1.0</a>", The Unicode Consortium. The Unicode
@@ -2313,11 +2359,11 @@ of this specification.</p>
       1999.<br />
       <a href="http://www.w3.org/TR/xpath">Latest version</a> available at:
       http://www.w3.org/TR/xpath</dd>
-   <dt><a name="ref-xslt" id="ref-xslt"><strong>[XSLT]</strong></a></dt>
-   		<dd>"<a href="http://www.w3.org/TR/2007/REC-xslt20-20070123/">XSL Transformations (XSLT) Version 2.0</a>",
-   		M. Kay, 23 January 2007.<br/>
-   		<a href="http://www.w3.org/TR/xslt20">Latest version</a> available at: 
-   		http://www.w3.org/TR/xslt20</dd>
+  <dt><a name="ref-xslt" id="ref-xslt"><strong>[XSLT]</strong></a></dt>
+    <dd>"<a href="http://www.w3.org/TR/2007/REC-xslt20-20070123/">XSL
+      Transformations (XSLT) Version 2.0</a>", M. Kay, 23 January 2007.<br />
+      <a href="http://www.w3.org/TR/xslt20">Latest version</a> available at:
+      http://www.w3.org/TR/xslt20</dd>
 </dl>
 
 <h3 id="L881">Informative References</h3>
@@ -2326,10 +2372,12 @@ of this specification.</p>
 <dl>
   <dt>[Example OBFL document: Example 1]</dt>
     <dd>"<a href="examples/example1.obfl">examples/example1.obfl</a>"</dd>
-    	<dd>A short OBFL example containing usage examples of most of the elements.</dd>
+    <dd>A short OBFL example containing usage examples of most of the
+    elements.</dd>
   <dt>[Examples from Dotify]</dt>
-  	<dd><a href="https://rawgit.com/joeha480/dotify/master/dotify.formatter.impl/test/org.daisy.dotify.engine.impl.resource-files.tests-overview.html">https://rawgit.com/joeha480/dotify/master/dotify.formatter.impl/test/org.daisy.dotify.engine.impl.resource-files.tests-overview.html</a></dd>
-  	<dd>Formatting tests from the Dotify implementation of OBFL.</dd>
+    <dd><a
+      href="https://rawgit.com/joeha480/dotify/master/dotify.formatter.impl/test/org.daisy.dotify.engine.impl.resource-files.tests-overview.html">https://rawgit.com/joeha480/dotify/master/dotify.formatter.impl/test/org.daisy.dotify.engine.impl.resource-files.tests-overview.html</a></dd>
+    <dd>Formatting tests from the Dotify implementation of OBFL.</dd>
 </dl>
 <script type="text/javascript" src="markup.js">
 </script>
