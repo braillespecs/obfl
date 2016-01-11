@@ -1888,8 +1888,11 @@ error if no scenario can be applied to a given xml-data.</p>
           <dd>Specifies an XPath expression to be used to qualify a scenario
             for rendering. If a scenario doesn't qualify on a given xml-data,
             it is excluded from rendering and subsequent cost evaluation.</dd>
-          <dd class="no-markup">The XPath expression must evaluate to a
-          boolean.</dd>
+          <dd class="no-markup">The XPath expression must:<ul>
+          	<li>use namespace prefixes bound in the context of this element 
+          	(the default namespace cannot be used)</li>
+          	<li>evaluate to a boolean</li>
+          </ul></dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1900,11 +1903,10 @@ error if no scenario can be applied to a given xml-data.</p>
 <h4 id="L2793">Example</h4>
 <pre>
 &lt;renderer name="table-renderer">
-	&lt;rendering-scenario
-			qualifier="/table/max(tr/sum(td/(if (@colspan) then @colspan else 1)))&lt;=2"
+	&lt;rendering-scenario xmlns:html="http://www.w3.org/1999/xhtml"
+			qualifier="/html:table/max(html:tr/sum(html:td/(if (@colspan) then @colspan else 1)))&lt;=2"
 			processor="simple-table-processor" 
 			cost="(+ (- 30 $min-block-width) $total-height)"/>
-	&lt;/rendering-scenario>
 &lt;/renderer>
 </pre>
 
