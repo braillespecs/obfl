@@ -37,3 +37,26 @@ table.box-model {
 	border-style: none;
 	padding: 0.5em;
 }
+.issue, .note, .example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note, div.example {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+.example {
+  border-color: #e0cb52;
+  background-color: #fcfaee;
+}
