@@ -142,6 +142,14 @@ Contents</h2>
           <li><a href="#L8491">style</a></li>
         </ul>
       </li>
+      <li><a href="#L2227">Tabular Data</a>
+        <ul>
+          <li><a href="#L2229">table</a></li>
+          <li><a href="#L2253">tr</a></li>
+          <li><a href="#L2277">td</a></li>
+          <li><a href="#L2304">th</a></li>
+        </ul>
+      </li>
       <li><a href="#L2167">Table of Contents</a>
         <ul>
           <li><a href="#L735">table-of-contents</a></li>
@@ -1422,15 +1430,19 @@ emphasis or strong.</p>
     <dd>text(), style, marker, br, anchor [0 or more]</dd>
 </dl>
 </div>
-  
-<h3>Tabular Data</h3>
 
-<h4>table</h4>
-  <div class="note">
-  <p>This feature is incubating (2016-01-12). This means that the feature is
-    currently a work-in-progress and may change at any time.</p>
-    </div>
-<p>The table element represents data with more than one dimension, in the form of a table.</p>
+<h3 id="L2227">Tabular Data</h3>
+
+<h4 id="L2229">table</h4>
+
+<div class="note">
+<p>This feature is incubating (2016-01-12). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>The table element represents data with more than one dimension, in the form
+of a table.</p>
+
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
@@ -1441,67 +1453,75 @@ emphasis or strong.</p>
     <dd>tr [1 or more]</dd>
 </dl>
 </div>
-  
-<h4>tr</h4>
-  <div class="note">
-    <p>This feature is incubating (2016-01-12). This means that the feature is
-      currently a work-in-progress and may change at any time.</p>
-  </div>
-  
-  <p>The tr element represents a row of cells in a table.</p>
+
+<h4 id="L2253">tr</h4>
+
+<div class="note">
+<p>This feature is incubating (2016-01-12). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>The tr element represents a row of cells in a table.</p>
+
 <div class="sidebar markup">
-  <dl>
-    <dt>Usage</dt>
+<dl>
+  <dt>Usage</dt>
     <dd>table</dd>
-    <dt>Attributes</dt>
+  <dt>Attributes</dt>
     <dd>None</dd>
-    <dt>Content Model</dt>
+  <dt>Content Model</dt>
     <dd>td, th [1 or more]</dd>
-  </dl>
+</dl>
 </div>
-  
-<h4>td</h4>
-  <div class="note">
-    <p>This feature is incubating (2016-01-12). This means that the feature is
-      currently a work-in-progress and may change at any time.</p>
-  </div>
-  
-  <p>The td element represents a data cell in a table.</p>
+
+<h4 id="L2277">td</h4>
+
+<div class="note">
+<p>This feature is incubating (2016-01-12). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>The td element represents a data cell in a table.</p>
+
 <div class="sidebar markup">
-  <dl>
-    <dt>Usage</dt>
+<dl>
+  <dt>Usage</dt>
     <dd>tr</dd>
-    <dt>Attributes</dt>
-    <dd><dl><dt>rowspan</dt>
-      <dt>colspan</dt>
-    </dl></dd>
-    <dt>Content Model</dt>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>rowspan</dt>
+        <dt>colspan</dt>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
     <dd>block [1 or more]</dd>
-  </dl>
+</dl>
 </div>
-  
-<h4>th</h4>
-  <div class="note">
-    <p>This feature is incubating (2016-01-12). This means that the feature is
-      currently a work-in-progress and may change at any time.</p>
-  </div>
-  
-  <p>The th element represents a header cell in a table.</p>
-  
+
+<h4 id="L2304">th</h4>
+
+<div class="note">
+<p>This feature is incubating (2016-01-12). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>The th element represents a header cell in a table.</p>
+
 <div class="sidebar markup">
-  <dl>
-    <dt>Usage</dt>
+<dl>
+  <dt>Usage</dt>
     <dd>tr</dd>
-    <dt>Attributes</dt>
+  <dt>Attributes</dt>
     <dd><dl>
         <dt>rowspan</dt>
         <dt>colspan</dt>
         <dt>scope</dt>
           <dd>One of 'row' or 'col'.</dd>
-      </dl></dd>
-    <dt>Content Model</dt>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
     <dd>block [1 or more]</dd>
-  </dl>
+</dl>
 </div>
 
 <h3 id="L2167">Table of Contents</h3>
@@ -2009,7 +2029,7 @@ currently a work-in-progress and may change at any time.</p>
           <dd>Specifies an XPath expression to be used to qualify a scenario
             for rendering. If a scenario doesn't qualify on a given xml-data,
             it is excluded from rendering and subsequent cost evaluation.</dd>
-          <dd class="no-markup">The XPath expression must:
+          <dd class="no-markup">The XPath expression must: 
             <ul>
               <li>use namespace prefixes bound in the context of this element
                 (the default namespace cannot be used)</li>
