@@ -9,7 +9,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-01-08" />
+  <meta name="dc:Date" content="2016-01-12" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -17,7 +17,7 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 8, 2016</p>
+<p>Working draft, revised January 12, 2016</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
@@ -477,7 +477,8 @@ are in the OBFL namespace.</p>
   &lt;sequence&gt;...&lt;/sequence&gt;
 &lt;/obfl&gt;</pre>
 
-<h3 id="L565" class="include">obfl</h3>
+<h3>The root element</h3>
+<h4 id="L565" class="include">obfl</h4>
 
 <p>The obfl element is the root element of an OBFL document.</p>
 
@@ -521,7 +522,9 @@ are in the OBFL namespace.</p>
 </dl>
 </div>
 
-<h3 id="L587" class="include">meta</h3>
+
+<h3>Document metadata</h3>
+<h4 id="L587" class="include">meta</h4>
 
 <p>The meta element contains meta data, e.g. Dublin Core. Currently, any
 element is allowed, however a stricter set of elements might be more useful.</p>
@@ -535,7 +538,8 @@ element is allowed, however a stricter set of elements might be more useful.</p>
 </dl>
 </div>
 
-<h3 id="L5871" class="include">layout-master</h3>
+<h3>Templating</h3>
+<h4 id="L5871" class="include">layout-master</h4>
 
 <p>The layout-master element defines the appearence of pages in the sequences
 where the layout-master is applied. It contains page template information, such
@@ -585,7 +589,7 @@ as the width and height of pages.</p>
 </dl>
 </div>
 
-<h3 id="L608" class="include">template</h3>
+<h4 id="L608" class="include">template</h4>
 
 <p>The template element contains template information that applies under
 specific conditions. The template conditions are tested in document order, and
@@ -615,7 +619,7 @@ text flow area is reduced by the combined width of the margin-regions.</p>
 </dl>
 </div>
 
-<h3 id="L608-2" class="include">default-template</h3>
+<h4 id="L608-2" class="include">default-template</h4>
 
 <p>The default-template element contains the same type of information as the
 template element and acts as a fallback when no previous template element
@@ -636,7 +640,7 @@ applies.</p>
 </dl>
 </div>
 
-<h3 id="L647" class="include">page-area</h3>
+<h4 id="L647" class="include">page-area</h4>
 
 <p>The page-area element is a page anchored place-holder for items in a
 collection.</p>
@@ -667,7 +671,7 @@ collection.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L20904">fallback</h3>
+<h4 class="include" id="L20904">fallback</h4>
 
 <p>The fallback element is used to determine what should happen if rendering of
 the collection fails. The fallback element must include an instruction for the
@@ -685,7 +689,7 @@ for other collections.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L20925">rename</h3>
+<h4 class="include" id="L20925">rename</h4>
 
 <p>The rename element is used within the fallback element to specify a
 collection that should be renamed. The new name must not be in use as an
@@ -710,7 +714,7 @@ identifier elsewhere (but it should be referenced).</p>
 
 <p></p>
 
-<h3 id="L629" class="include">before</h3>
+<h4 id="L629" class="include">before</h4>
 
 <p>The before element contains blocks to insert before the contents of the page
 area.</p>
@@ -731,7 +735,7 @@ area.</p>
 </dl>
 </div>
 
-<h3 id="L6291" class="include">after</h3>
+<h4 id="L6291" class="include">after</h4>
 
 <p>The after element contains blocks to insert after the contents of the page
 area.</p>
@@ -752,7 +756,7 @@ area.</p>
 </dl>
 </div>
 
-<h3 id="L62911" class="include">header</h3>
+<h4 id="L62911" class="include">header</h4>
 
 <p>The header element contains the page header information. The chunks of text
 created when resolving each child elements contents are distributed in an equal
@@ -776,7 +780,7 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 id="L6471" class="include">footer</h3>
+<h4 id="L6471" class="include">footer</h4>
 
 <p>The footer element contains the page footer information. The chunks of text
 created when resolving each child elements contents are distributed in an equal
@@ -800,7 +804,7 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L1296">margin-region</h3>
+<h4 class="include" id="L1296">margin-region</h4>
 
 <p>Adds a margin region.</p>
 
@@ -822,7 +826,7 @@ spaced cell grid over a single row.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L1328">indicators</h3>
+<h4 class="include" id="L1328">indicators</h4>
 
 <p>The indicators element uses the full height of the margin-region to indicate
 rows where one of the specified conditions are met.</p>
@@ -842,7 +846,7 @@ applies to a given row.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L1329">marker-indicator</h3>
+<h4 class="include" id="L1329">marker-indicator</h4>
 
 <p>The marker-indicator element indicates that one or more of the specified
 markers are present on the indicated row.</p>
@@ -867,7 +871,7 @@ markers are present on the indicated row.</p>
 </dl>
 </div>
 
-<h4 id="L1365">Example</h4>
+<h5 id="L1365">Example</h5>
 <p>Given the following input:</p>
 <div class="example">
 <pre>
@@ -898,7 +902,7 @@ markers are present on the indicated row.</p>
 </pre>
 </div>
 
-<h3 id="L665" class="include">field</h3>
+<h4 id="L665" class="include">field</h4>
 
 <p>The field element contains data.</p>
 
@@ -918,7 +922,7 @@ markers are present on the indicated row.</p>
 </dl>
 </div>
 
-<h3 id="L683" class="include">marker-reference</h3>
+<h4 id="L683" class="include">marker-reference</h4>
 
 <p>The marker-reference element indicates that it should resolve to the value
 of a marker of the same class in the direction and scope specified by this
@@ -949,7 +953,7 @@ element. If no reference is found, the empty string is returned.</p>
 </dl>
 </div>
 
-<h4 id="L1333">start-offset</h4>
+<h5 id="L1333">start-offset</h5>
 
 <p>The start-offset attribute offsets the start of the search by the specified
 number of pages. This applies irrespectively of the scope of the search.</p>
@@ -982,7 +986,7 @@ the search could eventually hit an existing page. Depending on the scope,
     <dd>start the search on the first existing page in the search direction</dd>
 </dl>
 
-<h3 id="L696" class="include">string</h3>
+<h4 id="L696" class="include">string</h4>
 
 <p>The string element indicates that it should resolve to the contents of its
 value attribute.</p>
@@ -1004,7 +1008,7 @@ value attribute.</p>
 </dl>
 </div>
 
-<h3 id="L709" class="include">current-page</h3>
+<h4 id="L709" class="include">current-page</h4>
 
 <p>The current-page element indicates that it should resolve to the value of
 the current page, using the number format specified by this element.</p>
@@ -1028,7 +1032,8 @@ the current page, using the number format specified by this element.</p>
 </dl>
 </div>
 
-<h3 id="L722" class="include">evaluate</h3>
+<h3>Content</h3>
+<h4 id="L722" class="include">evaluate</h4>
 
 <p>The evaluate element inserts the result of evaluating an expression, see the
 <a href="obfl-evaluation-language.html">OBFL evaluation language</a> for more
@@ -1052,13 +1057,14 @@ information.</p>
 </dl>
 </div>
 
-<h4 id="L1033">Example</h4>
+<h5 id="L1033">Example</h5>
 
 <div class="example">
 <p><code>&lt;evaluate expression="(= 0 1)"/&gt;</code></p>
 </div>
 
-<h3 id="L735" class="include">table-of-contents</h3>
+<h3>Table of contents</h3>
+<h4 id="L735" class="include">table-of-contents</h4>
 
 <p>The table-of-contents element defines the entries in a table of contents.
 Note that this element specifies formatting of data in a table of contents, it
@@ -1081,7 +1087,7 @@ references.</p>
 </dl>
 </div>
 
-<h3 id="L1105" class="include">toc-entry</h3>
+<h4 id="L1105" class="include">toc-entry</h4>
 
 <p>The toc-entry element defines an entry in a table of contents.</p>
 
@@ -1105,7 +1111,8 @@ references.</p>
 </dl>
 </div>
 
-<h3 id="L1207" class="include">leader</h3>
+<h3>Contents</h3>
+<h4 id="L1207" class="include">leader</h4>
 
 <p>The leader element moves the location of the following piece of text within
 the current row.</p>
@@ -1134,7 +1141,7 @@ the current row.</p>
 </dl>
 </div>
 
-<h3 id="L1353" class="include">marker</h3>
+<h4 id="L1353" class="include">marker</h4>
 
 <p>The marker element provides locations for classes of values that may be
 refered to in headers and footers.</p>
@@ -1157,7 +1164,7 @@ refered to in headers and footers.</p>
 </dl>
 </div>
 
-<h3 id="L1438" class="include">br</h3>
+<h4 id="L1438" class="include">br</h4>
 
 <p>The br element provides a line break within a block of text (i.e. a
 paragraph).</p>
@@ -1171,7 +1178,7 @@ paragraph).</p>
 </dl>
 </div>
 
-<h3 id="L836" class="include">page-number</h3>
+<h4 id="L836" class="include">page-number</h4>
 
 <p>The page-number element inserts the page number of the referenced
 element.</p>
@@ -1195,7 +1202,7 @@ element.</p>
 </dl>
 </div>
 
-<h3 id="L849" class="include">span</h3>
+<h4 id="L849" class="include">span</h4>
 
 <p>The span element represents a segment of text whose hyphenation policy or
 language is different from the surrounding text.</p>
@@ -1227,7 +1234,7 @@ language is different from the surrounding text.</p>
 </dl>
 </div>
 
-<h3 id="L8491" class="include">style</h3>
+<h4 id="L8491" class="include">style</h4>
 
 <p>The style element represents a segment of text with a specific style, e.g.
 emphasis or strong.</p>
@@ -1249,7 +1256,8 @@ emphasis or strong.</p>
 
 <p></p>
 
-<h3 id="L84911" class="include">volume-template</h3>
+<h3>Volume templates</h3>
+<h4 id="L84911" class="include">volume-template</h4>
 
 <p>The volume-template element contains static contents that is to be inserted
 before or after a braille volume's body of pages. In additional to the normal
@@ -1292,7 +1300,7 @@ toc-sequence.</p>
 </dl>
 </div>
 
-<h3 id="L870" class="include">pre-content</h3>
+<h4 id="L870" class="include">pre-content</h4>
 
 <p>The pre-content element defines contents that should preceed a braille
 volume's body of pages.</p>
@@ -1306,7 +1314,7 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L888" class="include">post-content</h3>
+<h4 id="L888" class="include">post-content</h4>
 
 <p>The post-content element defines contents that should follow a braille
 volume's body of pages.</p>
@@ -1320,7 +1328,8 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 id="L906" class="include">sequence</h3>
+<h3>Grouping content</h3>
+<h4 id="L906" class="include">sequence</h4>
 
 <p>The sequence element contains the text body.</p>
 
@@ -1355,7 +1364,9 @@ volume's body of pages.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L11470">dynamic-sequence</h3>
+<h3>Collection</h3>
+
+<h4 class="include" id="L11470">dynamic-sequence</h4>
 
 <p>The dynamic-sequence is similar to a regular sequence. The main difference
 is that it can contain elements that are generated based on the placement of
@@ -1394,7 +1405,9 @@ should be excluded entierly.</p>
 </dl>
 </div>
 
-<h3 id="L1023" class="include">block</h3>
+<h3>Content</h3>
+
+<h4 id="L1023" class="include">block</h4>
 
 <p>The block element defines a block of text.</p>
 
@@ -1471,7 +1484,8 @@ should be excluded entierly.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L2248">xml-data</h3>
+<h3>XML processing</h3>
+<h4 class="include" id="L2248">xml-data</h4>
 
 <div class="note">
 <p>This feature is incubating (2016-01-12). This means that the feature is currently a work-in-progress and may change at any time.</p>
@@ -1495,7 +1509,7 @@ than one way, depending on some aspect of the rendered result.</p>
 </dl>
 </div>
 
-<h4 id="L2273">Example</h4>
+<h5 id="L2273">Example</h5>
 <div class="example">
 <pre>
 &lt;xml-data xmlns:html="http://www.w3.org/1999/xhtml">
@@ -1508,7 +1522,7 @@ than one way, depending on some aspect of the rendered result.</p>
 </pre>
 </div>
 
-<h3 id="L924" class="include">anchor</h3>
+<h4 id="L924" class="include">anchor</h4>
 
 <p>The anchor element references an item in a collection, suggesting that the
 item has a connection to the text near the location of the anchor.</p>
@@ -1528,7 +1542,8 @@ item has a connection to the text near the location of the anchor.</p>
 </dl>
 </div>
 
-<h3 id="L9242" class="include">list-of-references</h3>
+<h3>Collection</h3>
+<h4 id="L9242" class="include">list-of-references</h4>
 
 <p>The list-of-references element contains instructions needed to render a
 collection of items ordered by page of reference. Note that a
@@ -1562,7 +1577,7 @@ The actual items are collected from the referenced collection.</p>
 </dl>
 </div>
 
-<h3 id="L951" class="include">on-collection-start</h3>
+<h4 id="L951" class="include">on-collection-start</h4>
 
 <p>The on-collection-start element defines blocks of text to insert before the
 collection items.</p>
@@ -1578,7 +1593,7 @@ collection items.</p>
 </dl>
 </div>
 
-<h3 id="L9511" class="include">on-page-start</h3>
+<h4 id="L9511" class="include">on-page-start</h4>
 
 <p>The on-page-start element defines blocks of text to insert before the
 collection items on a page.</p>
@@ -1594,7 +1609,7 @@ collection items on a page.</p>
 </dl>
 </div>
 
-<h3 id="L9512" class="include">on-page-end</h3>
+<h4 id="L9512" class="include">on-page-end</h4>
 
 <p>The on-page-end element defines blocks of text to insert after the
 collection items on a page.</p>
@@ -1610,7 +1625,7 @@ collection items on a page.</p>
 </dl>
 </div>
 
-<h3 id="L9513" class="include">on-collection-end</h3>
+<h4 id="L9513" class="include">on-collection-end</h4>
 
 <p>The on-collection-end element defines blocks of text to insert after the
 collection items.</p>
@@ -1626,7 +1641,8 @@ collection items.</p>
 </dl>
 </div>
 
-<h3 id="L9241" class="include">toc-sequence</h3>
+<h3>Table of contents</h3>
+<h4 id="L9241" class="include">toc-sequence</h4>
 
 <p>The toc-sequence element contains instructions needed to generate a TOC's
 for braille books. Since the number of volumes and their contents is unknown
@@ -1683,7 +1699,7 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L9514" class="include">on-toc-start</h3>
+<h4 id="L9514" class="include">on-toc-start</h4>
 
 <p>The on-toc-start element defines blocks of text to insert before the TOC
 data.</p>
@@ -1705,7 +1721,7 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L969" class="include">on-volume-start</h3>
+<h4 id="L969" class="include">on-volume-start</h4>
 
 <p>The on-volume-start element defines blocks of text to insert before the TOC
 data of a volume. Note that this element only applies to document range
@@ -1728,7 +1744,7 @@ TOC's.</p>
 </dl>
 </div>
 
-<h3 id="L987" class="include">on-volume-end</h3>
+<h4 id="L987" class="include">on-volume-end</h4>
 
 <p>The on-volume-end element defines blocks of text to insert after the TOC
 data of a volume. Note that this element only applies to document range
@@ -1751,7 +1767,7 @@ TOC's.</p>
 </dl>
 </div>
 
-<h3 id="L1005" class="include">on-toc-end</h3>
+<h4 id="L1005" class="include">on-toc-end</h4>
 
 <p>The on-toc-end element defines blocks of text to insert after the TOC
 data.</p>
@@ -1773,7 +1789,8 @@ data.</p>
 </dl>
 </div>
 
-<h3 id="L1194" class="include">collection</h3>
+<h3>Collection</h3>
+<h4 id="L1194" class="include">collection</h4>
 
 <p>Defines items to be placed somewhere within the flow, typically as page
 positioned elements, such as footnotes.</p>
@@ -1793,7 +1810,7 @@ positioned elements, such as footnotes.</p>
 </dl>
 </div>
 
-<h3 id="L1210" class="include">item</h3>
+<h4 id="L1210" class="include">item</h4>
 
 <p>Defines the formatting of an item that should be inserted somewhere in the
 flow. The behavior of this element is similar to the toc-entry element, except
@@ -1815,7 +1832,9 @@ that nesting of items is not allowed.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L2690">xml-processor</h3>
+<h3>XML Processing</h3>
+
+<h4 class="include" id="L2690">xml-processor</h4>
 
 <div class="note">
 <p>This feature is incubating (2016-01-12). This means that the feature is currently a work-in-progress and may change at any time.</p>
@@ -1845,7 +1864,7 @@ supported in future versions.</p>
 </dl>
 </div>
 
-<h4 id="L2720">Example</h4>
+<h5 id="L2720">Example</h5>
 <div class="example">
 <pre>
 &lt;xml-processor name="simple-table-processor">
@@ -1863,7 +1882,7 @@ supported in future versions.</p>
 </pre>
 </div>
 
-<h3 class="include" id="L2724">renderer</h3>
+<h4 class="include" id="L2724">renderer</h4>
 
 <div class="note">
 <p>This feature is incubating (2016-01-12). This means that the feature is currently a work-in-progress and may change at any time.</p>
@@ -1889,7 +1908,7 @@ error if no scenario can be applied to a given xml-data.</p>
 </dl>
 </div>
 
-<h3 class="include" id="L2749">rendering-scenario</h3>
+<h4 class="include" id="L2749">rendering-scenario</h4>
 
 <div class="note">
 <p>This feature is incubating (2016-01-12). This means that the feature is currently a work-in-progress and may change at any time.</p>
@@ -1924,7 +1943,7 @@ error if no scenario can be applied to a given xml-data.</p>
     <dd>Empty.</dd>
 </dl>
 </div>
-<h4 id="L2793">Example</h4>
+<h5 id="L2793">Example</h5>
 <div class="example">
 <pre>
 &lt;renderer name="table-renderer">
