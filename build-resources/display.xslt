@@ -21,7 +21,6 @@
 	
 	<xsl:template match="html:h1|html:h2|html:h3|html:h4|html:h5|html:h6" mode="sublist">
 		<xsl:variable name="id" select="generate-id()"/>
-		<xsl:variable name="name" select="name()"/>
 		<xsl:variable name="level" select="number(substring(local-name(), 2))"/>
 		<!-- For some reason I couldn't do this with the if function, perhaps XPath 1.0? -->
 		<xsl:variable name="id-value">
@@ -34,7 +33,10 @@
 			<xsl:variable name="nodes" select="following::*[
 				(self::html:h1 or self::html:h2 or self::html:h3 or self::html:h4 or self::html:h5 or self::html:h6) 
 				and number(substring(local-name(), 2))= $level + 1
-				and preceding::*[name()=$name][1][generate-id() = $id]
+				and preceding::*[
+					(self::html:h1 or self::html:h2 or self::html:h3 or self::html:h4 or self::html:h5 or self::html:h6)
+					and number(substring(local-name(), 2)) &lt;= $level
+				][1][generate-id() = $id]
 				]"/>
 			<xsl:if test="count($nodes)>0">
 			<ul>
