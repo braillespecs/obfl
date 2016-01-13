@@ -1,11 +1,33 @@
 apply plugin: 'base'
 defaultTasks 'buildSite'
 
+def unpackedSite = new File('build/unpacked')
+def processedHTML = new File("build/xslt-result")
+
 task copyTask(type: Copy) {
 	dependsOn(clean)
 	from 'src'
-	into 'build/tmp'
+	into unpackedSite
 	include '**/*.*'
+}
+
+task processHTML(dependsOn: 'copyTask') << {
+	processedHTML.mkdirs()
+	ant {
+		xslt (
+			basedir: unpackedSite,
+			destdir: processedHTML,
+			style: "build-resources/display.xslt",
+			includes: "*.html",
+		)
+	}
+}
+
+task updateHTML(type: Copy) {
+	dependsOn(processHTML)
+	from (processedHTML)
+	into (unpackedSite)
+	include '*.html'
 }
 
 task makeRNC() {
@@ -13,7 +35,7 @@ task makeRNC() {
 	doLast() {
 		ant.java(jar: trang_path, fork: true, failonerror: true, outputproperty: 'op1') {
 			arg(value:'src/validation/obfl.rng')
-			arg(value:'build/tmp/validation/obfl.rnc')
+			arg(value:new File(unpackedSite, 'validation/obfl.rnc'))
 		}
 		if (ant.properties.op1) {
 			println ant.properties.op1
@@ -26,7 +48,7 @@ task makeXSD() {
 	doLast() {
 		ant.java(jar: trang_path, fork: true, failonerror: true, outputproperty: 'op2') {
 			arg(value:'src/validation/obfl.rng')
-			arg(value:'build/tmp/validation/obfl.xsd')
+			arg(value: new File(unpackedSite, 'validation/obfl.xsd'))
 		}
 		if (ant.properties.op2) {
 			println ant.properties.op2
@@ -35,14 +57,14 @@ task makeXSD() {
 }
 
 task zip(type: Zip) {
-	dependsOn(makeXSD, makeRNC)
-    from 'build/tmp'
+	dependsOn(makeXSD, makeRNC, updateHTML)
+    from unpackedSite
 }
 
 task buildSite(type: Copy) {
 	dependsOn(zip)
 	from 'build/distributions'
-	from 'build/tmp'
+	from unpackedSite
 	into 'build/site'
 }
 
