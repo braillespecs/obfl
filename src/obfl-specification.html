@@ -573,8 +573,9 @@ area.</p>
   <dt>Usage</dt>
     <dd>page-area</dd>
   <dt>Attributes</dt>
-    <dd>This element supports the <a href="#block-atts">Block</a> attribute
-      group. 
+    <dd>
+      <p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
+        and <a href="#padding-atts">Padding</a> attributes groups.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -594,8 +595,9 @@ area.</p>
   <dt>Usage</dt>
     <dd>page-area</dd>
   <dt>Attributes</dt>
-    <dd>This element supports the <a href="#block-atts">Block</a> attribute
-      group. 
+  <dd>
+    <p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
+    and <a href="#padding-atts">Padding</a> attributes groups.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -970,8 +972,8 @@ should be excluded entierly.</p>
       on-page-start, on-page-end, on-collection-end, on-toc-start,
       on-volume-start, on-volume-end, on-toc-end, item</dd>
   <dt>General Attributes</dt>
-    <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
-      group.</p>
+  <dd><p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
+    and <a href="#padding-atts">Padding</a> attributes groups.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -1361,8 +1363,8 @@ references.</p>
         <dt>ref-id [required]</dt>
           <dd>The id of the block this entry is connected with.</dd>
       </dl>
-      <p>This element supports the <a href="#block-atts">Block</a> attribute
-      group.</p>
+      <p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
+        and <a href="#padding-atts">Padding</a> attributes groups.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -1625,8 +1627,8 @@ that nesting of items is not allowed.</p>
   <dt>Usage</dt>
     <dd>collection</dd>
   <dt>Attributes</dt>
-    <dd><p>This element supports the <a href="#block-atts">Block</a> attribute
-      group.</p>
+  <dd><p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
+    and <a href="#padding-atts">Padding</a> attributes groups.</p>
       <p>This element supports the <a href="#borders">Borders</a> attribute
       group.</p>
     </dd>
@@ -2063,30 +2065,6 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
   <dt>list-type [optional]</dt>
     <dd>The type of list for this block.</dd>
     <dd>One of 'none' (default), 'ol', 'ul', 'pl'.</dd>
-  <dt>margin-bottom [optional]</dt>
-    <dd>Bottom margin for this block (in rows).</dd>
-    <dd>A number.</dd>
-  <dt>margin-left [optional]</dt>
-    <dd>Left margin for this block (in characters).</dd>
-    <dd>A number.</dd>
-  <dt>margin-top [optional]</dt>
-    <dd>Top margin for this block (in rows).</dd>
-    <dd>A number.</dd>
-  <dt>margin-right [optional]</dt>
-    <dd>Right margin for this block (in characters).</dd>
-    <dd>A number.</dd>
-  <dt>padding-bottom [optional]</dt>
-    <dd>Bottom padding for this block (in rows).</dd>
-    <dd>A number.</dd>
-  <dt>padding-left [optional]</dt>
-    <dd>Left padding for this block (in characters).</dd>
-    <dd>A number.</dd>
-  <dt>padding-top [optional]</dt>
-    <dd>Top padding for this block (in rows).</dd>
-    <dd>A number.</dd>
-  <dt>padding-right [optional]</dt>
-    <dd>Right padding for this block (in characters).</dd>
-    <dd>A number.</dd>
   <dt>align [optional]</dt>
     <dd>Specifies the text alignment.</dd>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>
@@ -2277,6 +2255,42 @@ block-indent="2"</pre>
     <dd>One of 'inner', 'center', 'outer'.</dd>
 </dl>
 </div>
+  
+  <h3 id="margin-atts">Margin</h3>
+  <div class="sidebar">
+    <dl>
+      <dt>margin-bottom [optional]</dt>
+      <dd>Bottom margin for this block (in rows).</dd>
+      <dd>A number.</dd>
+      <dt>margin-left [optional]</dt>
+      <dd>Left margin for this block (in characters).</dd>
+      <dd>A number.</dd>
+      <dt>margin-top [optional]</dt>
+      <dd>Top margin for this block (in rows).</dd>
+      <dd>A number.</dd>
+      <dt>margin-right [optional]</dt>
+      <dd>Right margin for this block (in characters).</dd>
+      <dd>A number.</dd>
+    </dl>
+  </div>
+  
+  <h3 id="padding-atts">Padding</h3>
+  <div class="sidebar">
+    <dl>
+      <dt>padding-bottom [optional]</dt>
+      <dd>Bottom padding for this block (in rows).</dd>
+      <dd>A number.</dd>
+      <dt>padding-left [optional]</dt>
+      <dd>Left padding for this block (in characters).</dd>
+      <dd>A number.</dd>
+      <dt>padding-top [optional]</dt>
+      <dd>Top padding for this block (in rows).</dd>
+      <dd>A number.</dd>
+      <dt>padding-right [optional]</dt>
+      <dd>Right padding for this block (in characters).</dd>
+      <dd>A number.</dd>
+    </dl>
+  </div>
 
 <h2 id="L756">Rule Sets</h2>
 
