@@ -16,10 +16,15 @@ function searchAndReplaceElement(elem, strSearch, link) {
         var childNode = elem.childNodes[i];
         if(childNode.nodeType == 3) { // 3 => a Text Node
             var strSrc = childNode.nodeValue; // for Text Nodes, the nodeValue property contains the text
-            var pos = strSrc.indexOf(strSearch);
+            var pos = strSrc.search("(^|\\s)"+strSearch+"($|[\\W^-])");
 
-            if((pos==0 || (pos > 0 && strSrc.charAt(pos-1)!='-' && strSrc.charAt(pos-1)!="'")) &&
-            		(((pos + strSearch.length) == strSrc.length) || strSrc.charAt(pos + strSearch.length)!='-')) {
+            // since the regex will match a whitespace character preceding the string
+            // we should skip over that character
+            if (pos>0 || (pos==0 && strSrc.charAt(0)!=strSearch.charAt(0))) {
+            	pos++;
+            }
+
+            if (pos>=0) {
                 var fragment = document.createDocumentFragment();
 
                 if(pos > 0)
