@@ -970,7 +970,7 @@ should be excluded entierly.</p>
   <dt>Usage</dt>
     <dd>before, after, sequence, dynamic-sequence, on-collection-start,
       on-page-start, on-page-end, on-collection-end, on-toc-start,
-      on-volume-start, on-volume-end, on-toc-end, item</dd>
+      on-volume-start, on-volume-end, on-toc-end, item, td</dd>
   <dt>General Attributes</dt>
   <dd><p>This element supports the <a href="#block-atts">Block</a>, <a href="#margin-atts">Margin</a>
     and <a href="#padding-atts">Padding</a> attributes groups.</p>
@@ -1233,13 +1233,12 @@ emphasis or strong.</p>
 </div>
 
 <h3 id="L2227">Tabular Data</h3>
+  <div class="note">
+    <p>Note that the entire tablular data feature is incubating (2016-01-14). This means that the feature is
+      currently a work-in-progress and may change at any time.</p>
+  </div>
 
-<h4 id="L2229">table</h4>
-
-<div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
-currently a work-in-progress and may change at any time.</p>
-</div>
+  <h4 id="L2229" class="include">table</h4>
 
 <p>The table element represents data with more than one dimension, in the form
 of a table.</p>
@@ -1249,18 +1248,100 @@ of a table.</p>
   <dt>Usage</dt>
     <dd>sequence</dd>
   <dt>Attributes</dt>
-    <dd>None</dd>
+    <dd>
+       <dl>
+         <dt>col-spacing</dt>
+          <dd class="no-markup">The number of braille cells to separate each table column pair by.</dd>
+          <dd>A positive integer.</dd>
+          <dd>Default is 0.</dd>
+         <dt>row-spacing</dt>
+         <dd class="no-markup">The number of braille cells to separate each table row pair by.</dd>
+         <dd>A positive integer.</dd>
+         <dd>Default is 0.</dd>
+       </dl>
+      <p>This element supports the <a href="#borders">Borders</a>, <a href="#margin-atts">Margin</a> and <a href="#padding-atts">Padding</a> attributes groups.</p>
+  </dd>
   <dt>Content Model</dt>
-    <dd>tr [1 or more]</dd>
+    <dd>Either:<ul>
+    	<li>In this order:
+    		<ul><li>thead [required]</li><li>tbody [required]</li></ul>
+    		<em>or</em>
+    		</li>
+    	<li>tr [1 or more]</li>
+    </ul></dd>
 </dl>
 </div>
+  
+  <h5 id="table-margins">Table Borders</h5>
+  <p>Table cell borders collapse unless col-spacing &gt; 0 or row-spacing &gt; 0.</p>
+  <div class="example">
+    <ul>
+      <li>If col-spacing is 0, left and right borders will collapse.</li>
+      <li>If row-spacing is 0, top and bottom borders will collapse.</li>
+    </ul>
+  </div>
+  <p>Table borders will collapse with cell borders, if not separated by padding.
+    Table borders takes precedence over cell borders, unless the table's border 
+    style is 'none'.</p>
+  <div class="example">
+  <p>Algorithm for selecting a border between a cell and the table border:</p>
+  <ul>
+    <li>if the table and cell are separated by padding (on the table), render both borders</li>
+    <li>else if the table's border-style is 'none', select the cell's border</li>
+    <li>else use the table's border</li>
+  </ul>
+  </div>
+  <p>Table cell borders will combine to a form a single border, that is a mix between the 
+    two borders.</p>
+  <div class="example">
+    <p>Algorithm for selecting a shared border for cells A and B:</p>
+    <ul>
+      <li>if the border-style of both A and B are 'none', don't add any border</li>
+      <li>else if the border-style of one of A and B is 'none', select the border whose border-style isn't 'none'</li>
+      <li>else <ul>
+         <li>set border-width to the maximum border-width of A and B</li>
+        <li>if both borders' border-align is 'center', set border-align to 'center'</li>
+        <li>else set border-align to the value that isn't 'center'</li>
+      </ul></li>
+    </ul>
+  </div>
+  <h4 id="thead" class="include">thead</h4>
 
-<h4 id="L2253">tr</h4>
-
-<div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
-currently a work-in-progress and may change at any time.</p>
+<p>The thead element represents a row of repeating header cells in a table.
+The cells in the header will repeat at the start of each page that the
+table spans.</p>
+  
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>table</dd>
+    <dt>Attributes</dt>
+    <dd>None</dd>
+    <dt>Content Model</dt>
+    <dd>tr [1 or more]</dd>
+  </dl>
 </div>
+
+  <div class="note">
+    <p>Note that the identifier attribute will be disregarded for all descendant elements of thead.</p>
+  </div>
+  
+  <h4 id="tbody" class="include">tbody</h4>
+
+<p>The tbody element represents the body cells in a table.</p>
+
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>table</dd>
+    <dt>Attributes</dt>
+    <dd>None</dd>
+    <dt>Content Model</dt>
+    <dd>tr [1 or more]</dd>
+  </dl>
+</div>
+
+  <h4 id="L2253" class="include">tr</h4>
 
 <p>The tr element represents a row of cells in a table.</p>
 
@@ -1271,16 +1352,11 @@ currently a work-in-progress and may change at any time.</p>
   <dt>Attributes</dt>
     <dd>None</dd>
   <dt>Content Model</dt>
-    <dd>td, th [1 or more]</dd>
+    <dd>td [1 or more]</dd>
 </dl>
 </div>
 
-<h4 id="L2277">td</h4>
-
-<div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
-currently a work-in-progress and may change at any time.</p>
-</div>
+  <h4 id="L2277" class="include">td</h4>
 
 <p>The td element represents a data cell in a table.</p>
 
@@ -1290,38 +1366,20 @@ currently a work-in-progress and may change at any time.</p>
     <dd>tr</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>rowspan</dt>
-        <dt>colspan</dt>
+        <dt>row-span</dt>
+        <dd class="no-markup">The number of rows that this cell spans.</dd>
+        <dd>A positive integer.</dd>
+        <dd>Default is 1.</dd>
+        <dt>col-span</dt>
+        <dd class="no-markup">The number of columns that this cell spans.</dd>
+        <dd>A positive integer.</dd>
+        <dd>Default is 1.</dd>
       </dl>
+      <p>This element supports the <a href="#block-atts">Block</a>, <a href="#borders">Borders</a>
+        and <a href="#padding-atts">Padding</a> attributes groups.</p>
     </dd>
   <dt>Content Model</dt>
-    <dd>block [1 or more]</dd>
-</dl>
-</div>
-
-<h4 id="L2304">th</h4>
-
-<div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
-currently a work-in-progress and may change at any time.</p>
-</div>
-
-<p>The th element represents a header cell in a table.</p>
-
-<div class="sidebar markup">
-<dl>
-  <dt>Usage</dt>
-    <dd>tr</dd>
-  <dt>Attributes</dt>
-    <dd><dl>
-        <dt>rowspan</dt>
-        <dt>colspan</dt>
-        <dt>scope</dt>
-          <dd>One of 'row' or 'col'.</dd>
-      </dl>
-    </dd>
-  <dt>Content Model</dt>
-    <dd>block [1 or more]</dd>
+  <dd>text(), leader, marker, br, evaluate, page-number, span, style, anchor, block, xml-data [0 or more]</dd>
 </dl>
 </div>
 
@@ -1751,7 +1809,7 @@ than one way, depending on some aspect of the rendered result.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>sequence, block</dd>
+    <dd>sequence, block, td</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>renderer [required]</dt>
