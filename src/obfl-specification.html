@@ -1300,8 +1300,9 @@ of a table.</p>
       <li>else if the border-style of one of A and B is 'none', select the border whose border-style isn't 'none'</li>
       <li>else <ul>
          <li>set border-width to the maximum border-width of A and B</li>
-        <li>if both borders' border-align is 'center', set border-align to 'center'</li>
-        <li>else set border-align to the value that isn't 'center'</li>
+        <li>if both borders' border-align have the same value, set border-align to 'center'</li>
+        <li>else if one border's border-align is 'center', set border-align to the value that isn't 'center'</li>
+        <li>else using either value of A and B will result in the same border</li>
       </ul></li>
     </ul>
   </div>
