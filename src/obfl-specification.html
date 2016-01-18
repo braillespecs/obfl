@@ -1375,7 +1375,7 @@ table spans.</p>
         <dd>A positive integer.</dd>
         <dd>Default is 1.</dd>
       </dl>
-      <p>This element supports the <a href="#block-atts">Block</a>, <a href="#borders">Borders</a>
+      <p>This element supports the <a href="#block-atts">Block</a> (except the list-type attribute), <a href="#borders">Borders</a>
         and <a href="#padding-atts">Padding</a> attributes groups.</p>
     </dd>
   <dt>Content Model</dt>
@@ -2128,6 +2128,7 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>
   <dt>id [optional]</dt>
     <dd>An identifier.</dd>
+    <dd>Identifiers in repeating elements will be discarded.</dd>
   <dt>row-spacing [optional]</dt>
     <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is
       double.</dd>
