@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-01-18" />
+  <meta name="dc:Date" content="2016-01-20" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -15,16 +15,15 @@
 <body>
 <h1>OBFL - Open Braille Formatting Language</h1>
 
-<p>Working draft, revised January 18, 2016</p>
+<p>Working draft, revised January 20, 2016</p>
 <dl>
   <dt>This version:</dt>
     <dd><a
       href="http://files.pef-format.org/drafts/obfl/obfl-specification.html">http://files.pef-format.org/drafts/obfl/obfl-specification.html</a></dd>
   <dt>Author:</dt>
     <dd>Joel Håkansson</dd>
-  <!--
-                                                                                                                                <dt>Contributors:</dt>
-                                                                                                                                <dd></dd>-->
+  <dt>Contributors:</dt>
+   <dd>Bert Frees</dd>
 </dl>
 
 <h2 id="L62">Abstract</h2>
@@ -1250,14 +1249,20 @@ of a table.</p>
   <dt>Attributes</dt>
     <dd>
        <dl>
-         <dt>col-spacing</dt>
+         <dt>table-col-spacing</dt>
           <dd class="no-markup">The number of braille cells to separate each table column pair by.</dd>
           <dd>A positive integer.</dd>
           <dd>Default is 0.</dd>
-         <dt>row-spacing</dt>
+         <dt>table-row-spacing</dt>
          <dd class="no-markup">The number of braille cells to separate each table row pair by.</dd>
          <dd>A positive integer.</dd>
          <dd>Default is 0.</dd>
+         <dt>row-spacing [optional]</dt>
+         <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is
+           double.</dd>
+         <dd>Default is 1.0.</dd>
+         <dd>See the <a href="#rowspacing">attribute description</a> for more
+           information.</dd>
        </dl>
       <p>This element supports the <a href="#borders">Borders</a>, <a href="#margin-atts">Margin</a> and <a href="#padding-atts">Padding</a> attributes groups.</p>
   </dd>
@@ -1273,11 +1278,11 @@ of a table.</p>
 </div>
   
   <h5 id="table-margins">Table Borders</h5>
-  <p>Table cell borders collapse unless col-spacing &gt; 0 or row-spacing &gt; 0.</p>
+  <p>Table cell borders collapse unless table-col-spacing &gt; 0 or table-row-spacing &gt; 0.</p>
   <div class="example">
     <ul>
-      <li>If col-spacing is 0, left and right borders will collapse.</li>
-      <li>If row-spacing is 0, top and bottom borders will collapse.</li>
+      <li>If table-col-spacing is 0, left and right borders will collapse.</li>
+      <li>If table-row-spacing is 0, top and bottom borders will collapse.</li>
     </ul>
   </div>
   <p>Table borders will collapse with cell borders, if not separated by padding.
@@ -1376,7 +1381,7 @@ table spans.</p>
         <dd>A positive integer.</dd>
         <dd>Default is 1.</dd>
       </dl>
-      <p>This element supports the <a href="#block-atts">Block</a> (except the list-type attribute), <a href="#borders">Borders</a>
+      <p>This element supports the <a href="#block-atts">Block</a> (except the list-type and row-spacing attributes), <a href="#borders">Borders</a>
         and <a href="#padding-atts">Padding</a> attributes groups.</p>
     </dd>
   <dt>Content Model</dt>
