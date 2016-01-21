@@ -1249,14 +1249,30 @@ of a table.</p>
   <dt>Attributes</dt>
     <dd>
        <dl>
-         <dt>table-col-spacing</dt>
-          <dd class="no-markup">The number of braille cells to separate each table column pair by.</dd>
+         <dt>table-col-spacing [optional]</dt>
+          <dd class="no-markup">The number of character positions to separate each table column pair by.</dd>
           <dd>A positive integer.</dd>
           <dd>Default is 0.</dd>
-         <dt>table-row-spacing</dt>
-         <dd class="no-markup">The number of braille cells to separate each table row pair by.</dd>
+         <dt>table-row-spacing [optional]</dt>
+         <dd class="no-markup">The number of character positions to separate each table row pair by.</dd>
          <dd>A positive integer.</dd>
          <dd>Default is 0.</dd>
+         <dt>preferred-empty-space [optional]</dt>
+         <dd>The number of character positions that are preferably left blank (or filled by a leader pattern)
+          when the text contents of a cell is shorter than the largest possible column width. Or, in other words,
+          the number of character positions to expand each column by, starting from it's most compact rendering.</dd>
+          <dd>A positive integer.</dd>
+          <dd>Default is 2.</dd>
+         <dd class="no-markup"><p>Note that:</p><ul>
+         	<li><em>this exact value</em> is <em>preferred</em>, more or less than this is equally
+         	 undesirable, but both are allowed if necessary to render the table effectively</li>
+         	<li>leaders operate within the space given by the table and thus cannot affect the size of
+         	a table column</li>
+         	<li>when choosing the optimal rendering of the table, violations of this preference should impose
+         	 a cost that increases proportional with the number of violations and the size of the deviations.
+         	 However, cells that are completely empty could be left without cost, depending on the situation.</li>
+         	</ul>
+         </dd>
          <dt>row-spacing [optional]</dt>
          <dd>The row spacing, in row heights. E.g. 1.0 is normal row spacing, 2.0 is
            double.</dd>
@@ -1372,11 +1388,11 @@ table spans.</p>
     <dd>tr</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>row-span</dt>
+        <dt>row-span [optional]</dt>
         <dd class="no-markup">The number of rows that this cell spans.</dd>
         <dd>A positive integer.</dd>
         <dd>Default is 1.</dd>
-        <dt>col-span</dt>
+        <dt>col-span [optional]</dt>
         <dd class="no-markup">The number of columns that this cell spans.</dd>
         <dd>A positive integer.</dd>
         <dd>Default is 1.</dd>

@@ -1422,6 +1422,11 @@
         <data type="nonNegativeInteger"/>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="preferred-empty-space">
+        <data type="nonNegativeInteger"/>
+      </attribute>
+    </optional>
     <ref name="row-spacing"/>
     <ref name="border-atts"/>
     <ref name="margin-atts"/>
