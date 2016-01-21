@@ -229,21 +229,97 @@
     </optional>
   </define>
   <!--
-    break-before, if present, break before block begins
-    first-line-indent, indent (in chars) of first line block
-    keep, keep rows in this block
-    keep-with-next, keep the following block's first line(s) together with this block
-    list-type, the list type of this block
     margin-bottom, bottom margin for this block (in rows)
     margin-left, left margin for this block (in chars)
     margin-top, top margin for this block (in rows)
     margin-right, right margin for this block (in chars)
+  -->
+  <define name="margin-atts">
+    <optional>
+      <attribute name="margin-bottom"/>
+    </optional>
+    <optional>
+      <attribute name="margin-left"/>
+    </optional>
+    <optional>
+      <attribute name="margin-top"/>
+    </optional>
+    <optional>
+      <attribute name="margin-right"/>
+    </optional>
+  </define>
+  <!--
     padding-bottom, bottom padding for this block (in rows)
     padding-left, left padding for this block (in chars)
     padding-top, top padding for this block (in rows)
     padding-right, right padding for this block (in chars)
+  -->
+  <define name="padding-atts">
+    <optional>
+      <attribute name="padding-bottom"/>
+    </optional>
+    <optional>
+      <attribute name="padding-left"/>
+    </optional>
+    <optional>
+      <attribute name="padding-top"/>
+    </optional>
+    <optional>
+      <attribute name="padding-right"/>
+    </optional>
+  </define>
+  <!--
     text-indent, indent (in chars) of every line in the block except the first one
     block-indent, indent (in chars) of this block's block children
+  -->
+  <define name="block-atts-except-list-type-and-row-spacing">
+    <optional>
+      <attribute name="first-line-indent"/>
+    </optional>
+    <optional>
+      <attribute name="text-indent"/>
+    </optional>
+    <optional>
+      <attribute name="block-indent"/>
+    </optional>
+    <optional>
+      <attribute name="align">
+        <choice>
+          <value>left</value>
+          <value>center</value>
+          <value>right</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <ref name="textAtts"/>
+  </define>
+  <!--
+    list-type, the list type of this block
+  -->
+  <define name="block-atts">
+    <optional>
+      <attribute name="list-type">
+        <choice>
+          <value>none</value>
+          <value>ol</value>
+          <value>ul</value>
+          <value>pl</value>
+        </choice>
+      </attribute>
+    </optional>
+    <ref name="row-spacing"/>
+    <ref name="block-atts-except-list-type-and-row-spacing"/>
+  </define>
+  <!--
+    break-before, if present, break before block begins
+    first-line-indent, indent (in chars) of first line block
+    keep, keep rows in this block
+    keep-with-next, keep the following block's first line(s) together with this block
   -->
   <define name="blockAtts">
     <optional>
@@ -253,9 +329,6 @@
           <value>page</value>
         </choice>
       </attribute>
-    </optional>
-    <optional>
-      <attribute name="first-line-indent"/>
     </optional>
     <optional>
       <attribute name="keep">
@@ -336,55 +409,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="list-type">
-        <choice>
-          <value>none</value>
-          <value>ol</value>
-          <value>ul</value>
-          <value>pl</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="margin-bottom"/>
-    </optional>
-    <optional>
-      <attribute name="margin-left"/>
-    </optional>
-    <optional>
-      <attribute name="margin-top"/>
-    </optional>
-    <optional>
-      <attribute name="margin-right"/>
-    </optional>
-    <optional>
-      <attribute name="padding-bottom"/>
-    </optional>
-    <optional>
-      <attribute name="padding-left"/>
-    </optional>
-    <optional>
-      <attribute name="padding-top"/>
-    </optional>
-    <optional>
-      <attribute name="padding-right"/>
-    </optional>
-    <optional>
-      <attribute name="text-indent"/>
-    </optional>
-    <optional>
-      <attribute name="block-indent"/>
-    </optional>
-    <optional>
-      <attribute name="align">
-        <choice>
-          <value>left</value>
-          <value>center</value>
-          <value>right</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="vertical-align">
         <choice>
           <value>before</value>
@@ -396,14 +420,10 @@
     <optional>
       <attribute name="vertical-position"/>
     </optional>
-    <optional>
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-    </optional>
-    <ref name="row-spacing"/>
     <ref name="border-atts"/>
-    <ref name="textAtts"/>
+    <ref name="margin-atts"/>
+    <ref name="padding-atts"/>
+    <ref name="block-atts"/>
   </define>
   <!--
     master, name of master to use for this sequence
@@ -976,7 +996,10 @@
     <element name="sequence">
       <ref name="attlist-sequence"/>
       <oneOrMore>
-        <ref name="block"/>
+        <choice>
+          <ref name="block"/>
+          <ref name="table"/>
+        </choice>
       </oneOrMore>
     </element>
   </define>
@@ -1364,6 +1387,79 @@
         </choice>
       </attribute>
     </optional>
+  </define>
+  <!-- Tabular data -->
+  <define name="table">
+    <element name="table">
+      <ref name="attlist-table"/>
+      <choice>
+        <group>
+          <element name="thead">
+            <oneOrMore>
+              <ref name="tr"/>
+            </oneOrMore>
+          </element>
+          <element name="tbody">
+            <oneOrMore>
+              <ref name="tr"/>
+            </oneOrMore>
+          </element>
+        </group>
+        <oneOrMore>
+          <ref name="tr"/>
+        </oneOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="attlist-table" combine="interleave">
+    <optional>
+      <attribute name="table-col-spacing">
+        <data type="nonNegativeInteger"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="table-row-spacing">
+        <data type="nonNegativeInteger"/>
+      </attribute>
+    </optional>
+    <ref name="row-spacing"/>
+    <ref name="border-atts"/>
+    <ref name="margin-atts"/>
+    <ref name="padding-atts"/>
+  </define>
+  <define name="tr">
+    <element name="tr">
+      <oneOrMore>
+        <ref name="td"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="td">
+    <element name="td">
+      <ref name="attlist-td"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="blockContents"/>
+          <ref name="anchor"/>
+          <ref name="block"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist-td" combine="interleave">
+    <optional>
+      <attribute name="row-span">
+        <data type="positiveInteger"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="col-span">
+        <data type="positiveInteger"/>
+      </attribute>
+    </optional>
+    <ref name="border-atts"/>
+    <ref name="padding-atts"/>
+    <ref name="block-atts-except-list-type-and-row-spacing"/>
   </define>
   <start>
     <choice>

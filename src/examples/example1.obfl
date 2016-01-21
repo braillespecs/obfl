@@ -131,6 +131,24 @@
 				<block text-indent="3" margin-top="2">2<leader position="3"/>This is a second note. It will be placed at the bottom of the page.</block>
 			</float-item>
 			 -->
+			<table table-col-spacing="1">
+				<thead>
+					<tr>
+						<td col-span="2"> A </td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td row-span="2"> B </td>
+						<td> C </td>
+					</tr>
+					<tr>
+						<td>
+							<block> D </block>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</sequence>
 		<sequence master="rear">
 			<block>This is part of a new sequence. Note that this sequence does not have an initial page number. Page numbering continues from the preceding section.</block>
