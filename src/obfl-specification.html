@@ -1294,7 +1294,7 @@ of a table.</p>
 </dl>
 </div>
   
-  <h5 id="table-margins">Table Borders</h5>
+  <h5 id="table-margins">Borders in and Around Tables</h5>
   <p>Table cell borders collapse unless table-col-spacing &gt; 0 or table-row-spacing &gt; 0.</p>
   <div class="example">
     <ul>
@@ -1327,6 +1327,11 @@ of a table.</p>
         <li>else using either value of A and B will result in the same border</li>
       </ul></li>
     </ul>
+  </div>
+  <div class="note">
+  	<p>Note that the presence of a border on one cell will offset the placement of all cells within that row and 
+  	column to the same extent, even if they themselves do not have borders. The cells that do not have borders
+  	will have extra empty space in it's place.</p>
   </div>
   <h4 id="thead" class="include">thead</h4>
 
