@@ -8,15 +8,25 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="no"
 	 doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
 	 doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+	<xsl:param name="timestamp"/>
 
+	<xsl:template match="html:meta[@name='dc:Date']">
+		<meta name="dc:Date" content="{$timestamp}"/>
+	</xsl:template>
+	
 	<xsl:template match="processing-instruction()">
-		<!-- Adds a toc based on all hx elements following the <?toc?> instruction -->
-		<xsl:if test="name() = 'toc'">
-			<ul>
-				<xsl:apply-templates select="following::html:h2" mode="sublist"/>
-			</ul>
-		</xsl:if>
-		<xsl:copy-of select="."/>
+		<xsl:choose>
+			<!-- Adds a toc based on all hx elements following the <?toc?> instruction -->
+			<xsl:when test="name() = 'toc'">
+				<ul>
+					<xsl:apply-templates select="following::html:h2" mode="sublist"/>
+				</ul>
+			</xsl:when>
+			<xsl:when test="name() = 'timestamp'"><xsl:value-of select="$timestamp"/></xsl:when>
+			<xsl:when test="name() = 'source-date'"><xsl:value-of select="//html:meta[@name='dc:Date'][1]/@content"/></xsl:when>
+			<xsl:otherwise><xsl:copy-of select="."/></xsl:otherwise>
+		</xsl:choose>
+		
 	</xsl:template>
 	
 	<xsl:template match="html:h1|html:h2|html:h3|html:h4|html:h5|html:h6" mode="sublist">
