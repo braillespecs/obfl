@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-01-27" />
+  <meta name="dc:Date" content="2016-02-11" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -1827,7 +1827,7 @@ collection items.</p>
 <h4 class="include" id="L2248">xml-data</h4>
 
 <div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
+<p>This feature is incubating (2016-02-11). This means that the feature is
 currently a work-in-progress and may change at any time.</p>
 </div>
 
@@ -1865,7 +1865,7 @@ than one way, depending on some aspect of the rendered result.</p>
 <h4 class="include" id="L2724">renderer</h4>
 
 <div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
+<p>This feature is incubating (2016-02-11). This means that the feature is
 currently a work-in-progress and may change at any time.</p>
 </div>
 
@@ -1894,7 +1894,7 @@ applied to a given xml-data.</p>
 <h4 class="include" id="L2749">rendering-scenario</h4>
 
 <div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
+<p>This feature is incubating (2016-02-11). This means that the feature is
 currently a work-in-progress and may change at any time.</p>
 </div>
 
@@ -1944,7 +1944,7 @@ currently a work-in-progress and may change at any time.</p>
 <h4 class="include" id="L2690">xml-processor</h4>
 
 <div class="note">
-<p>This feature is incubating (2016-01-12). This means that the feature is
+<p>This feature is incubating (2016-02-11). This means that the feature is
 currently a work-in-progress and may change at any time.</p>
 </div>
 
@@ -1975,11 +1975,8 @@ supported in future versions.</p>
 <h5 id="L2720">Example</h5>
 <div class="example">
   <pre>
-&lt;xml-processor name="simple-table-processor">
-&lt;xsl:stylesheet version="2.0"
-		xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-		xmlns:fn="http://www.w3.org/2005/xpath-functions">
+&lt;xml-processor name="example-processor">
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	&lt;xsl:output method="xml" version="1.0" encoding="UTF-8" indent="no"/>
 	&lt;!-- Makes a verbatim copy of the input, which is assumed to be in obfl namespace -->
 	&lt;xsl:template match="/">
@@ -1989,6 +1986,41 @@ supported in future versions.</p>
 &lt;/xml-processor>
 </pre>
 </div>
+
+<h4 class="include" id="L1607">xml-processor-result</h4>
+<div class="note">
+<p>This feature is incubating (2016-02-11). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>Optional root node for the xml-processor result.</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd class="no-markup">The xml-processor-result element is the root node of the xml-processor result.</dd>
+  <dt>Attributes</dt>
+    <dd>None</dd>
+  <dt>Content model</dt>
+    <dd class="no-markup">As specified by the xml-data context.</dd>
+</dl>
+</div>
+
+<h5 id="L2721">Example</h5>
+<div class="example">
+  <pre>
+&lt;xml-processor name="example-processor">
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	&lt;xsl:template match="/">
+		&lt;xml-processor-result>
+			&lt;xsl:apply-templates select="//tr"/>
+		&lt;/xml-processor-result>
+	&lt;/xsl:template>
+&lt;/xsl:stylesheet>
+&lt;/xml-processor>
+</pre>
+</div>
+
 <h2 id="L1608">Attribute Definitions</h2>
 
 <h3 id="L21839">hyphenate</h3>
