@@ -24,6 +24,7 @@
 			</xsl:when>
 			<xsl:when test="name() = 'timestamp'"><xsl:value-of select="$timestamp"/></xsl:when>
 			<xsl:when test="name() = 'source-date'"><xsl:value-of select="//html:meta[@name='dc:Date'][1]/@content"/></xsl:when>
+			<xsl:when test="name() = 'changes'"><xsl:call-template name="insertChanges"/></xsl:when>
 			<xsl:otherwise><xsl:copy-of select="."/></xsl:otherwise>
 		</xsl:choose>
 		
@@ -58,7 +59,7 @@
 		</li>
 	</xsl:template>
 	
-	<xsl:template match="html:h1|html:h2|html:h3|html:h4|html:h5|html:h6">
+	<xsl:template match="html:h1|html:h2|html:h3|html:h4|html:h5|html:h6|html:del|html:ins">
 		<xsl:variable name="id" select="generate-id()"/>
 		<xsl:copy>
 			<xsl:if test="not(@id)">
@@ -77,4 +78,21 @@
 		</xsl:copy>
 	</xsl:template>
 	
+	<xsl:template name="insertChanges">
+		<xsl:for-each select="//*[self::html:del or self::html:ins]">
+			<xsl:sort select="@datetime"/>
+			<xsl:apply-templates select="." mode="changes"/>
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template match="html:del|html:ins" mode="changes">
+		<xsl:variable name="id" select="generate-id()"/>
+		<xsl:variable name="id-value">
+			<xsl:choose>
+				<xsl:when test="@id"><xsl:value-of select="@id"></xsl:value-of></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$id"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<p><xsl:value-of select="@datetime"/> (<xsl:value-of select="local-name(.)"/>): <a href="#{$id-value}"><xsl:value-of select="."/></a></p>
+	</xsl:template>	
 </xsl:stylesheet>

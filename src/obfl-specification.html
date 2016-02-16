@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-02-11" />
+  <meta name="dc:Date" content="2016-02-16" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -36,6 +36,24 @@ href="#ref-xml">XML</a> 1.0 application.</p>
 <h2 id="L71">Status of this Document</h2>
 
 <p>This document is a working draft.</p>
+
+<h3>Backwards Incompatible Changes</h3>
+<p>The following changes have been introduced that break compatibility with preceding versions
+(listed by date of change):</p>
+
+<?changes?>
+
+<div class="note">
+<p>After a period of one year from the time of the change, the change is no longer 
+seen as incompatible. In practice, this means that:</p>
+<ul>
+<li>a section marked as deleted may be completely removed</li> 
+<li>a section marked as inserted may be unmarked</li>
+</ul>
+<p>In both cases, the change will be removed from the above list.</p>
+</div>
+
+<p class="note">Changes to incubating features are not marked as compatibility breaking.</p>
 
 <h2 id="L77">Table of Contents</h2>
 
@@ -870,7 +888,7 @@ the current page, using the number format specified by this element.</p>
     <dd class="markup">field</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt><del class="2015-10-13">style [required]</del></dt>
+        <dt><del datetime="2015-10-13">style [required]</del></dt>
         <dt>number-format [optional]</dt>
           <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
             'upper-alpha', 'lower-alpha'.</dd>
@@ -1169,7 +1187,7 @@ element.</p>
     <dd><dl>
         <dt>ref-id [required]</dt>
           <dd></dd>
-        <dt><del class="2015-10-13">style [optional]</del></dt>
+        <dt><del datetime="2015-10-13">style [optional]</del></dt>
         <dt>number-format [optional]</dt>
           <dd>One of 'default', 'roman', 'upper-roman', 'lower-roman',
             'upper-alpha', 'lower-alpha'.</dd>
