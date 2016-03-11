@@ -1479,9 +1479,10 @@
   <define name="xml-data">
     <element name="xml-data">
       <ref name="attlist-xml-data"/>
-      <choice>
-        <ref name="any_content"/>
-      </choice>
+    	<choice>
+    		<ref name="any_element"/>
+    		<ref name="any_obfl"/>
+    	</choice>
     </element>
   </define>
   <define name="attlist-xml-data" combine="interleave">
