@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Evaluation Language" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2015-11-30" />
+  <meta name="dc:Date" content="2016-03-16" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -186,11 +186,53 @@ unspecified number of arguments.</p>
 
 <div class="sidebar">
 <dl>
-  <dt>if</dt>
-    <dd>if takes three arguments: the expression to test (must evaluate to a
-      boolean), value when true, value when false</dd>
-  <dt>round</dt>
-    <dd>round takes one argument: the value to round (must be a number)</dd>
+  <dt>if [test] [value when true] [value when false]</dt>
+    <dd>Specifies an if-else statement. If takes three arguments:
+    the expression to test (must evaluate to a boolean), value when
+     true, value when false</dd>
+  <dt>round [number]</dt>
+    <dd>Rounds a number to its closest integer value.</dd>
+</dl>
+
+<dl>
+  <dt>concat [strings ...]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Concatenates all arguments to a single string.</p>
+		</dd>
+  <dt>format [format-string] [values ...]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Formats a string by inserting the specified values. The first argument is the
+		format string as defined by
+		 <a href="https://docs.oracle.com/javase/7/docs/api/java/text/MessageFormat.html">MessageFormat</a>,
+		 following arguments are parameters to insert in the format string.</p>
+		</dd>
+  <dt>int2text [number] [language-code]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Formats an integer as a written number. int2text takes two arguments: an 
+		integer number to be converted into text and a language-code.</p>
+		</dd>
+  <dt>numeral-format [style] [value]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Formats an integer with the specified style. Style should be one of:</p>
+			<ul><li>decimal-leading-zero</li><li>upper-roman</li><li>lower-roman</li><li>upper-alpha</li><li>lower-alpha</li></ul>
+		</dd>
+  <dt>set [key] [value]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Sets a variable for use in subsequent expressions. Key is the key that will
+		 be replaced by value in any subsequent expressions (within the same evaluation).</p>
+		</dd>
+  <dt>now [date_format]</dt>
+  	<dd><p class="note">This function is incubating (2016-03-16). This means that it is
+		currently a work-in-progress and may change or be removed at any time.</p>
+		<p>Inserts the current date and time using the specified format (as defined by 
+		<a href="https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a>).</p>
+		</dd>
+		
 </dl>
 </div>
 
