@@ -1945,7 +1945,7 @@ currently a work-in-progress and may change at any time.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>Empty.</dd>
+    <dd>parameter [0 or more]</dd>
 </dl>
 </div>
 <h5 id="L2793">Example</h5>
@@ -1958,6 +1958,31 @@ currently a work-in-progress and may change at any time.</p>
 			cost="(+ (- 30 $min-block-width) $total-height)"/>
 &lt;/renderer>
 </pre>
+</div>
+
+<h4 class="include">parameter</h4>
+<div class="note">
+<p>This feature is incubating (2016-05-10). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>Defines a parameter for a rendering-scenario.</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd>rendering-scenario</dd>
+  <dt>Attributes</dt>
+    <dd><dl>
+        <dt>name [required]</dt>
+          <dd class="no-markup">The name of the parameter</dd>
+        <dt>value [required]</dt>
+          <dd class="no-markup">The value of the parameter</dd>
+      </dl>
+    </dd>
+  <dt>Content Model</dt>
+    <dd>Empty.</dd>
+</dl>
 </div>
 
 <h4 class="include" id="L2690">xml-processor</h4>

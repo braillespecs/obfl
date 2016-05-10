@@ -1511,6 +1511,9 @@
   <define name="rendering-scenario">
     <element name="rendering-scenario">
       <ref name="attlist-rendering-scenario"/>
+      <zeroOrMore>
+      	<ref name="parameter"/>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist-rendering-scenario">
@@ -1525,6 +1528,19 @@
         <data type="string"/>
       </attribute>
     </optional>
+  </define>
+  <define name="parameter">
+  	<element name="parameter">
+  		<ref name="attlist-parameter"/>
+  	</element>
+  </define>
+  <define name="attlist-parameter">
+  	<attribute name="name">
+  		<data type="string"/>
+  	</attribute>
+  	<attribute name="value">
+  		<data type="string"/>
+  	</attribute>
   </define>
   <define name="file-reference">
   	<element name="file-reference">
