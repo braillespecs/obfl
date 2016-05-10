@@ -364,6 +364,7 @@ in the rendering process.</p>
       <ul>
         <li>meta [optional]</li>
         <li>layout-master [1 or more]</li>
+        <li>file-reference [0 or more]</li>
         <li>xml-processor [0 or more]</li>
         <li>renderer [0 or more]</li>
         <li>table-of-contents [0 or more]</li>
@@ -2035,6 +2036,56 @@ currently a work-in-progress and may change at any time.</p>
 		&lt;/xml-processor-result>
 	&lt;/xsl:template>
 &lt;/xsl:stylesheet>
+&lt;/xml-processor>
+</pre>
+</div>
+
+<h4 class="include">file-reference</h4>
+<div class="note">
+<p>This feature is incubating (2016-05-10). This means that the feature is
+currently a work-in-progress and may change at any time.</p>
+</div>
+
+<p>Defines a file reference used in an xml-processor.</p>
+
+<p>Currently, the only defined processor is xsl:stylesheet. Consequently, the only supported file
+reference content is an XSLT document. However additional content might be supported in future versions.</p>
+
+<div class="sidebar markup">
+<dl>
+  <dt>Usage</dt>
+    <dd>obfl</dd>
+  <dt>Attributes</dt>
+    <dd>
+    	<dl>
+    		<dt>uri [required]</dt>
+    		<dd>The uri reference used in the xml-processor stylesheet</dd>
+    	</dl>
+    </dd>
+  <dt>Content model</dt>
+    <dd class="no-markup">xsl:stylesheet [required]</dd>
+</dl>
+</div>
+
+<h5 id="L2721">Example</h5>
+<div class="example">
+  <pre>
+&lt;file-reference uri="import.xsl">
+	&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		&lt;xsl:template match="tr">
+			&lt;xsl:value-of select="string(.)"
+		&lt;/xsl:template>
+	&lt;/xsl:stylesheet>
+&lt;/file-reference>
+&lt;xml-processor name="example-processor">
+	&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		&lt;xsl:import href="import.xsl"/>
+		&lt;xsl:template match="/">
+			&lt;xml-processor-result>
+				&lt;xsl:apply-templates select="//tr"/>
+			&lt;/xml-processor-result>
+		&lt;/xsl:template>
+	&lt;/xsl:stylesheet>
 &lt;/xml-processor>
 </pre>
 </div>

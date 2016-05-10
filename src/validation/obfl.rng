@@ -449,6 +449,9 @@
         <ref name="layout-master"/>
       </oneOrMore>
       <zeroOrMore>
+      	<ref name="file-reference"/>
+      </zeroOrMore>
+      <zeroOrMore>
         <ref name="xml-processor"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -1522,6 +1525,19 @@
         <data type="string"/>
       </attribute>
     </optional>
+  </define>
+  <define name="file-reference">
+  	<element name="file-reference">
+  		<ref name="attlist-file-reference"/>
+  		<choice>
+  			<ref name="any_content"/>
+  		</choice>
+  	</element>
+  </define>
+  <define name="attlist-file-reference">
+		<attribute name="uri">
+			<data type="string"/>
+		</attribute>
   </define>
   <define name="xml-processor">
     <element name="xml-processor">
