@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-03-11" />
+  <meta name="dc:Date" content="2016-06-17" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -933,6 +933,10 @@ the current page, using the number format specified by this element.</p>
           <dd>Specifies a translation policy.</dd>
           <dd>See the <a href="#L2462">attribute description</a> for more
             information.</dd>
+		<dt>break-before [optional]</dt>
+          <dd class="no-markup">Inserts a break before the sequence begins.</dd>
+          <dd>This property only applies to text body sequences.</dd> 
+          <dd>One of 'auto' (default), 'volume'.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1003,22 +1007,40 @@ should be excluded entierly.</p>
       <dl>
         <dt>keep-with-previous-sheets [optional]</dt>
           <dd>Indicates that <em>the end of</em> this block should be kept in
-            the same volume as the specified number of preceding sheets.</dd>
+            the same volume as the specified number of preceding sheets. This is
+            similar to widows, but for pages in a volume instead of rows on a
+            page The priority of this property is higher than the priority for 
+            the whole block, as specified by volume-keep-priority.</dd>
           <dd>An integer in the range [0, 9]</dd>
         <dt>keep-with-next-sheets [optional]</dt>
           <dd>Indicates that <em>the beginning of</em> this block should be
             kept in the same volume as the specified number of following
-          sheets.</dd>
+          sheets. This is similar to orphans, but for pages in a volume instead
+           of rows on a page. The priority of this property is higher than the 
+           priority for the whole block, as specified by volume-keep-priority.</dd>
           <dd>An integer in the range [0, 9]</dd>
-      </dl>
-    </dd>
-    <dd><dl>
+        <dt>volume-keep-priority [optional]</dt>
+          <dd>Indicates that the whole block should be kept in the same volume with the specified priority. This value is
+          inherited by descendants, unless overridden. This property will only affect the probability for breaking inside
+          this block, it will not affect the page layout.</dd>
+          <dd>An integer in the range [1, 9].</dd>
+          <dd>The higher the value, the lower the priority.</dd>
+          <dd>Default is to prefer volume breaks.</dd>
         <dt>break-before [optional]</dt>
-          <dd class="no-markup">Break before block begins.</dd>
-          <dd>One of 'auto', 'page'.</dd>
+          <dd class="no-markup">Inserts a break before the block begins.</dd>
+          <dd>One of 'auto' (default), 'page'.</dd>
         <dt>keep [optional]</dt>
-          <dd>Keep rows in this block together.</dd>
-          <dd>One of 'auto', 'all'.</dd>
+          <dd>Keep rows in this block together by breaking pages early.</dd>
+          <dd>One of:
+          <dl><dt>'auto' (default)</dt>
+          	<dt><del datetime="2016-06-08">'all'</del></dt>
+          	<dt>'page'</dt>
+          	<dd>break page early if the whole block doesn't fit on the page.</dd>
+          	<dt>'sheet'</dt>
+          	<dd>break page and sheet early if the whole block doesn't fit on the sheet.</dd>
+          	<dt>'volume'</dt>
+          	<dd>break page, sheet and volume early if the whole block doesn't fit in the volume.</dd>
+           </dl></dd>
         <dt>keep-with-next [optional]</dt>
           <dd>Keep the following block's first line(s) on the same page as this
             block.</dd>
