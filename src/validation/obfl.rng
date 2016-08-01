@@ -245,6 +245,21 @@
         </choice>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="underline-style">
+        <ref name="border-style-enum"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="underline-width">
+        <ref name="border-width-enum"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="underline-align">
+        <ref name="border-align-enum"/>
+      </attribute>
+    </optional>
     <ref name="textAtts"/>
   </define>
   <define name="block-id">
