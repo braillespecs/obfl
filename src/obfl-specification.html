@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2016-06-17" />
+  <meta name="dc:Date" content="2016-09-12" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -1444,7 +1444,7 @@ table spans.</p>
         <dd>A positive integer.</dd>
         <dd>Default is 1.</dd>
       </dl>
-      <p>This element supports the <a href="#block-atts">Block</a> (except the list-type and row-spacing attributes), <a href="#borders">Borders</a>
+      <p>This element supports the <a href="#block-atts">Block</a> (except the list-type, list-style, list-item-label and row-spacing attributes), <a href="#borders">Borders</a>
         and <a href="#padding-atts">Padding</a> attributes groups.</p>
     </dd>
   <dt>Content Model</dt>
@@ -2300,6 +2300,25 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
   <dt>list-type [optional]</dt>
     <dd>The type of list for this block.</dd>
     <dd>One of 'none' (default), 'ol', 'ul', 'pl'.</dd>
+  <dt>list-style [optional]</dt>
+  	<dd>The list style to use.</dd>
+  	<dd><dl>
+  		<dt>If the list is ordered</dt>
+  			<dd>One of '1' (default), '01', 'A', 'a', 'I', 'i'.</dd>
+  		<dt>If the list is unordered</dt>
+  		<dd>The specified string is inserted in place of the default list bullet.</dd>
+  		<dd>A string.</dd>
+  	</dl></dd>
+  <dt>list-item-label [optional]</dt>
+     <dd>The list item label to use when this block's parent is an ordered (list-type="ol") or
+     	 unordered list (list-type="ul").</dd>
+    <dd><dl>
+    	<dt>If the list is ordered <i>and</i> the label is a number</dt>
+     		<dd>The item counter is set to that value (thereby affecting following items as well).</dd>
+     	<dt>If the list is unordered <i>or</i> the list is ordered, but the label isn't a number</dt>
+     		<dd>The specified label is inserted in place of the default list label.</dd>
+     <dd>A string.</dd>
+     </dl></dd>
   <dt>align [optional]</dt>
     <dd>Specifies the text alignment.</dd>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>

@@ -272,7 +272,7 @@
   <!--
     list-type, the list type of this block
   -->
-  <define name="list-type">
+  <define name="list-atts">
     <optional>
       <attribute name="list-type">
         <choice>
@@ -283,9 +283,19 @@
         </choice>
       </attribute>
     </optional>
+  	<optional>
+  		<attribute name="list-style">
+  			<data type="string"/>
+  		</attribute>
+  	</optional>
+  	<optional>
+  		<attribute name="list-item-label">
+  			<data type="string"/>
+  		</attribute>
+  	</optional>
   </define>
   <define name="block-atts">
-    <ref name="list-type"/>
+    <ref name="list-atts"/>
     <ref name="row-spacing"/>
     <ref name="block-atts-except-list-type-row-spacing-id"/>
     <ref name="block-id"/>
@@ -1215,7 +1225,7 @@
       <attribute name="vertical-position"/>
     </optional>
     <ref name="row-spacing"/>
-    <ref name="list-type"/>
+    <ref name="list-atts"/>
     <ref name="block-atts-except-list-type-row-spacing-id"/>
     <ref name="margin-atts"/>
     <ref name="padding-atts"/>
