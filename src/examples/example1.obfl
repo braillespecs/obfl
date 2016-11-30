@@ -3,9 +3,7 @@
 		<layout-master name="front" page-width="40" page-height="29" inner-margin="0" outer-margin="0" row-spacing="1" duplex="false">
 			<default-template>
 				<header>
-					<field>
-						<string value=""/>
-					</field>
+					<field allow-text-flow="true"/>
 					<field>
 						<current-page number-format="roman"/>
 					</field>

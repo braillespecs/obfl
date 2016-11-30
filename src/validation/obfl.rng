@@ -670,6 +670,14 @@
         <data type="NMTOKEN"/>
       </attribute>
     </optional>
+     <optional>
+      <attribute name="allow-text-flow">
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+     </optional>
   </define>
   <define name="current-page">
     <element name="current-page">
