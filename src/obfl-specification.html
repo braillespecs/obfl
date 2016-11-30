@@ -1641,13 +1641,13 @@ data.</p>
 <h4 id="L969" class="include">on-volume-start</h4>
 
 <p>The on-volume-start element defines blocks of text to insert before the TOC
-data of a volume. Note that this element only applies to document range
-TOC's.</p>
+data or collection items of a volume. Note that this element only applies to
+document range toc-sequences and list-of-references.</p>
 
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-sequence</dd>
+    <dd>toc-sequence, list-of-references</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>use-when [optional]</dt>
@@ -1664,13 +1664,13 @@ TOC's.</p>
 <h4 id="L987" class="include">on-volume-end</h4>
 
 <p>The on-volume-end element defines blocks of text to insert after the TOC
-data of a volume. Note that this element only applies to document range
-TOC's.</p>
+data or collection items of a volume. Note that this element only applies to
+document range toc-sequences and list-of-references.</p>
 
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>toc-sequence</dd>
+    <dd>toc-sequence, list-of-references</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>use-when [optional]</dt>
@@ -1948,8 +1948,9 @@ that nesting of items is not allowed.</p>
 <p>The list-of-references element contains instructions needed to render a
 collection of items ordered by page of reference. Note that a
 list-of-references only contains static contents inserted while generating the
-sequence (on-collection-start, on-page-start, on-page-end, on-collection-end).
-The actual items are collected from the referenced collection.</p>
+sequence (on-collection-start, on-volume-start, on-page-start, on-page-end,
+on-volume-end, on-collection-end).  The actual items are collected from the
+referenced collection.</p>
 
 <div class="sidebar markup">
 <dl>
@@ -1969,8 +1970,10 @@ The actual items are collected from the referenced collection.</p>
     <dd>In this order: 
       <ul>
         <li>on-collection-start [optional]</li>
+        <li>on-volume-start [0 or more]</li>
         <li>on-page-start [optional]</li>
         <li>on-page-end [optional]</li>
+        <li>on-volume-end [0 or more]</li>
         <li>on-collection-end [optional]</li>
       </ul>
     </dd>

@@ -1008,10 +1008,16 @@
         <ref name="on-collection-start"/>
       </optional>
       <optional>
+        <ref name="on-volume-start"/>
+      </optional>
+      <optional>
         <ref name="on-page-start"/>
       </optional>
       <optional>
         <ref name="on-page-end"/>
+      </optional>
+      <optional>
+        <ref name="on-volume-end"/>
       </optional>
       <optional>
         <ref name="on-collection-end"/>
