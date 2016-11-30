@@ -819,8 +819,12 @@
   <define name="volume-template">
     <element name="volume-template">
       <ref name="attlist-volume-template"/>
-      <ref name="pre-content"/>
-      <ref name="post-content"/>
+      <optional>
+        <ref name="pre-content"/>
+      </optional>
+      <optional>
+        <ref name="post-content"/>
+      </optional>
     </element>
   </define>
   <define name="attlist-volume-template" combine="interleave">
