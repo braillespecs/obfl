@@ -11,9 +11,7 @@
 					</field>
 				</header>
 				<footer>
-					<field>
-						<string value=""/>
-					</field>
+					<field/>
 					<field>
 						<evaluate expression="(now &quot;yyyy-MM-dd HH:mm&quot;)"/>
 					</field>

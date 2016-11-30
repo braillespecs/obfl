@@ -654,14 +654,14 @@
   <define name="field">
     <element name="field">
       <ref name="attlist-field"/>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
           <ref name="marker-reference"/>
           <ref name="string"/>
           <ref name="current-page"/>
           <ref name="evaluate"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist-field" combine="interleave">
