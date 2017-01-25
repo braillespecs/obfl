@@ -842,6 +842,7 @@
         <choice>
           <ref name="sequence"/>
           <ref name="dynamic-sequence"/>
+          <ref name="toc-sequence"/>
         </choice>
       </zeroOrMore>
     </element>
