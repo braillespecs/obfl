@@ -6,7 +6,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2017-11-01" />
+  <meta name="dc:Date" content="2018-01-19" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -395,6 +395,7 @@ the back side is counted, but not <em>paginated</em>.</p>
         <li>renderer [0 or more]</li>
         <li>table-of-contents [0 or more]</li>
         <li>volume-template [0 or more]</li>
+        <li>volume-transition [optional]</li>
         <li>collection [0 or more]</li>
         <li>sequence [1 or more]</li>
       </ul>
@@ -1770,6 +1771,126 @@ volume's body of pages.</p>
     <dd>sequence, dynamic-sequence, toc-sequence [0 or more]</dd>
 </dl>
 </div>
+
+<h4 id="L8701" class="include">volume-transition</h4>
+  
+  <div class="note">
+    <p>This feature is incubating (2018-01-18). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  
+  <p>The transition element defines a volume transition.</p>
+  <p>When this element is present, the last page or sheet in each volume (except the last)
+  may be modified so that the volume break occurs earlier than usual: preferably between 
+  two blocks, or if that is not possible, between words. The left over contents is moved
+  to the next volume. If volume-keep-priority is used, it will be used to determine a suitable
+  break point.</p>
+  <p>When this element is not present, the last page is broken in the same way as
+  all other pages.</p>
+
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>obfl</dd>
+      <dt>Attributes</dt>
+    <dd><dl>
+    	<dt>range [optional]</dt>
+    	<dd>Specifies the range within which content can be moved off the last sheet in a volume.</dd>
+    	<dd>One of 'page' (default) or 'sheet'.</dd>
+    	<dd>If the range is 'page', content on the last page can be moved to the next volume.
+    	If the range is 'sheet', content on the last sheet can be moved. Note that if duplex 
+    	is off, the value of this attribute is irrelevant.</dd>
+    </dl></dd>
+    <dt>Content Model</dt>
+    <dd>In this order:<ul>
+      <li>block-interrupted [optional]</li>
+      <li>block-resumed [optional]</li>
+      <li>sequence-interrupted [optional]</li>
+      <li>sequence-resumed [optional]</li>
+    </ul></dd>
+  </dl>
+</div>
+
+<h5 id="L22731">Example</h5>
+<div class="example">
+  <pre>
+&lt;volume-transition>
+
+  &lt;!-- If the last block has to be split up, use the following. -->
+  &lt;block-interrupted>[The paragraph continues in the next volume. --Ed.]&lt;/block-interrupted>
+  &lt;block-resumed>[Paragraph continued. --Ed]&lt;/block-resumed>
+  
+  &lt;!-- If the last block is short enough to fit on the page, use the following. -->
+  &lt;sequence-interrupted>
+    &lt;block>[The chapter continues in the next volume. --Ed.]&lt;/block>
+  &lt;/sequence-interrupted>
+  &lt;sequence-resumed>
+    &lt;block>[Continued from previous volume. --Ed.]&lt;/block>
+  &lt;/sequence-resumed>
+  
+&lt;/volume-transition>
+</pre>
+</div>
+
+<h4 id="L8702" class="include">block-interrupted</h4>
+<div class="note">
+  <p>This feature is incubating (2018-01-18). This means that the feature is
+    currently a work-in-progress and may change or disappear at any time.</p>
+</div>
+  <p>The block-interrupted element contains text to insert when a block is interrupted before a volume break.</p>
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>volume-transition</dd>
+    <dt>Content Model</dt>
+    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or more]</dd>
+  </dl>
+</div>
+  
+  <h4 id="L8703" class="include">block-resumed</h4>
+  <div class="note">
+    <p>This feature is incubating (2018-01-18). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The block-resumed element contains text to insert when a block is resumed after a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>volume-transition</dd>
+      <dt>Content Model</dt>
+      <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or more]</dd>
+    </dl>
+  </div>
+
+  <h4 id="L8704" class="include">sequence-interrupted</h4>
+  <div class="note">
+    <p>This feature is incubating (2018-01-18). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The sequence-interrupted element contains blocks to insert when a sequence is interrupted before a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>volume-transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
+  
+  <h4 id="L8705" class="include">sequence-resumed</h4>
+  <div class="note">
+    <p>This feature is incubating (2018-01-18). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The sequence-resumed element contains text to insert when a sequence is resumed after a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>volume-transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
 
 <h3 id="L2529">Achored Data</h3>
 
