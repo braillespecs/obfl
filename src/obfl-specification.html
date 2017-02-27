@@ -1737,6 +1737,7 @@ toc-sequence.</p>
     <dd>In this order: 
       <ul>
         <li>pre-content [required]</li>
+        <li>transition [optional]</li>
         <li>post-content [required]</li>
       </ul>
     </dd>
@@ -1757,6 +1758,111 @@ volume's body of pages.</p>
 </dl>
 </div>
 
+<h4 id="L8701" class="include">transition</h4>
+  
+  <div class="note">
+    <p>This feature is incubating (2017-02-27). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  
+  <p>The transition element defines a volume transition. If this element is 
+  present, it implies that the last page in each volume should be processed
+  and that contents should be moved to the next volume where appropriate.</p>
+
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>volume-template</dd>
+    <dt>Content Model</dt>
+    <dd>In this order:<ul>
+      <li>block-interrupted [optional]</li>
+      <li>block-resumed [optional]</li>
+      <li>sequence-interrupted [optional]</li>
+      <li>sequence-resumed [optional]</li>
+    </ul></dd>
+  </dl>
+</div>
+
+<h5 id="L22731">Example</h5>
+<div class="example">
+  <pre>
+&lt;transition>
+
+  &lt;!-- If the last block has to be split up, use the following. -->
+  &lt;block-interrupted>[The paragraph continues in the next volume. --Ed.]&lt;/block-interrupted>
+  &lt;block-resumed>[Paragraph continued. --Ed]&lt;/block-resumed>
+  
+  &lt;!-- If the last block is short enough to fit on the page, use the following. -->
+  &lt;sequence-interrupted>
+    &lt;block>[The chapter continues in the next volume. --Ed.]&lt;/block>
+  &lt;/sequence-interrupted>
+  &lt;sequence-resumed>
+    &lt;block>[Continued from previous volume. --Ed.]&lt;/block>
+  &lt;/sequence-resumed>
+  
+&lt;/transition>
+</pre>
+</div>
+
+<h4 id="L8702" class="include">block-interrupted</h4>
+<div class="note">
+  <p>This feature is incubating (2017-02-27). This means that the feature is
+    currently a work-in-progress and may change or disappear at any time.</p>
+</div>
+  <p>The block-interrupted element contains text to insert when a block is interrupted before a volume break.</p>
+<div class="sidebar markup">
+  <dl>
+    <dt>Usage</dt>
+    <dd>transition</dd>
+    <dt>Content Model</dt>
+    <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or more]</dd>
+  </dl>
+</div>
+  
+  <h4 id="L8703" class="include">block-resumed</h4>
+  <div class="note">
+    <p>This feature is incubating (2017-02-27). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The block-resumed element contains text to insert when a block is resumed after a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>transition</dd>
+      <dt>Content Model</dt>
+      <dd>text(), leader, marker, br, evaluate, page-number, span, style [0 or more]</dd>
+    </dl>
+  </div>
+
+  <h4 id="L8704" class="include">sequence-interrupted</h4>
+  <div class="note">
+    <p>This feature is incubating (2017-02-27). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The sequence-interrupted element contains blocks to insert when a sequence is interrupted before a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
+  
+  <h4 id="L8705" class="include">sequence-resumed</h4>
+  <div class="note">
+    <p>This feature is incubating (2017-02-27). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The sequence-resumed element contains text to insert when a sequence is resumed after a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
 <h4 id="L888" class="include">post-content</h4>
 
 <p>The post-content element defines contents that should follow a braille
