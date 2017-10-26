@@ -442,6 +442,11 @@
         </choice>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="page-number-counter">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
     <ref name="textAtts"/>
   </define>
   <!-- Document root -->

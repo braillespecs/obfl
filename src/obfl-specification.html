@@ -7,7 +7,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2017-02-27" />
+  <meta name="dc:Date" content="2017-10-26" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -924,6 +924,22 @@ the current page, using the number format specified by this element.</p>
           <dd>Name of layout-master to use for this sequence.</dd>
         <dt>initial-page-number [optional]</dt>
           <dd>the inital page number for the sequence</dd>
+        <dt>page-number-counter [optional]</dt>
+          <dd class="note">
+            <p>This feature is incubating (2017-10-26). This means that the feature is
+              currently a work-in-progress and may change at any time.</p>
+          </dd>
+          <dd>Specifies a group name for the page number counter to use. Sequences
+              having the same value for this attribute will be counted together in
+              document order.</dd>
+          <dd>The value must be a token, but since this value is only used for grouping, no other
+              restrictions apply.</dd>
+          <dd>By default, all sequences in the 
+              text body are counted together, whereas sequences in pre-content 
+              and post-content are counted together within the boundaries of each
+              instance.</dd>
+          <dd>Note that combining this with initial-page-number
+              will affect any following sequences with the same counter name.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>the sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -967,6 +983,22 @@ should be excluded entierly.</p>
           <dd>A reference to a layout-master</dd>
         <dt>initial-page-number [optional]</dt>
           <dd>The inital page number for the dynamic-sequence</dd>
+        <dt>page-number-counter [optional]</dt>
+        <dd class="note">
+          <p>This feature is incubating (2017-10-26). This means that the feature is
+            currently a work-in-progress and may change at any time.</p>
+        </dd>
+        <dd>Specifies a group name for the page number counter to use. Sequences
+          having the same value for this attribute will be counted together in
+          document order.</dd>
+        <dd>The value must be a token, but since this value is only used for grouping, no other
+          restrictions apply.</dd>
+        <dd>By default, all sequences in the 
+          text body are counted together, whereas sequences in pre-content 
+          and post-content are counted together within the boundaries of each
+          instance.</dd>
+        <dd>Note that combining this with initial-page-number
+          will affect any following sequences with the same counter name.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>The dynamic-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -1530,6 +1562,22 @@ data.</p>
           Language</a></dd>
         <dt>initial-page-number [optional]</dt>
           <dd>The inital page number for the toc-sequence</dd>
+        <dt>page-number-counter [optional]</dt>
+        <dd class="note">
+          <p>This feature is incubating (2017-10-26). This means that the feature is
+            currently a work-in-progress and may change at any time.</p>
+        </dd>
+        <dd>Specifies a group name for the page number counter to use. Sequences
+          having the same value for this attribute will be counted together in
+          document order.</dd>
+        <dd>The value must be a token, but since this value is only used for grouping, no other
+          restrictions apply.</dd>
+        <dd>By default, all sequences in the 
+          text body are counted together, whereas sequences in pre-content 
+          and post-content are counted together within the boundaries of each
+          instance.</dd>
+        <dd>Note that combining this with initial-page-number
+          will affect any following sequences with the same counter name.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>The toc-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
