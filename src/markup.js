@@ -60,7 +60,10 @@ function addCrossReferencesToClass(className, strSearch, link)
  */
 function addCrossReferences(linkToClass, linkFromClass)
 {
-	var nodeList = document.getElementsByClassName(linkToClass);
+	var nodeList = [].slice.call(document.getElementsByClassName(linkToClass));
+	nodeList.sort(function(a, b) {
+		return b.innerHTML.length - a.innerHTML.length;
+	});
 	for (var i = 0; i < nodeList.length; ++i) {
 		var id = nodeList[i].attributes.id;
 		if (id!=null) {
