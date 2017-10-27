@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="Content-Type"
-  content="application/xhtml+xml; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>OBFL - Open Braille Formatting Language</title>
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2017-10-26" />
+  <meta name="dc:Date" content="2017-10-27" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -109,7 +108,7 @@ interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
       contained within <span class="term">elements</span>, that are organized
       as defined in an associated <span class="term">schema</span>. See <a
       href="#docconf">Document Conformance</a> for more information.</dd>
-  <dt><a name="facilities" id="facilities">Facilities</a></dt>
+  <dt><a id="facilities">Facilities</a></dt>
     <dd>Facilities are <span class="term">elements</span>, <span
       class="term">attributes</span>, and the semantics associated with those
       <span class="term">elements</span> and <span
@@ -144,7 +143,7 @@ interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
       ensuring that the structure, use of <span class="term">elements</span>,
       and use of <span class="term">attributes</span> are consistent with the
       definitions in the <span class="term">schema</span>.</dd>
-  <dt><a name="wellformed" id="wellformed">Well-formed</a> </dt>
+  <dt><a id="wellformed">Well-formed</a> </dt>
     <dd>A <span class="term">document</span> is well-formed when it is
       structured according to the rules defined in <a
       href="http://www.w3.org/TR/REC-xml#sec-well-formed">Section 2.1</a> of
@@ -176,7 +175,7 @@ specifications in effect at the time of writing.</p>
 
 <p><strong>This section is normative.</strong> </p>
 
-<h3 id="L459"><a name="docconf" id="docconf">Document Conformance</a> </h3>
+<h3 id="L459"><a id="docconf">Document Conformance</a> </h3>
 
 <p>A conforming OBFL document is an XML document that requires only the
 facilities described as mandatory in this specification. Such a document must
@@ -196,7 +195,7 @@ meet all of the following criteria:</p>
     xmlns="http://www.daisy.org/ns/2011/obfl"&gt;</li>
 </ol>
 
-<h3 id="L493"><a name="Using1" id="Using1">Using OBFL with Other
+<h3 id="L493"><a id="Using1">Using OBFL with Other
 Namespaces</a></h3>
 
 <p>The OBFL namespace may be used with other XML namespaces as per [<a
@@ -925,21 +924,13 @@ the current page, using the number format specified by this element.</p>
         <dt>initial-page-number [optional]</dt>
           <dd>the inital page number for the sequence</dd>
         <dt>page-number-counter [optional]</dt>
-          <dd class="note">
-            <p>This feature is incubating (2017-10-26). This means that the feature is
-              currently a work-in-progress and may change at any time.</p>
-          </dd>
-          <dd>Specifies a group name for the page number counter to use. Sequences
-              having the same value for this attribute will be counted together in
-              document order.</dd>
-          <dd>The value must be a token, but since this value is only used for grouping, no other
-              restrictions apply.</dd>
-          <dd>By default, all sequences in the 
-              text body are counted together, whereas sequences in pre-content 
-              and post-content are counted together within the boundaries of each
-              instance.</dd>
-          <dd>Note that combining this with initial-page-number
-              will affect any following sequences with the same counter name.</dd>
+        <dd class="note">
+          <p>This feature is incubating (2017-10-26). This means that the feature is
+            currently a work-in-progress and may change at any time.</p>
+        </dd>
+        <dd>A page number counter name.</dd>
+        <dd>See the <a href="#pagenumbercounter">attribute description</a> for more
+          information.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>the sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -988,17 +979,9 @@ should be excluded entierly.</p>
           <p>This feature is incubating (2017-10-26). This means that the feature is
             currently a work-in-progress and may change at any time.</p>
         </dd>
-        <dd>Specifies a group name for the page number counter to use. Sequences
-          having the same value for this attribute will be counted together in
-          document order.</dd>
-        <dd>The value must be a token, but since this value is only used for grouping, no other
-          restrictions apply.</dd>
-        <dd>By default, all sequences in the 
-          text body are counted together, whereas sequences in pre-content 
-          and post-content are counted together within the boundaries of each
-          instance.</dd>
-        <dd>Note that combining this with initial-page-number
-          will affect any following sequences with the same counter name.</dd>
+        <dd>A page number counter name.</dd>
+        <dd>See the <a href="#pagenumbercounter">attribute description</a> for more
+          information.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>The dynamic-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -1567,17 +1550,9 @@ data.</p>
           <p>This feature is incubating (2017-10-26). This means that the feature is
             currently a work-in-progress and may change at any time.</p>
         </dd>
-        <dd>Specifies a group name for the page number counter to use. Sequences
-          having the same value for this attribute will be counted together in
-          document order.</dd>
-        <dd>The value must be a token, but since this value is only used for grouping, no other
-          restrictions apply.</dd>
-        <dd>By default, all sequences in the 
-          text body are counted together, whereas sequences in pre-content 
-          and post-content are counted together within the boundaries of each
-          instance.</dd>
-        <dd>Note that combining this with initial-page-number
-          will affect any following sequences with the same counter name.</dd>
+        <dd>A page number counter name.</dd>
+        <dd>See the <a href="#pagenumbercounter">attribute description</a> for more
+          information.</dd>
         <dt>xml:lang [optional]</dt>
           <dd>The toc-sequence's primary language as defined in <a
             href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Section 2.12</a>
@@ -2166,10 +2141,10 @@ control over hyphenation is required, e.g. to ensure proper rendering of
 content that may be difficult to interpret if hyphenated, such as
 hyperlinks.</p>
 
-<p>The hyphenation specified by <tt>hyphenate</tt> applies to all elements in
-its content unless overridden with another instance of <tt>hyphenate</tt>. In
-particular, the empty value of <tt>hyphenate</tt> is used on an element B to
-override a specification of <tt>hyphenate</tt> on an enclosing element A,
+<p>The hyphenation specified by <code>hyphenate</code> applies to all elements in
+its content unless overridden with another instance of <code>hyphenate</code>. In
+particular, the empty value of <code>hyphenate</code> is used on an element B to
+override a specification of <code>hyphenate</code> on an enclosing element A,
 without specififying another hyphenation policy. Within B, the user's
 preference for hyphenation should be applied.</p>
 
@@ -2189,7 +2164,7 @@ hyphenate attribute is 'false' include (but are not limited to): SOFT HYPHEN
 input text and hyphenate attribute value (the first row has room for three more
 characters):</p>
 
-<table border="1" width="300px">
+  <table border="1" style="width: 300px">
   <thead>
     <tr>
       <th>input</th>
@@ -2229,6 +2204,59 @@ characters):</p>
     </tr>
   </tbody>
 </table>
+  
+<h3 id="pagenumbercounter">page-number-counter</h3>
+  <div class="note">
+    <p>This feature is incubating (2017-10-26). This means that the feature is
+      currently a work-in-progress and may change at any time.</p>
+  </div>
+ 
+  <p>Specifies a name for a page number counter to use.</p>
+  <p class="markup">By default, all sequences in the 
+    text body are counted together, whereas sequences in pre-content 
+    and post-content are counted together only within the boundaries of each
+    instance. This behavior can be changed by using this attribute.</p>
+  
+  <p>Pages in sequences having the same value for this attribute will have consecutive page
+    numbers in document order.</p>
+  <p>The value must be a token, but since this value is only used for grouping, no other
+    restrictions apply.</p>
+  
+  <div class="note"><p>Note that:</p>
+    <ul>
+    <li>Each page number counter starts with 1, unless another value is specified
+      using the <code>initial-page-number</code> attribute.</li>
+    <li>The <code>initial-page-number</code> attribute will affect the page numbers in following
+      sequences with the same counter name.</li>
+    </ul></div>
+  
+ <h5 id="L272141">Example</h5>
+  <div class="example">
+    <p>The following will result in three pages with the page numbers: 1, A, 2:</p>
+    <pre>
+&lt;layout-master name="body" page-width="10" page-height="6" duplex="false">
+	&lt;default-template>
+		&lt;header>&lt;field>&lt;current-page/>&lt;/field>&lt;/header>
+		&lt;footer/>
+	&lt;/default-template>
+&lt;/layout-master>
+&lt;layout-master name="insert" page-width="10" page-height="6" duplex="false">
+	&lt;default-template>
+		&lt;header>&lt;field>&lt;current-page number-format="upper-alpha"/>&lt;/field>&lt;/header>
+		&lt;footer/>
+	&lt;/default-template>
+&lt;/layout-master>
+&lt;sequence master="body">
+	&lt;block>A&lt;/block>
+&lt;/sequence>
+&lt;sequence master="insert" page-number-counter="insert-counter">
+	&lt;block>B&lt;/block>
+&lt;/sequence>
+&lt;sequence master="body">
+	&lt;block>C&lt;/block>
+&lt;/sequence>
+</pre>
+  </div>
 
 <h3 id="rowspacing">row-spacing</h3>
 
@@ -2260,10 +2288,10 @@ braille code.</p>
 <p>The value of the translate attribute can be 'pre-translated', 'grade0',
 'grade1', 'grade2' or 'grade3'.</p>
 
-<p>The translation specified by <tt>translate</tt> applies to all elements in
-its content unless overridden with another instance of <tt>translate</tt>. In
-particular, the empty value of <tt>translate</tt> is used on an element B to
-override a specification of <tt>translate</tt> on an enclosing element A,
+<p>The translation specified by <code>translate</code> applies to all elements in
+its content unless overridden with another instance of <code>translate</code>. In
+particular, the empty value of <code>translate</code> is used on an element B to
+override a specification of <code>translate</code> on an enclosing element A,
 without specififying another translation. Within B, the user's preference for
 translation should be applied.</p>
 
@@ -2588,7 +2616,7 @@ file</a> for this specification. Users looking for local copies of the rule
 sets to work with should download and use this archive rather than using the
 specific references below.</p>
 
-<h3 id="L763"><a name="Relax1" id="Relax1">Relax NG Rule Set</a></h3>
+<h3 id="L763"><a id="Relax1">Relax NG Rule Set</a></h3>
 
 <p><strong>This section is normative.</strong></p>
 
@@ -2619,17 +2647,17 @@ of this specification.</p>
 
 <p><strong>This section is normative.</strong> </p>
 <dl>
-  <dt><a name="ref-digloss" id="ref-digloss"><strong>[DI
+  <dt><a id="ref-digloss"><strong>[DI
   Glossary]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/2005/WD-di-gloss-20050118/">Glossary of
       Terms for Device Independence</a>", Rhys Lewis, 18 January 2005.<br />
       <a href="http://www.w3.org/TR/di-gloss/">Latest version</a> available at:
       http://www.w3.org/TR/di-gloss/</dd>
-  <dt><a name="ref-rfc2119" id="ref-rfc2119"><strong>[RFC2119]</strong></a></dt>
+  <dt><a id="ref-rfc2119"><strong>[RFC2119]</strong></a></dt>
     <dd>"<a href="http://www.ietf.org/rfc/rfc2119.txt">RFC2119: Key words for
       use in RFCs to Indicate Requirement Levels</a>", S. Bradner, March
     1997.</dd>
-  <dt><a name="ref-unicode" id="ref-unicode"><strong>[Unicode]</strong></a></dt>
+  <dt><a id="ref-unicode"><strong>[Unicode]</strong></a></dt>
     <dd>"<a href="http://www.unicode.org/versions/Unicode5.1.0/">Unicode
       Standard, Version 5.1.0</a>", The Unicode Consortium. The Unicode
       Standard, Version 5.1.0, defined by: The Unicode Standard, Version 5.0
@@ -2637,25 +2665,25 @@ of this specification.</p>
       Unicode 5.1.0.<br />
       <a href="http://www.unicode.org/versions/latest/">Latest version</a>
       available at: http://www.unicode.org/versions/latest/</dd>
-  <dt><a name="ref-xml" id="ref-xml"><strong>[XML]</strong></a></dt>
+  <dt><a id="ref-xml"><strong>[XML]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/2006/REC-xml-20060816">Extensible Markup
       Language (XML) 1.0 (Fourth Edition)</a>", T. Bray, J. Paoli, C. M.
       Sperberg-McQueen, E. Maler, F. Yergeau, 29 September 2006.<br />
       <a href="http://www.w3.org/TR/xml">Latest version</a> available at:
       http://www.w3.org/TR/xml</dd>
-  <dt><a name="ref-xmlns" id="ref-xmlns"><strong>[XMLNS]</strong></a></dt>
+  <dt><a id="ref-xmlns"><strong>[XMLNS]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/2006/REC-xml-names-20060816">Namespaces
       in XML 1.0 (Second Edition)</a>", T. Bray, D. Hollander, A. Layman, R.
       Tobin, 16 August 2006.<br />
       <a href="http://www.w3.org/TR/xml-names">Latest version</a> available at:
       http://www.w3.org/TR/xml-names</dd>
-  <dt><a name="ref-xpath" id="ref-xpath"><strong>[XPath]</strong></a></dt>
+  <dt><a id="ref-xpath"><strong>[XPath]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/1999/REC-xpath-19991116">XML Path
       Language (XPath) Version 1.0"</a>, J. Clark, S. DeRose, 16 November
       1999.<br />
       <a href="http://www.w3.org/TR/xpath">Latest version</a> available at:
       http://www.w3.org/TR/xpath</dd>
-  <dt><a name="ref-xslt" id="ref-xslt"><strong>[XSLT]</strong></a></dt>
+  <dt><a id="ref-xslt"><strong>[XSLT]</strong></a></dt>
     <dd>"<a href="http://www.w3.org/TR/2007/REC-xslt20-20070123/">XSL
       Transformations (XSLT) Version 2.0</a>", M. Kay, 23 January 2007.<br />
       <a href="http://www.w3.org/TR/xslt20">Latest version</a> available at:
