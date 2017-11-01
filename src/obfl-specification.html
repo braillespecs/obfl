@@ -6,7 +6,7 @@
   <meta name="dc:identifier" content="" />
   <meta name="dc:Title" content="OBFL Specification" />
   <meta name="dc:Language" content="en" />
-  <meta name="dc:Date" content="2017-10-27" />
+  <meta name="dc:Date" content="2017-11-01" />
   <link rel="stylesheet" href="styles/w3c-unofficial.css" type="text/css" />
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
@@ -115,6 +115,8 @@ interpreted as described in <a href="#ref-rfc2119">RFC 2119</a>.</p>
       class="term">attributes</span>.</dd>
   <dt>Implementation</dt>
     <dd>See User agent.</dd>
+  <dt>Main flow</dt>
+    <dd class="markup">All sequence&#x200b;s that are children of obfl.</dd>
   <dt>Parsing</dt>
     <dd>Parsing is the act whereby a <span class="term">document</span> is
       read, and the information contained within the <span
@@ -321,6 +323,31 @@ in the rendering process.</p>
   &lt;block>We offer free &lt;style name="em">technical support&lt;/style> for subscribers.&lt;/block>
 </pre> 
  -->
+
+<h2 id="L5021">Pagination</h2>
+
+<p><strong>This section is normative.</strong></p>
+
+<p>The following describes the default pagination behavior and applies unless otherwise 
+specified.</p>
+
+<h3 id="L5022">Main Flow</h3>
+  
+<p class="markup">Pages in the main flow are counted together in document order, starting from
+1.</p>
+
+<h3 id="L5025">Auxiliary Flows</h3>
+<p class="markup">Pages in pre-content and post-content are counted together within the boundaries of each instance 
+of these containers, starting from 1 each time.</p>
+
+<h3 id="L5023">Simplex</h3>
+<p class="markup">In a sequence where duplex is not enabled, only the front side of sheets are counted and paginated. 
+The back side of sheets are neither counted nor paginated.</p>
+
+<h3 id="L5024">Duplex</h3>
+<p class="markup">In a sequence where duplex is enabled, both sides of sheets are counted and paginated.
+However, if the last sheet of a duplex sequence only has content on the front side, 
+the back side is counted, but not <em>paginated</em>.</p>
 
 <h2 id="L558">Elements</h2>
 
