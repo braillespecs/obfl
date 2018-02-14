@@ -11,19 +11,21 @@ task copyTask(type: Copy) {
 	include '**/*.*'
 }
 
-task processHTML(dependsOn: 'copyTask') << {
-	processedHTML.mkdirs()
-	ant {
-		xslt (
-			basedir: unpackedSite,
-			destdir: processedHTML,
-			style: "build-resources/display.xslt",
-			includes: "*.html",
-		) {
-			param (
-				name: 'timestamp', 
-				expression: new Date().format("yyyy-MM-dd'T'HH:mmXXX")
-			)
+task processHTML(dependsOn: 'copyTask') {
+	doLast() {
+		processedHTML.mkdirs()
+		ant {
+			xslt (
+				basedir: unpackedSite,
+				destdir: processedHTML,
+				style: "build-resources/display.xslt",
+				includes: "*.html",
+			) {
+				param (
+					name: 'timestamp', 
+					expression: new Date().format("yyyy-MM-dd'T'HH:mmXXX")
+				)
+			}
 		}
 	}
 }
@@ -73,6 +75,7 @@ task buildSite(type: Copy) {
 	into 'build/site'
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '2.8'
+wrapper {
+	gradleVersion = '4.5.1'
+	distributionType = Wrapper.DistributionType.ALL
 }
