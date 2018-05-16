@@ -667,7 +667,7 @@
           <ref name="marker-reference"/>
           <ref name="string"/>
           <ref name="current-page"/>
-          <ref name="evaluate"/>
+          <ref name="evaluate-in-field"/>
         </choice>
       </zeroOrMore>
     </element>
@@ -767,19 +767,25 @@
       </attribute>
     </optional>
   </define>
-  <define name="evaluate">
+  <define name="evaluate-in-field">
     <element name="evaluate">
-      <ref name="attlist-evaluate"/>
+      <ref name="attlist-evaluate-in-field"/>
       <empty/>
     </element>
   </define>
-  <define name="attlist-evaluate" combine="interleave">
+  <define name="attlist-evaluate-in-field" combine="interleave">
     <attribute name="expression"/>
     <optional>
       <attribute name="text-style">
         <data type="NMTOKEN"/>
       </attribute>
     </optional>
+  </define>
+  <define name="evaluate">
+    <element name="evaluate">
+      <attribute name="expression"/>
+      <empty/>
+    </element>
   </define>
   <define name="table-of-contents">
     <element name="table-of-contents">
@@ -1330,6 +1336,8 @@
           <ref name="marker"/>
           <ref name="br"/>
           <ref name="anchor"/>
+          <ref name="evaluate"/>
+          <ref name="page-number"/>
         </choice>
       </zeroOrMore>
     </element>

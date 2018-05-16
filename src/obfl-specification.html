@@ -1139,14 +1139,15 @@ information.</p>
 <div class="sidebar">
 <dl>
   <dt>Usage</dt>
-    <dd class="markup">before, after, field, toc-entry, block, item</dd>
+    <dd class="markup">before, after, field, toc-entry, block, item, style</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>expression [required]</dt>
           <dd>A valid <a href="obfl-evaluation-language.html">OBFL Evaluation
             Language</a> expression.</dd>
         <dt>text-style [optional]</dt>
-          <dd class="">A text style, e.g. emphasis or strong</dd>
+          <dd>A text style, e.g. emphasis or strong</dd>
+          <dd class="markup note">This attribute is only available in the context of a field element.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1254,7 +1255,7 @@ element.</p>
 <div class="sidebar markup">
 <dl>
   <dt>Usage</dt>
-    <dd>before, after, toc-entry, block, item</dd>
+    <dd>before, after, toc-entry, block, item, style</dd>
   <dt>Attributes</dt>
     <dd><dl>
         <dt>ref-id [required]</dt>
@@ -1317,7 +1318,7 @@ emphasis or strong.</p>
       </dl>
     </dd>
   <dt>Content Model</dt>
-    <dd>text(), style, marker, br, anchor [0 or more]</dd>
+    <dd>text(), style, marker, br, anchor, evaluate, page-number [0 or more]</dd>
 </dl>
 </div>
 
