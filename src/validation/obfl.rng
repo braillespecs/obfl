@@ -775,11 +775,6 @@
   </define>
   <define name="attlist-evaluate" combine="interleave">
     <attribute name="expression"/>
-    <optional>
-      <attribute name="text-style">
-        <data type="NMTOKEN"/>
-      </attribute>
-    </optional>
   </define>
   <define name="table-of-contents">
     <element name="table-of-contents">
@@ -1330,6 +1325,8 @@
           <ref name="marker"/>
           <ref name="br"/>
           <ref name="anchor"/>
+          <ref name="evaluate"/>
+          <ref name="page-number"/>
         </choice>
       </zeroOrMore>
     </element>

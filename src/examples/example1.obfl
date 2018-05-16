@@ -145,6 +145,12 @@
 					</tr>
 				</tbody>
 			</table>
+			<block id="a">
+				Evaluate within style: <style name="strong"><evaluate expression="(now &quot;yyyy-MM-dd HH:mm&quot;)"/></style>
+			</block>
+			<block>
+				Page number within style: <style name="strong"><page-number ref-id="a"/></style>
+			</block>
 		</sequence>
 		<sequence master="rear">
 			<block>This is part of a new sequence. Note that this sequence does not have an initial page number. Page numbering continues from the preceding section.</block>
