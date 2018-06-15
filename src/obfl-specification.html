@@ -1076,7 +1076,13 @@ should be excluded entierly.</p>
           <dd>Default is to prefer volume breaks.</dd>
         <dt>break-before [optional]</dt>
           <dd class="no-markup">Inserts a break before the block begins.</dd>
-          <dd>One of 'auto' (default), 'page'.</dd>
+        <dd>One of:
+        <dl><dt>'auto' (default)</dt>
+          	<dt>'page'</dt>
+          	<dd>Insert a page break before the block.</dd>
+          	<dt>'sheet'</dt>
+          	<dd>Insert one or two page breaks before the block so that the next page is formatted as a right page.</dd>
+          </dl></dd>
         <dt>keep [optional]</dt>
           <dd>Keep rows in this block together by breaking pages early.</dd>
           <dd>One of:
