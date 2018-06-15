@@ -312,6 +312,7 @@
         <choice>
           <value>auto</value>
           <value>page</value>
+          <value>sheet</value>
         </choice>
       </attribute>
     </optional>

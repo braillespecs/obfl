@@ -116,6 +116,7 @@
 				<block first-line-indent="3" text-indent="3" block-indent="3" keep="page">C) Bananas - Dry, but full of energy.</block>
 			</block>
 			<block break-before="page" margin-top="2" margin-bottom="1">New page</block>
+			<block break-before="sheet">New sheet</block>
 			<block>This heading is so important, that it has to start on a new page.</block>
 			<block margin-top="2" margin-bottom="1">New line</block>
 			<block>You can break a line<br/>wherever<br/>you<br/>want.</block>
