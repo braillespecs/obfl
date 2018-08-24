@@ -1654,6 +1654,7 @@ document range toc-sequences and list-of-references.</p>
           <dd>a condition for inserting the contents, expressed using the <a
             href="obfl-evaluation-language.html">OBFL Evaluation
           Language</a></dd>
+          <dd class="markup note">This attribute is only available in the context of a toc-sequence.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1677,6 +1678,7 @@ document range toc-sequences and list-of-references.</p>
           <dd>a condition for inserting the contents, expressed using the <a
             href="obfl-evaluation-language.html">OBFL Evaluation
           Language</a></dd>
+          <dd class="markup note">This attribute is only available in the context of a toc-sequence.</dd>
       </dl>
     </dd>
   <dt>Content Model</dt>
@@ -1970,10 +1972,10 @@ referenced collection.</p>
     <dd>In this order: 
       <ul>
         <li>on-collection-start [optional]</li>
-        <li>on-volume-start [0 or more]</li>
+        <li>on-volume-start [optional]</li>
         <li>on-page-start [optional]</li>
         <li>on-page-end [optional]</li>
-        <li>on-volume-end [0 or more]</li>
+        <li>on-volume-end [optional]</li>
         <li>on-collection-end [optional]</li>
       </ul>
     </dd>
