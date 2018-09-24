@@ -55,6 +55,19 @@
 				<footer/>
 			</default-template>
 		</layout-master>
+		<volume-template sheets-in-volume-max="100" use-when="(= $volume 1)">
+			<post-content>
+				<dynamic-sequence master="main">
+					<list-of-references collection="notes" range="document">
+						<on-volume-start>
+							<block>
+								Volume <evaluate expression="(round $started-volume-number)"/>
+							</block>
+						</on-volume-start>
+					</list-of-references>
+				</dynamic-sequence>
+			</post-content>
+		</volume-template>
 		<sequence master="front" initial-page-number="1">
 			<block margin-top="3" margin-bottom="1">
 				<leader align="center" position="50%"/>Test file</block>

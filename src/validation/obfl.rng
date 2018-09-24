@@ -819,8 +819,12 @@
   <define name="volume-template">
     <element name="volume-template">
       <ref name="attlist-volume-template"/>
-      <ref name="pre-content"/>
-      <ref name="post-content"/>
+      <optional>
+        <ref name="pre-content"/>
+      </optional>
+      <optional>
+        <ref name="post-content"/>
+      </optional>
     </element>
   </define>
   <define name="attlist-volume-template" combine="interleave">
@@ -995,6 +999,13 @@
       <attribute name="use-when"/>
     </optional>
   </define>
+  <define name="on-volume-start-in-list-of-references">
+    <element name="on-volume-start">
+      <oneOrMore>
+        <ref name="block"/>
+      </oneOrMore>
+    </element>
+  </define>
   <define name="on-volume-end">
     <element name="on-volume-end">
       <ref name="attlist-on-volume-end"/>
@@ -1007,6 +1018,13 @@
     <optional>
       <attribute name="use-when"/>
     </optional>
+  </define>
+  <define name="on-volume-end-in-list-of-references">
+    <element name="on-volume-end">
+      <oneOrMore>
+        <ref name="block"/>
+      </oneOrMore>
+    </element>
   </define>
   <define name="on-toc-end">
     <element name="on-toc-end">
@@ -1028,10 +1046,16 @@
         <ref name="on-collection-start"/>
       </optional>
       <optional>
+        <ref name="on-volume-start-in-list-of-references"/>
+      </optional>
+      <optional>
         <ref name="on-page-start"/>
       </optional>
       <optional>
         <ref name="on-page-end"/>
+      </optional>
+      <optional>
+        <ref name="on-volume-end-in-list-of-references"/>
       </optional>
       <optional>
         <ref name="on-collection-end"/>
