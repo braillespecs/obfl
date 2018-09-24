@@ -880,6 +880,12 @@
       <optional>
         <ref name="sequence-resumed"/>
       </optional>
+      <optional>
+        <ref name="any-interrupted"/>
+      </optional>
+      <optional>
+        <ref name="any-resumed"/>
+      </optional>
     </element>
   </define>
   <define name="attlist-volume-transition" combine="interleave">
@@ -917,6 +923,20 @@
     <element name="block-resumed">
       <zeroOrMore>
         <ref name="blockContents"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="any-interrupted">
+    <element name="any-interrupted">
+      <zeroOrMore>
+        <ref name="block"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="any-resumed">
+    <element name="any-resumed">
+      <zeroOrMore>
+        <ref name="block"/>
       </zeroOrMore>
     </element>
   </define>

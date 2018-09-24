@@ -1798,6 +1798,8 @@ volume's body of pages.</p>
       <li>block-resumed [optional]</li>
       <li>sequence-interrupted [optional]</li>
       <li>sequence-resumed [optional]</li>
+      <li>any-interrupted [optional]</li>
+      <li>any-resumed [optional]</li>
     </ul></dd>
   </dl>
 </div>
@@ -1818,6 +1820,13 @@ volume's body of pages.</p>
   &lt;sequence-resumed>
     &lt;block>[Continued from previous volume. --Ed.]&lt;/block>
   &lt;/sequence-resumed>
+  
+  &lt;any-interrupted>
+    &lt;block>--- End of volume ---&lt;/block>
+  &lt;/any-interrupted>
+  &lt;any-resumed>
+    &lt;block>--- Volume begins ---&lt;/block>
+  &lt;/any-resumed>
   
 &lt;/volume-transition>
 </pre>
@@ -1873,7 +1882,41 @@ volume's body of pages.</p>
     <p>This feature is incubating (2018-01-18). This means that the feature is
       currently a work-in-progress and may change or disappear at any time.</p>
   </div>
-  <p>The sequence-resumed element contains text to insert when a sequence is resumed after a volume break.</p>
+  <p>The sequence-resumed element contains blocks to insert when a sequence is resumed after a volume break.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>volume-transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
+
+  <h4  class="include">any-interrupted</h4>
+  <div class="note">
+    <p>This feature is incubating (2018-09-24). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The any-interrupted element contains blocks to insert in the main flow immediately before a volume break,
+  	regardless of where in the flow the volume is interrupted. Any conditional volume-transitions
+  	are rendered before this one.</p>
+  <div class="sidebar markup">
+    <dl>
+      <dt>Usage</dt>
+      <dd>volume-transition</dd>
+      <dt>Content Model</dt>
+      <dd>block [0 or more]</dd>
+    </dl>
+  </div>
+  
+  <h4 class="include">any-resumed</h4>
+  <div class="note">
+    <p>This feature is incubating (2018-09-24). This means that the feature is
+      currently a work-in-progress and may change or disappear at any time.</p>
+  </div>
+  <p>The any-resumed element contains blocks to insert in the main flow immediately after a volume break,
+  	regardless of where in the flow the volume was resumed. Any conditional volume-transitions
+  	are rendered after this one.</p>
   <div class="sidebar markup">
     <dl>
       <dt>Usage</dt>
