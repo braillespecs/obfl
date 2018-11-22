@@ -349,6 +349,44 @@ The back side of sheets are neither counted nor paginated.</p>
 However, if the last sheet of a duplex sequence only has content on the front side, 
 the back side is counted, but not <em>paginated</em>.</p>
 
+<h2>Page Model</h2>
+
+<p><strong>This section is normative.</strong></p>
+
+<p>The page model describes the relationships between regions on a page.</p>
+
+<h3>Recto (front side)</h3>
+
+<p>The following applies on the front side of a sheet or when only one side of the sheet is used.</p>
+
+<p>The inner margin is to the left and the outer margin is to the right.
+The inner and outer margins span the full height of the page.</p>
+
+<p>The <strong>left margin region</strong> is to the left of the text body. The <strong>right margin region</strong> is to the right of the text body.
+Stacked above and below these three areas (and spanning the full width of them) are the page area, header and footer. 
+The top and bottom page area are closest to the center. The header and footer are closest to the edge of the paper.</p>
+
+<p>The following table is a graphical representation of the this description.</p>
+
+<table class="page-model">
+	<tr>
+		<td rowspan="5"><p class="rotate">Inner margin</p></td>
+		<td colspan="3">Header</td>
+		<td rowspan="5"><p class="rotate">Outer margin</p></td>
+	</tr>
+	<tr><td colspan="3">Top page area</td></tr>
+	<tr height="300px">
+		<td width="10px"><p class="rotate">Left margin region(s)</p></td>
+		<td width="300px">Text body</td>
+		<td><p class="rotate">Right margin region(s)</p></td>
+	</tr>
+	<tr><td colspan="3">Bottom page area</td></tr>
+	<tr><td colspan="3">Footer</td></tr>
+</table>
+
+<h3>Verso (back side)</h3>
+<p>The only difference between the recto and the verso side, is that the outer and inner margins have switched places.</p>
+
 <h2 id="L558">Elements</h2>
 
 <p><strong>This section is informative.</strong></p>

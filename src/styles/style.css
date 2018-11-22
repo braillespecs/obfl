@@ -60,3 +60,36 @@ div.issue, div.note, div.example {
   border-color: #e0cb52;
   background-color: #fcfaee;
 }
+table.page-model {
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border-style: none;
+	border-width: 0px;
+	text-align: center;
+}
+.page-model tr td {
+	border-style: solid;
+	border-width: 2px;
+	padding: 0.5em;
+	vertical-align: bottom;
+}
+
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+
+  /* also accepts left, right, top, bottom coordinates; not required, but a good idea for styling */
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+
+  white-space: nowrap;
+  width: 20px;
+}
