@@ -83,6 +83,9 @@
 			<xsl:sort select="@datetime"/>
 			<xsl:apply-templates select="." mode="changes"/>
 		</xsl:for-each>
+		<xsl:if test="count(//*[self::html:del or self::html:ins])=0">
+			<p>[no changes]</p>
+		</xsl:if>
 	</xsl:template>
 	
 	<xsl:template match="html:del|html:ins" mode="changes">
