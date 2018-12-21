@@ -366,12 +366,15 @@ The inner and outer margins span the full height of the page.</p>
 Stacked above and below these three areas (and spanning the full width of them) are the page area, header and footer. 
 The top and bottom page area are closest to the center. The header and footer are closest to the edge of the paper.</p>
 
+<p>Note that if text flow is allowed in the header/footer area, the area of the header/footer is reduced to align with
+the text body area so that the margin area can be used as well.</p>
+
 <p>The following table is a graphical representation of the this description.</p>
 
 <table class="page-model">
 	<tr>
 		<td rowspan="5"><p class="rotate">Inner margin</p></td>
-		<td colspan="3">Header</td>
+		<td class="intersection">A</td><td>Header</td><td class="intersection">A</td>
 		<td rowspan="5"><p class="rotate">Outer margin</p></td>
 	</tr>
 	<tr><td colspan="3">Top page area</td></tr>
@@ -381,8 +384,10 @@ The top and bottom page area are closest to the center. The header and footer ar
 		<td><p class="rotate">Right margin region(s)</p></td>
 	</tr>
 	<tr><td colspan="3">Bottom page area</td></tr>
-	<tr><td colspan="3">Footer</td></tr>
+	<tr><td class="intersection">A</td><td>Footer</td><td class="intersection">A</td></tr>
 </table>
+
+<p>A = Margin region if text flow is combined with header/footer and there is a margin region, otherwise this area is available to header/footer.</p>
 
 <h3>Verso (back side)</h3>
 <p>The only difference between the recto and the verso side, is that the outer and inner margins have switched places.</p>

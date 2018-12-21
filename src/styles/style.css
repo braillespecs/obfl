@@ -93,3 +93,7 @@ table.page-model {
   white-space: nowrap;
   width: 20px;
 }
+
+td.intersection {
+	background-color: pink;
+}
