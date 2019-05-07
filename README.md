@@ -10,7 +10,7 @@ The Open Braille Formatting Language is such a langauge. It is inspired by XSL-F
 
 Note: The Open Braille Formatting Language is currently a draft. Additions and modifications are expected.
 
-The latest draft for the OBFL specification is available [here](http://files.pef-format.org/drafts/obfl/obfl-specification.html).
+The latest draft for the OBFL specification is available [here](https://braillespecs.github.io/obfl/obfl-specification.html).
 
 # Related Systems Overview #
 ![https://docs.google.com/drawings/pub?id=1QoXC4R7sVz0zGCYv5ueRgyCKg6OkTsg0NROhkKMToGo&w=1031&h=432&dummy=.jpg](https://docs.google.com/drawings/pub?id=1QoXC4R7sVz0zGCYv5ueRgyCKg6OkTsg0NROhkKMToGo&w=1031&h=432&dummy=.jpg)
