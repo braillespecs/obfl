@@ -1212,7 +1212,7 @@ the current row.</p>
     <dd>before, after, toc-entry, block, item</dd>
   <dt>Attributes</dt>
     <dd><dl>
-        <dt>align [optional]</dt>
+        <dt id="leader-att-align">align [optional]</dt>
           <dd>Alignment of the text following the leader.</dd>
           <dd>The leader can be aligned to the left, center or right of the
             following text segment.</dd>
@@ -2561,6 +2561,21 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
     <dd>Indent of every line in the block except the first one (in
     characters)</dd>
     <dd>A number.</dd>
+    <dd>This attribute is used to create hanging indentation.</dd>
+  <dt>right-last-line-indent [optional]</dt>
+  <dd>Right indent of the last line of a block (in
+    characters)</dd>
+    <dd>A number.</dd>
+  <dt>right-text-indent [optional]</dt>
+    <dd>Right indent of every line in the block except the last one
+    (in characters)</dd>
+    <dd>A number.</dd>
+    <dd>Note that right indentation only makes sense
+    for <a href="block-att-align">right-aligned</a> text. The feature
+    can also be used to indent text that comes after
+    a <span class="markup">leader</span> and
+    is <a href="leader-att-align">right-aligned</>.
+  </dd>
   <dt>block-indent [optional]</dt>
     <dd>Indent of this block's block children (in characters)</dd>
     <dd>A number.</dd>
@@ -2586,7 +2601,7 @@ combination of braille characters [U+2800-U+28FF] and the following:</p>
      		<dd>The specified label is inserted in place of the default list label.</dd>
      <dd>A string.</dd>
      </dl></dd>
-  <dt>align [optional]</dt>
+  <dt id="block-att-align">align [optional]</dt>
     <dd>Specifies the text alignment.</dd>
     <dd>One of 'left' (default), 'center' or 'right'.</dd>
   <dt>underline-style [optional]</dt>

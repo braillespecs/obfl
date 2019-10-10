@@ -234,6 +234,12 @@
       <attribute name="text-indent"/>
     </optional>
     <optional>
+      <attribute name="right-last-line-indent"/>
+    </optional>
+    <optional>
+      <attribute name="right-text-indent"/>
+    </optional>
+    <optional>
       <attribute name="block-indent"/>
     </optional>
     <optional>
